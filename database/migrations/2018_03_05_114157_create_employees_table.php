@@ -31,7 +31,6 @@ class CreateEmployeesTable extends Migration
             $table->date('Birth_date')->nullable();
             $table->enum('Gender',['male','female'])->nullable();
             $table->date('Employment_Date')->nullable();
-            $table->string('Employee_No',50)->unique();
             $table->string('Status')->nullable();
             $table->integer('Department')->nullable();
             $table->date('Last_Date_Modified')->nullable();
@@ -48,7 +47,7 @@ class CreateEmployeesTable extends Migration
             $table->string('Passport_No',20)->nullable();
             $table->string('Grade',30)->nullable();
             $table->integer('Base_Calendar')->nullable();
-            $table->foreign("user_id")->references("id")->on("Users")->onDelete('cascade');;
+            $table->foreign("user_id")->references("id")->on("Users")->onDelete('cascade');
             $table->timestamps();
         });
     }
