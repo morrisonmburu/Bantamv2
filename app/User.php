@@ -26,8 +26,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //Get employee record of the user
     public function Employee_Record(){
         return $this->hasOne("App\Employee");
     }
-
 }
