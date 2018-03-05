@@ -31,7 +31,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->date('Approval_date');
             $table->string('Comments','250');
             $table->boolean('Taken');
-            $table->string('Leave_period');
+            $table->integer('Leave_Period',false,true);
             $table->foreign("Employee_no")->references("employee_id")->on("Employees")->onDelete('cascade');
             $table->foreign("leave_code")->references("Leave_type_id")->on("leave_types")->onDelete('cascade');
             $table->timestamps();

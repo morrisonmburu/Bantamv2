@@ -26,7 +26,7 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
             $table->decimal('Days_Approved');
             $table->integer('Days_Approved_Taken');
             $table->decimal('Allocated_Days');
-            $table->string('Leave Period');
+            $table->integer('Leave_Period',false,true);
             $table->foreign("Employee_no")->references("employee_id")->on("Employees")->onDelete('cascade');
             $table->timestamps();
         });
