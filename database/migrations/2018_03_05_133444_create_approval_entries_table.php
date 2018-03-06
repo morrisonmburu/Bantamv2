@@ -25,6 +25,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->string('last_modified_by_id');
             $table->string('Comment');
             $table->date('Due_Date');
+            $table->integer("Current_Year",false,true);
             $table->foreign("Approval_template")->references("id")->on("approval_templates")->onDelete('cascade');
             $table->foreign("Approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
             $table->foreign("Employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
