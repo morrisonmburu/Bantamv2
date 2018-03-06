@@ -46,6 +46,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('Designations')->nullable();
             $table->string('Passport_No',20)->nullable();
             $table->string('Grade',30)->nullable();
+            $table->string('Profile_Picture',100)->nullable();
             $table->integer('Base_Calendar')->nullable();
             $table->boolean("Nav_Synced");
             $table->boolean("Web_Synced");
