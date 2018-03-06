@@ -70,7 +70,7 @@ class NavSync extends Command
             $decodedResonse = json_decode($jsonResponse, true);
             fwrite($file, var_dump($decodedResonse));
             foreach($decodedResonse['value'] as $emp){
-                $employee = Employee::create($emp);
+                $employee = Employee::updateOrCreate($emp);
             }
             fwrite($file, "success");
         }
