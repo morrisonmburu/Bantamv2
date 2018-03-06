@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Approval_template extends Model
 {
+    protected $guarded = [];
     protected $table = "approval_templates";
     protected $primaryKey = "id";
     public $inrementing = true;
