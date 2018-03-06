@@ -48,10 +48,10 @@ class CreateEmployeesTable extends Migration
             $table->string('Grade',30)->nullable();
             $table->string('Profile_Picture',100)->nullable();
             $table->integer('Base_Calendar')->nullable();
-            $table->boolean("Nav_Synced");
-            $table->boolean("Web_Synced");
-            $table->dateTime("Last_Nav_Synced");
-            $table->dateTime("Last_Web_Synced");
+            $table->boolean("Nav_Synced")->default(false);
+            $table->boolean("Web_Synced")->default(true);
+            $table->dateTime("Last_Nav_Synced")->nullable();
+            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("user_id")->references("id")->on("Users")->onDelete('cascade');
             $table->timestamps();
         });

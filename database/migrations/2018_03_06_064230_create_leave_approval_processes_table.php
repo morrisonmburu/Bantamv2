@@ -23,10 +23,10 @@ class CreateLeaveApprovalProcessesTable extends Migration
             $table->string('Comments','250');
             $table->integer('Approver_id',false,true);
             $table->Integer('Sequence_No');
-            $table->boolean("Nav_Synced");
-            $table->boolean("Web_Synced");
-            $table->dateTime("Last_Nav_Synced");
-            $table->dateTime("Last_Web_Synced");
+            $table->boolean("Nav_Synced")->default(false);
+            $table->boolean("Web_Synced")->default(true);
+            $table->dateTime("Last_Nav_Synced")->nullable();
+            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("Approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
             $table->foreign("Application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
