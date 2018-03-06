@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+    protected $guarded = [];
     protected $table="employees";
     public $incrementing =true;
     protected $primaryKey="employee_id";
@@ -33,5 +34,9 @@ class Employee extends Model
     //Gets Employee leave planners
     public function Employee_Leave_Planners(){
         return $this->hasMany("App\Leave_planner","Employee_No","Employee_id");
+    }
+
+    public function user(){
+        return $this->belongsTo("App\User");
     }
 }
