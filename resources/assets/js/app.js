@@ -16,7 +16,36 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('side-nav-header', require('./components/dashboard/side-nav-header.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        fullNames   : 'Test Name',
+        user : {}
+
+    },
+    computed: {
+        initUser : function () {
+            this.CurrentUser
+            this.fetchUserData
+
+        },
+
+
+
+    },
+    methods: {
+        CurrentUser : function () {
+
+        },
+        fetchUserData : function () {
+            var vm = this
+            axios.get('api/users/1')
+                .then(function (response) {
+
+                })
+        }
+    },
+
 });
