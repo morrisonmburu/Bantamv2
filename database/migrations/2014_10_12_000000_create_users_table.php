@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('Name',100);
             $table->string('Email',100)->unique();
-            $table->integer('Role',false,true)->unique();
+            $table->integer('Role',false,true)->unique()->nullable();
             $table->string('Password',150);
             $table->rememberToken();
             $table->boolean("Nav_Synced");

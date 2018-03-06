@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Leave_planner extends Model
 {
+    protected $guarded = [];
     protected  $table = "leave_planners";
     protected  $primaryKey = "leave_planner_id";
     public $incrementing = true;
