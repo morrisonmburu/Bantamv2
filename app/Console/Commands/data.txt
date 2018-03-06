@@ -1,0 +1,1 @@
+Add [No] to fillable property to allow mass assignment on [App\Employee].
