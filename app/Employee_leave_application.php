@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee_leave_application extends Model
 {
+    protected $guarded = [];
     protected $table = "employee_leave_applications";
     protected $primaryKey = "Application_Code";
     public $incrementing = true;
