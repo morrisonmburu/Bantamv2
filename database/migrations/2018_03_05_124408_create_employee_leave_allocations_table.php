@@ -27,6 +27,10 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
             $table->integer('Days_Approved_Taken');
             $table->decimal('Allocated_Days');
             $table->integer('Leave_Period',false,true);
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->foreign("Employee_no")->references("employee_id")->on("Employees")->onDelete('cascade');
             $table->timestamps();
         });

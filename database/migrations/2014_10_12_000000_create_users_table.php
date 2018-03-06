@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration
             $table->integer('Role',false,true)->unique();
             $table->string('Password',150);
             $table->rememberToken();
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->timestamps();
         });
     }
