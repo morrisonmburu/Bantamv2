@@ -18,6 +18,10 @@ class CreateApprovalTemplatesTable extends Migration
             $table->enum('Document_type',['leave','appraisal','Approved','training','cash']);
             $table->boolean('Enabled');
             $table->decimal('Due_Days');
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->timestamps();
         });
     }

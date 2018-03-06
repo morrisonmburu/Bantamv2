@@ -47,6 +47,10 @@ class CreateEmployeesTable extends Migration
             $table->string('Passport_No',20)->nullable();
             $table->string('Grade',30)->nullable();
             $table->integer('Base_Calendar')->nullable();
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->foreign("user_id")->references("id")->on("Users")->onDelete('cascade');
             $table->timestamps();
         });

@@ -23,6 +23,10 @@ class CreateLeavePlannersTable extends Migration
             $table->string('Type',50);
             $table->integer('Application_Code',false,true);
             $table->integer("Current_Year",false,true);
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->foreign("Employee_No")->references("employee_id")->on("employees")->onDelete('cascade');
             $table->foreign("Application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();

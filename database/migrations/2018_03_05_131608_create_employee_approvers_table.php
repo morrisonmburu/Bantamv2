@@ -18,6 +18,10 @@ class CreateEmployeeApproversTable extends Migration
             $table->integer('Employee_id',false,true);
             $table->integer('Sequence_No',false,true);
             $table->string('Comments',250);
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
             $table->timestamps();
         });
     }

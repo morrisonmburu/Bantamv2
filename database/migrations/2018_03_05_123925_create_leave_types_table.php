@@ -23,6 +23,10 @@ class CreateLeaveTypesTable extends Migration
             $table->boolean('Inclusive_of_non_working');
             $table->boolean('allow_inactive');
             $table->timestamps();
+            $table->boolean("Nav_Synced");
+            $table->boolean("Web_Synced");
+            $table->dateTime("Last_Nav_Synced");
+            $table->dateTime("Last_Web_Synced");
         });
     }
 
