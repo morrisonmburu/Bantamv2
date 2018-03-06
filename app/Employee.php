@@ -34,4 +34,8 @@ class Employee extends Model
     public function Employee_Leave_Planners(){
         return $this->hasMany("App\Leave_planner","Employee_No","Employee_id");
     }
+
+    public function user(){
+        return $this->belongsTo("App\User");
+    }
 }
