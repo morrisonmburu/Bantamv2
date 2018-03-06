@@ -40,13 +40,13 @@ class NavSync extends Command
         $this->NAV_PWD = env("NAV_PWD");
         $this->NAV_USER = env("NAV_USER");
 
-        $this->client = new Client('{base_endpoint}', array(
+        $this->client = new Client(['{base_endpoint}', array(
             'base_endpoint' => $this->NAV_ENDPOINT,
             'request.options' => array(
-                'headers' => array('Accept' => 'Applicatiion/json'),
+                'headers' => array('Accept' => 'Application/json'),
                 'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'Basic|Digest|NTLM|Any')
             )
-        ));
+        )]);
     }
 
     /**
