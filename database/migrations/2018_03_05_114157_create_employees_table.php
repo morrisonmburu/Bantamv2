@@ -15,11 +15,11 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('employee_id');
-            $table->string('Employee_No',50)->unique();
-            $table->integer('user_id',false,true);
-            $table->string('First_name',30)->nullable();
-            $table->string('Middle_name',30)->nullable();
-            $table->string('Last_name',30)->nullable();
+            $table->string('No',50)->unique();
+            $table->integer('user_id',false,true)->nullable();
+            $table->string('First_Name',30)->nullable();
+            $table->string('Middle_Name',30)->nullable();
+            $table->string('Last_Name',30)->nullable();
             $table->string('Initials',30)->nullable();
             $table->string('Job_Title',30)->nullable();
             $table->string('Address',50)->nullable();
@@ -30,7 +30,7 @@ class CreateEmployeesTable extends Migration
             $table->string('Mobile_Phone_No',30)->nullable();
             $table->string('E_Mail',100)->nullable();
             $table->date('Birth_date')->nullable();
-            $table->enum('Gender',['male','female'])->nullable();
+            $table->enum('Gender',['Male','Female'])->nullable();
             $table->date('Employment_Date')->nullable();
             $table->string('Status')->nullable();
             $table->integer('Department')->nullable();
@@ -48,7 +48,7 @@ class CreateEmployeesTable extends Migration
             $table->string('Passport_No',20)->nullable();
             $table->string('Grade',30)->nullable();
             $table->string('Profile_Picture',100)->nullable();
-            $table->integer('Base_Calendar')->nullable();
+            $table->string('Base_Calendar', 30)->nullable();
             $table->boolean("Nav_Synced")->default(false);
             $table->boolean("Web_Synced")->default(true);
             $table->dateTime("Last_Nav_Synced")->nullable();

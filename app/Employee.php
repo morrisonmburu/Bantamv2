@@ -3,14 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Employee extends Model
 {
-    protected $guarded = [];
     protected $table="employees";
     public $incrementing =true;
     protected $primaryKey="employee_id";
     public $timestamps = true;
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->fillable = DB::getSchemaBuilder()->getColumnListing($this->table);
+    }
 
     // Employee leave allocations
     public function Employee_leave_allocations(){
