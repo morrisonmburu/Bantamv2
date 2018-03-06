@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee_approver extends Model
 {
+    protected $guarded = [];
     protected $table = "employee_approvers";
     protected $primaryKey = "Approver_id";
     public $incrementing = true;
