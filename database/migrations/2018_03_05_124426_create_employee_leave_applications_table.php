@@ -32,10 +32,10 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->string('Comments','250')->nullable();
             $table->boolean('Taken');
             $table->integer('Leave_Period',false,true);
-            $table->boolean("Nav_Synced");
-            $table->boolean("Web_Synced");
-            $table->dateTime("Last_Nav_Synced");
-            $table->dateTime("Last_Web_Synced");
+            $table->boolean("Nav_Synced")->default(false);
+            $table->boolean("Web_Synced")->default(true);
+            $table->dateTime("Last_Nav_Synced")->nullable();
+            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("Employee_no")->references("employee_id")->on("Employees")->onDelete('cascade');
             $table->foreign("leave_code")->references("Leave_type_id")->on("leave_types")->onDelete('cascade');
             $table->timestamps();
