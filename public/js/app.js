@@ -1014,6 +1014,9 @@ var app = new Vue({
             } else {
                 alert(component + ' component not found');
             }
+        },
+        sanitizeHeaders: function sanitizeHeaders(heading) {
+            return heading.replace('-', ' ');
         }
     }
 });

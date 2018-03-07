@@ -2,7 +2,7 @@
     <div class="col-lg-10">
 
         {{--Page Title--}}
-        <h2>Dashboard</h2>
+        <h2 style="text-transform: capitalize">@{{ sanitizeHeaders(currentComponent) }}</h2>
 
         {{--Breadcrumb--}}
         <ol class="breadcrumb">
@@ -10,7 +10,7 @@
                 <a href="index.html">Home</a>
             </li>
             <li class="active">
-                <strong>Dashboard</strong>
+                <strong>@{{ currentComponent }}</strong>
             </li>
         </ol>
     </div>

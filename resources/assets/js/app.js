@@ -38,6 +38,9 @@ const app = new Vue({
            }else {
                alert(component + ' component not found');
            }
+        },
+        sanitizeHeaders : function (heading) {
+            return heading.replace('-',' ');
         }
     }
 });

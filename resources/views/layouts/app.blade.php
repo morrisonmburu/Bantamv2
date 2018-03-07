@@ -20,7 +20,6 @@
 <!--- Added when adding calender in leave planner view
 -->
     <link href="{{ asset('css/plugins/iCheck/custom.css')}}" rel="stylesheet">
-
     <link href="{{ asset('css/plugins/fullcalendar/fullcalendar.css')}}" rel="stylesheet">
     <link href="{{ asset('css/plugins/fullcalendar/fullcalendar.print.css')}}" rel='stylesheet' media='print'>
     <!--
