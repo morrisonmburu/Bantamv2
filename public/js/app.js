@@ -998,14 +998,23 @@ Vue.component('profile', __webpack_require__(71));
 Vue.component('open-applications', __webpack_require__(76));
 Vue.component('pending-applications', __webpack_require__(81));
 Vue.component('approval-request', __webpack_require__(86));
+Vue.component('posted-applications', __webpack_require__(96));
 Vue.component('leave-allocations', __webpack_require__(91));
 
 var app = new Vue({
-  el: '#app',
-  data: {
-    currentView: 'dashboard'
-  }
-
+    el: '#app',
+    data: {
+        currentComponent: 'dashboard'
+    },
+    methods: {
+        swapComponent: function swapComponent(component) {
+            if (Vue.options.components[component]) {
+                this.currentComponent = component;
+            } else {
+                alert(component + ' component not found');
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -46136,7 +46145,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46209,7 +46218,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "content-wrapper"
+    name: "content-wrapper",
+    props: ['swapComponent']
 });
 
 /***/ }),
@@ -46417,7 +46427,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46786,7 +46796,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "profile"
+    name: "profile",
+    props: ['swapComponent']
 });
 
 /***/ }),
@@ -49940,6 +49951,746 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-5f51042e", module.exports)
+  }
+}
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(97)
+}
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(99)
+/* template */
+var __vue_template__ = __webpack_require__(100)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4f6ba162"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\dashboard\\posted-applications.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4f6ba162", Component.options)
+  } else {
+    hotAPI.reload("data-v-4f6ba162", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(98);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(57)("41560553", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f6ba162\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./posted-applications.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f6ba162\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./posted-applications.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(46)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "posted-applications"
+});
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("h5", [_vm._v("Open Applications")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ibox-tools" }, [
+                _c("a", { staticClass: "collapse-link" }, [
+                  _c("i", { staticClass: "fa fa-chevron-up" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-toggle",
+                    attrs: { "data-toggle": "dropdown", href: "#" }
+                  },
+                  [_c("i", { staticClass: "fa fa-wrench" })]
+                ),
+                _vm._v(" "),
+                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 1")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 2")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "close-link" }, [
+                  _c("i", { staticClass: "fa fa-times" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Leave Type")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Application Date")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Number of Days")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Status")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Action")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Maternity")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("02/08/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("15")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Posted")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                        _vm._v("view")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Sick")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("02/08/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("15")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Posted")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                        _vm._v("view")
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Educational")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("02/08/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("15")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Posted")]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                        _vm._v("view")
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("div", { staticClass: "ibox " }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("h5", [_vm._v("Recent Activities")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("div", { staticClass: "activity-stream" }, [
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-pencil" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a5.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Karen Miggel")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Today at 01:32:40 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new note to the "
+                    ),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Martex")]),
+                    _vm._v("  project.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-commenting-o" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a4.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("John Mikkens")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 10:00:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v("\n                                Commented on "),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Ariana")]),
+                    _vm._v(" profile.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a2.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a3.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a4.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "Mike Johnson, Monica Smith and Karen Dortmund"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 02:13:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Changed status of third stage in the "
+                    ),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Vertex")]),
+                    _vm._v(" project.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a6.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-send bg-primary" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a1.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Martha Farter and Mike Rodgers")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 04:18:13 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Sent email to all users participating in new project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-tag bg-warning" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Mark Mickens")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 06:00:30 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Has been taged in the latest comments about the new project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a8.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Mike Johnson")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 02:13:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Changed status of second stage in the latest project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a1.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a6.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-send" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Martha Farter")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 04:18:13 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Sent email to all users participating in new project.\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4f6ba162", module.exports)
   }
 }
 

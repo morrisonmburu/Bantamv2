@@ -356,7 +356,8 @@
 
 <script>
     export default {
-        name: "profile"
+        name: "profile",
+        props: ['swapComponent']
     }
 </script>
 

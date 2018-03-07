@@ -38,6 +38,17 @@ h5 {
   margin-top: 5px;
   font-weight: 600;
 }
+
+.fade-transition {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter, .fade-leave {
+  opacity: 0;
+}
+
+
+
 .nav > li > a {
   color: #a7b1c2;
   font-weight: 600;
@@ -8559,4 +8570,7 @@ body.md-skin {
   #page-wrapper {
     margin: 0;
   }
-}
+  }
+
+
+

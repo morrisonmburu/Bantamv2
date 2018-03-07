@@ -60,7 +60,8 @@
 
 <script>
     export default {
-        name: "content-wrapper"
+        name: "content-wrapper",
+        props: ['swapComponent']
     }
 </script>
 
