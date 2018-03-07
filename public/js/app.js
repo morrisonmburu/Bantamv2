@@ -1001,6 +1001,8 @@ Vue.component('approval-request', __webpack_require__(86));
 Vue.component('posted-applications', __webpack_require__(96));
 Vue.component('leave-allocations', __webpack_require__(91));
 Vue.component('leave-planner', __webpack_require__(101));
+Vue.component('payslip', __webpack_require__(106));
+Vue.component('faq', __webpack_require__(111));
 
 var app = new Vue({
     el: '#app',
@@ -46149,7 +46151,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46160,6 +46162,179 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -46241,95 +46416,358 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-3" }, [
-        _c("div", { staticClass: "ibox float-e-margins" }, [
-          _c("div", { staticClass: "ibox-title" }, [
-            _c("span", { staticClass: "label label-success pull-right" }, [
-              _vm._v("Monthly")
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("span", { staticClass: "label label-success pull-right" }, [
+                _vm._v("Monthly")
+              ]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Income")])
             ]),
             _vm._v(" "),
-            _c("h5", [_vm._v("Income")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ibox-content" }, [
-            _c("h1", { staticClass: "no-margins" }, [_vm._v("40 886,200")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "stat-percent font-bold text-success" }, [
-              _vm._v("98% "),
-              _c("i", { staticClass: "fa fa-bolt" })
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("h1", { staticClass: "no-margins" }, [_vm._v("40 886,200")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "stat-percent font-bold text-success" },
+                [_vm._v("98% "), _c("i", { staticClass: "fa fa-bolt" })]
+              ),
+              _vm._v(" "),
+              _c("small", [_vm._v("Total income")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("span", { staticClass: "label label-info pull-right" }, [
+                _vm._v("Annual")
+              ]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("Orders")])
             ]),
             _vm._v(" "),
-            _c("small", [_vm._v("Total income")])
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("h1", { staticClass: "no-margins" }, [_vm._v("275,800")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stat-percent font-bold text-info" }, [
+                _vm._v("20% "),
+                _c("i", { staticClass: "fa fa-level-up" })
+              ]),
+              _vm._v(" "),
+              _c("small", [_vm._v("New orders")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("span", { staticClass: "label label-primary pull-right" }, [
+                _vm._v("Today")
+              ]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("visits")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("h1", { staticClass: "no-margins" }, [_vm._v("106,120")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stat-percent font-bold text-navy" }, [
+                _vm._v("44% "),
+                _c("i", { staticClass: "fa fa-level-up" })
+              ]),
+              _vm._v(" "),
+              _c("small", [_vm._v("New visits")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("span", { staticClass: "label label-danger pull-right" }, [
+                _vm._v("Low value")
+              ]),
+              _vm._v(" "),
+              _c("h5", [_vm._v("User activity")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("h1", { staticClass: "no-margins" }, [_vm._v("80,600")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stat-percent font-bold text-danger" }, [
+                _vm._v("38% "),
+                _c("i", { staticClass: "fa fa-level-down" })
+              ]),
+              _vm._v(" "),
+              _c("small", [_vm._v("In first month")])
+            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3" }, [
-        _c("div", { staticClass: "ibox float-e-margins" }, [
-          _c("div", { staticClass: "ibox-title" }, [
-            _c("span", { staticClass: "label label-info pull-right" }, [
-              _vm._v("Annual")
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-4" }, [
+          _c("div", { staticClass: "ibox " }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("h5", [_vm._v("Recent Activities")])
             ]),
             _vm._v(" "),
-            _c("h5", [_vm._v("Orders")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ibox-content" }, [
-            _c("h1", { staticClass: "no-margins" }, [_vm._v("275,800")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "stat-percent font-bold text-info" }, [
-              _vm._v("20% "),
-              _c("i", { staticClass: "fa fa-level-up" })
-            ]),
-            _vm._v(" "),
-            _c("small", [_vm._v("New orders")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3" }, [
-        _c("div", { staticClass: "ibox float-e-margins" }, [
-          _c("div", { staticClass: "ibox-title" }, [
-            _c("span", { staticClass: "label label-primary pull-right" }, [
-              _vm._v("Today")
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("visits")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ibox-content" }, [
-            _c("h1", { staticClass: "no-margins" }, [_vm._v("106,120")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "stat-percent font-bold text-navy" }, [
-              _vm._v("44% "),
-              _c("i", { staticClass: "fa fa-level-up" })
-            ]),
-            _vm._v(" "),
-            _c("small", [_vm._v("New visits")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-3" }, [
-        _c("div", { staticClass: "ibox float-e-margins" }, [
-          _c("div", { staticClass: "ibox-title" }, [
-            _c("span", { staticClass: "label label-danger pull-right" }, [
-              _vm._v("Low value")
-            ]),
-            _vm._v(" "),
-            _c("h5", [_vm._v("User activity")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "ibox-content" }, [
-            _c("h1", { staticClass: "no-margins" }, [_vm._v("80,600")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "stat-percent font-bold text-danger" }, [
-              _vm._v("38% "),
-              _c("i", { staticClass: "fa fa-level-down" })
-            ]),
-            _vm._v(" "),
-            _c("small", [_vm._v("In first month")])
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("div", { staticClass: "activity-stream" }, [
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-pencil" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a5.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Karen Miggel")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Today at 01:32:40 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new note to the "
+                    ),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Martex")]),
+                    _vm._v("  project.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-commenting-o" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a4.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("John Mikkens")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 10:00:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v("\n                                Commented on "),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Ariana")]),
+                    _vm._v(" profile.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a2.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a3.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a4.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "Mike Johnson, Monica Smith and Karen Dortmund"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 02:13:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Changed status of third stage in the "
+                    ),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Vertex")]),
+                    _vm._v(" project.\n                            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a6.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-send bg-primary" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "img/a1.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Martha Farter and Mike Rodgers")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 04:18:13 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Sent email to all users participating in new project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-tag bg-warning" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Mark Mickens")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 06:00:30 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Has been taged in the latest comments about the new project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a8.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Mike Johnson")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 02:13:20 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Changed status of second stage in the latest project.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a1.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-circle" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a6.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Jessica Smith")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 08:14:41 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Add new files to own file sharing place.\n                            "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "stream" }, [
+                  _c("div", { staticClass: "stream-badge" }, [
+                    _c("i", { staticClass: "fa fa-send" })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "stream-panel" }, [
+                    _c("div", { staticClass: "stream-info" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("img", { attrs: { src: "img/a7.jpg" } }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Martha Farter")]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "date" }, [
+                          _vm._v("Yesterday at 04:18:13 am")
+                        ])
+                      ])
+                    ]),
+                    _vm._v(
+                      "\n                                Sent email to all users participating in new project.\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ])
           ])
         ])
       ])
@@ -51050,6 +51488,1424 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-bf97c726", module.exports)
+  }
+}
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(107)
+}
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(109)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5353c659"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\dashboard\\payslip.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5353c659", Component.options)
+  } else {
+    hotAPI.reload("data-v-5353c659", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(108);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(57)("1c7c1bfc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5353c659\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./payslip.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5353c659\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./payslip.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(46)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "payslip"
+});
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "ibox-content p-xl" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h5", [_vm._v("From:")]),
+            _vm._v(" "),
+            _c("address", [
+              _c("strong", [_vm._v("Inspinia, Inc.")]),
+              _c("br"),
+              _vm._v("\n                    106 Jorg Avenu, 600/10"),
+              _c("br"),
+              _vm._v("\n                    Chicago, VT 32456"),
+              _c("br"),
+              _vm._v(" "),
+              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+              _vm._v(" (123) 601-4590\n                ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6 text-right" }, [
+            _c("h4", [_vm._v("Invoice No.")]),
+            _vm._v(" "),
+            _c("h4", { staticClass: "text-navy" }, [_vm._v("INV-000567F7-00")]),
+            _vm._v(" "),
+            _c("span", [_vm._v("To:")]),
+            _vm._v(" "),
+            _c("address", [
+              _c("strong", [_vm._v("Corporate, Inc.")]),
+              _c("br"),
+              _vm._v("\n                    112 Street Avenu, 1080"),
+              _c("br"),
+              _vm._v("\n                    Miami, CT 445611"),
+              _c("br"),
+              _vm._v(" "),
+              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+              _vm._v(" (120) 9000-4321\n                ")
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("span", [
+                _c("strong", [_vm._v("Invoice Date:")]),
+                _vm._v(" Marh 18, 2014")
+              ]),
+              _c("br"),
+              _vm._v(" "),
+              _c("span", [
+                _c("strong", [_vm._v("Due Date:")]),
+                _vm._v(" March 24, 2014")
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "table-responsive m-t" }, [
+          _c("table", { staticClass: "table invoice-table" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Item List")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Quantity")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Unit Price")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Tax")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Total Price")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [
+                  _c("div", [
+                    _c("strong", [
+                      _vm._v("Admin Theme with psd project layouts")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("small", [
+                    _vm._v(
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$26.00")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$5.98")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$31,98")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [
+                  _c("div", [
+                    _c("strong", [_vm._v("Wodpress Them customization")])
+                  ]),
+                  _vm._v(" "),
+                  _c("small", [
+                    _vm._v(
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                            Eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                        "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("2")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$80.00")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$36.80")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$196.80")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [
+                  _c("div", [
+                    _c("strong", [_vm._v("Angular JS & Node JS Application")])
+                  ]),
+                  _vm._v(" "),
+                  _c("small", [
+                    _vm._v(
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("3")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$420.00")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$193.20")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("$1033.20")])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("table", { staticClass: "table invoice-total" }, [
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [_c("strong", [_vm._v("Sub Total :")])]),
+              _vm._v(" "),
+              _c("td", [_vm._v("$1026.00")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_c("strong", [_vm._v("TAX :")])]),
+              _vm._v(" "),
+              _c("td", [_vm._v("$235.98")])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [_c("strong", [_vm._v("TOTAL :")])]),
+              _vm._v(" "),
+              _c("td", [_vm._v("$1261.98")])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c("button", { staticClass: "btn btn-primary" }, [
+            _c("i", { staticClass: "fa fa-dollar" }),
+            _vm._v(" Make A Payment")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "well m-t" }, [
+          _c("strong", [_vm._v("Comments")]),
+          _vm._v(
+            "\n            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less\n        "
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5353c659", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(112)
+}
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(114)
+/* template */
+var __vue_template__ = __webpack_require__(115)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-51ee4df2"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\dashboard\\faq.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-51ee4df2", Component.options)
+  } else {
+    hotAPI.reload("data-v-51ee4df2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(113);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(57)("0c347b3e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51ee4df2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faq.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-51ee4df2\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faq.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(46)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 114 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "faq"
+});
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "ibox-content m-b-sm border-bottom" }, [
+        _c("div", { staticClass: "text-center p-lg" }, [
+          _c("h2", [_vm._v("If you don't find the answer to your question")]),
+          _vm._v(" "),
+          _c("span", [_vm._v("add your question by selecting ")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary btn-sm",
+              attrs: { title: "Create new cluster" }
+            },
+            [
+              _c("i", { staticClass: "fa fa-plus" }),
+              _vm._v(" "),
+              _c("span", { staticClass: "bold" }, [_vm._v("Add question")])
+            ]
+          ),
+          _vm._v(" button\n        ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq1" }
+              },
+              [_vm._v("What It a long established fact that a reader ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Alex Smith")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 2:40 pm - 24.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Robert Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("General")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("License")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                42\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse ",
+                attrs: { id: "faq1" }
+              },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            It is a long established fact that a reader will be distracted by the\n                            readable content of a page when looking at its layout. The point of\n                            using Lorem Ipsum is that it has a more-or-less normal distribution of\n                            letters, as opposed to using 'Content here, content here', making it\n                            look like readable English.\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq2" }
+              },
+              [_vm._v("Many desktop publishing packages ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Mark Nowak")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 3:30 pm - 11.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Robert Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("General")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("License")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("CC")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                24\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq2" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            Many desktop publishing packages and web page editors now use Lorem\n                            Ipsum as their default model text, and a search for 'lorem ipsum' will\n                            uncover many web sites still in their infancy. Various versions have\n                            evolved over the years, sometimes by accident, sometimes on purpose\n                            (injected humour and the like).\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq3" }
+              },
+              [_vm._v("Ipsum generators on the Internet tend ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Monica Rother")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Yestorday 7:60 pm - 12.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Alex Berg")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("General")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Web App")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Instruction")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                22\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq3" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            Ipsum generators on the Internet tend to repeat predefined chunks as\n                            necessary, making this the first true generator on the Internet. It uses\n                            a dictionary of over 200 Latin words, combined with a handful of model\n                            sentence structures, to generate Lorem Ipsum which looks reasonable. The\n                            generated Lorem Ipsum is therefore always free from repetition, injected\n                            humour, or non-characteristic words etc.\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq4" }
+              },
+              [_vm._v("What Finibus Bonorum et Malorum mean ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Janet North")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 2:43 pm - 22.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Robert Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Buttons")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                65\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq4" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      '\n                            Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus\n                            Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written\n                            in 45 BC. This book is a treatise on the theory of ethics, very popular\n                            during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum\n                            dolor sit amet..", comes from a line in section 1.10.32.\n                        '
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq5" }
+              },
+              [_vm._v("The standard chunk of Lorem Ipsum used since ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Robert Task")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 1:23 pm - 12.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Sandra Smith")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("General")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("License")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                76\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq5" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      '\n                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced\n                            below for those interested. Sections 1.10.32 and 1.10.33 from "de\n                            Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact\n                            original form, accompanied by English versions from the 1914 translation\n                            by H. Rackham.\n                        '
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq6" }
+              },
+              [_vm._v("Contrary to popular belief, Lorem Ipsum ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Monica Smith")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 7:220 pm - 13.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Robert Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Love")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("CC")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Help")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                11\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq6" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            Contrary to popular belief, Lorem Ipsum is not simply random text. It\n                            has roots in a piece of classical Latin literature from 45 BC, making it\n                            over 2000 years old. Richard McClintock, a Latin professor at\n                            Hampden-Sydney College\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq7" }
+              },
+              [_vm._v(" Many desktop publishing packages ? ")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Damien Sate")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Yestorday 4:50 pm - 8.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Alex Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [
+                _vm._v("International")
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("What")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                64\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq7" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            Many desktop publishing packages and web page editors now use Lorem\n                            Ipsum as their default model text, and a search for 'lorem ipsum' will\n                            uncover many web sites still in their infancy. Various versions have\n                            evolved over the years, sometimes by accident, sometimes on purpose\n                            (injected humour and the like).\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq8" }
+              },
+              [_vm._v("Lorem Ipsum, you need to be sure there isn't ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Pablo Sarnoq")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 1:30 am - 1.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Natalie Cole")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("Translations")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("CC")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                10\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq8" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            Lorem Ipsum, you need to be sure there isn't anything embarrassing\n                            hidden in the middle of text. All the Lorem Ipsum generators on the\n                            Internet tend to repeat predefined chunks as necessary, making this the\n                            first true generator on the Internet. It uses a dictionary of over 200\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "faq-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-7" }, [
+            _c(
+              "a",
+              {
+                staticClass: "faq-question",
+                attrs: { "data-toggle": "collapse", href: "#faq9" }
+              },
+              [_vm._v("There are many variations of passages ?")]
+            ),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Added by "),
+              _c("strong", [_vm._v("Monica Smith")]),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-clock-o" }),
+              _vm._v(" Today 1:60 pm - 11.06.2014")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("span", { staticClass: "small font-bold" }, [
+              _vm._v("Alex Nowak")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tag-list" }, [
+              _c("span", { staticClass: "tag-item" }, [_vm._v("General")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "tag-item" }, [_vm._v("License")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 text-right" }, [
+            _c("span", { staticClass: "small font-bold" }, [_vm._v("Voting ")]),
+            _c("br"),
+            _vm._v("\n                23\n            ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c(
+              "div",
+              { staticClass: "panel-collapse collapse", attrs: { id: "faq9" } },
+              [
+                _c("div", { staticClass: "faq-answer" }, [
+                  _c("p", [
+                    _vm._v(
+                      "\n                            There are many variations of passages of Lorem Ipsum available, but the\n                            majority have suffered alteration in some form, by injected humour, or\n                            randomised words which don't look even slightly believable. If you are\n                            going to use a passage\n                        "
+                    )
+                  ])
+                ])
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-51ee4df2", module.exports)
   }
 }
 

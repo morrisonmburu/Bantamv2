@@ -8,5 +8,10 @@
 @include('layouts.dashboard.side_nav_components.dropdown_link')
 
 <li>
-    <a href=""><i class="fa fa-file"></i> <span class="nav-label">Payslips</span></a>
+    <a href="#" @click="swapComponent('payslip')"><i class="fa fa-money"></i> <span class="nav-label">Payslips</span></a>
 </li>
+
+<li>
+    <a href="#" @click="swapComponent('faq')"><i class="fa fa-question-circle"></i> <span class="nav-label">FAQ</span></a>
+</li>
+

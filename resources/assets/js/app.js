@@ -25,6 +25,8 @@ Vue.component('approval-request', require('./components/dashboard/approval-reque
 Vue.component('posted-applications', require('./components/dashboard/posted-applications.vue'));
 Vue.component('leave-allocations', require('./components/dashboard/leave-allocations.vue'));
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
+Vue.component('payslip', require('./components/dashboard/payslip'));
+Vue.component('faq', require('./components/dashboard/faq'));
 
 const app = new Vue({
     el: '#app',
