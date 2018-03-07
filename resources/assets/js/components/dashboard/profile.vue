@@ -71,6 +71,117 @@
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
                                 <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Names</th>
+                                            <th>Michael kamau K.</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Initials</td>
+                                            <td>MKK</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DOB</td>
+                                            <td>12/25/1991</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gender</td>
+                                            <td>Male</td>
+                                        </tr>
+                                        <tr>
+                                            <td>National ID</td>
+                                            <td>25445544</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Passport No</td>
+                                            <td>245544</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pin No</td>
+                                            <td>A00544565D</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>User</th>
+                                            <th>Value</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><span class="pie">0.52,1.041</span></td>
+                                            <td>Samantha</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 40% </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="pie">226,134</span></td>
+                                            <td>Jacob</td>
+                                            <td class="text-warning"> <i class="fa fa-level-down"></i> -20% </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="pie">0.52/1.561</span></td>
+                                            <td>Damien</td>
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 26% </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <div id="tab-3" class="tab-pane">
+                                <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>item</th>
+                                            <th>No</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Employer</td>
+                                            <td>County Government</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employment Date</td>
+                                            <td>12/02/2018</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Employee No.</td>
+                                            <td>County Government</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Job Title</td>
+                                            <td>Dr.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Department</td>
+                                            <td>Helth Care</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NSSF</td>
+                                            <td>254454</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NHIF</td>
+                                            <td>544565</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-4" class="tab-pane">
+                                <div class="panel-body">
                                     <div class="col-lg-12">
                                         <div class="contact-box">
                                             <a href="#">
@@ -96,62 +207,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="tab-2" class="tab-pane">
-                                <div class="panel-body">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Data</th>
-                                            <th>User</th>
-                                            <th>Value</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><span class="pie" style="display: none;">0.52,1.041</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path><path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                            <td>Samantha</td>
-                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 40% </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><span class="pie" style="display: none;">226,134</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 1 1 2.2452815972907922 13.55726696367198 Z" fill="#1ab394"></path><path d="M 8 8 L 2.2452815972907922 13.55726696367198 A 8 8 0 0 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                            <td>Jacob</td>
-                                            <td class="text-warning"> <i class="fa fa-level-down"></i> -20% </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><span class="pie" style="display: none;">0.52/1.561</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path><path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                            <td>Damien</td>
-                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 26% </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div id="tab-3" class="tab-pane">
-                                <div class="panel-body">
-                                    <strong>Donec quam felis</strong>
-
-                                    <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects
-                                        and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath </p>
-
-                                    <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                                        sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.</p>
-                                </div>
-                            </div>
-                            <div id="tab-4" class="tab-pane">
-                                <div class="panel-body">
-                                    <strong>Donec quam felis</strong>
-
-                                    <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among the stalks, and grow familiar with the countless indescribable forms of the insects
-                                        and flies, then I feel the presence of the Almighty, who formed us in his own image, and the breath </p>
-
-                                    <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                                        sense of mere tranquil existence, that I neglect my talents. I should be incapable of drawing a single stroke at the present moment; and yet.</p>
-                                </div>
-                            </div>
                         </div>
 
 
@@ -159,7 +214,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="contact-box center-version">
 
                         <a href="profile.html">
@@ -188,7 +243,7 @@
 
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="contact-box center-version">
 
                         <a href="profile.html">
@@ -199,35 +254,6 @@
                             <h3 class="m-b-xs"><strong>Alex Johnatan</strong></h3>
 
                             <div class="font-bold">CEO</div>
-                            <address class="m-t-md">
-                                <strong>Twitter, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
-                            </address>
-
-                        </a>
-                        <div class="contact-box-footer">
-                            <div class="m-t-xs btn-group">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="contact-box center-version">
-
-                        <a href="profile.html">
-
-                            <img alt="image" class="img-circle" src="img/a3.jpg">
-
-
-                            <h3 class="m-b-xs"><strong>Monica Smith</strong></h3>
-
-                            <div class="font-bold">Marketing manager</div>
                             <address class="m-t-md">
                                 <strong>Twitter, Inc.</strong><br>
                                 795 Folsom Ave, Suite 600<br>

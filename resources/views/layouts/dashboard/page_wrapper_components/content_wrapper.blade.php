@@ -1,5 +1,4 @@
 <div class="wrapper wrapper-content animated fadeInRight">
-    <profile></profile>
-
+    <approval-request></approval-request>
 </div>
 

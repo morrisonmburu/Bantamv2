@@ -19,6 +19,9 @@ window.Vue = require('vue');
 Vue.component('side-nav-header', require('./components/dashboard/side-nav-header.vue'));
 Vue.component('dashboard', require('./components/dashboard/dashboard.vue'));
 Vue.component('profile', require('./components/dashboard/profile.vue'));
+Vue.component('open-applications', require('./components/dashboard/open-applications.vue'));
+Vue.component('pending-applications', require('./components/dashboard/pending-application.vue'));
+Vue.component('approval-request', require('./components/dashboard/approval-requests.vue'));
 
 const app = new Vue({
     el: '#app',
