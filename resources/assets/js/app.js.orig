@@ -22,8 +22,11 @@ Vue.component('profile', require('./components/dashboard/profile.vue'));
 Vue.component('open-applications', require('./components/dashboard/open-applications.vue'));
 Vue.component('pending-applications', require('./components/dashboard/pending-application.vue'));
 Vue.component('approval-request', require('./components/dashboard/approval-requests.vue'));
-Vue.component('leave-allocations', require('./components/dashboard/leave-allocations.vue'));
+<<<<<<< HEAD
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
+=======
+Vue.component('leave-allocations', require('./components/dashboard/leave-allocations.vue'));
+>>>>>>> 0cdf4435f8f6dfc4f81ce9f58689c699812f85ae
 
 const app = new Vue({
     el: '#app',
