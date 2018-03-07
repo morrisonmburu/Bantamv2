@@ -1,4 +1,4 @@
 <div class="wrapper wrapper-content animated fadeInRight">
-    <approval-request></approval-request>
+    <leave-allocations></leave-allocations>
 </div>
 

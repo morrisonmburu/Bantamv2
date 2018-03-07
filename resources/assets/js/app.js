@@ -22,6 +22,7 @@ Vue.component('profile', require('./components/dashboard/profile.vue'));
 Vue.component('open-applications', require('./components/dashboard/open-applications.vue'));
 Vue.component('pending-applications', require('./components/dashboard/pending-application.vue'));
 Vue.component('approval-request', require('./components/dashboard/approval-requests.vue'));
+Vue.component('leave-allocations', require('./components/dashboard/leave-allocations.vue'));
 
 const app = new Vue({
     el: '#app',

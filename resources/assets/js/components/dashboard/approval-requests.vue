@@ -48,47 +48,88 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Name</th>
+                                    <th>#</th>
+                                    <th>Employee No.</th>
+                                    <th>Document No.</th>
                                     <th>Date Created</th>
-                                    <th>Department</th>
-                                    <th>Date</th>
-                                    <th>Action</th>
+                                    <th>Date Sent</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" checked="" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
-                                    <td>Project<small>This is example of project</small></td>
-                                    <td><span class="pie" style="display: none;">0.52/1.561</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path><path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                    <td>20%</td>
-                                    <td>Jul 14, 2013</td>
-                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <td>1</td>
+                                    <td>E84354</td>
+                                    <td>DOC272</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td><span class="label label-danger">Rejected</span></td>
+                                    <td>
+                                        <button disabled class="btn btn-xs btn-success">Approve</button>
+                                        <button disabled class="btn btn-xs btn-danger">Reject</button>
+                                        <button disabled class="btn btn-xs btn-warning">Escalate</button>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
-                                    <td>Alpha project</td>
-                                    <td><span class="pie" style="display: none;">6,9</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 12.702282018339785 14.47213595499958 Z" fill="#1ab394"></path><path d="M 8 8 L 12.702282018339785 14.47213595499958 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                    <td>40%</td>
-                                    <td>Jul 16, 2013</td>
-                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <td>2</td>
+                                    <td>E84354</td>
+                                    <td>DOC272</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td><span class="label label-info">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-xs btn-success">Approve</button>
+                                        <button class="btn btn-xs btn-danger">Reject</button>
+                                        <button class="btn btn-xs btn-warning">Escalate</button>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
-                                    <td>Betha project</td>
-                                    <td><span class="pie" style="display: none;">3,1</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 1 1 0 8.000000000000002 Z" fill="#1ab394"></path><path d="M 8 8 L 0 8.000000000000002 A 8 8 0 0 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                    <td>75%</td>
-                                    <td>Jul 18, 2013</td>
-                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <td>3</td>
+                                    <td>E84354</td>
+                                    <td>DOC272</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td><span class="label label-info">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-xs btn-success">Approve</button>
+                                        <button class="btn btn-xs btn-danger">Reject</button>
+                                        <button class="btn btn-xs btn-warning">Escalate</button>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td><div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" name="input[]" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div></td>
-                                    <td>Gamma project</td>
-                                    <td><span class="pie" style="display: none;">4,9</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 15.48012994148332 10.836839096340286 Z" fill="#1ab394"></path><path d="M 8 8 L 15.48012994148332 10.836839096340286 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg></td>
-                                    <td>18%</td>
-                                    <td>Jul 22, 2013</td>
-                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    <td>4</td>
+                                    <td>E84354</td>
+                                    <td>DOC272</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td><span class="label label-primary">Approved</span></td>
+                                    <td>
+                                        <button disabled class="btn btn-xs btn-success">Approve</button>
+                                        <button disabled class="btn btn-xs btn-danger">Reject</button>
+                                        <button disabled  class="btn btn-xs btn-warning">Escalate</button>
+                                    </td>
                                 </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>E84354</td>
+                                    <td>DOC272</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td>02/07/2018</td>
+                                    <td><span class="label label-info">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-xs btn-success">Approve</button>
+                                        <button class="btn btn-xs btn-danger">Reject</button>
+                                        <button class="btn btn-xs btn-warning">Escalate</button>
+                                    </td>
+                                </tr>
+
                                 </tbody>
                             </table>
                         </div>

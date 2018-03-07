@@ -998,6 +998,7 @@ Vue.component('profile', __webpack_require__(71));
 Vue.component('open-applications', __webpack_require__(76));
 Vue.component('pending-applications', __webpack_require__(81));
 Vue.component('approval-request', __webpack_require__(86));
+Vue.component('leave-allocations', __webpack_require__(91));
 
 var app = new Vue({
   el: '#app',
@@ -49015,7 +49016,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49026,6 +49027,47 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49141,535 +49183,385 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12" }, [
-        _c("div", { staticClass: "ibox float-e-margins" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "ibox-content" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table table-striped" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "pie",
-                          staticStyle: { display: "none" }
-                        },
-                        [_vm._v("0.52/1.561")]
-                      ),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "peity",
-                          attrs: { height: "16", width: "16" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z",
-                              fill: "#1ab394"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z",
-                              fill: "#d7d7d7"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("20%")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Jul 14, 2013")]),
-                    _vm._v(" "),
-                    _vm._m(5)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Alpha project")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "pie",
-                          staticStyle: { display: "none" }
-                        },
-                        [_vm._v("6,9")]
-                      ),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "peity",
-                          attrs: { height: "16", width: "16" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 8 0 A 8 8 0 0 1 12.702282018339785 14.47213595499958 Z",
-                              fill: "#1ab394"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 12.702282018339785 14.47213595499958 A 8 8 0 1 1 7.999999999999998 0 Z",
-                              fill: "#d7d7d7"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("40%")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Jul 16, 2013")]),
-                    _vm._v(" "),
-                    _vm._m(7)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Betha project")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "pie",
-                          staticStyle: { display: "none" }
-                        },
-                        [_vm._v("3,1")]
-                      ),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "peity",
-                          attrs: { height: "16", width: "16" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 8 0 A 8 8 0 1 1 0 8.000000000000002 Z",
-                              fill: "#1ab394"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 0 8.000000000000002 A 8 8 0 0 1 7.999999999999998 0 Z",
-                              fill: "#d7d7d7"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("75%")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Jul 18, 2013")]),
-                    _vm._v(" "),
-                    _vm._m(9)
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _vm._m(10),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Gamma project")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "pie",
-                          staticStyle: { display: "none" }
-                        },
-                        [_vm._v("4,9")]
-                      ),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "peity",
-                          attrs: { height: "16", width: "16" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 8 0 A 8 8 0 0 1 15.48012994148332 10.836839096340286 Z",
-                              fill: "#1ab394"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M 8 8 L 15.48012994148332 10.836839096340286 A 8 8 0 1 1 7.999999999999998 0 Z",
-                              fill: "#d7d7d7"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("18%")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Jul 22, 2013")]),
-                    _vm._v(" "),
-                    _vm._m(11)
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Approval Requests")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ibox-tools" }, [
-        _c("a", { staticClass: "collapse-link" }, [
-          _c("i", { staticClass: "fa fa-chevron-up" })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "dropdown-toggle",
-            attrs: { "data-toggle": "dropdown", href: "#" }
-          },
-          [_c("i", { staticClass: "fa fa-wrench" })]
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 1")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 2")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "close-link" }, [
-          _c("i", { staticClass: "fa fa-times" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-5 m-b-xs" }, [
-        _c(
-          "select",
-          { staticClass: "input-sm form-control input-s-sm inline" },
-          [
-            _c("option", { attrs: { value: "0" } }, [_vm._v("All")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Date")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Department")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Employee")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-4 m-b-xs" }, [
-        _c(
-          "div",
-          { staticClass: "btn-group", attrs: { "data-toggle": "buttons" } },
-          [
-            _c("label", { staticClass: "btn btn-sm btn-white" }, [
-              _c("input", {
-                attrs: { type: "radio", id: "option1", name: "options" }
-              }),
-              _vm._v(" Today ")
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("h5", [_vm._v("Approval Requests")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ibox-tools" }, [
+                _c("a", { staticClass: "collapse-link" }, [
+                  _c("i", { staticClass: "fa fa-chevron-up" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-toggle",
+                    attrs: { "data-toggle": "dropdown", href: "#" }
+                  },
+                  [_c("i", { staticClass: "fa fa-wrench" })]
+                ),
+                _vm._v(" "),
+                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 1")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 2")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "close-link" }, [
+                  _c("i", { staticClass: "fa fa-times" })
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _c("label", { staticClass: "btn btn-sm btn-white active" }, [
-              _c("input", {
-                attrs: { type: "radio", id: "option2", name: "options" }
-              }),
-              _vm._v(" This Week ")
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "btn btn-sm btn-white" }, [
-              _c("input", {
-                attrs: { type: "radio", id: "option3", name: "options" }
-              }),
-              _vm._v(" This Month ")
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-5 m-b-xs" }, [
+                  _c(
+                    "select",
+                    { staticClass: "input-sm form-control input-s-sm inline" },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [_vm._v("All")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [_vm._v("Date")]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [
+                        _vm._v("Department")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "3" } }, [
+                        _vm._v("Employee")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-4 m-b-xs" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "btn-group",
+                      attrs: { "data-toggle": "buttons" }
+                    },
+                    [
+                      _c("label", { staticClass: "btn btn-sm btn-white" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            id: "option1",
+                            name: "options"
+                          }
+                        }),
+                        _vm._v(" Today ")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        { staticClass: "btn btn-sm btn-white active" },
+                        [
+                          _c("input", {
+                            attrs: {
+                              type: "radio",
+                              id: "option2",
+                              name: "options"
+                            }
+                          }),
+                          _vm._v(" This Week ")
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("label", { staticClass: "btn btn-sm btn-white" }, [
+                        _c("input", {
+                          attrs: {
+                            type: "radio",
+                            id: "option3",
+                            name: "options"
+                          }
+                        }),
+                        _vm._v(" This Month ")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-3" }, [
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      staticClass: "input-sm form-control",
+                      attrs: { type: "text", placeholder: "Search" }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "input-group-btn" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-sm btn-primary",
+                          attrs: { type: "button" }
+                        },
+                        [_vm._v(" Go!")]
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c("table", { staticClass: "table table-striped" }, [
+                  _c("thead", [
+                    _c("tr", [
+                      _c("th", [_vm._v("#")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Employee No.")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Document No.")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Date Created")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Date Sent")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Due Date")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Status")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Actions")])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("td", [_vm._v("1")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("E84354")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("DOC272")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "label label-danger" }, [
+                          _vm._v("Rejected")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-success",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Approve")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-danger",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Reject")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-warning",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Escalate")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("2")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("E84354")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("DOC272")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "label label-info" }, [
+                          _vm._v("Pending")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-success" },
+                          [_vm._v("Approve")]
+                        ),
+                        _vm._v(" "),
+                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
+                          _vm._v("Reject")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-warning" },
+                          [_vm._v("Escalate")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("3")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("E84354")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("DOC272")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "label label-info" }, [
+                          _vm._v("Pending")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-success" },
+                          [_vm._v("Approve")]
+                        ),
+                        _vm._v(" "),
+                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
+                          _vm._v("Reject")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-warning" },
+                          [_vm._v("Escalate")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("4")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("E84354")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("DOC272")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "label label-primary" }, [
+                          _vm._v("Approved")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-success",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Approve")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-danger",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Reject")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-xs btn-warning",
+                            attrs: { disabled: "" }
+                          },
+                          [_vm._v("Escalate")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("td", [_vm._v("5")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("E84354")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("DOC272")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("02/07/2018")]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("span", { staticClass: "label label-info" }, [
+                          _vm._v("Pending")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-success" },
+                          [_vm._v("Approve")]
+                        ),
+                        _vm._v(" "),
+                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
+                          _vm._v("Reject")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "btn btn-xs btn-warning" },
+                          [_vm._v("Escalate")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              ])
             ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-3" }, [
-        _c("div", { staticClass: "input-group" }, [
-          _c("input", {
-            staticClass: "input-sm form-control",
-            attrs: { type: "text", placeholder: "Search" }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "input-group-btn" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-primary",
-                attrs: { type: "button" }
-              },
-              [_vm._v(" Go!")]
-            )
           ])
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("No.")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Date Created")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Department")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        {
-          staticClass: "icheckbox_square-green",
-          staticStyle: { position: "relative" }
-        },
-        [
-          _c("input", {
-            staticClass: "i-checks",
-            staticStyle: { position: "absolute", opacity: "0" },
-            attrs: { type: "checkbox", checked: "", name: "input[]" }
-          }),
-          _c("ins", {
-            staticClass: "iCheck-helper",
-            staticStyle: {
-              position: "absolute",
-              top: "0%",
-              left: "0%",
-              display: "block",
-              width: "100%",
-              height: "100%",
-              margin: "0px",
-              padding: "0px",
-              background: "rgb(255, 255, 255)",
-              border: "0px",
-              opacity: "0"
-            }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _vm._v("Project"),
-      _c("small", [_vm._v("This is example of project")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-check text-navy" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        {
-          staticClass: "icheckbox_square-green",
-          staticStyle: { position: "relative" }
-        },
-        [
-          _c("input", {
-            staticClass: "i-checks",
-            staticStyle: { position: "absolute", opacity: "0" },
-            attrs: { type: "checkbox", name: "input[]" }
-          }),
-          _c("ins", {
-            staticClass: "iCheck-helper",
-            staticStyle: {
-              position: "absolute",
-              top: "0%",
-              left: "0%",
-              display: "block",
-              width: "100%",
-              height: "100%",
-              margin: "0px",
-              padding: "0px",
-              background: "rgb(255, 255, 255)",
-              border: "0px",
-              opacity: "0"
-            }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-check text-navy" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        {
-          staticClass: "icheckbox_square-green",
-          staticStyle: { position: "relative" }
-        },
-        [
-          _c("input", {
-            staticClass: "i-checks",
-            staticStyle: { position: "absolute", opacity: "0" },
-            attrs: { type: "checkbox", name: "input[]" }
-          }),
-          _c("ins", {
-            staticClass: "iCheck-helper",
-            staticStyle: {
-              position: "absolute",
-              top: "0%",
-              left: "0%",
-              display: "block",
-              width: "100%",
-              height: "100%",
-              margin: "0px",
-              padding: "0px",
-              background: "rgb(255, 255, 255)",
-              border: "0px",
-              opacity: "0"
-            }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-check text-navy" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "div",
-        {
-          staticClass: "icheckbox_square-green",
-          staticStyle: { position: "relative" }
-        },
-        [
-          _c("input", {
-            staticClass: "i-checks",
-            staticStyle: { position: "absolute", opacity: "0" },
-            attrs: { type: "checkbox", name: "input[]" }
-          }),
-          _c("ins", {
-            staticClass: "iCheck-helper",
-            staticStyle: {
-              position: "absolute",
-              top: "0%",
-              left: "0%",
-              display: "block",
-              width: "100%",
-              height: "100%",
-              margin: "0px",
-              padding: "0px",
-              background: "rgb(255, 255, 255)",
-              border: "0px",
-              opacity: "0"
-            }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fa fa-check text-navy" })
       ])
     ])
   }
@@ -49680,6 +49572,374 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3b234b82", module.exports)
+  }
+}
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(92)
+}
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5f51042e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\dashboard\\leave-allocations.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5f51042e", Component.options)
+  } else {
+    hotAPI.reload("data-v-5f51042e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(93);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(57)("4f4739a6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5f51042e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./leave-allocations.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5f51042e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./leave-allocations.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(46)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "leave-allocations"
+});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-12" }, [
+          _c("div", { staticClass: "ibox float-e-margins" }, [
+            _c("div", { staticClass: "ibox-title" }, [
+              _c("h5", [_vm._v("Leave Allocations")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ibox-tools" }, [
+                _c("a", { staticClass: "collapse-link" }, [
+                  _c("i", { staticClass: "fa fa-chevron-up" })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "dropdown-toggle",
+                    attrs: { "data-toggle": "dropdown", href: "#" }
+                  },
+                  [_c("i", { staticClass: "fa fa-wrench" })]
+                ),
+                _vm._v(" "),
+                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 1")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("li", [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v("Config option 2")
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("a", { staticClass: "close-link" }, [
+                  _c("i", { staticClass: "fa fa-times" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ibox-content" }, [
+              _c("table", { staticClass: "table table-striped" }, [
+                _c("thead", [
+                  _c("tr", [
+                    _c("th", [_vm._v("#")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("leave code")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Maturity Date")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Balance")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Accrued Days")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Days Taken")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Days Applied")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Days Approved")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Days Approved_Taken")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Allocated Days")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Leave Period")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", [_vm._v("1")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("L434")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("05/24/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("7")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("21")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2018")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("L434")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("05/24/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("7")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("21")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2018")])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("L434")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("05/24/2018")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("7")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("3")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("21")]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("2018")])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5f51042e", module.exports)
   }
 }
 
