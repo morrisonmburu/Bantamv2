@@ -11,41 +11,19 @@ window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
+ * the page. Then, you may begin adding components to this applications
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('side-nav-header', require('./components/dashboard/side-nav-header.vue'));
+Vue.component('dashboard', require('./components/dashboard/dashboard.vue'));
+Vue.component('profile', require('./components/dashboard/profile.vue'));
 
 const app = new Vue({
     el: '#app',
     data: {
-        fullNames   : 'Test Name',
-        user : {}
-
-    },
-    computed: {
-        initUser : function () {
-            this.CurrentUser
-            this.fetchUserData
-
-        },
-
-
-
-    },
-    methods: {
-        CurrentUser : function () {
-
-        },
-        fetchUserData : function () {
-            var vm = this
-            axios.get('api/users/1')
-                .then(function (response) {
-
-                })
-        }
-    },
+        currentView: 'dashboard'
+    }
 
 });

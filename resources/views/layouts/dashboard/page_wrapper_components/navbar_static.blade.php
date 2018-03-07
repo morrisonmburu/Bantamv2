@@ -18,7 +18,7 @@
 
             {{--nav bar welcome message--}}
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                <span class="m-r-sm text-muted welcome-message">Welcome {{--@{{ fullname }}--}}.</span>
             </li>
 
             {{--drop down and notifications--}}
