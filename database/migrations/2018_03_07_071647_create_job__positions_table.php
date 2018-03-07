@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
-
-class CreateApprovalTemplatesTable extends Migration
+class CreateJobPositionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,10 @@ class CreateApprovalTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('approval_templates', function (Blueprint $table) {
+        Schema::create('job__positions', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('Document_type',['leave','appraisal','Approved','training','cash']);
-            $table->boolean('Enabled');
-            $table->decimal('Due_Days');
+            $table->string('Code',20)->unique();
+            $table->string('Description',250);
             $table->boolean("Nav_Synced")->default(false);
             $table->boolean("Web_Synced")->default(true);
             $table->dateTime("Last_Nav_Synced")->nullable();
@@ -34,6 +32,6 @@ class CreateApprovalTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('approval_templates');
+        Schema::dropIfExists('job__positions');
     }
 }
