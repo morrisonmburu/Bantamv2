@@ -16,7 +16,7 @@ class CreateLeavePlannersTable extends Migration
     {
         Schema::create('leave_planners', function (Blueprint $table) {
             $table->increments('leave_planner_id');
-            $table->integer('employee_no',false,true);
+            $table->string('employee_no',50);
             $table->string('title',100);
             $table->date('start');
             $table->date('ends');
@@ -28,7 +28,7 @@ class CreateLeavePlannersTable extends Migration
             $table->boolean("web_synced")->default(true);
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
+            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
             $table->foreign("application_code")->references("application_code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });

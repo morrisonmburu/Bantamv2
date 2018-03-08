@@ -13,25 +13,6 @@ class Employee extends Model
     protected $primaryKey="employee_id";
     public $timestamps = true;
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::created(function($employee){
-            try{
-//                $user = new User();
-//                $user->password = Hash::make(uniqid());
-//                $user->email = $employee->email;
-//                $user->save();
-//                $user->name = "";
-            }
-            catch (\Exception $e){
-                dd($e->getMessage());
-            }
-
-        });
-    }
-
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);

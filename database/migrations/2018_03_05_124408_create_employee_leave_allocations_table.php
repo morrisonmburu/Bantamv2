@@ -16,7 +16,7 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
     {
         Schema::create('employee_leave_allocations', function (Blueprint $table) {
             $table->increments('entry_no');
-            $table->integer('employee_no',false,true);
+            $table->string('employee_no', 50);
             $table->string('leave_code',20);
             $table->date('maturity_date');
             $table->decimal('balance');
@@ -32,7 +32,7 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
             $table->boolean("web_synced")->default(true);
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
+            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
             $table->timestamps();
         });
     }
