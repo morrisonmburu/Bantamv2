@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use \App\Employee;
 
-
 class NavSync extends Command
 {
 
@@ -36,17 +35,11 @@ class NavSync extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->NAV_ENDPOINT = "";
+        $this->NAV_ENDPOINT = "http://192.168.88.241:7448/DynamicsKISM/OData/Company('KISM')/";
         $this->NAV_PWD = env("NAV_PWD");
         $this->NAV_USER = env("NAV_USER");
 
-        $this->client = new Client(['{base_endpoint}', array(
-            'base_endpoint' => $this->NAV_ENDPOINT,
-            'request.options' => array(
-                'headers' => array('Accept' => 'Application/json'),
-                'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'Basic|Digest|NTLM|Any')
-            )
-        )]);
+        $this->client = new Client(['base_uri' =>$this->NAV_ENDPOINT]);
     }
 
     /**
@@ -65,8 +58,30 @@ class NavSync extends Command
     public function handle()
     {
         // Sync Employee Data
+        $file = fopen(__DIR__ . "/data.txt", "w") ;
+        try{
 
+            $response = $this->client->request('GET', 'Employee', [
+                'headers'        => ['Accept' => 'application/json'],
+                'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'NTLM')
+            ]);
+            $jsonResponse = $response->getBody()->getContents();
+            $decodedResonse = json_decode($jsonResponse, true);
+//            fwrite($file, $jsonResponse);
+//            fclose($file);
+            array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
+            foreach($decodedResonse['value'] as $emp){
 
-        fopen(__DIR__ . "/log.txt", "w") ;
+                $employee = new Employee();
+                $employee->fill($emp);
+                $employee->save();
+            }
+            fwrite($file, "success");
+        }
+        catch (\Exception $e){
+            fwrite($file, $e->getCode());
+        }
+
+        fclose($file);
     }
 }
