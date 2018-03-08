@@ -2,9 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\User;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use \App\Employee;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 
 class NavSync extends Command
@@ -48,7 +52,7 @@ class NavSync extends Command
      * @param $endpoint
      */
     private function get($resource){
-        $this->get();
+//        $this->get();
     }
 
     /**
@@ -58,8 +62,6 @@ class NavSync extends Command
      */
     public function handle()
     {
-        // Sync Employee Data
-        $file = fopen(__DIR__ . "/data.txt", "w") ;
         try{
 
             $response = $this->client->request('GET', 'Employee', [
@@ -70,16 +72,34 @@ class NavSync extends Command
             $decodedResonse = json_decode($jsonResponse, true);
             array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
             foreach($decodedResonse['value'] as $emp){
+
                 $employee = new Employee();
                 $employee->fill($emp);
-                $employee->save();
+
+                $user = new User();
+                $user->Password = Hash::make(uniqid());
+                $user->Email = $employee->E_Mail;
+                $user->Name = "$employee->First_Name $employee->Last_Name";
+
+                try{
+                    $user->save();
+                    DB::table('password_resets')->insert([
+                        'email' => $employee->E_Mail,
+                        'token' => str_random(60), //change 60 to any length you want
+                        'created_at' => Carbon::now()
+                    ]);
+                    $employee->user_id = $user->id;
+                    $employee->save();
+                }
+                catch (\Exception $e){
+
+                    print ($e->getMessage()."\n\n");
+                    continue;
+                }
             }
-            fwrite($file, "success");
         }
         catch (\Exception $e){
-            fwrite($file, $e->getCode());
+            print ($e->getMessage()."\n\n");
         }
-
-        fclose($file);
     }
 }
