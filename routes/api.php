@@ -19,15 +19,18 @@ use App\Employee;
 |
 */
 
-Route::resource('users', 'UserController');
+
 Route::prefix('users')->group(function () {
     Route::get('{user}/employee', 'UserController@employee');
+    Route::get('current', 'UserController@current');
 });
+Route::resource('users', 'UserController');
 
-Route::resource('employees', 'EmployeeController');
+
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
 });
+Route::resource('employees', 'EmployeeController');
 
 
 
