@@ -9,6 +9,7 @@ use Illuminate\Console\Command;
 use \App\Employee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 
 
 class NavSync extends Command
@@ -68,6 +69,7 @@ class NavSync extends Command
                 'headers' => ['Accept' => 'application/json'],
                 'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'NTLM')
             ]);
+
             $jsonResponse = $response->getBody()->getContents();
             $decodedResonse = json_decode($jsonResponse, true);
             array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
@@ -76,19 +78,17 @@ class NavSync extends Command
                 $employee->fill($emp);
 
                 $user = new User();
-                $user->Password = Hash::make(uniqid());
-                $user->Email = $employee->E_Mail;
-                $user->Name = "$employee->First_Name $employee->Last_Name";
+                $user->password = Hash::make(uniqid());
+                $user->email = $employee->E_Mail;
+                $user->name = "$employee->First_Name $employee->Last_Name";
 
                 try{
                     $user->save();
-                    DB::table('password_resets')->insert([
-                        'email' => $employee->E_Mail,
-                        'token' => str_random(60), //change 60 to any length you want
-                        'created_at' => Carbon::now()
-                    ]);
                     $employee->user_id = $user->id;
                     $employee->save();
+                    $response = Password::sendResetlink(['email' => $employee->E_Mail], function (Message $message){
+                        $message->subject("Welcome to Bantam");
+                    });
                 }
                 catch (\Exception $e){
 

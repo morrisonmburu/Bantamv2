@@ -19,7 +19,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->integer('approver_id',false,true);
             $table->integer('document_no',false,true);
             $table->integer('sequence_no');
-            $table->integer('employee_no',false,true);
+            $table->string('employee_no',50);
             $table->enum('status',['created','open','cancelled','approved','rejected']);
             $table->datetime('date_sent_for_approval');
             $table->datetime('last_date_time_modified');
@@ -33,8 +33,8 @@ class CreateApprovalEntriesTable extends Migration
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->foreign("approval_template")->references("id")->on("approval_templates")->onDelete('cascade');
             $table->foreign("approver_id")->references("approver_id")->on("employee_approvers")->onDelete('cascade');
-            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
-            $table->foreign("document_no")->references("application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
+            $table->foreign("document_no")->references("application_code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }
