@@ -11,19 +11,8 @@ class TestSoap extends Controller
             $url = 'http://192.168.88.241:7447/DynamicsKISM/WS/KISM/Page/Employee';
             // we unregister the current HTTP wrapper
             stream_wrapper_unregister('http');
-            $opts = array(
-                'http' => array(
-                    'user_agent' => 'PHPSoapClient'
-                )
-            );
-            $context = stream_context_create($opts);
-            $soapClientOptions = array(
-                'stream_context' => $context,
-                'cache_wsdl' => WSDL_CACHE_NONE
-            );
             // we register the new HTTP wrapper
             stream_wrapper_register('http', NTLMStream::class) or die("Failed to register protocol");
-
             // so now all request to a http page will be done by MyServiceProviderNTLMStream.
             // ok now, let's request the wsdl file
             // if everything works fine, you should see the content of the wsdl file
