@@ -68,11 +68,8 @@ class NavSync extends Command
             ]);
             $jsonResponse = $response->getBody()->getContents();
             $decodedResonse = json_decode($jsonResponse, true);
-//            fwrite($file, $jsonResponse);
-//            fclose($file);
             array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
             foreach($decodedResonse['value'] as $emp){
-
                 $employee = new Employee();
                 $employee->fill($emp);
                 $employee->save();

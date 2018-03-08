@@ -19,14 +19,14 @@ class Employee extends Model
 
         static::created(function($employee){
             try{
-//                $user = new User();
-//                $user->password = Hash::make(uniqid());
-//                $user->email = $employee->email;
-//                $user->save();
-//                $user->name = "";
+                $user = new User();
+                $user->password = Hash::make(uniqid());
+                $user->email = $employee->email;
+                $user->save();
+                $user->name = "";
             }
             catch (\Exception $e){
-                dd($e->getMessage());
+                error_log(print_r($e->getMessage(), TRUE));
             }
 
         });
