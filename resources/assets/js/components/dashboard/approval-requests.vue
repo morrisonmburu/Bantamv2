@@ -143,7 +143,13 @@
 
 <script>
     export default {
-        name: "approval-requests"
+        name: "approval-requests",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
+
     }
 </script>
 

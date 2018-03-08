@@ -27,17 +27,21 @@ Vue.component('leave-allocations', require('./components/dashboard/leave-allocat
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
 Vue.component('payslip', require('./components/dashboard/payslip'));
 Vue.component('faq', require('./components/dashboard/faq'));
+Vue.component('search-results', require('./components/dashboard/search-results'));
 
 const app = new Vue({
     el: '#app',
     data: {
         currentComponent: 'dashboard',
         currentUser      : {},
-        CurrentUserData  : {},
+        currentUserData  : {},
         APIENDPOINTS     : {
             CURRENTUSER            : 'api/users/current',                   // Current logged in user
             CURRENTEMPLOYEE        : 'api/users@employee',                 // employee details
-        }
+            SEARCH                 : 'https://yesno.wtf/api'
+        },
+        searchResults : '',
+        searchTerm : ''
     },
     methods : {
         swapComponent: function (component) {
@@ -57,32 +61,54 @@ const app = new Vue({
                 return rawPath.replace('@', '/' + data + '/');
             }
         },
-    },
-
-    computed :  {
-        // fetch current user
-        getUser : function () {
-            var vm = this
-            axios.get(this.getApiPath(this.APIENDPOINTS.CURRENTUSER,''))
+        getData : function () {
+            var v = this
+            axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
-                    this.currentUser = response.data.data
-                    console.log(this.currentUser)
+                    v.currentUser = response.data.data
 
-                    if (Object.keys(this.currentUser).length !== 0 ){
-
-                        axios.get(vm.getApiPath(vm.APIENDPOINTS.CURRENTEMPLOYEE, this.currentUser.id))
+                    if (Object.keys(v.currentUser).length !== 0 ){
+                        axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
-                                this.CurrentUserData = response.data.data
-                                console.log(this.CurrentUserData)
+                                v.currentUserData = response.data.data
+                            })
+                            .catch(function (error) {
+                                console.log(error)
                             })
                     }
 
-                    // axios.get(this.getApiPath(this.APIENDPOINTS.userData, this.currentUser.id))
                 })
                 .catch(function (error) {
                     console.log(error)
                 })
-        }
+        },
+        
+        search : _.debounce(
+            function () {
+                this.searchResults = 'Searching...'
+                var v = this
+                axios.get(v.APIENDPOINTS.SEARCH)
+                    .then(function (response) {
+                        v.searchResults = response.data
+                    })
+                    .catch(function (error) {
+                        v.searchResults = 'Nothing Found'
+                    })
+            },
+            500
+        )
 
+    },
+
+    created : function () {
+        this.getData()
+    },
+    watch : {
+        searchTerm : function () {
+            this.swapComponent('search-results')
+            this.searchResults  = ' Typing..'
+            this.search();
+        }
     }
+
 });

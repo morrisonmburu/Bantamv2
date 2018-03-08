@@ -101,7 +101,12 @@
 
 <script>
     export default {
-        name: "payslip"
+        name: "payslip",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

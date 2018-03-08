@@ -236,7 +236,12 @@
 
 <script>
     export default {
-        name: "posted-applications"
+        name: "posted-applications",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

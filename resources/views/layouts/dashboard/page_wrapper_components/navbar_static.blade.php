@@ -8,7 +8,7 @@
             {{--nav bar search--}}
             <form role="search" class="navbar-form-custom" action="search_results.html">
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    <input type="text" placeholder="Search for something..." class="form-control" v-model="searchTerm"  name="top-search" id="top-search">
                 </div>
             </form>
         </div>
@@ -18,7 +18,7 @@
 
             {{--nav bar welcome message--}}
             <li>
-                <span class="m-r-sm text-muted welcome-message">Welcome {{--@{{ fullname }}--}}.</span>
+                <span class="m-r-sm text-muted welcome-message">Welcome @{{ currentUserData.First_Name }}.</span>
             </li>
 
             {{--drop down and notifications--}}
