@@ -8,7 +8,7 @@
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <span class="clear">
                   <span class="block m-t-xs">
-                      <strong class="font-bold">Names</strong>
+                      <strong class="font-bold">{{CurrentUserData.Middle_Name}}</strong>
                  </span>
                  <span class="text-muted text-xs block">
                      Art Director
@@ -32,7 +32,22 @@
 
 <script>
     export default {
-        name: "side-nav-header"
+        name: "side-nav-header",
+        props : [
+            'currentUser',
+            'CurrentUserData'
+        ],
+
+        data : function(){
+            return {
+                userNames : '',
+            }
+    },
+        // created : function () {
+        //     return {
+        //         CurrentUserData.First_Name + ' ' + CurrentUserData.Middle_Name + ' ' + CurrentUserData.Last_Name
+        //     }
+        // }
     }
 </script>
 

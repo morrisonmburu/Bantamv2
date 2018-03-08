@@ -80,7 +80,7 @@ class NavSync extends Command
             fwrite($file, "success");
         }
         catch (\Exception $e){
-            fwrite($file, $e->getCode());
+            fwrite($file, $e->getMessage());
         }
 
         fclose($file);

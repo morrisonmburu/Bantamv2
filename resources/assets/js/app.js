@@ -31,18 +31,58 @@ Vue.component('faq', require('./components/dashboard/faq'));
 const app = new Vue({
     el: '#app',
     data: {
-        currentComponent: 'dashboard'
+        currentComponent: 'dashboard',
+        currentUser      : {},
+        CurrentUserData  : {},
+        APIENDPOINTS     : {
+            CURRENTUSER            : 'api/users/current',                   // Current logged in user
+            CURRENTEMPLOYEE        : 'api/users@employee',                 // employee details
+        }
     },
     methods : {
-        swapComponent : function (component) {
-           if (Vue.options.components[component]){
-               this.currentComponent = component
-           }else {
-               alert(component + ' component not found');
-           }
+        swapComponent: function (component) {
+            if (Vue.options.components[component]) {
+                this.currentComponent = component
+            } else {
+                alert(component + ' component not found');
+            }
         },
-        sanitizeHeaders : function (heading) {
-            return heading.replace('-',' ');
+        sanitizeHeaders: function (heading) {
+            return heading.replace('-', ' ');
+        },
+        getApiPath: function (rawPath, data) {
+            if (data.length == 0) {
+                return rawPath.replace('@', '/')
+            } else {
+                return rawPath.replace('@', '/' + data + '/');
+            }
+        },
+    },
+
+    computed :  {
+        // fetch current user
+        getUser : function () {
+            var vm = this
+            axios.get(this.getApiPath(this.APIENDPOINTS.CURRENTUSER,''))
+                .then(function (response) {
+                    this.currentUser = response.data.data
+                    console.log(this.currentUser)
+
+                    if (Object.keys(this.currentUser).length !== 0 ){
+
+                        axios.get(vm.getApiPath(vm.APIENDPOINTS.CURRENTEMPLOYEE, this.currentUser.id))
+                            .then(function (response) {
+                                this.CurrentUserData = response.data.data
+                                console.log(this.CurrentUserData)
+                            })
+                    }
+
+                    // axios.get(this.getApiPath(this.APIENDPOINTS.userData, this.currentUser.id))
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
         }
+
     }
 });
