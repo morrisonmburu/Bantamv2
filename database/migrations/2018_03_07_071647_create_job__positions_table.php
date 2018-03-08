@@ -15,12 +15,12 @@ class CreateJobPositionsTable extends Migration
     {
         Schema::create('job__positions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Code',20)->unique();
-            $table->string('Description',250);
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->string('code',20)->unique();
+            $table->string('description',250);
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

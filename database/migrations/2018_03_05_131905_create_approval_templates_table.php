@@ -16,13 +16,13 @@ class CreateApprovalTemplatesTable extends Migration
     {
         Schema::create('approval_templates', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('Document_type',['leave','appraisal','Approved','training','cash']);
-            $table->boolean('Enabled');
-            $table->decimal('Due_Days');
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->enum('document_type',['leave','appraisal','Approved','training','cash']);
+            $table->boolean('enabled');
+            $table->decimal('due_days');
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }

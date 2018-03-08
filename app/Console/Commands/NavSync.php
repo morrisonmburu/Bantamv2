@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use \App\Employee;
 
+
 class NavSync extends Command
 {
 
@@ -62,7 +63,7 @@ class NavSync extends Command
         try{
 
             $response = $this->client->request('GET', 'Employee', [
-                'headers'        => ['Accept' => 'application/json'],
+                'headers' => ['Accept' => 'application/json'],
                 'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'NTLM')
             ]);
             $jsonResponse = $response->getBody()->getContents();
@@ -71,7 +72,6 @@ class NavSync extends Command
 //            fclose($file);
             array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
             foreach($decodedResonse['value'] as $emp){
-
                 $employee = new Employee();
                 $employee->fill($emp);
                 $employee->save();
@@ -79,7 +79,7 @@ class NavSync extends Command
             fwrite($file, "success");
         }
         catch (\Exception $e){
-            fwrite($file, $e->getCode());
+            fwrite($file, $e);
         }
 
         fclose($file);

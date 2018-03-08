@@ -16,10 +16,10 @@ class CreatePasswordResetsTable extends Migration
         Schema::create('password_resets', function (Blueprint $table) {
             $table->string('email')->index();
             $table->string('token');
-            $table->boolean("Nav_Synced");
-            $table->boolean("Web_Synced");
-            $table->dateTime("Last_Nav_Synced");
-            $table->dateTime("Last_Web_Synced");
+            $table->boolean("nav_synced");
+            $table->boolean("web_synced");
+            $table->dateTime("last_nav_synced");
+            $table->dateTime("last_web_synced");
             $table->timestamp('created_at')->nullable();
         });
     }

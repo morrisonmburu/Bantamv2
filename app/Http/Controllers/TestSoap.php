@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\NavSoap\NTLMStream;
 use App\Http\NavSoap\NTLMSoapClient;
+use GuzzleHttp\Client;
 
 class TestSoap extends Controller
 {
@@ -48,5 +49,14 @@ class TestSoap extends Controller
         }catch(Exception $e) {
             echo $e;
         }
+    }
+
+    public function odataTest(){
+        $client = new Client();
+        $resp=$client->request("GET","http://192.168.88.241:7448/DynamicsKISM/OData/Company('KISM')/Employee",[
+            'headers' => ['Accept' => 'application/json'],
+            'auth' => ['michael.kamau', 'Pass@2018',"NTLM"]
+        ]);
+        dd($resp->getBody()->getContents());
     }
 }

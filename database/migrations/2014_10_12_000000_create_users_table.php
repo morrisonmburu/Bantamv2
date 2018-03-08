@@ -14,17 +14,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Name',100);
-            $table->string('Email',100)->unique();
-            $table->integer('Role',false,true)->unique()->nullable();
-            $table->string('Password',150);
+            $table->string('first_name',100);
+            $table->string('second_name',100);
+            $table->string('last_name',100);
+            $table->string('email',100)->unique();
+            $table->integer('role',false,true)->unique()->nullable();
+            $table->string('password',150);
             $table->rememberToken();
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
         });
     }
@@ -36,6 +38,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Users');
+        Schema::dropIfExists('users');
     }
 }

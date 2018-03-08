@@ -16,20 +16,20 @@ class CreateLeaveApprovalProcessesTable extends Migration
     {
         Schema::create('leave_approval_processes', function (Blueprint $table) {
             $table->increments('approval_process_id');
-            $table->integer('Application_Code',false,true);
+            $table->integer('application_code',false,true);
             $table->string('leave_type',20);
-            $table->decimal('Approved_days');
-            $table->date('Approved_Start_Date');
-            $table->date('Approved_End_Date');
-            $table->string('Comments','250');
-            $table->integer('Approver_id',false,true);
-            $table->Integer('Sequence_No');
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("Approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
-            $table->foreign("Application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->decimal('approved_days');
+            $table->date('approved_start_date');
+            $table->date('approved_end_date');
+            $table->string('comments','250');
+            $table->integer('approver_id',false,true);
+            $table->Integer('sequence_no');
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreign("approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
+            $table->foreign("application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }
