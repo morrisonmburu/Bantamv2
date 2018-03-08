@@ -7,9 +7,9 @@
  */
 
 namespace App\Http\NavSoap;
-use SoapClient;
+
 define('USERPWD', 'Michael.kamau:Pass@2018');
-class NTLMSoapClient extends SoapClient {
+class NTLMSoapClient extends \SoapClient {
 
     function __doRequest($request, $location, $action, $version,$one_way = 0) {
 

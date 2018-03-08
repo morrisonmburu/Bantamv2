@@ -19,7 +19,7 @@ class TestSoap extends Controller
             $context = stream_context_create($opts);
             $soapClientOptions = array(
                 'stream_context' => $context,
-                'cache_wsdl' => WSDL_CACHE_NONE
+//                'cache_wsdl' => WSDL_CACHE_NONE
             );
             // we register the new HTTP wrapper
             stream_wrapper_register('http', NTLMStream::class) or die("Failed to register protocol");
