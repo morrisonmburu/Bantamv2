@@ -15,30 +15,30 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
     public function up()
     {
         Schema::create('employee_leave_applications', function (Blueprint $table) {
-            $table->increments('Application_Code');
-            $table->integer('Employee_no',false,true);
+            $table->increments('aapplication_code');
+            $table->integer('employee_no',false,true);
             $table->integer('leave_code',false,true);
-            $table->decimal('Days_applied');
-            $table->date('Start_date');
-            $table->date('End_date');
-            $table->date('Application_Date');
-            $table->decimal('Approved_days');
-            $table->date('Approved_Start_Date');
-            $table->date('Reporting_Date');
-            $table->boolean('Verified_by_manager')->nullable();
-            $table->date('Verification_Date');
-            $table->enum('Status',['New','Being_Processed','Approved','Rejected','Canceled']);
-            $table->date('Approved_end_date');
-            $table->date('Approval_date');
-            $table->string('Comments','250')->nullable();
-            $table->boolean('Taken');
-            $table->integer('Leave_Period',false,true);
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("Employee_no")->references("employee_id")->on("Employees")->onDelete('cascade');
-            $table->foreign("leave_code")->references("Leave_type_id")->on("leave_types")->onDelete('cascade');
+            $table->decimal('days_applied');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->date('application_date');
+            $table->decimal('approved_days');
+            $table->date('approved_start_date');
+            $table->date('reporting_date');
+            $table->boolean('verified_by_manager')->nullable();
+            $table->date('verification_date');
+            $table->enum('status',['New','Being_Processed','Approved','Rejected','Canceled']);
+            $table->date('approved_end_date');
+            $table->date('approval_date');
+            $table->string('comments','250')->nullable();
+            $table->boolean('taken');
+            $table->integer('leave_period',false,true);
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
+            $table->foreign("leave_code")->references("leave_type_id")->on("leave_types")->onDelete('cascade');
             $table->timestamps();
         });
     }
