@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Employee;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -13,15 +14,15 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class EmployeeCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $employee;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Employee $employee)
     {
-        //
+        $this->employee = $employee;
     }
 
     /**
@@ -31,6 +32,6 @@ class EmployeeCreated
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('employee.created');
     }
 }
