@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Http\NavSoap\NTLMStream;
 use App\Http\NavSoap\NTLMSoapClient;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\RequestOptions;
 
 class TestSoap extends Controller
 {
@@ -52,60 +54,42 @@ class TestSoap extends Controller
     }
 
     public function odataTest(){
-        $client = new Client(['base_uri' => 'http=>//192.168.88.241=>7448/DynamicsKISM/OData/Company(\'KISM\')/']);
-        $resp=$client->request("GET","Employee",[
-            'headers' => ['Accept' => 'application/json'],
-            'auth' => ['michael.kamau', 'Pass@2018',"NTLM"]
+        // ============ Instantiating Client ================ //
+        $client = new Client([
+            'headers' => [ 'Content-Type' => 'application/json','Accept' => 'application/json' ],
+            'auth' => ['michael.kamau', 'Pass@2018',"NTLM"],
+            'proxy' => 'http://localhost:8888'
         ]);
+        // ==============End of instantiating Client ==================//
+
+        $data2=[
+            "Job_Title"=> "Software Dev",
+            "First_Name"=> "Micahel",
+            "E_Mail"=> "mayakadonnicias@gmail.com",
+            "Last_Name"=> "Kamau"];
+//================== Creating A record =================//
+//        try{
+//            $response = $client->post('http://192.168.88.241:7448/DynamicsKISM/OData/Company(\'KISM\')/Employee',
+//                ['body' => json_encode($data2)]
+//            );
+//
+//            echo($response->getBody());
+//        }catch (RequestException $e){
+//            dd($e);
+//        }
+// ====================== End creating a record ============//
+
+
+        $resp=$client->request("GET","http://192.168.88.241:7448/DynamicsKISM/OData/Company('KISM')/Employee"); // Returns all Employees
+        $resp2=$client->request("GET","http://192.168.88.241:7448/DynamicsKISM/OData/Company('KISM')/Employee?\$filter=No eq 'A0010'"); // Searches where No=A0010
 
         $employees =json_decode( $resp->getBody()->getContents());
 
         foreach ($employees->value as $employee){
-            dd($employee);
+            //dd($employee);
             echo $employee->No . "&nbsp;" . $employee->First_Name."<br>";
         }
         
-        $data=["No"=>"A1001",
-        "Job_Title"=> "Software Dev",
-        "First_Name"=> "Donnicias",
-        "Last_Name"=> "Mayaka",
-        "Middle_Name"=> "",
-        "Initials"=> "Mr",
-        "Address"=> "35",
-        "Address_2"=> "Nairobi",
-        "Post_Code"=> "60401",
-        "City"=> "CHOGORIA",
-        "Base_Calendar"=> "KISM",
-        "Country_Region_Code"=> "KENYA",
-        "Phone_No"=> "0705777958",
-        "Search_Name"=> "MS",
-        "Gender"=> "Female",
-        "Last_Date_Modified"=> "2017-03-14T00=>00=>00",
-        "Extension"=> "108",
-        "Mobile_Phone_No"=> "0705777958",
-        "Pager"=> "",
-        "E_Mail"=> "mayakadonnicias@gmail.com",
-        "Company_E_Mail"=> "mayakadonnicias@kism.or.ke",
-        "Alt_Address_Code"=> "",
-        "Alt_Address_Start_Date"=> "0001-01-01T00=>00=>00",
-        "Alt_Address_End_Date"=> "0001-01-01T00=>00=>00",
-        "PIN_No"=> "",
-        "NSSF_No"=> "",
-        "Employment_Date"=> "2017-02-13T00=>00=>00",
-        "Status"=> "Active",
-        "Inactive_Date"=> "2017-06-01T00=>00=>00",
-        "Cause_of_Inactivity_Code"=> "",
-        "Termination_Date"=> "0001-01-01T00=>00=>00",
-        "Grounds_for_Term_Code"=> "",
-        "Emplymt_Contract_Code"=> "04",
-        "Statistics_Group_Code"=> "",
-        "Resource_No"=> "",
-        "Salespers_Purch_Code"=> "",
-        "User_ID"=> "12",
-        "Customer_Code"=> "SC1450",
-        "Birth_Date"=> "1993-12-04T00=>00=>00",
-        "Social_Security_No"=> "",
-        "Union_Code"=> "",
-        "Union_Membership_No"=> ""];
+
     }
 }
