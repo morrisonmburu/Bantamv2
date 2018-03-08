@@ -16,20 +16,20 @@ class CreateLeavePlannersTable extends Migration
     {
         Schema::create('leave_planners', function (Blueprint $table) {
             $table->increments('leave_planner_id');
-            $table->integer('Employee_No',false,true);
-            $table->string('Title',100);
-            $table->date('Start');
-            $table->date('Ends');
+            $table->integer('employee_no',false,true);
+            $table->string('title',100);
+            $table->date('start');
+            $table->date('ends');
             $table->decimal('no_of_days',8,2);
-            $table->string('Type',50);
-            $table->integer('Application_Code',false,true);
-            $table->integer("Current_Year",false,true);
-            $table->boolean("Nav_Synced")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("Employee_No")->references("employee_id")->on("employees")->onDelete('cascade');
-            $table->foreign("Application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->string('type',50);
+            $table->integer('application_code',false,true);
+            $table->integer("current_year",false,true);
+            $table->boolean("nav_synced")->default(false);
+            $table->boolean("web_synced")->default(true);
+            $table->dateTime("last_nav_synced")->nullable();
+            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
+            $table->foreign("application_code")->references("application_code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }

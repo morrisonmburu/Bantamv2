@@ -65,14 +65,13 @@ class NavSync extends Command
         try{
 
             $response = $this->client->request('GET', 'Employee', [
-                'headers'        => ['Accept' => 'application/json'],
+                'headers' => ['Accept' => 'application/json'],
                 'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'NTLM')
             ]);
             $jsonResponse = $response->getBody()->getContents();
             $decodedResonse = json_decode($jsonResponse, true);
             array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
             foreach($decodedResonse['value'] as $emp){
-
                 $employee = new Employee();
                 $employee->fill($emp);
 
@@ -101,5 +100,6 @@ class NavSync extends Command
         catch (\Exception $e){
             print ($e->getMessage()."\n\n");
         }
+        return;
     }
 }
