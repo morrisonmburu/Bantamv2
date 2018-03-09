@@ -45,14 +45,6 @@ class NavSync extends Command
     }
 
     /**
-     * The endpoint of the resource
-     * @param $endpoint
-     */
-    private function get($resource){
-//        $this->get();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
