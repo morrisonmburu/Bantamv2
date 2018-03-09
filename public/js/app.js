@@ -1045,6 +1045,7 @@ var app = new Vue({
                 if (Object.keys(v.currentUser).length !== 0) {
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
+                        console.log(v.currentUserData);
                     }).catch(function (error) {
                         console.log(error);
                     });
@@ -46959,7 +46960,7 @@ exports = module.exports = __webpack_require__(46)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46970,40 +46971,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -47340,646 +47307,658 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row m-b-lg m-t-lg" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "profile-info" }, [
+          _c("div", {}, [
+            _c("div", [
+              _c("h2", { staticClass: "no-margins" }, [
+                _vm._v(
+                  "\r\n                            " +
+                    _vm._s(
+                      _vm.currentUserData.First_Name +
+                        " " +
+                        _vm.currentUserData.Middle_Name +
+                        " " +
+                        _vm.currentUserData.Last_Name
+                    ) +
+                    "\r\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c("h4", [_vm._v("   " + _vm._s(_vm.currentUserData.Job_Title))]),
+              _vm._v(" "),
+              _c("small", [
+                _vm._v(
+                  "\r\n                            Bio:\r\n                        "
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-3" }, [
+        _c("table", { staticClass: "table small m-b-xs" }, [
+          _c("tbody", [
+            _c("tr", [
+              _c("td", [
+                _c("strong", [_vm._v("Company Email")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Company_E_Mail) +
+                    "\r\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("strong", [_vm._v("Address")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Address) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [
+                _c("strong", [_vm._v("Initials")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Initials) +
+                    "\r\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("strong", [_vm._v("Phone No.")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Mobile_Phone_No) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _c("td", [
+                _c("strong", [_vm._v("Status")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Status) +
+                    "\r\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _c("strong", [_vm._v("Title")]),
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.currentUserData.Title) +
+                    "\r\n                    "
+                )
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-8" }, [
+        _c("div", { staticClass: "row m-b-lg" }, [
+          _c("div", { staticClass: "col-lg-12" }, [
+            _c("div", { staticClass: "tabs-container" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "tab-content" }, [
+                _c(
+                  "div",
+                  { staticClass: "tab-pane active", attrs: { id: "tab-1" } },
+                  [
+                    _c("div", { staticClass: "panel-body" }, [
+                      _c("table", { staticClass: "table table-hover" }, [
+                        _c("thead", [
+                          _c("tr", [
+                            _c("th", [_vm._v("Names")]),
+                            _vm._v(" "),
+                            _c("th", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.currentUserData.First_Name +
+                                    " " +
+                                    _vm.currentUserData.Middle_Name +
+                                    " " +
+                                    _vm.currentUserData.Last_Name
+                                )
+                              )
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", [_vm._v("Initials")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.Title))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("DOB")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.Birth_Date))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Gender")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.Gender))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("National ID")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.National_ID))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Passport No")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.Passport_No))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Pin No")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.PIN_No))
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "tab-pane", attrs: { id: "tab-3" } }, [
+                  _c("div", { staticClass: "panel-body" }, [
+                    _c("table", { staticClass: "table table-hover" }, [
+                      _c("tbody", [
+                        _c("tr", [
+                          _c("td", [_vm._v("Employment Date")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.Employment_Date))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Employee No.")]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(_vm.currentUserData.No))])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Job Title")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.Job_Title))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Department")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.Department) + "e")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("NSSF")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.NSSF_No))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("NHIF")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.NHIF_No))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("HELB NO")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.currentUserData.HELB_NO))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", [
+                          _c("td", [_vm._v("Social Security No.")]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(
+                              _vm._s(_vm.currentUserData.Social_Security_No)
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "tab-pane", attrs: { id: "tab-4" } }, [
+                  _c("div", { staticClass: "panel-body" }, [
+                    _c("div", { staticClass: "col-lg-12" }, [
+                      _c("div", { staticClass: "contact-box" }, [
+                        _c("a", { attrs: { href: "#" } }, [
+                          _c("div", { staticClass: "col-sm-3" }, [
+                            _c("div", { staticClass: "text-center" }, [
+                              _c("img", {
+                                staticClass: "img-circle m-t-xs img-responsive",
+                                attrs: { alt: "image", src: "img/a6.jpg" }
+                              }),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "m-t-xs font-bold" }, [
+                                _vm._v(_vm._s(_vm.currentUserData.Job_Title))
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-sm-9" }, [
+                            _c("h3", [
+                              _c("strong", [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.currentUserData.First_Name +
+                                      " " +
+                                      _vm.currentUserData.Middle_Name +
+                                      " " +
+                                      _vm.currentUserData.Last_Name
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _c("i", { staticClass: "fa fa-map-marker" }),
+                              _vm._v(" " + _vm._s(_vm.currentUserData.Address))
+                            ]),
+                            _vm._v(" "),
+                            _c("address", [
+                              _c("strong", [
+                                _vm._v(_vm._s(_vm.currentUserData.Job_Title))
+                              ]),
+                              _c("br"),
+                              _vm._v(
+                                "\r\n                                                        " +
+                                  _vm._s(_vm.currentUserData.E_Mail)
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\r\n                                                        " +
+                                  _vm._s(_vm.currentUserData.Post_Code)
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\r\n                                                        " +
+                                  _vm._s(_vm.currentUserData.City)
+                              ),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("abbr", { attrs: { title: "Phone" } }, [
+                                _vm._v("P:")
+                              ]),
+                              _vm._v(
+                                " " +
+                                  _vm._s(_vm.currentUserData.Phone_No) +
+                                  "\r\n                                                    "
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "clearfix" })
+                        ])
+                      ])
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(3)
+      ]),
+      _vm._v(" "),
+      _vm._m(4)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row m-b-lg m-t-lg" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "profile-image" }, [
-            _c("img", {
-              staticClass: "img-circle circle-border m-b-md",
-              attrs: { src: "img/a4.jpg", alt: "profile" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "profile-info" }, [
-            _c("div", {}, [
-              _c("div", [
-                _c("h2", { staticClass: "no-margins" }, [
-                  _vm._v(
-                    "\r\n                            Alex Smith\r\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Founder of Groupeq")]),
-                _vm._v(" "),
-                _c("small", [
-                  _vm._v(
-                    "\r\n                            There are many variations of passages of Lorem Ipsum available, but the majority\r\n                            have suffered alteration in some form Ipsum available.\r\n                        "
-                  )
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("table", { staticClass: "table small m-b-xs" }, [
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [
-                  _c("strong", [_vm._v("142")]),
-                  _vm._v(" Projects\r\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("strong", [_vm._v("22")]),
-                  _vm._v(" Followers\r\n                    ")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [
-                  _c("strong", [_vm._v("61")]),
-                  _vm._v(" Comments\r\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("strong", [_vm._v("54")]),
-                  _vm._v(" Articles\r\n                    ")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [
-                  _c("strong", [_vm._v("154")]),
-                  _vm._v(" Tags\r\n                    ")
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c("strong", [_vm._v("32")]),
-                  _vm._v(" Friends\r\n                    ")
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-3" }, [
-          _c("small", [_vm._v("Sales in last 24h")]),
-          _vm._v(" "),
-          _c("h2", { staticClass: "no-margins" }, [_vm._v("206 480")]),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "sparkline1" } })
+    return _c("div", { staticClass: "profile-image" }, [
+      _c("img", {
+        staticClass: "img-circle circle-border m-b-md",
+        attrs: { src: "img/a4.jpg", alt: "profile" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("small", [_vm._v("Sales in last 24h")]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "no-margins" }, [_vm._v("206 480")]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "sparkline1" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "nav nav-tabs" }, [
+      _c("li", { staticClass: "active" }, [
+        _c("a", { attrs: { "data-toggle": "tab", href: "#tab-1" } }, [
+          _vm._v("Personal")
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-8" }, [
-          _c("div", { staticClass: "row m-b-lg" }, [
-            _c("div", { staticClass: "col-lg-12" }, [
-              _c("div", { staticClass: "tabs-container" }, [
-                _c("ul", { staticClass: "nav nav-tabs" }, [
-                  _c("li", { staticClass: "active" }, [
-                    _c(
-                      "a",
-                      { attrs: { "data-toggle": "tab", href: "#tab-1" } },
-                      [_vm._v("Personal")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", {}, [
-                    _c(
-                      "a",
-                      { attrs: { "data-toggle": "tab", href: "#tab-2" } },
-                      [_vm._v("Education")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", {}, [
-                    _c(
-                      "a",
-                      { attrs: { "data-toggle": "tab", href: "#tab-3" } },
-                      [_vm._v("Employment")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", {}, [
-                    _c(
-                      "a",
-                      { attrs: { "data-toggle": "tab", href: "#tab-4" } },
-                      [_vm._v("Contacts")]
-                    )
-                  ])
-                ]),
+      _c("li", {}, [
+        _c("a", { attrs: { "data-toggle": "tab", href: "#tab-3" } }, [
+          _vm._v("Employment")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", {}, [
+        _c("a", { attrs: { "data-toggle": "tab", href: "#tab-4" } }, [
+          _vm._v("Contacts")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "contact-box center-version" }, [
+          _c("a", { attrs: { href: "profile.html" } }, [
+            _c("img", {
+              staticClass: "img-circle",
+              attrs: { alt: "image", src: "img/a2.jpg" }
+            }),
+            _vm._v(" "),
+            _c("h3", { staticClass: "m-b-xs" }, [
+              _c("strong", [_vm._v("John Smith")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "font-bold" }, [
+              _vm._v("Graphics designer")
+            ]),
+            _vm._v(" "),
+            _c("address", { staticClass: "m-t-md" }, [
+              _c("strong", [_vm._v("Twitter, Inc.")]),
+              _c("br"),
+              _vm._v(
+                "\r\n                                795 Folsom Ave, Suite 600"
+              ),
+              _c("br"),
+              _vm._v(
+                "\r\n                                San Francisco, CA 94107"
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+              _vm._v(" (123) 456-7890\r\n                            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contact-box-footer" }, [
+            _c("div", { staticClass: "m-t-xs btn-group" }, [
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-phone" }),
+                _vm._v(" Call ")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-envelope" }),
+                _vm._v(" Email")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-user-plus" }),
+                _vm._v(" Follow")
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6" }, [
+        _c("div", { staticClass: "contact-box center-version" }, [
+          _c("a", { attrs: { href: "profile.html" } }, [
+            _c("img", {
+              staticClass: "img-circle",
+              attrs: { alt: "image", src: "img/a1.jpg" }
+            }),
+            _vm._v(" "),
+            _c("h3", { staticClass: "m-b-xs" }, [
+              _c("strong", [_vm._v("Alex Johnatan")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "font-bold" }, [_vm._v("CEO")]),
+            _vm._v(" "),
+            _c("address", { staticClass: "m-t-md" }, [
+              _c("strong", [_vm._v("Twitter, Inc.")]),
+              _c("br"),
+              _vm._v(
+                "\r\n                                795 Folsom Ave, Suite 600"
+              ),
+              _c("br"),
+              _vm._v(
+                "\r\n                                San Francisco, CA 94107"
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+              _vm._v(" (123) 456-7890\r\n                            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "contact-box-footer" }, [
+            _c("div", { staticClass: "m-t-xs btn-group" }, [
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-phone" }),
+                _vm._v(" Call ")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-envelope" }),
+                _vm._v(" Email")
+              ]),
+              _vm._v(" "),
+              _c("a", { staticClass: "btn btn-xs btn-white" }, [
+                _c("i", { staticClass: "fa fa-user-plus" }),
+                _vm._v(" Follow")
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 m-b-lg" }, [
+      _c(
+        "div",
+        {
+          staticClass: "vertical-container light-timeline no-margins",
+          attrs: { id: "vertical-timeline" }
+        },
+        [
+          _c("div", { staticClass: "vertical-timeline-block" }, [
+            _c("div", { staticClass: "vertical-timeline-icon navy-bg" }, [
+              _c("i", { staticClass: "fa fa-briefcase" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "vertical-timeline-content" }, [
+              _c("h2", [_vm._v("Meeting")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.\r\n                        "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "btn btn-sm btn-primary", attrs: { href: "#" } },
+                [_vm._v(" More info")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "vertical-date" }, [
+                _vm._v("\r\n                            Today "),
+                _c("br"),
                 _vm._v(" "),
-                _c("div", { staticClass: "tab-content" }, [
-                  _c(
-                    "div",
-                    { staticClass: "tab-pane active", attrs: { id: "tab-1" } },
-                    [
-                      _c("div", { staticClass: "panel-body" }, [
-                        _c("table", { staticClass: "table table-hover" }, [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Names")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Michael kamau K.")])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("td", [_vm._v("Initials")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("MKK")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("DOB")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("12/25/1991")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Gender")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Male")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("National ID")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("25445544")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Passport No")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("245544")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Pin No")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("A00544565D")])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "tab-pane", attrs: { id: "tab-2" } },
-                    [
-                      _c("div", { staticClass: "panel-body" }, [
-                        _c("table", { staticClass: "table table-hover" }, [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [_vm._v("Data")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("User")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("Value")])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("td", [
-                                _c("span", { staticClass: "pie" }, [
-                                  _vm._v("0.52,1.041")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Samantha")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-navy" }, [
-                                _c("i", { staticClass: "fa fa-level-up" }),
-                                _vm._v(" 40% ")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [
-                                _c("span", { staticClass: "pie" }, [
-                                  _vm._v("226,134")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Jacob")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-warning" }, [
-                                _c("i", { staticClass: "fa fa-level-down" }),
-                                _vm._v(" -20% ")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [
-                                _c("span", { staticClass: "pie" }, [
-                                  _vm._v("0.52/1.561")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Damien")]),
-                              _vm._v(" "),
-                              _c("td", { staticClass: "text-navy" }, [
-                                _c("i", { staticClass: "fa fa-level-up" }),
-                                _vm._v(" 26% ")
-                              ])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "tab-pane", attrs: { id: "tab-3" } },
-                    [
-                      _c("div", { staticClass: "panel-body" }, [
-                        _c("table", { staticClass: "table table-hover" }, [
-                          _c("thead", [
-                            _c("tr", [
-                              _c("th", [_vm._v("item")]),
-                              _vm._v(" "),
-                              _c("th", [_vm._v("No")])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tbody", [
-                            _c("tr", [
-                              _c("td", [_vm._v("Employer")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("County Government")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Employment Date")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("12/02/2018")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Employee No.")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("County Government")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Job Title")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Dr.")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("Department")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("Helth Care")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("NSSF")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("254454")])
-                            ]),
-                            _vm._v(" "),
-                            _c("tr", [
-                              _c("td", [_vm._v("NHIF")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("544565")])
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "tab-pane", attrs: { id: "tab-4" } },
-                    [
-                      _c("div", { staticClass: "panel-body" }, [
-                        _c("div", { staticClass: "col-lg-12" }, [
-                          _c("div", { staticClass: "contact-box" }, [
-                            _c("a", { attrs: { href: "#" } }, [
-                              _c("div", { staticClass: "col-sm-3" }, [
-                                _c("div", { staticClass: "text-center" }, [
-                                  _c("img", {
-                                    staticClass:
-                                      "img-circle m-t-xs img-responsive",
-                                    attrs: { alt: "image", src: "img/a6.jpg" }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "m-t-xs font-bold" },
-                                    [_vm._v("Graphics designer")]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-sm-9" }, [
-                                _c("h3", [
-                                  _c("strong", [_vm._v("Janet Carton")])
-                                ]),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _c("i", { staticClass: "fa fa-map-marker" }),
-                                  _vm._v(" Riviera State 32/106")
-                                ]),
-                                _vm._v(" "),
-                                _c("address", [
-                                  _c("strong", [_vm._v("Twitter, Inc.")]),
-                                  _c("br"),
-                                  _vm._v(
-                                    "\r\n                                                        795 Folsom Ave, Suite 600"
-                                  ),
-                                  _c("br"),
-                                  _vm._v(
-                                    "\r\n                                                        San Francisco, CA 94107"
-                                  ),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c("abbr", { attrs: { title: "Phone" } }, [
-                                    _vm._v("P:")
-                                  ]),
-                                  _vm._v(
-                                    " (123) 456-7890\r\n                                                    "
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "clearfix" })
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
-                ])
+                _c("small", [_vm._v("Dec 24")])
               ])
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "contact-box center-version" }, [
-                _c("a", { attrs: { href: "profile.html" } }, [
-                  _c("img", {
-                    staticClass: "img-circle",
-                    attrs: { alt: "image", src: "img/a2.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "m-b-xs" }, [
-                    _c("strong", [_vm._v("John Smith")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "font-bold" }, [
-                    _vm._v("Graphics designer")
-                  ]),
-                  _vm._v(" "),
-                  _c("address", { staticClass: "m-t-md" }, [
-                    _c("strong", [_vm._v("Twitter, Inc.")]),
-                    _c("br"),
-                    _vm._v(
-                      "\r\n                                795 Folsom Ave, Suite 600"
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\r\n                                San Francisco, CA 94107"
-                    ),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-                    _vm._v(" (123) 456-7890\r\n                            ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "contact-box-footer" }, [
-                  _c("div", { staticClass: "m-t-xs btn-group" }, [
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-phone" }),
-                      _vm._v(" Call ")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-envelope" }),
-                      _vm._v(" Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-user-plus" }),
-                      _vm._v(" Follow")
-                    ])
-                  ])
-                ])
-              ])
+          _c("div", { staticClass: "vertical-timeline-block" }, [
+            _c("div", { staticClass: "vertical-timeline-icon blue-bg" }, [
+              _c("i", { staticClass: "fa fa-file-text" })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6" }, [
-              _c("div", { staticClass: "contact-box center-version" }, [
-                _c("a", { attrs: { href: "profile.html" } }, [
-                  _c("img", {
-                    staticClass: "img-circle",
-                    attrs: { alt: "image", src: "img/a1.jpg" }
-                  }),
-                  _vm._v(" "),
-                  _c("h3", { staticClass: "m-b-xs" }, [
-                    _c("strong", [_vm._v("Alex Johnatan")])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "font-bold" }, [_vm._v("CEO")]),
-                  _vm._v(" "),
-                  _c("address", { staticClass: "m-t-md" }, [
-                    _c("strong", [_vm._v("Twitter, Inc.")]),
-                    _c("br"),
-                    _vm._v(
-                      "\r\n                                795 Folsom Ave, Suite 600"
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\r\n                                San Francisco, CA 94107"
-                    ),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-                    _vm._v(" (123) 456-7890\r\n                            ")
-                  ])
-                ]),
+            _c("div", { staticClass: "vertical-timeline-content" }, [
+              _c("h2", [_vm._v("Send documents to Mike")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since."
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "btn btn-sm btn-success", attrs: { href: "#" } },
+                [_vm._v(" Download document ")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "vertical-date" }, [
+                _vm._v("\r\n                            Today "),
+                _c("br"),
                 _vm._v(" "),
-                _c("div", { staticClass: "contact-box-footer" }, [
-                  _c("div", { staticClass: "m-t-xs btn-group" }, [
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-phone" }),
-                      _vm._v(" Call ")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-envelope" }),
-                      _vm._v(" Email")
-                    ]),
-                    _vm._v(" "),
-                    _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                      _c("i", { staticClass: "fa fa-user-plus" }),
-                      _vm._v(" Follow")
-                    ])
-                  ])
-                ])
+                _c("small", [_vm._v("Dec 24")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "vertical-timeline-block" }, [
+            _c("div", { staticClass: "vertical-timeline-icon lazur-bg" }, [
+              _c("i", { staticClass: "fa fa-coffee" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "vertical-timeline-content" }, [
+              _c("h2", [_vm._v("Coffee Break")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "btn btn-sm btn-info", attrs: { href: "#" } },
+                [_vm._v("Read more")]
+              ),
+              _vm._v(" "),
+              _c("span", { staticClass: "vertical-date" }, [
+                _vm._v(" Yesterday "),
+                _c("br"),
+                _c("small", [_vm._v("Dec 23")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "vertical-timeline-block" }, [
+            _c("div", { staticClass: "vertical-timeline-icon yellow-bg" }, [
+              _c("i", { staticClass: "fa fa-phone" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "vertical-timeline-content" }, [
+              _c("h2", [_vm._v("Phone with Jeronimo")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut."
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "vertical-date" }, [
+                _vm._v("Yesterday "),
+                _c("br"),
+                _c("small", [_vm._v("Dec 23")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "vertical-timeline-block" }, [
+            _c("div", { staticClass: "vertical-timeline-icon navy-bg" }, [
+              _c("i", { staticClass: "fa fa-comments" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "vertical-timeline-content" }, [
+              _c("h2", [_vm._v("Chat with Monica and Sandra")]),
+              _vm._v(" "),
+              _c("p", [
+                _vm._v(
+                  "Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). "
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "vertical-date" }, [
+                _vm._v("Yesterday "),
+                _c("br"),
+                _c("small", [_vm._v("Dec 23")])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 m-b-lg" }, [
-          _c(
-            "div",
-            {
-              staticClass: "vertical-container light-timeline no-margins",
-              attrs: { id: "vertical-timeline" }
-            },
-            [
-              _c("div", { staticClass: "vertical-timeline-block" }, [
-                _c("div", { staticClass: "vertical-timeline-icon navy-bg" }, [
-                  _c("i", { staticClass: "fa fa-briefcase" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "vertical-timeline-content" }, [
-                  _c("h2", [_vm._v("Meeting")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.\r\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-primary",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v(" More info")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "vertical-date" }, [
-                    _vm._v("\r\n                            Today "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("small", [_vm._v("Dec 24")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "vertical-timeline-block" }, [
-                _c("div", { staticClass: "vertical-timeline-icon blue-bg" }, [
-                  _c("i", { staticClass: "fa fa-file-text" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "vertical-timeline-content" }, [
-                  _c("h2", [_vm._v("Send documents to Mike")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since."
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-success",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v(" Download document ")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "vertical-date" }, [
-                    _vm._v("\r\n                            Today "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("small", [_vm._v("Dec 24")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "vertical-timeline-block" }, [
-                _c("div", { staticClass: "vertical-timeline-icon lazur-bg" }, [
-                  _c("i", { staticClass: "fa fa-coffee" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "vertical-timeline-content" }, [
-                  _c("h2", [_vm._v("Coffee Break")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-info",
-                      attrs: { href: "#" }
-                    },
-                    [_vm._v("Read more")]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "vertical-date" }, [
-                    _vm._v(" Yesterday "),
-                    _c("br"),
-                    _c("small", [_vm._v("Dec 23")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "vertical-timeline-block" }, [
-                _c("div", { staticClass: "vertical-timeline-icon yellow-bg" }, [
-                  _c("i", { staticClass: "fa fa-phone" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "vertical-timeline-content" }, [
-                  _c("h2", [_vm._v("Phone with Jeronimo")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut."
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "vertical-date" }, [
-                    _vm._v("Yesterday "),
-                    _c("br"),
-                    _c("small", [_vm._v("Dec 23")])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "vertical-timeline-block" }, [
-                _c("div", { staticClass: "vertical-timeline-icon navy-bg" }, [
-                  _c("i", { staticClass: "fa fa-comments" })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "vertical-timeline-content" }, [
-                  _c("h2", [_vm._v("Chat with Monica and Sandra")]),
-                  _vm._v(" "),
-                  _c("p", [
-                    _vm._v(
-                      "Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "vertical-date" }, [
-                    _vm._v("Yesterday "),
-                    _c("br"),
-                    _c("small", [_vm._v("Dec 23")])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
+        ]
+      )
     ])
   }
 ]
