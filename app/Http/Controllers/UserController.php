@@ -6,6 +6,7 @@ use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -93,6 +94,12 @@ class UserController extends Controller
     public function employee(User $user, Request $request){
         if($request->is('api*')){
             return new UserResource($user->Employee_Record);
+        }
+    }
+
+    public function current(Request $request){
+        if($request->is('api*')){
+            return new UserResource($request->user());
         }
     }
 }

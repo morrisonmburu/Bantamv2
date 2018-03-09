@@ -320,7 +320,12 @@
 
 <script>
     export default {
-        name: "faq"
+        name: "faq",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

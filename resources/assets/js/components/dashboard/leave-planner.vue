@@ -80,7 +80,12 @@
 
 <script>
     export default {
-        name: "leave-planner"
+        name: "leave-planner",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

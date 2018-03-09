@@ -9,12 +9,11 @@
                 <div class="">
                     <div>
                         <h2 class="no-margins">
-                            Alex Smith
+                            {{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}
                         </h2>
-                        <h4>Founder of Groupeq</h4>
+                        <h4>&nbsp;&nbsp;&nbsp;{{currentUserData.Job_Title}}</h4>
                         <small>
-                            There are many variations of passages of Lorem Ipsum available, but the majority
-                            have suffered alteration in some form Ipsum available.
+                            Bio:
                         </small>
                     </div>
                 </div>
@@ -25,27 +24,27 @@
                 <tbody>
                 <tr>
                     <td>
-                        <strong>142</strong> Projects
+                        <strong>Company Email</strong> {{currentUserData.Company_E_Mail}}
                     </td>
                     <td>
-                        <strong>22</strong> Followers
+                        <strong>Address</strong> {{currentUserData.Address}}
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        <strong>61</strong> Comments
+                        <strong>Initials</strong> {{currentUserData.Initials}}
                     </td>
                     <td>
-                        <strong>54</strong> Articles
+                        <strong>Phone No.</strong> {{currentUserData.Mobile_Phone_No}}
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <strong>154</strong> Tags
+                        <strong>Status</strong> {{currentUserData.Status}}
                     </td>
                     <td>
-                        <strong>32</strong> Friends
+                        <strong>Title</strong> {{currentUserData.Title}}
                     </td>
                 </tr>
                 </tbody>
@@ -64,7 +63,6 @@
                     <div class="tabs-container">
                         <ul class="nav nav-tabs">
                             <li class="active"><a data-toggle="tab" href="#tab-1">Personal</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-2">Education</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-3">Employment</a></li>
                             <li class=""><a data-toggle="tab" href="#tab-4">Contacts</a></li>
                         </ul>
@@ -75,106 +73,73 @@
                                         <thead>
                                         <tr>
                                             <th>Names</th>
-                                            <th>Michael kamau K.</th>
+                                            <th>{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>Initials</td>
-                                            <td>MKK</td>
+                                            <td>{{currentUserData.Title}}</td>
                                         </tr>
                                         <tr>
                                             <td>DOB</td>
-                                            <td>12/25/1991</td>
+                                            <td>{{currentUserData.Birth_Date}}</td>
                                         </tr>
                                         <tr>
                                             <td>Gender</td>
-                                            <td>Male</td>
+                                            <td>{{currentUserData.Gender}}</td>
                                         </tr>
                                         <tr>
                                             <td>National ID</td>
-                                            <td>25445544</td>
+                                            <td>{{currentUserData.National_ID}}</td>
                                         </tr>
                                         <tr>
                                             <td>Passport No</td>
-                                            <td>245544</td>
+                                            <td>{{currentUserData.Passport_No}}</td>
                                         </tr>
                                         <tr>
                                             <td>Pin No</td>
-                                            <td>A00544565D</td>
+                                            <td>{{currentUserData.PIN_No}}</td>
                                         </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                            <div id="tab-2" class="tab-pane">
-                                <div class="panel-body">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>Data</th>
-                                            <th>User</th>
-                                            <th>Value</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><span class="pie">0.52,1.041</span></td>
-                                            <td>Samantha</td>
-                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 40% </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="pie">226,134</span></td>
-                                            <td>Jacob</td>
-                                            <td class="text-warning"> <i class="fa fa-level-down"></i> -20% </td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="pie">0.52/1.561</span></td>
-                                            <td>Damien</td>
-                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 26% </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
                                 </div>
                             </div>
                             <div id="tab-3" class="tab-pane">
                                 <div class="panel-body">
                                     <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>item</th>
-                                            <th>No</th>
-                                        </tr>
-                                        </thead>
                                         <tbody>
                                         <tr>
-                                            <td>Employer</td>
-                                            <td>County Government</td>
-                                        </tr>
-                                        <tr>
                                             <td>Employment Date</td>
-                                            <td>12/02/2018</td>
+                                            <td>{{currentUserData.Employment_Date}}</td>
                                         </tr>
                                         <tr>
                                             <td>Employee No.</td>
-                                            <td>County Government</td>
+                                            <td>{{currentUserData.No}}</td>
                                         </tr>
                                         <tr>
                                             <td>Job Title</td>
-                                            <td>Dr.</td>
+                                            <td>{{currentUserData.Job_Title}}</td>
                                         </tr>
                                         <tr>
                                             <td>Department</td>
-                                            <td>Helth Care</td>
+                                            <td>{{currentUserData.Department}}e</td>
                                         </tr>
                                         <tr>
                                             <td>NSSF</td>
-                                            <td>254454</td>
+                                            <td>{{currentUserData.NSSF_No}}</td>
                                         </tr>
                                         <tr>
                                             <td>NHIF</td>
-                                            <td>544565</td>
+                                            <td>{{currentUserData.NHIF_No}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>HELB NO</td>
+                                            <td>{{currentUserData.HELB_NO}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Social Security No.</td>
+                                            <td>{{currentUserData.Social_Security_No}}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -188,17 +153,18 @@
                                                 <div class="col-sm-3">
                                                     <div class="text-center">
                                                         <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a6.jpg">
-                                                        <div class="m-t-xs font-bold">Graphics designer</div>
+                                                        <div class="m-t-xs font-bold">{{currentUserData.Job_Title}}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-9">
-                                                    <h3><strong>Janet Carton</strong></h3>
-                                                    <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                                                    <h3><strong>{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</strong></h3>
+                                                    <p><i class="fa fa-map-marker"></i> {{currentUserData.Address}}</p>
                                                     <address>
-                                                        <strong>Twitter, Inc.</strong><br>
-                                                        795 Folsom Ave, Suite 600<br>
-                                                        San Francisco, CA 94107<br>
-                                                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                                                        <strong>{{currentUserData.Job_Title}}</strong><br>
+                                                        {{currentUserData.E_Mail}}<br>
+                                                        {{currentUserData.Post_Code}}<br>
+                                                        {{currentUserData.City}}<br>
+                                                        <abbr title="Phone">P:</abbr> {{currentUserData.Phone_No}}
                                                     </address>
                                                 </div>
                                                 <div class="clearfix"></div>
@@ -357,7 +323,11 @@
 <script>
     export default {
         name: "profile",
-        props: ['swapComponent']
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

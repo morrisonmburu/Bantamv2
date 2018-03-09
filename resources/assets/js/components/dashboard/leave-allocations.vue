@@ -92,7 +92,12 @@
 
 <script>
     export default {
-        name: "leave-allocations"
+        name: "leave-allocations",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

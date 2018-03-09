@@ -234,7 +234,11 @@
 <script>
     export default {
         name: "content-wrapper",
-        props: ['swapComponent']
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

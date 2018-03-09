@@ -15,8 +15,8 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
     public function up()
     {
         Schema::create('employee_leave_applications', function (Blueprint $table) {
-            $table->increments('aapplication_code');
-            $table->integer('employee_no',false,true);
+            $table->increments('application_code');
+            $table->string('employee_no',50);
             $table->integer('leave_code',false,true);
             $table->decimal('days_applied');
             $table->date('start_date');
@@ -37,7 +37,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->boolean("web_synced")->default(true);
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("employee_no")->references("employee_id")->on("employees")->onDelete('cascade');
+            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
             $table->foreign("leave_code")->references("leave_type_id")->on("leave_types")->onDelete('cascade');
             $table->timestamps();
         });

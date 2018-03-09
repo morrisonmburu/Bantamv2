@@ -237,7 +237,12 @@
 
 <script>
     export default {
-        name: "open-applications"
+        name: "open-applications",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 
