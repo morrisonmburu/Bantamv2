@@ -24,8 +24,14 @@
     <link href="{{ asset('css/plugins/fullcalendar/fullcalendar.print.css')}}" rel='stylesheet' media='print'>
     <!--
 
+
     End of leave planner  imports -->
 
+    <!--  Ladda css added by Mayaka. This is for the button spinners -->
+        <!-- Ladda style -->
+        <link href="css/plugins/ladda/ladda-themeless.min.css" rel="stylesheet">
+    <!-- End of ladda -->
+    <link href="{{ asset('css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 
 
     <style>
@@ -43,7 +49,10 @@
         @yield('content')
     </main>
 </div>
-
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- Data picker -->
+<script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
@@ -95,8 +104,18 @@
 
 <!-- Full Calendar -->
 <script src="js/plugins/fullcalendar/fullcalendar.min.js"></script>
+
+<!-- Ladda  :: added  by @mayaka-->
+<script src="{{asset("js/plugins/ladda/spin.min.js")}}"></script>
+<script src="{{asset("js/plugins/ladda/ladda.min.js")}}"></script>
+<script src="{{asset("js/plugins/ladda/ladda.jquery.min.js")}}"></script>
+<!--  End of ladda -->
 <script>
     $(document).ready(function() {
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green'
@@ -189,6 +208,43 @@
             ]
         });
     });
+    $(document).ready(function (){
+
+        // Bind normal buttons
+        Ladda.bind( '.ladda-button',{ timeout: 2000 });
+
+        // Bind progress buttons and simulate loading progress
+        Ladda.bind( '.progress-demo .ladda-button',{
+            callback: function( instance ){
+                var progress = 0;
+                var interval = setInterval( function(){
+                    progress = Math.min( progress + Math.random() * 0.1, 1 );
+                    instance.setProgress( progress );
+
+                    if( progress === 1 ){
+                        instance.stop();
+                        clearInterval( interval );
+                    }
+                }, 200 );
+            }
+        });
+
+
+        var l = $( '.ladda-button-demo' ).ladda();
+
+        l.click(function(){
+            // Start loading
+            l.ladda( 'start' );
+
+            // Timeout example
+            // Do something in backend and then stop ladda
+            setTimeout(function(){
+                l.ladda('stop');
+            },12000)
+        });
+
+    });
+
 </script>
 <!--  End of leave planner imports -->
 </body>

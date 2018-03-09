@@ -27,22 +27,89 @@ Vue.component('leave-allocations', require('./components/dashboard/leave-allocat
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
 Vue.component('payslip', require('./components/dashboard/payslip'));
 Vue.component('faq', require('./components/dashboard/faq'));
+Vue.component('search-results', require('./components/dashboard/search-results'));
 
 const app = new Vue({
     el: '#app',
     data: {
-        currentComponent: 'dashboard'
+        currentComponent: 'dashboard',
+        currentUser      : {},
+        currentUserData  : {},
+        APIENDPOINTS     : {
+            CURRENTUSER            : 'api/users/current',                   // Current logged in user
+            CURRENTEMPLOYEE        : 'api/users@employee',                 // employee details
+            SEARCH                 : 'https://yesno.wtf/api'
+        },
+        searchResults : '',
+        searchTerm : ''
     },
     methods : {
-        swapComponent : function (component) {
-           if (Vue.options.components[component]){
-               this.currentComponent = component
-           }else {
-               alert(component + ' component not found');
-           }
+        swapComponent: function (component) {
+            if (Vue.options.components[component]) {
+                this.currentComponent = component
+            } else {
+                alert(component + ' component not found');
+            }
         },
-        sanitizeHeaders : function (heading) {
-            return heading.replace('-',' ');
+        sanitizeHeaders: function (heading) {
+            return heading.replace('-', ' ');
+        },
+        getApiPath: function (rawPath, data) {
+            if (data.length == 0) {
+                return rawPath.replace('@', '/')
+            } else {
+                return rawPath.replace('@', '/' + data + '/');
+            }
+        },
+        getData : function () {
+            var v = this
+            axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
+                .then(function (response) {
+                    v.currentUser = response.data.data
+
+                    if (Object.keys(v.currentUser).length !== 0 ){
+                        axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
+                            .then(function (response) {
+                                v.currentUserData = response.data.data
+                                console.log(v.currentUserData)
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                    }
+
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
+        },
+        
+        search : _.debounce(
+            function () {
+                this.searchResults = 'Searching...'
+                var v = this
+                axios.get(v.APIENDPOINTS.SEARCH)
+                    .then(function (response) {
+                        v.searchResults = response.data
+                    })
+                    .catch(function (error) {
+                        v.searchResults = 'Nothing Found'
+                    })
+            },
+            500
+        )
+
+    },
+
+    created : function () {
+        this.getData()
+    },
+    watch : {
+        searchTerm : function () {
+            this.swapComponent('search-results')
+            this.searchResults  = ' Typing..'
+            this.search();
         }
     }
+
 });

@@ -236,7 +236,12 @@
 
 <script>
     export default {
-        name: "pending-application"
+        name: "pending-application",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
     }
 </script>
 

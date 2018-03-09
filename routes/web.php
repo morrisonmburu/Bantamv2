@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get("test","TestSoap@test");
+Route::get("test","TestSoap@ImageTest");
 
 Route::get('/home', 'HomeController@index')->name('home');

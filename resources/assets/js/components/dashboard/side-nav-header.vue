@@ -8,7 +8,7 @@
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <span class="clear">
                   <span class="block m-t-xs">
-                      <strong class="font-bold">Names</strong>
+                      <strong class="font-bold">{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</strong>
                  </span>
                  <span class="text-muted text-xs block">
                      Art Director
@@ -18,11 +18,14 @@
         </a>
 
         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="contacts.html">Contacts</a></li>
-            <li><a href="mailbox.html">Mailbox</a></li>
-            <li class="divider"></li>
-            <li><a href="login.html">Logout</a></li>
+            <li><a href="#" @click="swapComponent('profile')">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Messages</a></li>
+
+
+
+
+
         </ul>
 
     </div>
@@ -32,7 +35,13 @@
 
 <script>
     export default {
-        name: "side-nav-header"
+        name: "side-nav-header",
+        props : [
+            'currentUser',
+            'currentUserData',
+            'swapComponent'
+        ],
+
     }
 </script>
 
