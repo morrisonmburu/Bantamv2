@@ -16,7 +16,7 @@ class CreateLeaveApprovalProcessesTable extends Migration
     {
         Schema::create('leave_approval_processes', function (Blueprint $table) {
             $table->increments('approval_process_id');
-            $table->integer('application_code',false,true);
+            $table->string('application_code',50);
             $table->string('leave_type',20);
             $table->decimal('approved_days');
             $table->date('approved_start_date');
@@ -29,7 +29,7 @@ class CreateLeaveApprovalProcessesTable extends Migration
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
-            $table->foreign("application_Code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->foreign("application_code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }

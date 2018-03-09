@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeLeaveApplication extends Model
 {
@@ -12,7 +13,12 @@ class EmployeeLeaveApplication extends Model
     public $incrementing = true;
     public $timestamps = true;
 
-    // Approval Entries
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->fillable = DB::getSchemaBuilder()->getColumnListing($this->table);
+    }
 
     public function Approval_Entry(){
         return $this->hasOne(ApprovalEntry::class,"Document_no","Application_Code");

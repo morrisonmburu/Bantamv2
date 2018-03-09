@@ -17,7 +17,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->increments('id');
             $table->integer('approval_template',false,true);
             $table->integer('approver_id',false,true);
-            $table->integer('document_no',false,true);
+            $table->string('document_no',50);
             $table->integer('sequence_no');
             $table->string('employee_no',50);
             $table->enum('status',['created','open','cancelled','approved','rejected']);
@@ -34,7 +34,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->foreign("approval_template")->references("id")->on("approval_templates")->onDelete('cascade');
             $table->foreign("approver_id")->references("approver_id")->on("employee_approvers")->onDelete('cascade');
             $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
-            $table->foreign("document_no")->references("application_code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->foreign("document_no")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }

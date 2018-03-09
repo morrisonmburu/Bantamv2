@@ -22,14 +22,14 @@ class CreateLeavePlannersTable extends Migration
             $table->date('ends');
             $table->decimal('no_of_days',8,2);
             $table->string('type',50);
-            $table->integer('application_code',false,true);
+            $table->string('application_code',50);
             $table->integer("current_year",false,true);
             $table->boolean("nav_synced")->default(false);
             $table->boolean("web_synced")->default(true);
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
-            $table->foreign("application_code")->references("application_code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->foreign("application_code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }

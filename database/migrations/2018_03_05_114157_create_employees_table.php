@@ -68,7 +68,6 @@ class CreateEmployeesTable extends Migration
             $table->string('HELB_NO',20)->nullable();
             $table->string('Pay_Mode',20)->nullable();
             $table->string('Passport_No',20)->nullable();
-            $table->string('Customer_Code',30)->nullable();
             $table->string('Currency',30)->nullable();
             $table->string('Payroll_Posting_Group',30)->nullable();
             $table->string('Grade',30)->nullable();
@@ -76,15 +75,17 @@ class CreateEmployeesTable extends Migration
             $table->string('Payroll_Category',100)->nullable();
             $table->string('Pensionable',30)->nullable();
             $table->string('_x003C_Base_Calendar_cODE_x003E_', 250)->nullable();
-            $table->boolean("Nav_Synced")->default(false);
+
             $table->boolean("NSSF_By_Company")->default(false);
             $table->boolean("NHIF_By_Company")->default(false);
             $table->boolean("Disability_PAYE_Exemeption")->default(false);
             $table->boolean("Hold_Payment")->default(false);
             $table->boolean("Use_Daily_Rate")->default(false);
-            $table->boolean("Web_Synced")->default(true);
-            $table->dateTime("Last_Nav_Synced")->nullable();
-            $table->dateTime("Last_Web_Synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+
+            $table->boolean("Nav_Sync")->default(false);
+            $table->boolean("Web_Sync")->default(true);
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign("user_id")->references("id")->on("users")->onDelete('cascade');
             $table->timestamps();
         });
