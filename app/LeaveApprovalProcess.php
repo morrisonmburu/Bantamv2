@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Leave_approval_process extends Model
+class LeaveApprovalProcess extends Model
 {
     protected $guarded = [];
     protected $table = "leave_approval_processes";

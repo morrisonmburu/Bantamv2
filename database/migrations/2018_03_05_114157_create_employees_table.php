@@ -19,8 +19,8 @@ class CreateEmployeesTable extends Migration
             $table->string('No',50)->unique();
             $table->integer('user_id',false,true)->nullable();
             $table->string('First_Name',30)->nullable();
-            $table->string('Middle_Name',30)->nullable();
             $table->string('Last_Name',30)->nullable();
+            $table->string('Middle_Name',30)->nullable();
             $table->string('Initials',30)->nullable();
             $table->string('Job_Title',30)->nullable();
             $table->string('Address',50)->nullable();

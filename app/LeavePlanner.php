@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Leave_planner extends Model
+class LeavePlanner extends Model
 {
     protected $guarded = [];
     protected  $table = "leave_planners";

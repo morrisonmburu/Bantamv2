@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee_approver extends Model
+class EmployeeApprover extends Model
 {
     protected $guarded = [];
     protected $table = "employee_approvers";
@@ -14,6 +14,6 @@ class Employee_approver extends Model
 
     //approval entries per an approver
     public function Approval_entries(){
-        return $this->hasMany("App\Approval_entry","Approver_id",'id');
+        return $this->hasMany(ApprovalEntry::class,"Approver_id",'id');
     }
 }

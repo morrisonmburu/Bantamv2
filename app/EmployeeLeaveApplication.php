@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee_leave_application extends Model
+class EmployeeLeaveApplication extends Model
 {
     protected $guarded = [];
     protected $table = "employee_leave_applications";
@@ -15,6 +15,6 @@ class Employee_leave_application extends Model
     // Approval Entries
 
     public function Approval_Entry(){
-        return $this->hasOne("App\Approval_entry","Document_no","Application_Code");
+        return $this->hasOne(ApprovalEntry::class,"Document_no","Application_Code");
     }
 }
