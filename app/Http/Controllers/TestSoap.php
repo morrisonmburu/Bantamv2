@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 use App\Http\NavSoap\NTLMStream;
 use App\Http\NavSoap\NTLMSoapClient;
 use GuzzleHttp\Client;
+use App\Http\Controllers\EmployeeController;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
-
 class TestSoap extends Controller
 {
     public function test(){
         try {
-            $url = 'http=>//192.168.88.241=>7447/DynamicsKISM/WS/KISM/Page/Employee';
+            $url = 'http://192.168.88.241:9347/NAVDEMO/WS/CRONUS%20International%20Ltd./Page/Employees';
             // we unregister the current HTTP wrapper
             stream_wrapper_unregister('http');
             // we register the new HTTP wrapper
@@ -91,5 +91,17 @@ class TestSoap extends Controller
         }
         
 
+    }
+
+    public function ImageTest(){
+        $path = "img/a22.jpg";
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $decodedFile=base64_decode($base64);
+
+        $file=file_put_contents("img/myImage.jpg",$decodedFile);
+        return $file;
     }
 }

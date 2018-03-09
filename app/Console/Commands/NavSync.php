@@ -91,7 +91,6 @@ class NavSync extends Command
                     });
                 }
                 catch (\Exception $e){
-
                     print ($e->getMessage()."\n\n");
                     continue;
                 }
