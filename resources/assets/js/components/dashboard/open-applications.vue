@@ -247,8 +247,7 @@
                         <div class="modal-content animated bounceInRight">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                <i class="fa fa-th-large modal-icon"></i>
-                                <h4 class="modal-title">New leave application</h4>
+                                <h4 class="modal-title">New application</h4>
                             </div>
                             <div class="modal-body">
                                 <form role="form">
@@ -269,7 +268,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Return Date</label>
@@ -277,8 +276,11 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" readonly>
                                         </div>
+                                    </div>
+                                    <div class="form-group"><label>Comments</label>
+                                        <textarea class="form-control" rows="2" id="comment"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -292,7 +294,6 @@
             <!-- End of New leave application modal -->
         </div>
     </div>
-
 </template>
 
 <script>

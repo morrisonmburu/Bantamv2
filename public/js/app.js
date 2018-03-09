@@ -48034,7 +48034,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48045,6 +48045,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -48807,10 +48808,8 @@ var staticRenderFns = [
                       ]
                     ),
                     _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-th-large modal-icon" }),
-                    _vm._v(" "),
                     _c("h4", { staticClass: "modal-title" }, [
-                      _vm._v("New leave application")
+                      _vm._v("New application")
                     ])
                   ]),
                   _vm._v(" "),
@@ -48885,7 +48884,7 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text" }
+                              attrs: { type: "text", readonly: "" }
                             })
                           ]
                         )
@@ -48907,10 +48906,19 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text" }
+                              attrs: { type: "text", readonly: "" }
                             })
                           ]
                         )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Comments")]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          staticClass: "form-control",
+                          attrs: { rows: "2", id: "comment" }
+                        })
                       ])
                     ])
                   ]),
@@ -49782,7 +49790,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49793,6 +49801,94 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50137,27 +50233,12 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-xs btn-success",
-                            attrs: { disabled: "" }
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#approveRequest"
+                            }
                           },
-                          [_vm._v("Approve")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-danger",
-                            attrs: { disabled: "" }
-                          },
-                          [_vm._v("Reject")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-warning",
-                            attrs: { disabled: "" }
-                          },
-                          [_vm._v("Escalate")]
+                          [_vm._v("Process")]
                         )
                       ])
                     ]),
@@ -50184,18 +50265,14 @@ var staticRenderFns = [
                       _c("td", [
                         _c(
                           "button",
-                          { staticClass: "btn btn-xs btn-success" },
-                          [_vm._v("Approve")]
-                        ),
-                        _vm._v(" "),
-                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
-                          _vm._v("Reject")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          { staticClass: "btn btn-xs btn-warning" },
-                          [_vm._v("Escalate")]
+                          {
+                            staticClass: "btn btn-xs btn-success",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#approveRequest"
+                            }
+                          },
+                          [_vm._v("Process")]
                         )
                       ])
                     ]),
@@ -50222,18 +50299,14 @@ var staticRenderFns = [
                       _c("td", [
                         _c(
                           "button",
-                          { staticClass: "btn btn-xs btn-success" },
-                          [_vm._v("Approve")]
-                        ),
-                        _vm._v(" "),
-                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
-                          _vm._v("Reject")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          { staticClass: "btn btn-xs btn-warning" },
-                          [_vm._v("Escalate")]
+                          {
+                            staticClass: "btn btn-xs btn-success",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#approveRequest"
+                            }
+                          },
+                          [_vm._v("Process")]
                         )
                       ])
                     ]),
@@ -50262,27 +50335,12 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-xs btn-success",
-                            attrs: { disabled: "" }
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#approveRequest"
+                            }
                           },
-                          [_vm._v("Approve")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-danger",
-                            attrs: { disabled: "" }
-                          },
-                          [_vm._v("Reject")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-warning",
-                            attrs: { disabled: "" }
-                          },
-                          [_vm._v("Escalate")]
+                          [_vm._v("Process")]
                         )
                       ])
                     ]),
@@ -50309,18 +50367,14 @@ var staticRenderFns = [
                       _c("td", [
                         _c(
                           "button",
-                          { staticClass: "btn btn-xs btn-success" },
-                          [_vm._v("Approve")]
-                        ),
-                        _vm._v(" "),
-                        _c("button", { staticClass: "btn btn-xs btn-danger" }, [
-                          _vm._v("Reject")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          { staticClass: "btn btn-xs btn-warning" },
-                          [_vm._v("Escalate")]
+                          {
+                            staticClass: "btn btn-xs btn-success",
+                            attrs: {
+                              "data-toggle": "modal",
+                              "data-target": "#approveRequest"
+                            }
+                          },
+                          [_vm._v("Process")]
                         )
                       ])
                     ])
@@ -50329,7 +50383,287 @@ var staticRenderFns = [
               ])
             ])
           ])
-        ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal inmodal",
+            attrs: {
+              id: "approveRequest",
+              tabindex: "-1",
+              role: "dialog",
+              "aria-hidden": "true"
+            }
+          },
+          [
+            _c("div", { staticClass: "modal-dialog" }, [
+              _c(
+                "div",
+                { staticClass: "modal-content animated bounceInRight" },
+                [
+                  _c("div", { staticClass: "modal-header" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "close",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [
+                        _c("span", { attrs: { "aria-hidden": "true" } }, [
+                          _vm._v("×")
+                        ]),
+                        _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("Close")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "modal-title" }, [
+                      _vm._v("Approval processing")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c(
+                      "div",
+                      { staticClass: "ibox-content inspinia-timeline" },
+                      [
+                        _c("div", { staticClass: "timeline-item" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "col-xs-12 content no-top-border"
+                              },
+                              [
+                                _c("p", { staticClass: "m-b-xs" }, [
+                                  _c("strong", [_vm._v("Employee Details")])
+                                ]),
+                                _vm._v(" "),
+                                _c("p", [
+                                  _c("strong", [_vm._v("Name:")]),
+                                  _vm._v(" John Doe")
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "row" }, [
+                                  _c("div", { staticClass: "col-xs-6" }, [
+                                    _c("p", [
+                                      _c("strong", [_vm._v("Title:")]),
+                                      _vm._v(" Tech Nerd")
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "col-xs-6" }, [
+                                    _c("p", [
+                                      _c("strong", [_vm._v("Department:")]),
+                                      _vm._v(" IT")
+                                    ])
+                                  ])
+                                ])
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "timeline-item" }, [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-xs-12 content" }, [
+                              _c("p", { staticClass: "m-b-xs" }, [
+                                _c("strong", [_vm._v("Leave Details")])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-xs-6" }, [
+                                  _c("p", [
+                                    _c("strong", [_vm._v("Type:")]),
+                                    _vm._v(" Annual leave")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _c("strong", [_vm._v("Start Date:")]),
+                                    _vm._v(" 03/20/2018")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _c("strong", [_vm._v("Days:")]),
+                                    _vm._v(" 30 days")
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "col-xs-6" }, [
+                                  _c("p", [
+                                    _c("strong", [_vm._v("End Date:")]),
+                                    _vm._v(" 03/20/2018")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _c("strong", [_vm._v("Return Date:")]),
+                                    _vm._v(" 05/20/2018")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _c("strong", [_vm._v("Balance:")]),
+                                    _vm._v(" 2 days")
+                                  ])
+                                ])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-xs-12 content" }, [
+                        _c("p", {}, [_c("strong", [_vm._v("Processing")])]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-xs-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", [_vm._v("Start Date")]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "input-group date",
+                                  attrs: { "data-provide": "datepicker" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "input-group-addon" },
+                                    [_c("i", { staticClass: "fa fa-calendar" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-control",
+                                    attrs: { type: "text" }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", [_vm._v("Number of days")]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "number",
+                                  placeholder: "Number of days"
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-xs-6" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", [_vm._v("End Date")]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "input-group date",
+                                  attrs: { "data-provide": "datepicker" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "input-group-addon" },
+                                    [_c("i", { staticClass: "fa fa-calendar" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-control",
+                                    attrs: { type: "text", readonly: "" }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", [_vm._v("Return Date")]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "input-group date",
+                                  attrs: { "data-provide": "datepicker" }
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "input-group-addon" },
+                                    [_c("i", { staticClass: "fa fa-calendar" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    staticClass: "form-control",
+                                    attrs: { type: "text", readonly: "" }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-xs-12" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", [_vm._v("Comments")]),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                staticClass: "form-control",
+                                attrs: { rows: "2", id: "comment" }
+                              })
+                            ])
+                          ])
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-white",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Close")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-success",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Approve")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-danger",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Reject")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-xs btn-warning",
+                        attrs: { type: "button" }
+                      },
+                      [_vm._v("Escalate")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ]
+        )
       ])
     ])
   }
