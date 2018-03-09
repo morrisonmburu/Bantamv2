@@ -23,7 +23,7 @@ class CreateLeaveTypesTable extends Migration
             $table->boolean('Accrue_Days');
             $table->boolean('Unlimited_Days');
             $table->enum('Gender',['Male','Female','both']);
-            $table->decimal('Balance',5,2);
+            $table->string('Balance', 30);
             $table->boolean('Inclusive_of_Holidays');
             $table->decimal('Max_Carry_Forward_Days',5,2);
             $table->boolean('Off_Holidays_Days_Leave');
