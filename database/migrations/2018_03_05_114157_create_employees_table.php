@@ -64,7 +64,6 @@ class CreateEmployeesTable extends Migration
             $table->string('PIN_No',20)->nullable();
             $table->string('National_ID',20)->nullable();
             $table->string('Social_Security_No',20)->nullable();
-            $table->string('Customer_Code',20)->nullable();
             $table->string('HELB_NO',20)->nullable();
             $table->string('Pay_Mode',20)->nullable();
             $table->string('Passport_No',20)->nullable();
