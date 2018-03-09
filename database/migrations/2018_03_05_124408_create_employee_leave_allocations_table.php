@@ -15,24 +15,23 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
     public function up()
     {
         Schema::create('employee_leave_allocations', function (Blueprint $table) {
-            $table->increments('entry_no');
-            $table->string('employee_no', 50);
-            $table->string('leave_code',20);
-            $table->date('maturity_date');
-            $table->decimal('balance');
-            $table->decimal('accrued_days');
-            $table->string('comments',250);
-            $table->decimal('days_taken');
-            $table->decimal('days_applied');
-            $table->decimal('days_approved');
-            $table->integer('days_approved_taken');
-            $table->decimal('allocated_days');
-            $table->integer('leave_period',false,true);
-            $table->boolean("nav_synced")->default(false);
-            $table->boolean("web_synced")->default(true);
-            $table->dateTime("last_nav_synced")->nullable();
-            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
+            $table->increments('id');
+            $table->string('Leave_Period', 50);
+            $table->string('Employee_No', 50);
+            $table->string('Leave_Code',20);
+            $table->string('LTypes_Description',255);
+            $table->date('Maturity_Date');
+            $table->decimal('Balance_B_F',5,2);
+            $table->decimal('Accrued_Days',5,2);
+            $table->decimal('Allocated_Days',5,2);
+            $table->decimal('Taken',5,2);
+            $table->decimal('Balance',5,2);
+            $table->string('Comments',250)->nullable();
+            $table->boolean("Nav_Sync")->default(false);
+            $table->boolean("Web_Sync")->default(true);
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');
             $table->timestamps();
         });
     }
