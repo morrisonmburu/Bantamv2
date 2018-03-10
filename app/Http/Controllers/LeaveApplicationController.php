@@ -6,6 +6,7 @@ use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\LeaveApplicationResource;
 use Illuminate\Http\Request;
+use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
 use App\Employee;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,9 +38,22 @@ class LeaveApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
-        //
+        $data = [
+                "leave_type"=>$request->leave_type,
+                "start_date"=>$request->start_date,
+                "no_of_days"=>$request->no_of_days,
+                "end_date"=>$request->end_date,
+                "return_date"=>$request->return_date
+            ];
+        try{
+            if ($LeaveApplication->save($data)){
+                return response('Succes', 200)->header('Content-Type', 'text/plain');
+            }
+        }catch (\Exception $e){
+            return  response('$e->getMessage()', 500)->header('Content-Type', 'text/plain');
+        }
     }
 
     /**

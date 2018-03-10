@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class TestSoap extends Controller
 {
+
+    public function phpinformation(){
+        dd(phpinfo());
+    }
     public function test()
     {
         try {
