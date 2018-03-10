@@ -32,8 +32,9 @@ class NavSyncManager{
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
 
+        $this->pushTable(EmployeeLeaveApplication::class, $this->config[EmployeeLeaveApplication::class]["endpoint"]);
         foreach ($this->syncClasses as $model => $props){
-            $this->syncTable($model, $props["endpoint"], $props["search_fields"]);
+            $this->getTable($model, $props["endpoint"], $props["search_fields"]);
         }
 
         $employees = $this->get($this->config->NAV_SOAP_EMPLOYEE)->Employees;
@@ -51,7 +52,20 @@ class NavSyncManager{
         print ("\n\n");
     }
 
-    public function syncTable($model, $endpoint, $search_fields){
+
+    public function pushTable($model, $endpoint){
+        $records = $model::where('Nav_Sync', false)->get();
+
+        foreach ($records as $record){
+            $this->create($endpoint, (object) $record->toArray());
+
+            $record->Nav_Sync = false;
+            $record->Nav_Sync_TimeStamp = date("Y-m-d");
+            $record->save();
+        }
+    }
+
+    public function getTable($model, $endpoint, $search_fields){
         print ("\n\n");
         print ("--------------- SNYNCING $endpoint ---------------\n");
 
