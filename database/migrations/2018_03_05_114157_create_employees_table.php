@@ -55,6 +55,7 @@ class CreateEmployeesTable extends Migration
             $table->string('Global_Dimension_1_Code',50)->nullable();
             $table->string('Global_Dimension_2_Code',50)->nullable();
             $table->string('Department',100)->nullable();
+            $table->string('Profile_Picture',200)->nullable();
             $table->date('Last_Date_Modified')->nullable();
             $table->date('Date_Filter')->nullable();
             $table->string('Company_E_Mail',80)->nullable();
