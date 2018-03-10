@@ -7,6 +7,8 @@ use GuzzleHttp\Client;
 use App\Http\Controllers\EmployeeController;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Facades\Storage;
+
 class TestSoap extends Controller
 {
     public function test()
@@ -99,6 +101,7 @@ class TestSoap extends Controller
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
         $decodedFile=base64_decode($base64);
+        Storage::disk('local')->put($path);
 
         $file=file_put_contents("img/myImage.jpg",$decodedFile);
         return $file;

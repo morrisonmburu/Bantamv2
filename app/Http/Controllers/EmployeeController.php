@@ -7,6 +7,7 @@ use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -94,6 +95,17 @@ class EmployeeController extends Controller
     public function user(Request $request, Employee $employee){
         if($request->is('api*')){
             return new UserResource($employee->user);
+        }
+    }
+
+    public function picture(Request $request, Employee $employee){
+        if($request->is('api*')){
+            if($employee->Profile_Picture){
+                return Storage::download("employees/$employee->No/profile_picture/$employee->Profile_Picture", $employee->Profile_Picture);
+            }
+            else{
+                return Storage::download("public/default-avatar.jpg", "default-avatar.jpg");
+            }
         }
     }
 
