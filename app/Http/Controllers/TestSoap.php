@@ -93,14 +93,36 @@ class TestSoap extends Controller
     }
 
     public function ImageTest(){
-        $path = "img/a22.jpg";
+        $path = "img/a2.jpg";
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        $decodedFile=base64_decode($base64);
 
-        $file=file_put_contents("img/myImage.jpg",$decodedFile);
-        return $file;
+        $data = explode( ',', $base64 );
+
+        echo $data[0]."<br/>";
+        echo $data[1];
+//        $decodedFile=base64_decode($base64);
+//
+//        $file=file_put_contents("img/myImage.jpg",$decodedFile);
+//        return $file;
+    }
+
+    function getProfilePic($base64_image_string, $imageFileName, $path="Profile_Pictures/" ) {
+        $splited = explode(',', substr( $base64_image_string , 5 ) , 2);
+        $mime=$splited[0];
+        $data=$splited[1];
+
+        $mime_split_without_base64=explode(';', $mime,2);
+        $mime_split=explode('/', $mime_split_without_base64[0],2);
+        if(count($mime_split)==2)
+        {
+            $extension=$mime_split[1];
+            if($extension=='jpeg')$extension='jpg';
+            $output_file_with_extension=$imageFileName.'.'.$extension;
+        }
+        file_put_contents( $path . $output_file_with_extension, base64_decode($data) );
+        return $output_file_with_extension;
     }
 }

@@ -29,23 +29,13 @@ Route::resource('users', 'UserController');
 
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
+    Route::get('{employee}/picture', 'EmployeeController@picture');
+    Route::get('{employee}/leave_allocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
+    Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
 });
 Route::resource('employees', 'EmployeeController');
-
-// Employee Leave Applications API
-Route::prefix('employee')->group(function (){
-    Route::get('{employee}/leaveApplications', 'LeaveApplicationController@EmployeeLeaveApplications');
-});
-Route::resource('leaveApplications','LeaveApplicationController');
-// END of Employee Leave Applications API
-
-// Employee leave allocations API
-Route::prefix('employee')->group(function (){
-    Route::get('{employee}/leaveAllocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
-});
-Route::resource('leaveAllocations','LeaveAllocationsController');
-// END of Employee leave allocations
-
+Route::resource('leave_applications','LeaveApplicationController');
+Route::resource('leave_allocations','LeaveAllocationsController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
