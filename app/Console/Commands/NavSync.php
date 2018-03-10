@@ -52,14 +52,14 @@ class NavSync extends Command
     {
         try{
             $syncManager = new NavSyncManager();
-//            $syncManager->sync();
-            $syncManager->calculateLeaveDates(
-                "ANNUAL",
-                "LM",
-                "GB",
-                "2017-10-18",
-                "20"
-            );
+            $syncManager->sync();
+//            $syncManager->calculateLeaveDates(
+//                "ANNUAL",
+//                "LM",
+//                "GB",
+//                "2017-10-18",
+//                "20"
+//            );
         }
         catch (\Exception $e){
             print ($e);
