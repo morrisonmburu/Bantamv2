@@ -1432,11 +1432,13 @@ var app = new Vue({
         currentUserData: {},
         currentEmployeeLeaveApplications: {},
         currentEmployeeLeaveAllocations: {},
+        currentEmployeeProfilePicture: '',
         APIENDPOINTS: {
             CURRENTUSER: 'api/users/current', // Current logged in user
             CURRENTEMPLOYEE: 'api/users@employee', // employee details
-            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employee@leaveApplications', // current employee leave applications
-            CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employee@leaveAllocations', // current employee leave allocations
+            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
+            CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
+            CURRENT_EMPLOYEE_PROFILE_PICTURE: 'api/employees@picture', // current employee profile picture
             SEARCH: 'https://yesno.wtf/api'
         },
         searchResults: '',
@@ -1486,6 +1488,16 @@ var app = new Vue({
                                 console.log(v.currentEmployeeLeaveAllocations);
                             }).catch(function (error) {
                                 console.log("Error fetching leave allocations data.");
+                                console.log(error);
+                            });
+
+                            // Fetch current employee's profile picture
+
+                            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id)).then(function (response) {
+                                v.currentEmployeeProfilePicture = response.data.data;
+                                console.log(v.currentEmployeeProfilePicture);
+                            }).catch(function (error) {
+                                console.log("Error fetching profile picture.");
                                 console.log(error);
                             });
                         } else {

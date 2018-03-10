@@ -21,26 +21,26 @@ class Employee extends Model
 
     // Employee leave allocations
     public function Employee_leave_allocations(){
-        return $this->hasMany(EmployeeLeaveAllocation::class,"Employee_No","id")
+        return $this->hasMany(EmployeeLeaveAllocation::class,"Employee_No","No")
             ->orderByDesc("Leave_Period");
     }
 
     // Employee leave applications
     public function Employee_leave_applications(){
-        return $this->hasMany(EmployeeLeaveApplication::class,"Employee_No","id")
+        return $this->hasMany(EmployeeLeaveApplication::class,"Employee_No","No")
             ->orderByDesc("Leave_Period");
     }
 
     //Gets employee approval request
     public function Approval_Request(){
-        return $this->hasMany(ApprovalEntry::class,"user_id","id")
+        return $this->hasMany(ApprovalEntry::class,"Employee_No","No")
             ->join("employee_approvers","employee_approvers.id","=","approval_entries.Approver_id")
             ->join("approval_templates","approval_templates.id","=","approval_entries.Approval_template");
     }
 
     //Gets Employee leave planners
     public function Employee_Leave_Planners(){
-        return $this->hasMany(LeavePlanner::class,"Employee_No","id");
+        return $this->hasMany(LeavePlanner::class,"Employee_No","No");
     }
 
     public function user(){
