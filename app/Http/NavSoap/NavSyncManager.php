@@ -27,21 +27,30 @@ class NavSyncManager{
     public function sync(){
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
-//        $employees = $this->get($this->config->NAV_SOAP_EMPLOYEE)->Employees;
-//        foreach ($employees as $employee){
-//            print ("Profile Pic for: $employee->First_Name $employee->Last_Name");
-//            print_r($this->getProfilePic($this->config->NAV_SOAP_PROFILE_PIC, ["empNo" => $employee->No]));
-//            print ("\n\n");
-//        }
+
         foreach ($this->syncClasses as $model => $props){
             $this->syncTable($model, $props["endpoint"], $props["search_fields"]);
         }
+
+        $employees = $this->get($this->config->NAV_SOAP_EMPLOYEE)->Employees;
+        foreach ($employees as $employee){
+            print ("Profile Pic for: $employee->First_Name $employee->Last_Name");
+            $encoded_image = $this->getProfilePic($this->config->NAV_SOAP_PROFILE_PIC, ["empNo" => $employee->No]);
+
+            $instance = Employee::where('No', $employee->No)->first();
+            if (!$instance->saveProfilePic($encoded_image)) print "Failed to save prof pic\n";
+            print ("\n\n");
+        }
+
 
         print ("--------------- NAV SYNCING ENDED -----------------");
         print ("\n\n");
     }
 
     public function syncTable($model, $endpoint, $search_fields){
+        print ("\n\n");
+        print ("--------------- SNYNCING $endpoint ---------------\n");
+
         $records = get_object_vars($this->get($endpoint));
         $records = reset($records);
         foreach ($records as $record){
@@ -73,6 +82,9 @@ class NavSyncManager{
                 print ($e->getMessage()."\n");
             }
         }
+
+        print ("\n\n");
+        print ("--------------- END SNYNCING $endpoint ---------------\n");
     }
 
     public function get($endpoint,array $params= null, array $filters = null, $callback = null){

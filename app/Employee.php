@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class Employee extends Model
 {
@@ -45,5 +46,39 @@ class Employee extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function saveProfilePic($encodedImage){
+        try{
+            $decodedImage = base64_decode($encodedImage);
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimetype = $finfo->buffer($decodedImage);
+            $mime_arr = explode('/', $mimetype );
+            $extension = end($mime_arr);
+            switch ($extension){
+                case 'x-ms-bmp':
+                    $extension = "bmp";
+                    break;
+            }
+            $filename = "image.$extension";
+            $path = "employees/$this->No/profile_picture/$filename";
+
+            if($extension != "x-empty"){
+                Storage::disk('local')->put($path, $decodedImage);
+                $this->Profile_Picture = $filename;
+                $this->save();
+            }
+            else{
+                $this->Profile_Picture = null;
+                $this->save();
+            }
+            return true;
+        }
+        catch (\Exception $e){
+            print($e);
+            return false;
+        }
+
+
     }
 }

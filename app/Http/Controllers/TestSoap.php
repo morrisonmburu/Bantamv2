@@ -7,6 +7,8 @@ use GuzzleHttp\Client;
 use App\Http\Controllers\EmployeeController;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
+use Illuminate\Support\Facades\Storage;
+
 class TestSoap extends Controller
 {
     public function test()
@@ -97,7 +99,6 @@ class TestSoap extends Controller
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
 
         $data = explode( ',', $base64 );
 
