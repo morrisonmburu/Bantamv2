@@ -251,34 +251,34 @@
                                 <h4 class="modal-title">New application</h4>
                             </div>
                             <div class="modal-body">
-                                <form role="form" >
+                                <form role="form" @submit.prevent="calculate">
                                     <div class="form-group"><label>Leave type</label>
-                                        <select class="form-control col-x-12" name="leave_code" id="leave_code">
-                                            <option>1</option>
+                                        <select class="form-control col-x-12" name="leave_code" id="leave_code" v-model="formData.leave_code">
+                                            <option >1</option>
                                             <option>2</option>
                                             <option>3</option>
                                             <option>4</option>
                                         </select>
                                     </div>
                                     <div class="form-group"><label>Start Date</label>
-                                        <div class="input-group date" data-provide="datepicker">
+                                        <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" name="start_date" id="start_date">
+                                            <input type="text" class="form-control" name="start_date" id="start_date"  v-model="formData.start_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Number of days</label>
-                                        <input type="number" placeholder="Number of days" class="form-control" name="no_of_days" id="no_of_days"></div>
+                                        <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days"></div>
                                     <div class="text-center">
-                                        <button class="ladda-button btn btn-primary" data-style="expand-right" type="submit"><strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
+                                        <button class="ladda-button btn btn-primary" data-style="expand-right" @click="calculate"> <strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
                                     </div>
                                     <div class="form-group"><label>End Date</label>
                                         <div class="input-group date" data-provide="datepicker">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly name="end_date" id="end_date">
+                                            <input type="text" class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Return Date</label>
@@ -286,11 +286,11 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly name="return_date" id="return_date">
+                                            <input type="text" class="form-control" readonly name="return_date" v-bind="formData.return_date" id="return_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Comments</label>
-                                        <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
+                                        <textarea class="form-control" rows="2" id="comment" name="comment" v-bind="formData.comment"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -314,9 +314,37 @@
             'currentUserData',
             'swapComponent'
         ],
+        data : function(){
+            return {
+                APIENDPOINT : {
+                    CALCULATE : 'api/leave_applications/calculate_leave_dates'
+                },
+                formData: {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : ''
+                }
+            }
+        },
         methods : {
             calculate : function () {
-                
+
+                var v = this
+                axios.post(
+                    this.APIENDPOINT.CALCULATE,
+                    this.formData,
+                    {headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }})
+                    .then(function (response) {
+                        console.log(response.data)
+                        v.formData.end_date = response.data.data
+                        v.formData.return_date = response.data.data
+                    })
+
             }
         }
         

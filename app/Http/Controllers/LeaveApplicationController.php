@@ -112,7 +112,7 @@ class LeaveApplicationController extends Controller
     public function calculateLeaveDates(Request $request){
         $validatedData = $request->validate([
             'start_date' => 'required|date',
-            'no_of_days' => 'required|decimal',
+            'no_of_days' => 'required|numeric',
             'leave_code' => 'required'
         ]);
 
@@ -120,7 +120,7 @@ class LeaveApplicationController extends Controller
         $result = $manager->calculateLeaveDates(
             $validatedData['leave_code'],
             Auth::user()->Employee_Record->No,
-            Auth::user()->Employee_Record->Base_Calendar,
+            Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
             $validatedData['start_date'],
             $validatedData['no_of_days']
         );
