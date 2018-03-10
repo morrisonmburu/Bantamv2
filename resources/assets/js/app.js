@@ -40,8 +40,8 @@ const app = new Vue({
         APIENDPOINTS     : {
             CURRENTUSER                             : 'api/users/current',                   // Current logged in user
             CURRENTEMPLOYEE                         : 'api/users@employee',                  // employee details
-            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employee@leaveApplications',      // current employee leave applications
-            CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employee@leaveAllocations',        // current employee leave allocations
+            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees@leave_applications',    // current employee leave applications
+            CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
             SEARCH                                  : 'https://yesno.wtf/api'
         },
         searchResults : '',
