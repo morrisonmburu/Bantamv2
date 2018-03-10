@@ -32,7 +32,7 @@ class NavSyncManager{
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
 
-//        $this->pushTable(EmployeeLeaveApplication::class, $this->config[EmployeeLeaveApplication::class]["endpoint"]);
+        $this->pushTable(EmployeeLeaveApplication::class, $this->syncClasses[EmployeeLeaveApplication::class]["endpoint"]);
         foreach ($this->syncClasses as $model => $props){
             $this->getTable($model, $props["endpoint"], $props["search_fields"]);
         }
@@ -66,48 +66,51 @@ class NavSyncManager{
     }
 
     public function getTable($model, $endpoint, $search_fields){
-        print ("\n\n");
-        print ("--------------- SNYNCING $endpoint ---------------\n");
 
-        if($model::all()->isEmpty()){
-            $records = get_object_vars($this->get($endpoint));
-        }
-
-        else{
-            $records = get_object_vars($this->get($endpoint, null, ['Web_Sync' => 0]));
-        }
+        try {
 
 
-        $records = reset($records);
-        if(!$records) return;
-        foreach ($records as $record){
+            print ("\n\n");
+            print ("--------------- SNYNCING $endpoint ---------------\n");
 
-            try{
-                $instance = new $model();
-                $data = (array)$record;
-                try{
-                    unset($data["Key"]);
+            if ($model::all()->isEmpty()) {
+                $records = get_object_vars($this->get($endpoint));
+            } else {
+                $records = get_object_vars($this->get($endpoint, null, ['Web_Sync' => 0]));
+            }
+
+
+            $records = reset($records);
+            if (!$records) return;
+            foreach ($records as $record) {
+
+                try {
+                    $instance = new $model();
+                    $data = (array)$record;
+                    try {
+                        unset($data["Key"]);
+                    } catch (\Exception $e) {
+
+                    };
+                    $instance->fill($data);
+                    $instance->Nav_Sync = True;
+                    $instance->Web_Sync = True;
+                    $instance->save();
+
+                    // Set NAV Synced to True NAV
+                    $filters = array_flip($search_fields);
+                    array_walk($filters, function (&$var, $key) use ($instance) {
+                        $var = $instance[$key];
+                    });
+                    $this->update($endpoint, $instance, $filters);
+
+
+                } catch (\Exception $e) {
+                    print ($e->getMessage() . "\n");
                 }
-                catch (\Exception $e){
-
-                };
-                $instance->fill($data);
-                $instance->Nav_Sync = True;
-                $instance->Web_Sync = True;
-                $instance->save();
-
-                // Set NAV Synced to True NAV
-                $filters = array_flip($search_fields);
-                array_walk($filters,function (&$var, $key) use($instance){
-                    $var = $instance[$key];
-                });
-                $this->update($endpoint, $instance, $filters);
-
-
             }
-            catch (\Exception $e){
-                print ($e->getMessage()."\n");
-            }
+        }catch (\Exception $e){
+            print ($e);
         }
 
         print ("\n\n");
