@@ -15,14 +15,20 @@ class CreateEmployeeApproversTable extends Migration
     public function up()
     {
         Schema::create('employee_approvers', function (Blueprint $table) {
-            $table->increments('approver_id');
-            $table->integer('employee_id',false,true);
-            $table->integer('sequence_No',false,true);
-            $table->string('comments',250);
-            $table->boolean("nav_synced")->default(false);
-            $table->boolean("web_synced")->default(true);
-            $table->dateTime("last_nav_synced")->nullable();
-            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->increments('id');
+            $table->string('Employee',50);
+            $table->integer('Approval_Level');
+            $table->string('Approver',50)->unique();
+            $table->string("NamesApprvr");
+            $table->string("Comments", 50)->nullable();
+            $table->foreign('Employee')->references('No')->on('employees');
+            $table->unique(['Employee', 'Approver']);
+
+            $table->boolean("Nav_Sync")->default(false);
+            $table->boolean("Web_Sync")->default(true);
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+
             $table->timestamps();
         });
     }

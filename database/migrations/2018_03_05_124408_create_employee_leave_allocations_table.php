@@ -27,11 +27,14 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
             $table->decimal('Taken',5,2);
             $table->decimal('Balance',5,2);
             $table->string('Comments',250)->nullable();
+
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
             $table->dateTime("Nav_Sync_TimeStamp")->nullable();
             $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+
             $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');
+            $table->unique(['Employee_No', 'Leave_Period']);
             $table->timestamps();
         });
     }

@@ -16,11 +16,11 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
     {
         Schema::create('employee_leave_applications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Leave_Period',50);
+            $table->string('Leave_Period',50)->nullable();
             $table->string('Employee_No',50);
-            $table->string('Status',50);
+            $table->string('Status',50)->nullable();
             $table->string('Application_Code',50)->unique();
-            $table->string('Leave_Code', 50);
+            $table->string('Leave_Code', 50)->nullable();
             $table->decimal("Days_Applied", 5, 2);
             $table->date('Start_Date');
             $table->date('End_Date');
@@ -28,11 +28,11 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->date('Application_Date');
             $table->string("Next_Approver", 50)->nullable();
             $table->decimal("Approved_Days", 5, 2);
-            $table->date('Approved_Start_Date');
-            $table->date('Approved_End_Date');
-            $table->date('Approved_Return_Date');
-            $table->date('Approval_Date');
-            $table->boolean('Taken');
+            $table->date('Approved_Start_Date')->nullable();
+            $table->date('Approved_End_Date')->nullable();
+            $table->date('Approved_Return_Date')->nullable();
+            $table->date('Approval_Date')->nullable();
+            $table->boolean('Taken')->default(false);
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
             $table->dateTime("Nav_Sync_TimeStamp")->nullable();
