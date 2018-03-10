@@ -8,10 +8,10 @@
             <div class="profile-info">
                 <div class="">
                     <div>
-                        <h2 class="no-margins">
-                            {{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}
-                        </h2>
-                        <h4>&nbsp;&nbsp;&nbsp;{{currentUserData.Job_Title}}</h4>
+                        <h1 class="no-margins" >
+                            {{fullNames}}
+                        </h1>
+                        <h4>{{currentUserData.Job_Title}}</h4>
                         <small>
                             Bio:
                         </small>
@@ -19,41 +19,51 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <table class="table small m-b-xs">
+        <div class="col-md-6">
+            <table class="table table-condensed">
                 <tbody>
                 <tr>
                     <td>
-                        <strong>Company Email</strong> {{currentUserData.Company_E_Mail}}
+                        <strong>Title</strong>
                     </td>
                     <td>
-                        <strong>Address</strong> {{currentUserData.Address}}
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Initials</strong> {{currentUserData.Initials}}
-                    </td>
-                    <td>
-                        <strong>Phone No.</strong> {{currentUserData.Mobile_Phone_No}}
+                       {{currentUserData.Title}}
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <strong>Status</strong> {{currentUserData.Status}}
+                        <strong>Department</strong>
                     </td>
                     <td>
-                        <strong>Title</strong> {{currentUserData.Title}}
+                        {{currentUserData.Department}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Date of Join</strong>
+                    </td>
+                    <td>
+                        {{currentUserData.Employment_Date}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Date of Birth</strong>
+                    </td>
+                    <td>
+                        {{currentUserData.Birth_Date}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Name of Manager</strong>
+                    </td>
+                    <td>
+                        {{currentUserData.Company_E_Mail}}
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </div>
-        <div class="col-md-3">
-            <small>Sales in last 24h</small>
-            <h2 class="no-margins">206 480</h2>
-            <div id="sparkline1"></div>
         </div>
     </div>
     <div class="row">
@@ -62,9 +72,9 @@
                 <div class="col-lg-12">
                     <div class="tabs-container">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">Personal</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-3">Employment</a></li>
-                            <li class=""><a data-toggle="tab" href="#tab-4">Contacts</a></li>
+                            <li class="active"><a data-toggle="tab" href="#tab-1">Personal info</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2">Contacts info</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3">Bank Details</a></li>
                         </ul>
                         <div class="tab-content">
                             <div id="tab-1" class="tab-pane active">
@@ -72,34 +82,54 @@
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Names</th>
-                                            <th>{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</th>
+                                            <th>ID Number</th>
+                                            <th>{{currentUserData.National_ID}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td>Initials</td>
-                                            <td>{{currentUserData.Title}}</td>
+                                            <td>NSSF</td>
+                                            <td>{{currentUserData.NSSF_No}}</td>
                                         </tr>
                                         <tr>
-                                            <td>DOB</td>
-                                            <td>{{currentUserData.Birth_Date}}</td>
+                                            <td>NHIF</td>
+                                            <td>{{currentUserData.NHIF_No}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Gender</td>
-                                            <td>{{currentUserData.Gender}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>National ID</td>
-                                            <td>{{currentUserData.National_ID}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Passport No</td>
+                                            <td>Passport</td>
                                             <td>{{currentUserData.Passport_No}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Pin No</td>
-                                            <td>{{currentUserData.PIN_No}}</td>
+                                            <td>Helb</td>
+                                            <td>{{currentUserData.HELB_NO}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pin Number</td>
+                                            <td>{{currentUserData.Passport_No}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane">
+                                <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <td>Phone 1</td>
+                                            <td>{{currentUserData.Phone_No}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone 2</td>
+                                            <td>{{currentUserData.Mobile_Phone_No}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>{{currentUserData.E_Mail}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>{{currentUserData.Address}}</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -110,100 +140,46 @@
                                     <table class="table table-hover">
                                         <tbody>
                                         <tr>
-                                            <td>Employment Date</td>
-                                            <td>{{currentUserData.Employment_Date}}</td>
+                                            <td>Bank Name</td>
+                                            <td> </td>
                                         </tr>
                                         <tr>
-                                            <td>Employee No.</td>
-                                            <td>{{currentUserData.No}}</td>
+                                            <td>Branch</td>
+                                            <td> </td>
                                         </tr>
                                         <tr>
-                                            <td>Job Title</td>
-                                            <td>{{currentUserData.Job_Title}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Department</td>
-                                            <td>{{currentUserData.Department}}e</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NSSF</td>
-                                            <td>{{currentUserData.NSSF_No}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>NHIF</td>
-                                            <td>{{currentUserData.NHIF_No}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>HELB NO</td>
-                                            <td>{{currentUserData.HELB_NO}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Social Security No.</td>
-                                            <td>{{currentUserData.Social_Security_No}}</td>
+                                            <td>Account No.</td>
+                                            <td></td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div id="tab-4" class="tab-pane">
-                                <div class="panel-body">
-                                    <div class="col-lg-12">
-                                        <div class="contact-box">
-                                            <a href="#">
-                                                <div class="col-sm-3">
-                                                    <div class="text-center">
-                                                        <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a6.jpg">
-                                                        <div class="m-t-xs font-bold">{{currentUserData.Job_Title}}</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-9">
-                                                    <h3><strong>{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</strong></h3>
-                                                    <p><i class="fa fa-map-marker"></i> {{currentUserData.Address}}</p>
-                                                    <address>
-                                                        <strong>{{currentUserData.Job_Title}}</strong><br>
-                                                        {{currentUserData.E_Mail}}<br>
-                                                        {{currentUserData.Post_Code}}<br>
-                                                        {{currentUserData.City}}<br>
-                                                        <abbr title="Phone">P:</abbr> {{currentUserData.Phone_No}}
-                                                    </address>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
 
                     </div>
                 </div>
             </div>
+
+            <!--Approvers-->
             <div class="row">
                 <div class="col-lg-6">
                     <div class="contact-box center-version">
-
                         <a href="profile.html">
-
                             <img alt="image" class="img-circle" src="img/a2.jpg">
-
-
                             <h3 class="m-b-xs"><strong>John Smith</strong></h3>
-
-                            <div class="font-bold">Graphics designer</div>
-                            <address class="m-t-md">
-                                <strong>Twitter, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            <div class="font-bold">Manager</div>
+                            <address class="m-t-xs">
+                                johnsmith@email.com<br>
+                                <abbr title="Phone">P:</abbr>  {{currentUserData.Phone_No}} &nbsp; {{ currentUserData.Phone_No}}
                             </address>
-
                         </a>
                         <div class="contact-box-footer">
                             <div class="m-t-xs btn-group">
                                 <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
                                 <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
                             </div>
                         </div>
 
@@ -211,28 +187,19 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-box center-version">
-
                         <a href="profile.html">
-
-                            <img alt="image" class="img-circle" src="img/a1.jpg">
-
-
-                            <h3 class="m-b-xs"><strong>Alex Johnatan</strong></h3>
-
-                            <div class="font-bold">CEO</div>
-                            <address class="m-t-md">
-                                <strong>Twitter, Inc.</strong><br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                            <img alt="image" class="img-circle" src="img/a2.jpg">
+                            <h3 class="m-b-xs"><strong>John Smith</strong></h3>
+                            <div class="font-bold">Manager</div>
+                            <address class="m-t-xs">
+                                johnsmith@email.com<br>
+                                <abbr title="Phone">P:</abbr> {{currentUserData.Phone_No}}
                             </address>
-
                         </a>
                         <div class="contact-box-footer">
                             <div class="m-t-xs btn-group">
                                 <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
                                 <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
                             </div>
                         </div>
 
@@ -328,6 +295,14 @@
             'currentUserData',
             'swapComponent'
         ],
+        data : function () {
+            return {
+                fullNames : this.currentUserData.First_Name.trim() +' '+ this.currentUserData.Middle_Name.trim() +' '+ this.currentUserData.Last_Name.trim()
+            }
+        },
+        methods : {
+
+        }
     }
 </script>
 
