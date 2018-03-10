@@ -33,12 +33,16 @@ const app = new Vue({
     el: '#app',
     data: {
         currentComponent: 'dashboard',
-        currentUser      : {},
-        currentUserData  : {},
+        currentUser                         : {},
+        currentUserData                     : {},
+        currentEmployeeLeaveApplications    : {},
+        currentEmployeeLeaveAllocations     : {},
         APIENDPOINTS     : {
-            CURRENTUSER            : 'api/users/current',                   // Current logged in user
-            CURRENTEMPLOYEE        : 'api/users@employee',                 // employee details
-            SEARCH                 : 'https://yesno.wtf/api'
+            CURRENTUSER                             : 'api/users/current',                   // Current logged in user
+            CURRENTEMPLOYEE                         : 'api/users@employee',                  // employee details
+            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employee@leaveApplications',      // current employee leave applications
+            CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS     : 'api/employee@leaveAllocations',        // current employee leave allocations
+            SEARCH                                  : 'https://yesno.wtf/api'
         },
         searchResults : '',
         searchTerm : ''
@@ -66,16 +70,45 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
-
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
-                                console.log(v.currentUserData)
+                                // console.log(v.currentUserData.id)
+                                if (Object.keys(v.currentUserData).length !== 0 ){
+
+                                    // Fetch current employee's Leave applications
+                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS,v.currentUserData.id))
+                                        .then(function (response){
+                                            v.currentEmployeeLeaveApplications = response.data.data
+                                            console.log(v.currentEmployeeLeaveApplications)
+                                        })
+                                        .catch(function (error) {
+                                            console.log("Error fetching leave applications data.");
+                                            console.log(error);
+                                        })
+
+                                    // Fetch current employee's leave allocations
+
+                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS,v.currentUserData.id))
+                                        .then(function (response){
+                                            v.currentEmployeeLeaveAllocations = response.data.data
+                                            console.log(v.currentEmployeeLeaveAllocations)
+                                        })
+                                        .catch(function (error) {
+                                            console.log("Error fetching leave allocations data.");
+                                            console.log(error);
+                                        })
+                                }else{
+                                    console.log("Employee data is blank");
+                                }
                             })
                             .catch(function (error) {
-                                console.log(error)
+                                console.log("Error encountered while fetching current employee data.");
+                                console.log(error);
                             })
+                    }else{
+                        console.log("There is no such user in the system");
                     }
 
                 })

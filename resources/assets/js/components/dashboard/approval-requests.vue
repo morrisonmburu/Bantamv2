@@ -133,7 +133,7 @@
                     <div class="modal-content animated bounceInRight">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title">Approval processing</h4>
+                            <h5 class="modal-title">Approval processing</h5>
                         </div>
                         <div class="modal-body">
                             <div class="ibox-content inspinia-timeline">

@@ -7,6 +7,7 @@ use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\User;
 use App\Employee;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,24 @@ Route::prefix('users')->group(function () {
 });
 Route::resource('users', 'UserController');
 
-
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
 });
 Route::resource('employees', 'EmployeeController');
 
+// Employee Leave Applications API
+Route::prefix('employee')->group(function (){
+    Route::get('{employee}/leaveApplications', 'LeaveApplicationController@EmployeeLeaveApplications');
+});
+Route::resource('leaveApplications','LeaveApplicationController');
+// END of Employee Leave Applications API
 
+// Employee leave allocations API
+Route::prefix('employee')->group(function (){
+    Route::get('{employee}/leaveAllocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
+});
+Route::resource('leaveAllocations','LeaveAllocationsController');
+// END of Employee leave allocations
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

@@ -10,7 +10,7 @@ class Employee extends Model
 {
     protected $table="employees";
     public $incrementing =true;
-    protected $primaryKey="employee_id";
+    protected $primaryKey="id";
     public $timestamps = true;
 
     public function __construct(array $attributes = [])
@@ -21,13 +21,13 @@ class Employee extends Model
 
     // Employee leave allocations
     public function Employee_leave_allocations(){
-        return $this->hasMany(EmployeeLeaveAllocation::class,"employee_no","employee_id")
+        return $this->hasMany(EmployeeLeaveAllocation::class,"Employee_No","id")
             ->orderByDesc("Leave_Period");
     }
 
     // Employee leave applications
     public function Employee_leave_applications(){
-        return $this->hasMany(EmployeeLeaveApplication::class,"employee_no","employee_id")
+        return $this->hasMany(EmployeeLeaveApplication::class,"Employee_No","id")
             ->orderByDesc("Leave_Period");
     }
 
@@ -40,7 +40,7 @@ class Employee extends Model
 
     //Gets Employee leave planners
     public function Employee_Leave_Planners(){
-        return $this->hasMany(LeavePlanner::class,"Employee_No","Employee_id");
+        return $this->hasMany(LeavePlanner::class,"Employee_No","id");
     }
 
     public function user(){
