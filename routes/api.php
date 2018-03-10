@@ -34,6 +34,10 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
 });
 Route::resource('employees', 'EmployeeController');
+//calculateLeaveDates
+Route::prefix('leave_applications')->group(function () {
+    Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
+});
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationsController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {

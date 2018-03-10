@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeLeaveApplication;
+use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\LeaveApplicationResource;
 use Illuminate\Http\Request;
 use App\Employee;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
 {
@@ -89,5 +91,25 @@ class LeaveApplicationController extends Controller
         if ($request->is('api*')){
             return new LeaveApplicationResource($employee->Employee_leave_applications);
         }
+    }
+
+    public function calculateLeaveDates(Request $request){
+        $validatedData = $request->validate([
+            'start_date' => 'required|date',
+            'no_of_days' => 'required|decimal',
+            'leave_code' => 'required'
+        ]);
+
+        $manager = new NavSyncManager();
+        $result = $manager->calculateLeaveDates(
+            $validatedData['leave_code'],
+            Auth::user()->Employee_Record->No,
+            Auth::user()->Employee_Record->Base_Calendar,
+            $validatedData['start_date'],
+            $validatedData['no_of_days']
+        );
+
+        return json_encode($result);
+
     }
 }
