@@ -60,7 +60,7 @@ class Employee extends Model
                     $extension = "bmp";
                     break;
             }
-            $filename = image.$extension;
+            $filename = "image.$extension";
             $path = "employees/$this->No/profile_picture/$filename";
 
             if($extension != "x-empy"){

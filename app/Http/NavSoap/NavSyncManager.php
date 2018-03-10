@@ -48,6 +48,9 @@ class NavSyncManager{
     }
 
     public function syncTable($model, $endpoint, $search_fields){
+        print ("\n\n");
+        print ("--------------- SNYNCING $endpoint ---------------\n");
+
         $records = get_object_vars($this->get($endpoint));
         $records = reset($records);
         foreach ($records as $record){
@@ -79,6 +82,9 @@ class NavSyncManager{
                 print ($e->getMessage()."\n");
             }
         }
+
+        print ("\n\n");
+        print ("--------------- END SNYNCING $endpoint ---------------\n");
     }
 
     public function get($endpoint,array $params= null, array $filters = null, $callback = null){
