@@ -3,7 +3,7 @@
     <div class="row m-b-lg m-t-lg">
         <div class="col-md-6">
             <div class="profile-image">
-                <img src="img/a4.jpg" class="img-circle circle-border m-b-md" alt="profile">
+                <img v-bind:src=" currentUser.profPic"  class="img-circle circle-border m-b-md" alt="profile">
             </div>
             <div class="profile-info">
                 <div class="">
@@ -301,6 +301,9 @@
             }
         },
         methods : {
+
+        },
+        created : function () {
 
         }
     }

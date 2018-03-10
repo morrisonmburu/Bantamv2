@@ -78,7 +78,14 @@ const app = new Vue({
                             .then(function (response) {
                                 v.currentUserData = response.data.data
                                  console.log(v.currentUserData)
+
                                 if (Object.keys(v.currentUserData).length !== 0 ){
+
+                                    // get profile picture
+                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id))
+                                        .then(function (response) {
+                                            this.currentUser.profPic = response.data.data
+                                        })
 
                                     // Fetch current employee's Leave applications
                                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS,v.currentUserData.id))

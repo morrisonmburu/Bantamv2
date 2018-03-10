@@ -1471,7 +1471,13 @@ var app = new Vue({
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
                         console.log(v.currentUserData);
+
                         if (Object.keys(v.currentUserData).length !== 0) {
+
+                            // get profile picture
+                            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id)).then(function (response) {
+                                this.currentUser.profPic = response.data.data;
+                            });
 
                             // Fetch current employee's Leave applications
                             axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id)).then(function (response) {
@@ -45985,7 +45991,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46029,13 +46035,6 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -46978,7 +46977,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47287,7 +47286,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             fullNames: this.currentUserData.First_Name.trim() + ' ' + this.currentUserData.Middle_Name.trim() + ' ' + this.currentUserData.Last_Name.trim()
         };
     },
-    methods: {}
+    methods: {},
+    created: function created() {}
 });
 
 /***/ }),
@@ -47301,7 +47301,12 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "row m-b-lg m-t-lg" }, [
       _c("div", { staticClass: "col-md-6" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "profile-image" }, [
+          _c("img", {
+            staticClass: "img-circle circle-border m-b-md",
+            attrs: { src: _vm.currentUser.profPic, alt: "profile" }
+          })
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "profile-info" }, [
           _c("div", {}, [
@@ -47330,7 +47335,7 @@ var render = function() {
         _c("table", { staticClass: "table table-condensed" }, [
           _c("tbody", [
             _c("tr", [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47342,7 +47347,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47354,7 +47359,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47366,7 +47371,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47378,7 +47383,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47398,7 +47403,7 @@ var render = function() {
         _c("div", { staticClass: "row m-b-lg" }, [
           _c("div", { staticClass: "col-lg-12" }, [
             _c("div", { staticClass: "tabs-container" }, [
-              _vm._m(6),
+              _vm._m(5),
               _vm._v(" "),
               _c("div", { staticClass: "tab-content" }, [
                 _c(
@@ -47501,7 +47506,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(7)
+                _vm._m(6)
               ])
             ])
           ])
@@ -47516,7 +47521,7 @@ var render = function() {
                   attrs: { alt: "image", src: "img/a2.jpg" }
                 }),
                 _vm._v(" "),
-                _vm._m(8),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
                 _vm._v(" "),
@@ -47537,7 +47542,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(9)
+              _vm._m(8)
             ])
           ]),
           _vm._v(" "),
@@ -47549,7 +47554,7 @@ var render = function() {
                   attrs: { alt: "image", src: "img/a2.jpg" }
                 }),
                 _vm._v(" "),
-                _vm._m(10),
+                _vm._m(9),
                 _vm._v(" "),
                 _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
                 _vm._v(" "),
@@ -47568,28 +47573,17 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(11)
+              _vm._m(10)
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(12)
+      _vm._m(11)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-image" }, [
-      _c("img", {
-        staticClass: "img-circle circle-border m-b-md",
-        attrs: { src: "img/a4.jpg", alt: "profile" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

@@ -21,15 +21,8 @@
             <li><a href="#" @click="swapComponent('profile')">Profile</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Messages</a></li>
-
-
-
-
-
         </ul>
-
     </div>
-
 
 </template>
 
