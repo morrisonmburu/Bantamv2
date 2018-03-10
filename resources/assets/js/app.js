@@ -44,6 +44,7 @@ const app = new Vue({
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees@leave_applications',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
             CURRENT_EMPLOYEE_PROFILE_PICTURE        : 'api/employees@picture',               // current employee profile picture
+            CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
             SEARCH                                  : 'https://yesno.wtf/api'
         },
         searchResults : '',
@@ -72,11 +73,12 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
+                    console.log(v.currentUser)
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
-                                // console.log(v.currentUserData.id)
+                                 console.log(v.currentUserData)
                                 if (Object.keys(v.currentUserData).length !== 0 ){
 
                                     // Fetch current employee's Leave applications
@@ -91,7 +93,6 @@ const app = new Vue({
                                         })
 
                                     // Fetch current employee's leave allocations
-
                                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS,v.currentUserData.id))
                                         .then(function (response){
                                             v.currentEmployeeLeaveAllocations = response.data.data

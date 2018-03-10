@@ -24,7 +24,11 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
+                        <ul id="example-1">
+                            <li v-for="allocation in currentEmployeeLeaveAllocations">
+                                {{ allocation.Employee_No}}
+                            </li>
+                        </ul>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -96,7 +100,8 @@
         props : [
             'currentUser',
             'currentUserData',
-            'swapComponent'
+            'swapComponent',
+            'currentEmployeeLeaveAllocations'
         ],
     }
 </script>

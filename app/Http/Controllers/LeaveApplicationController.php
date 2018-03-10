@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeLeaveApplication;
+use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\LeaveApplicationResource;
 use Illuminate\Http\Request;
+use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
 use App\Employee;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
 {
@@ -35,9 +38,24 @@ class LeaveApplicationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
-        //
+        $data = [
+                "Employee_No"=>$request->Employee_No,
+                "Leave_Period"=>$request->Leave_Period,
+                "Leave_Code"=>$request->Leave_Code,
+                "Approved_Start_Date"=>$request->start_date,
+                "Approved_Days"=>$request->no_of_days,
+                "Approved_End_Date"=>$request->end_date,
+                "Approved_Return_Date"=>$request->return_date
+            ];
+        try{
+            if ($LeaveApplication->save($data)){
+                return response('Success', 200)->header('Content-Type', 'text/plain');
+            }
+        }catch (\Exception $e){
+            return  response('Error occurred while creating leave application :'.$e->getMessage(), 500)->header('Content-Type', 'text/plain');
+        }
     }
 
     /**
@@ -89,5 +107,25 @@ class LeaveApplicationController extends Controller
         if ($request->is('api*')){
             return new LeaveApplicationResource($employee->Employee_leave_applications);
         }
+    }
+
+    public function calculateLeaveDates(Request $request){
+        $validatedData = $request->validate([
+            'start_date' => 'required|date',
+            'no_of_days' => 'required|decimal',
+            'leave_code' => 'required'
+        ]);
+
+        $manager = new NavSyncManager();
+        $result = $manager->calculateLeaveDates(
+            $validatedData['leave_code'],
+            Auth::user()->Employee_Record->No,
+            Auth::user()->Employee_Record->Base_Calendar,
+            $validatedData['start_date'],
+            $validatedData['no_of_days']
+        );
+
+        return json_encode($result);
+
     }
 }

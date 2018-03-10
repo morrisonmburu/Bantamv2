@@ -1439,6 +1439,7 @@ var app = new Vue({
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
             CURRENT_EMPLOYEE_PROFILE_PICTURE: 'api/employees@picture', // current employee profile picture
+            CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees@leave_types', // current employee leave types
             SEARCH: 'https://yesno.wtf/api'
         },
         searchResults: '',
@@ -1466,10 +1467,11 @@ var app = new Vue({
             var v = this;
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER, '')).then(function (response) {
                 v.currentUser = response.data.data;
+                console.log(v.currentUser);
                 if (Object.keys(v.currentUser).length !== 0) {
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
-                        // console.log(v.currentUserData.id)
+                        console.log(v.currentUserData);
                         if (Object.keys(v.currentUserData).length !== 0) {
 
                             // Fetch current employee's Leave applications
@@ -1482,7 +1484,6 @@ var app = new Vue({
                             });
 
                             // Fetch current employee's leave allocations
-
                             axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS, v.currentUserData.id)).then(function (response) {
                                 v.currentEmployeeLeaveAllocations = response.data.data;
                                 console.log(v.currentEmployeeLeaveAllocations);
@@ -46978,7 +46979,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47278,43 +47279,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent'],
+    data: function data() {
+        return {
+            fullNames: this.currentUserData.First_Name.trim() + ' ' + this.currentUserData.Middle_Name.trim() + ' ' + this.currentUserData.Last_Name.trim()
+        };
+    },
+    methods: {}
 });
 
 /***/ }),
@@ -47333,21 +47307,15 @@ var render = function() {
         _c("div", { staticClass: "profile-info" }, [
           _c("div", {}, [
             _c("div", [
-              _c("h2", { staticClass: "no-margins" }, [
+              _c("h1", { staticClass: "no-margins" }, [
                 _vm._v(
                   "\r\n                            " +
-                    _vm._s(
-                      _vm.currentUserData.First_Name +
-                        " " +
-                        _vm.currentUserData.Middle_Name +
-                        " " +
-                        _vm.currentUserData.Last_Name
-                    ) +
+                    _vm._s(_vm.fullNames) +
                     "\r\n                        "
                 )
               ]),
               _vm._v(" "),
-              _c("h4", [_vm._v("   " + _vm._s(_vm.currentUserData.Job_Title))]),
+              _c("h4", [_vm._v(_vm._s(_vm.currentUserData.Job_Title))]),
               _vm._v(" "),
               _c("small", [
                 _vm._v(
@@ -47359,73 +47327,71 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-3" }, [
-        _c("table", { staticClass: "table small m-b-xs" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("table", { staticClass: "table table-condensed" }, [
           _c("tbody", [
             _c("tr", [
-              _c("td", [
-                _c("strong", [_vm._v("Company Email")]),
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.currentUserData.Company_E_Mail) +
-                    "\r\n                    "
-                )
-              ]),
+              _vm._m(1),
               _vm._v(" "),
               _c("td", [
-                _c("strong", [_vm._v("Address")]),
                 _vm._v(
-                  " " +
-                    _vm._s(_vm.currentUserData.Address) +
-                    "\r\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [
-                _c("strong", [_vm._v("Initials")]),
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.currentUserData.Initials) +
-                    "\r\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("strong", [_vm._v("Phone No.")]),
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.currentUserData.Mobile_Phone_No) +
-                    "\r\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [
-                _c("strong", [_vm._v("Status")]),
-                _vm._v(
-                  " " +
-                    _vm._s(_vm.currentUserData.Status) +
-                    "\r\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("strong", [_vm._v("Title")]),
-                _vm._v(
-                  " " +
+                  "\r\n                       " +
                     _vm._s(_vm.currentUserData.Title) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\r\n                        " +
+                    _vm._s(_vm.currentUserData.Department) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\r\n                        " +
+                    _vm._s(_vm.currentUserData.Employment_Date) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(4),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\r\n                        " +
+                    _vm._s(_vm.currentUserData.Birth_Date) +
+                    "\r\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(5),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\r\n                        " +
+                    _vm._s(_vm.currentUserData.Company_E_Mail) +
                     "\r\n                    "
                 )
               ])
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
@@ -47433,7 +47399,7 @@ var render = function() {
         _c("div", { staticClass: "row m-b-lg" }, [
           _c("div", { staticClass: "col-lg-12" }, [
             _c("div", { staticClass: "tabs-container" }, [
-              _vm._m(2),
+              _vm._m(6),
               _vm._v(" "),
               _c("div", { staticClass: "tab-content" }, [
                 _c(
@@ -47444,57 +47410,33 @@ var render = function() {
                       _c("table", { staticClass: "table table-hover" }, [
                         _c("thead", [
                           _c("tr", [
-                            _c("th", [_vm._v("Names")]),
+                            _c("th", [_vm._v("ID Number")]),
                             _vm._v(" "),
                             _c("th", [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.currentUserData.First_Name +
-                                    " " +
-                                    _vm.currentUserData.Middle_Name +
-                                    " " +
-                                    _vm.currentUserData.Last_Name
-                                )
-                              )
+                              _vm._v(_vm._s(_vm.currentUserData.National_ID))
                             ])
                           ])
                         ]),
                         _vm._v(" "),
                         _c("tbody", [
                           _c("tr", [
-                            _c("td", [_vm._v("Initials")]),
+                            _c("td", [_vm._v("NSSF")]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(_vm.currentUserData.Title))
+                              _vm._v(_vm._s(_vm.currentUserData.NSSF_No))
                             ])
                           ]),
                           _vm._v(" "),
                           _c("tr", [
-                            _c("td", [_vm._v("DOB")]),
+                            _c("td", [_vm._v("NHIF")]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(_vm.currentUserData.Birth_Date))
+                              _vm._v(_vm._s(_vm.currentUserData.NHIF_No))
                             ])
                           ]),
                           _vm._v(" "),
                           _c("tr", [
-                            _c("td", [_vm._v("Gender")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(_vm.currentUserData.Gender))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("National ID")]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(_vm.currentUserData.National_ID))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", [_vm._v("Passport No")]),
+                            _c("td", [_vm._v("Passport")]),
                             _vm._v(" "),
                             _c("td", [
                               _vm._v(_vm._s(_vm.currentUserData.Passport_No))
@@ -47502,10 +47444,18 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("tr", [
-                            _c("td", [_vm._v("Pin No")]),
+                            _c("td", [_vm._v("Helb")]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(_vm.currentUserData.PIN_No))
+                              _vm._v(_vm._s(_vm.currentUserData.HELB_NO))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", [_vm._v("Pin Number")]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.currentUserData.Passport_No))
                             ])
                           ])
                         ])
@@ -47514,71 +47464,37 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "tab-pane", attrs: { id: "tab-3" } }, [
+                _c("div", { staticClass: "tab-pane", attrs: { id: "tab-2" } }, [
                   _c("div", { staticClass: "panel-body" }, [
                     _c("table", { staticClass: "table table-hover" }, [
                       _c("tbody", [
                         _c("tr", [
-                          _c("td", [_vm._v("Employment Date")]),
+                          _c("td", [_vm._v("Phone 1")]),
                           _vm._v(" "),
                           _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.Employment_Date))
+                            _vm._v(_vm._s(_vm.currentUserData.Phone_No))
                           ])
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("td", [_vm._v("Employee No.")]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(_vm.currentUserData.No))])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Job Title")]),
+                          _c("td", [_vm._v("Phone 2")]),
                           _vm._v(" "),
                           _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.Job_Title))
+                            _vm._v(_vm._s(_vm.currentUserData.Mobile_Phone_No))
                           ])
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("td", [_vm._v("Department")]),
+                          _c("td", [_vm._v("Email")]),
                           _vm._v(" "),
-                          _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.Department) + "e")
-                          ])
+                          _c("td", [_vm._v(_vm._s(_vm.currentUserData.E_Mail))])
                         ]),
                         _vm._v(" "),
                         _c("tr", [
-                          _c("td", [_vm._v("NSSF")]),
+                          _c("td", [_vm._v("Address")]),
                           _vm._v(" "),
                           _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.NSSF_No))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("NHIF")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.NHIF_No))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("HELB NO")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(_vm._s(_vm.currentUserData.HELB_NO))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c("td", [_vm._v("Social Security No.")]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(_vm.currentUserData.Social_Security_No)
-                            )
+                            _vm._v(_vm._s(_vm.currentUserData.Address))
                           ])
                         ])
                       ])
@@ -47586,91 +47502,80 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "tab-pane", attrs: { id: "tab-4" } }, [
-                  _c("div", { staticClass: "panel-body" }, [
-                    _c("div", { staticClass: "col-lg-12" }, [
-                      _c("div", { staticClass: "contact-box" }, [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _c("div", { staticClass: "col-sm-3" }, [
-                            _c("div", { staticClass: "text-center" }, [
-                              _c("img", {
-                                staticClass: "img-circle m-t-xs img-responsive",
-                                attrs: { alt: "image", src: "img/a6.jpg" }
-                              }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "m-t-xs font-bold" }, [
-                                _vm._v(_vm._s(_vm.currentUserData.Job_Title))
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-9" }, [
-                            _c("h3", [
-                              _c("strong", [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.currentUserData.First_Name +
-                                      " " +
-                                      _vm.currentUserData.Middle_Name +
-                                      " " +
-                                      _vm.currentUserData.Last_Name
-                                  )
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _c("i", { staticClass: "fa fa-map-marker" }),
-                              _vm._v(" " + _vm._s(_vm.currentUserData.Address))
-                            ]),
-                            _vm._v(" "),
-                            _c("address", [
-                              _c("strong", [
-                                _vm._v(_vm._s(_vm.currentUserData.Job_Title))
-                              ]),
-                              _c("br"),
-                              _vm._v(
-                                "\r\n                                                        " +
-                                  _vm._s(_vm.currentUserData.E_Mail)
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\r\n                                                        " +
-                                  _vm._s(_vm.currentUserData.Post_Code)
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\r\n                                                        " +
-                                  _vm._s(_vm.currentUserData.City)
-                              ),
-                              _c("br"),
-                              _vm._v(" "),
-                              _c("abbr", { attrs: { title: "Phone" } }, [
-                                _vm._v("P:")
-                              ]),
-                              _vm._v(
-                                " " +
-                                  _vm._s(_vm.currentUserData.Phone_No) +
-                                  "\r\n                                                    "
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "clearfix" })
-                        ])
-                      ])
-                    ])
-                  ])
-                ])
+                _vm._m(7)
               ])
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(3)
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "contact-box center-version" }, [
+              _c("a", { attrs: { href: "profile.html" } }, [
+                _c("img", {
+                  staticClass: "img-circle",
+                  attrs: { alt: "image", src: "img/a2.jpg" }
+                }),
+                _vm._v(" "),
+                _vm._m(8),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
+                _vm._v(" "),
+                _c("address", { staticClass: "m-t-xs" }, [
+                  _vm._v(
+                    "\r\n                                johnsmith@email.com"
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+                  _vm._v(
+                    "  " +
+                      _vm._s(_vm.currentUserData.Phone_No) +
+                      "   " +
+                      _vm._s(_vm.currentUserData.Phone_No) +
+                      "\r\n                            "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(9)
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6" }, [
+            _c("div", { staticClass: "contact-box center-version" }, [
+              _c("a", { attrs: { href: "profile.html" } }, [
+                _c("img", {
+                  staticClass: "img-circle",
+                  attrs: { alt: "image", src: "img/a2.jpg" }
+                }),
+                _vm._v(" "),
+                _vm._m(10),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
+                _vm._v(" "),
+                _c("address", { staticClass: "m-t-xs" }, [
+                  _vm._v(
+                    "\r\n                                johnsmith@email.com"
+                  ),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
+                  _vm._v(
+                    " " +
+                      _vm._s(_vm.currentUserData.Phone_No) +
+                      "\r\n                            "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(11)
+            ])
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _vm._m(4)
+      _vm._m(12)
     ])
   ])
 }
@@ -47690,13 +47595,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("small", [_vm._v("Sales in last 24h")]),
-      _vm._v(" "),
-      _c("h2", { staticClass: "no-margins" }, [_vm._v("206 480")]),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "sparkline1" } })
-    ])
+    return _c("td", [_c("strong", [_vm._v("Title")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Department")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Date of Join")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Date of Birth")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Name of Manager")])])
   },
   function() {
     var _vm = this
@@ -47705,19 +47628,19 @@ var staticRenderFns = [
     return _c("ul", { staticClass: "nav nav-tabs" }, [
       _c("li", { staticClass: "active" }, [
         _c("a", { attrs: { "data-toggle": "tab", href: "#tab-1" } }, [
-          _vm._v("Personal")
+          _vm._v("Personal info")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", {}, [
+        _c("a", { attrs: { "data-toggle": "tab", href: "#tab-2" } }, [
+          _vm._v("Contacts info")
         ])
       ]),
       _vm._v(" "),
       _c("li", {}, [
         _c("a", { attrs: { "data-toggle": "tab", href: "#tab-3" } }, [
-          _vm._v("Employment")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", {}, [
-        _c("a", { attrs: { "data-toggle": "tab", href: "#tab-4" } }, [
-          _vm._v("Contacts")
+          _vm._v("Bank Details")
         ])
       ])
     ])
@@ -47726,110 +47649,68 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "contact-box center-version" }, [
-          _c("a", { attrs: { href: "profile.html" } }, [
-            _c("img", {
-              staticClass: "img-circle",
-              attrs: { alt: "image", src: "img/a2.jpg" }
-            }),
+    return _c("div", { staticClass: "tab-pane", attrs: { id: "tab-3" } }, [
+      _c("div", { staticClass: "panel-body" }, [
+        _c("table", { staticClass: "table table-hover" }, [
+          _c("tbody", [
+            _c("tr", [_c("td", [_vm._v("Bank Name")]), _vm._v(" "), _c("td")]),
             _vm._v(" "),
-            _c("h3", { staticClass: "m-b-xs" }, [
-              _c("strong", [_vm._v("John Smith")])
-            ]),
+            _c("tr", [_c("td", [_vm._v("Branch")]), _vm._v(" "), _c("td")]),
             _vm._v(" "),
-            _c("div", { staticClass: "font-bold" }, [
-              _vm._v("Graphics designer")
-            ]),
-            _vm._v(" "),
-            _c("address", { staticClass: "m-t-md" }, [
-              _c("strong", [_vm._v("Twitter, Inc.")]),
-              _c("br"),
-              _vm._v(
-                "\r\n                                795 Folsom Ave, Suite 600"
-              ),
-              _c("br"),
-              _vm._v(
-                "\r\n                                San Francisco, CA 94107"
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-              _vm._v(" (123) 456-7890\r\n                            ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contact-box-footer" }, [
-            _c("div", { staticClass: "m-t-xs btn-group" }, [
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-phone" }),
-                _vm._v(" Call ")
-              ]),
-              _vm._v(" "),
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-envelope" }),
-                _vm._v(" Email")
-              ]),
-              _vm._v(" "),
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-user-plus" }),
-                _vm._v(" Follow")
-              ])
-            ])
+            _c("tr", [_c("td", [_vm._v("Account No.")]), _vm._v(" "), _c("td")])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-6" }, [
-        _c("div", { staticClass: "contact-box center-version" }, [
-          _c("a", { attrs: { href: "profile.html" } }, [
-            _c("img", {
-              staticClass: "img-circle",
-              attrs: { alt: "image", src: "img/a1.jpg" }
-            }),
-            _vm._v(" "),
-            _c("h3", { staticClass: "m-b-xs" }, [
-              _c("strong", [_vm._v("Alex Johnatan")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "font-bold" }, [_vm._v("CEO")]),
-            _vm._v(" "),
-            _c("address", { staticClass: "m-t-md" }, [
-              _c("strong", [_vm._v("Twitter, Inc.")]),
-              _c("br"),
-              _vm._v(
-                "\r\n                                795 Folsom Ave, Suite 600"
-              ),
-              _c("br"),
-              _vm._v(
-                "\r\n                                San Francisco, CA 94107"
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-              _vm._v(" (123) 456-7890\r\n                            ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "contact-box-footer" }, [
-            _c("div", { staticClass: "m-t-xs btn-group" }, [
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-phone" }),
-                _vm._v(" Call ")
-              ]),
-              _vm._v(" "),
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-envelope" }),
-                _vm._v(" Email")
-              ]),
-              _vm._v(" "),
-              _c("a", { staticClass: "btn btn-xs btn-white" }, [
-                _c("i", { staticClass: "fa fa-user-plus" }),
-                _vm._v(" Follow")
-              ])
-            ])
-          ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "m-b-xs" }, [
+      _c("strong", [_vm._v("John Smith")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-box-footer" }, [
+      _c("div", { staticClass: "m-t-xs btn-group" }, [
+        _c("a", { staticClass: "btn btn-xs btn-white" }, [
+          _c("i", { staticClass: "fa fa-phone" }),
+          _vm._v(" Call ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-xs btn-white" }, [
+          _c("i", { staticClass: "fa fa-envelope" }),
+          _vm._v(" Email")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h3", { staticClass: "m-b-xs" }, [
+      _c("strong", [_vm._v("John Smith")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "contact-box-footer" }, [
+      _c("div", { staticClass: "m-t-xs btn-group" }, [
+        _c("a", { staticClass: "btn btn-xs btn-white" }, [
+          _c("i", { staticClass: "fa fa-phone" }),
+          _vm._v(" Call ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-xs btn-white" }, [
+          _c("i", { staticClass: "fa fa-envelope" }),
+          _vm._v(" Email")
         ])
       ])
     ])
@@ -48075,7 +47956,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48086,6 +47967,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48857,6 +48747,27 @@ var staticRenderFns = [
                   _c("div", { staticClass: "modal-body" }, [
                     _c("form", { attrs: { role: "form" } }, [
                       _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Leave type")]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            staticClass: "form-control col-x-12",
+                            attrs: { name: "leave_code", id: "leave_code" }
+                          },
+                          [
+                            _c("option", [_vm._v("1")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("2")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("3")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("4")])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
                         _c("label", [_vm._v("Start Date")]),
                         _vm._v(" "),
                         _c(
@@ -48872,7 +48783,11 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text" }
+                              attrs: {
+                                type: "text",
+                                name: "start_date",
+                                id: "start_date"
+                              }
                             })
                           ]
                         )
@@ -48885,7 +48800,9 @@ var staticRenderFns = [
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
-                            placeholder: "Number of days"
+                            placeholder: "Number of days",
+                            name: "no_of_days",
+                            id: "no_of_days"
                           }
                         })
                       ]),
@@ -48925,7 +48842,12 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text", readonly: "" }
+                              attrs: {
+                                type: "text",
+                                readonly: "",
+                                name: "end_date",
+                                id: "end_date"
+                              }
                             })
                           ]
                         )
@@ -48947,7 +48869,12 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text", readonly: "" }
+                              attrs: {
+                                type: "text",
+                                readonly: "",
+                                name: "return_date",
+                                id: "return_date"
+                              }
                             })
                           ]
                         )
@@ -48958,7 +48885,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("textarea", {
                           staticClass: "form-control",
-                          attrs: { rows: "2", id: "comment" }
+                          attrs: { rows: "2", id: "comment", name: "comment" }
                         })
                       ])
                     ])
@@ -48978,7 +48905,7 @@ var staticRenderFns = [
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: { type: "button" }
+                        attrs: { type: "submit" }
                       },
                       [
                         _vm._v("Apply "),
@@ -51545,7 +51472,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -51648,10 +51575,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "leave-allocations",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations']
 });
 
 /***/ }),
@@ -51662,158 +51593,174 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "ibox float-e-margins" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "ibox-content" }, [
+            _c(
+              "ul",
+              { attrs: { id: "example-1" } },
+              _vm._l(_vm.currentEmployeeLeaveAllocations, function(allocation) {
+                return _c("li", [
+                  _vm._v(
+                    "\n                            " +
+                      _vm._s(allocation.Employee_No) +
+                      "\n                        "
+                  )
+                ])
+              })
+            ),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "ibox float-e-margins" }, [
-            _c("div", { staticClass: "ibox-title" }, [
-              _c("h5", [_vm._v("Leave Allocations")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ibox-tools" }, [
-                _c("a", { staticClass: "collapse-link" }, [
-                  _c("i", { staticClass: "fa fa-chevron-up" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [_c("i", { staticClass: "fa fa-wrench" })]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 1")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 2")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "close-link" }, [
-                  _c("i", { staticClass: "fa fa-times" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "ibox-content" }, [
-              _c("table", { staticClass: "table table-striped" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("#")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("leave code")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Maturity Date")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Balance")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Accrued Days")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Days Taken")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Days Applied")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Days Approved")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Days Approved_Taken")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Allocated Days")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Leave Period")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("L434")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("05/24/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("5")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("7")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("21")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2018")])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("2")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("L434")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("05/24/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("5")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("7")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("21")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2018")])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("L434")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("05/24/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("5")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("7")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("3")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("21")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("2018")])
-                  ])
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "ibox-title" }, [
+      _c("h5", [_vm._v("Leave Allocations")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ibox-tools" }, [
+        _c("a", { staticClass: "collapse-link" }, [
+          _c("i", { staticClass: "fa fa-chevron-up" })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "dropdown-toggle",
+            attrs: { "data-toggle": "dropdown", href: "#" }
+          },
+          [_c("i", { staticClass: "fa fa-wrench" })]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 1")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 2")])
           ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "close-link" }, [
+          _c("i", { staticClass: "fa fa-times" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table table-striped" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("#")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("leave code")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Maturity Date")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Balance")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Accrued Days")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Days Taken")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Days Applied")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Days Approved")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Days Approved_Taken")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Allocated Days")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Leave Period")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("td", [_vm._v("1")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("L434")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("05/24/2018")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("5")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("7")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("21")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2018")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("2")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("L434")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("05/24/2018")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("5")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("7")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("21")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2018")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("L434")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("05/24/2018")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("5")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("7")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("21")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("2018")])
         ])
       ])
     ])

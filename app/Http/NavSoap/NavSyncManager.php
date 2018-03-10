@@ -178,6 +178,34 @@ class NavSyncManager{
         stream_wrapper_register('http', NTLMStream::class) or die("Failed to register protocol");
     }
 
+    public function calculateLeaveDates(
+        $leaveTypeCode, $employeeCode, $baseCalendarCode, $sDate, $lDays){
+        $url = $this->config->NAV_BASE_URL."/".$this->config->NAV_SOAP_LEAVE_MANAGER;
+
+        $this->prepareWrapper();
+        $client = new NTLMSoapClient($url, ['trace' => 1]);
+
+        $data = (object)[
+                "leaveAppCode" => $leaveTypeCode,
+                "leaveEmployee" => $employeeCode,
+                "baseCalendarCode" => $baseCalendarCode,
+                "sDate" => $sDate,
+                "lDays" => $lDays,
+                "eDate" => date("Y-m-d"),
+                "rDate" => date("Y-m-d"),
+
+        ];
+
+        print_r($data);
+        $result = $client->CalculateLeaveDatesWeb($data);
+
+        if($result->return_value != 0 && $result->return_value != 1){
+            throw new \Exception($this->config->NAV_SOAP_LEAVE_MANAGER_CODES[$result->return_value], 9);
+        }
+        print_r($result);
+        return $result;
+    }
+
     public function restoreWrapper(){
         stream_wrapper_restore('http');
     }

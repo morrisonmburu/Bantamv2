@@ -89,7 +89,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
     }
 
     public function user(Request $request, Employee $employee){
@@ -110,10 +110,6 @@ class EmployeeController extends Controller
 //                return Storage::download("public/default-avatar.jpg", "default-avatar.jpg");
             }
         }
-    }
-
-    public function decodeProfilePic($encodedImage){
-        return base64_decode("aHR0cDovLzEyNy4wLjAuMTo4MDAwL2ltZy9hMi5qcGc=");
     }
 
 }

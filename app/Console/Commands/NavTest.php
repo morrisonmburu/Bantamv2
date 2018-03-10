@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
 
-class NavSync extends Command
+class NavTest extends Command
 {
 
     private $NAV_ENDPOINT;
@@ -25,13 +25,13 @@ class NavSync extends Command
      *
      * @var string
      */
-    protected $signature = 'nav:sync';
+    protected $signature = 'nav:test';
 
     /**
      * The console command description.
      * @var string
      */
-    protected $description = 'Syncs bantam data with NAV';
+    protected $description = 'Testing NAV sync';
 
     /**
      * Create a new command instance.
@@ -52,14 +52,13 @@ class NavSync extends Command
     {
         try{
             $syncManager = new NavSyncManager();
-            $syncManager->sync();
-//            $syncManager->calculateLeaveDates(
-//                "ANNUAL",
-//                "LM",
-//                "GB",
-//                "2017-10-18",
-//                "20"
-//            );
+            $syncManager->calculateLeaveDates(
+                "ANNUAL",
+                "LM",
+                "GB",
+                "2010-10-18",
+                "10"
+            );
         }
         catch (\Exception $e){
             print ($e);
