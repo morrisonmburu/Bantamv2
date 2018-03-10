@@ -6,8 +6,11 @@ return (object) array(
   'NAV_SOAP_EMPLOYEE' => 'Page/Employees',
   'NAV_SOAP_LEAVE_ALLOC' => 'Page/LeaveAlloc',
   'NAV_SOAP_LEAVE_APPS' => 'Page/LeaveApps',
-  'NAV_SOAP_LEAVE_MANAGER' => 'Page/LeaveManager',
   'NAV_SOAP_LEAVE_PERIODS' => 'Page/LeavePeriods',
   'NAV_SOAP_LEAVE_TYPES' => 'Page/LeaveTypes',
   'NAV_SOAP_PROFILE_PIC' => 'Codeunit/ProfilePics',
+  'NAV_SOAP_LEAVE_MANAGER' => 'Codeunit/LeaveManager',
+    'NAV_SOAP_LEAVE_MANAGER_CODES' => [
+
+    ]
 );
