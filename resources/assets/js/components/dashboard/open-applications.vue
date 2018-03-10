@@ -252,7 +252,7 @@
                             <div class="modal-body">
                                 <form role="form">
                                     <div class="form-group"><label>Leave type</label>
-                                        <select class="form-control col-x-12" name="leave_type" id="leave_type">
+                                        <select class="form-control col-x-12" name="leave_code" id="leave_code">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>

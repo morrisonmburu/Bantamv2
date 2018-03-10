@@ -41,18 +41,20 @@ class LeaveApplicationController extends Controller
     public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
         $data = [
-                "leave_type"=>$request->leave_type,
-                "start_date"=>$request->start_date,
-                "no_of_days"=>$request->no_of_days,
-                "end_date"=>$request->end_date,
-                "return_date"=>$request->return_date
+                "Employee_No"=>$request->Employee_No,
+                "Leave_Period"=>$request->Leave_Period,
+                "Leave_Code"=>$request->Leave_Code,
+                "Approved_Start_Date"=>$request->start_date,
+                "Approved_Days"=>$request->no_of_days,
+                "Approved_End_Date"=>$request->end_date,
+                "Approved_Return_Date"=>$request->return_date
             ];
         try{
             if ($LeaveApplication->save($data)){
-                return response('Succes', 200)->header('Content-Type', 'text/plain');
+                return response('Success', 200)->header('Content-Type', 'text/plain');
             }
         }catch (\Exception $e){
-            return  response('$e->getMessage()', 500)->header('Content-Type', 'text/plain');
+            return  response('Error occurred while creating leave application :'.$e->getMessage(), 500)->header('Content-Type', 'text/plain');
         }
     }
 

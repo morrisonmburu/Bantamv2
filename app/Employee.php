@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\LeaveType;
 
 class Employee extends Model
 {
@@ -88,7 +89,9 @@ class Employee extends Model
             print($e);
             return false;
         }
-
-
+    }
+    // Get all leave types for the employee
+    public function LeaveTypes(){
+        return LeaveType::all();
     }
 }
