@@ -9,21 +9,11 @@ use App\Employee;
 
 class LeaveAllocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(EmployeeLeaveAllocation $leaveAllocations)
     {
-        //
+         return new LeaveAllocationResource($leaveAllocations::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
