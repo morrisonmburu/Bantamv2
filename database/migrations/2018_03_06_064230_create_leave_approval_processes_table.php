@@ -22,13 +22,13 @@ class CreateLeaveApprovalProcessesTable extends Migration
             $table->date('approved_start_date');
             $table->date('approved_end_date');
             $table->string('comments','250');
-            $table->integer('approver_id',false,true);
+            $table->string('approver_id',50);
             $table->Integer('sequence_no');
             $table->boolean("nav_synced")->default(false);
             $table->boolean("web_synced")->default(true);
             $table->dateTime("last_nav_synced")->nullable();
             $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("approver_id")->references("Approver_id")->on("employee_approvers")->onDelete('cascade');
+            $table->foreign("approver_id")->references("Approver")->on("employee_approvers")->onDelete('cascade');
             $table->foreign("application_code")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
