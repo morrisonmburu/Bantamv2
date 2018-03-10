@@ -41,7 +41,7 @@ Route::prefix('leave_applications')->group(function () {
 });
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationsController');
-Route::resource('leave_types','LeaveTypeController');
+Route::resource('leave_types','LeaveTypeController@index');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
