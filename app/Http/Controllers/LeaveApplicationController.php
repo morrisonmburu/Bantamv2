@@ -43,11 +43,11 @@ class LeaveApplicationController extends Controller
         $data = [
                 "Employee_No"=> Auth::user()->Employee_Record->No,
 //                "Leave_Period"=>$request->Leave_Period,
-//                "Leave_Code"=>$request->Leave_Code,
+                "Leave_Code"=>$request->leave_code,
                 "Start_Date"=>$request->start_date,
                 "Days_Applied"=>$request->no_of_days,
-                "End_Date"=>$request->end_date,
-                "Return_Date"=>$request->return_date,
+//                "End_Date"=>$request->end_date,
+//                "Return_Date"=>$request->return_date,
             "Application_Code" => uniqid()
             ];
         $LeaveApplication->fill($data);
