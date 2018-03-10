@@ -1,5 +1,4 @@
 <?php
-
 return (object) array(
   'NAV_USER' => env("NAV_USER"),
   'NAV_PWD' => env("NAV_PWD"),

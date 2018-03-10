@@ -9,10 +9,9 @@ class EmployeeLeaveApplication extends Model
 {
     protected $guarded = [];
     protected $table = "employee_leave_applications";
-    protected $primaryKey = "Application_Code";
+    protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
-
 
     public function __construct(array $attributes = [])
     {
