@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\NavSoap\NavSyncManager;
 use App\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -41,19 +42,6 @@ class NavSync extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->NAV_ENDPOINT = "http://192.168.88.241:7448/DynamicsKISM/OData/Company('KISM')/";
-        $this->NAV_PWD = env("NAV_PWD");
-        $this->NAV_USER = env("NAV_USER");
-
-        $this->client = new Client(['base_uri' =>$this->NAV_ENDPOINT]);
-    }
-
-    /**
-     * The endpoint of the resource
-     * @param $endpoint
-     */
-    private function get($resource){
-//        $this->get();
     }
 
     /**
@@ -64,40 +52,11 @@ class NavSync extends Command
     public function handle()
     {
         try{
-
-            $response = $this->client->request('GET', 'Employee', [
-                'headers' => ['Accept' => 'application/json'],
-                'auth'    => array($this->NAV_USER, $this->NAV_PWD, 'NTLM')
-            ]);
-
-            $jsonResponse = $response->getBody()->getContents();
-            $decodedResonse = json_decode($jsonResponse, true);
-            array_walk_recursive($decodedResonse, function (& $item, $key) {if (is_null($item) || trim($item) == '') { $item = NULL; }});
-            foreach($decodedResonse['value'] as $emp){
-                $employee = new Employee();
-                $employee->fill($emp);
-
-                $user = new User();
-                $user->password = Hash::make(uniqid());
-                $user->email = $employee->E_Mail;
-                $user->name = "$employee->First_Name $employee->Last_Name";
-
-                try{
-                    $user->save();
-                    $employee->user_id = $user->id;
-                    $employee->save();
-                    $response = Password::sendResetlink(['email' => $employee->E_Mail], function (Message $message){
-                        $message->subject("Welcome to Bantam");
-                    });
-                }
-                catch (\Exception $e){
-                    print ($e->getMessage()."\n\n");
-                    continue;
-                }
-            }
+            $syncManager = new NavSyncManager();
+            $syncManager->sync();
         }
         catch (\Exception $e){
-            print ($e->getMessage()."\n\n");
+            print ($e);
         }
         return;
     }

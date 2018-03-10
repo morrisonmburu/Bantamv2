@@ -21,29 +21,29 @@ class Employee extends Model
 
     // Employee leave allocations
     public function Employee_leave_allocations(){
-        return $this->hasMany("App\Employee_leave_allocation","employee_no","employee_id")
+        return $this->hasMany(EmployeeLeaveAllocation::class,"employee_no","employee_id")
             ->orderByDesc("Leave_Period");
     }
 
     // Employee leave applications
     public function Employee_leave_applications(){
-        return $this->hasMany("App\Employee_leave_applications","employee_no","employee_id")
+        return $this->hasMany(EmployeeLeaveApplication::class,"employee_no","employee_id")
             ->orderByDesc("Leave_Period");
     }
 
     //Gets employee approval request
     public function Approval_Request(){
-        return $this->hasMany("App\Approval_entry","user_id","id")
+        return $this->hasMany(ApprovalEntry::class,"user_id","id")
             ->join("employee_approvers","employee_approvers.id","=","approval_entries.Approver_id")
             ->join("approval_templates","approval_templates.id","=","approval_entries.Approval_template");
     }
 
     //Gets Employee leave planners
     public function Employee_Leave_Planners(){
-        return $this->hasMany("App\Leave_planner","Employee_No","Employee_id");
+        return $this->hasMany(LeavePlanner::class,"Employee_No","Employee_id");
     }
 
     public function user(){
-        return $this->belongsTo("App\User");
+        return $this->belongsTo(User::class);
     }
 }

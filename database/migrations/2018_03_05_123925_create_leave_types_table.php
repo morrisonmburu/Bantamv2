@@ -15,19 +15,23 @@ class CreateLeaveTypesTable extends Migration
     public function up()
     {
         Schema::create('leave_types', function (Blueprint $table) {
-            $table->increments('leave_type_id');
-            $table->string('description',20);
-            $table->decimal('days_per_year',5,3);
-            $table->boolean('accrued_days');
-            $table->boolean('unlimited_days');
-            $table->enum('gender',['male','female','both']);
-            $table->boolean('inclusive_of_non_working');
-            $table->boolean('allow_inactive');
+            $table->increments('id');
+            $table->string('Code',20)->unique();
+            $table->string('Description',20);
+            $table->decimal('Days',5,2);
+            $table->boolean('InActive');
+            $table->boolean('Accrue_Days');
+            $table->boolean('Unlimited_Days');
+            $table->enum('Gender',['Male','Female','both']);
+            $table->string('Balance', 30);
+            $table->boolean('Inclusive_of_Holidays');
+            $table->decimal('Max_Carry_Forward_Days',5,2);
+            $table->boolean('Off_Holidays_Days_Leave');
+            $table->boolean("Nav_Sync")->default(false);
+            $table->boolean("Web_Sync")->default(true);
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
-            $table->boolean("nav_synced")->default(false);
-            $table->boolean("web_synced")->default(true);
-            $table->dateTime("last_nav_synced")->nullable();
-            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

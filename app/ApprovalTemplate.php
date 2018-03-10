@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Approval_template extends Model
+class ApprovalTemplate extends Model
 {
     protected $guarded = [];
     protected $table = "approval_templates";
@@ -14,6 +14,6 @@ class Approval_template extends Model
 
     //Approval entries per template type
     public function Approval_entries(){
-        return $this->hasMany("App\Approval_entry","Approval_template",'id');
+        return $this->hasMany(ApprovalEntry::class,"Approval_template",'id');
     }
 }

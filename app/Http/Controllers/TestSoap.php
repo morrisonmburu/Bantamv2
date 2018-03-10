@@ -9,7 +9,8 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
 class TestSoap extends Controller
 {
-    public function test(){
+    public function test()
+    {
         try {
             $url = 'http://192.168.88.241:9347/NAVDEMO/WS/CRONUS%20International%20Ltd./Page/Employees';
             // we unregister the current HTTP wrapper
@@ -19,12 +20,12 @@ class TestSoap extends Controller
             // so now all request to a http page will be done by MyServiceProviderNTLMStream.
             // ok now, let's request the wsdl file
             // if everything works fine, you should see the content of the wsdl file
-            $client = new NTLMSoapClient($url,['trace' => 1]);
+            $client = new NTLMSoapClient($url, ['trace' => 1]);
 
 
             //Read Multiple Records
-            try{
-                $params = array('filter' => array( array('Field' => 'No',
+            try {
+                $params = array('filter' => array(array('Field' => 'No',
                     'Criteria' => '')
                 ),
                     'setSize' => 10); //setSize =0 will return all rows - Can cause performance issue with large results set!
@@ -33,22 +34,20 @@ class TestSoap extends Controller
 
                 echo "Read Multiple Records Result=><br>";
                 if (is_array($resultSet)) {
-                    foreach($resultSet as $rec) {
-                        echo $rec->No . "&nbsp;" ."<br>";
+                    foreach ($resultSet as $rec) {
+                        echo $rec->No . "&nbsp;" . "<br>";
                     }
+                } else {
+                    echo $resultSet->No . "&nbsp;" . $resultSet->First_Name . "<br>";
                 }
-                else {
-                    echo $resultSet->No . "&nbsp;" . $resultSet->First_Name."<br>";
-                }
-            }
-            catch (Exception $e) {
-                echo "<hr><b>ERROR=> SoapException=></b> [".$e."]<hr>";
-                echo "<pre>".htmlentities(print_r($client->__getLastRequest(),1))."</pre>";
+            } catch (Exception $e) {
+                echo "<hr><b>ERROR=> SoapException=></b> [" . $e . "]<hr>";
+                echo "<pre>" . htmlentities(print_r($client->__getLastRequest(), 1)) . "</pre>";
             }
 
             // restore the original http protocole
             stream_wrapper_restore('http');
-        }catch(Exception $e) {
+        } catch (Exception $e) {
             echo $e;
         }
     }

@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Approval_entry extends Model
+class LeavePlanner extends Model
 {
     protected $guarded = [];
-    protected $table = "approval_entries";
-    protected $primaryKey = "id";
+    protected  $table = "leave_planners";
+    protected  $primaryKey = "leave_planner_id";
     public $incrementing = true;
     public $timestamps = true;
-
 }
