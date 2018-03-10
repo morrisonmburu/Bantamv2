@@ -41,13 +41,13 @@ class LeaveApplicationController extends Controller
     public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
         $data = [
-                "Employee_No"=>$request->Employee_No,
-                "Leave_Period"=>$request->Leave_Period,
-                "Leave_Code"=>$request->Leave_Code,
-                "Approved_Start_Date"=>$request->start_date,
-                "Approved_Days"=>$request->no_of_days,
-                "Approved_End_Date"=>$request->end_date,
-                "Approved_Return_Date"=>$request->return_date
+                "Employee_No"=> Auth::user()->Employee_Record->No,
+//                "Leave_Period"=>$request->Leave_Period,
+//                "Leave_Code"=>$request->Leave_Code,
+                "Start_Date"=>$request->start_date,
+                "Days_Applied"=>$request->no_of_days,
+                "End_Date"=>$request->end_date,
+                "Return_Date"=>$request->return_date
             ];
         try{
             if ($LeaveApplication->save($data)){
@@ -112,7 +112,7 @@ class LeaveApplicationController extends Controller
     public function calculateLeaveDates(Request $request){
         $validatedData = $request->validate([
             'start_date' => 'required|date',
-            'no_of_days' => 'required|decimal',
+            'no_of_days' => 'required|numeric',
             'leave_code' => 'required'
         ]);
 
@@ -120,12 +120,12 @@ class LeaveApplicationController extends Controller
         $result = $manager->calculateLeaveDates(
             $validatedData['leave_code'],
             Auth::user()->Employee_Record->No,
-            Auth::user()->Employee_Record->Base_Calendar,
+            Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
             $validatedData['start_date'],
             $validatedData['no_of_days']
         );
 
-        return json_encode($result);
+        return json_encode((array)$result);
 
     }
 }

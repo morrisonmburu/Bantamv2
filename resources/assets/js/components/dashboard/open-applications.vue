@@ -241,6 +241,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- ==== Modal for new leave application:: Added by Mayaka == -->
                 <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -252,32 +253,29 @@
                             <div class="modal-body">
                                 <form role="form">
                                     <div class="form-group"><label>Leave type</label>
-                                        <select class="form-control col-x-12" name="leave_code" id="leave_code">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <select class="form-control col-x-12" name="leave_code" id="leave_code" v-model="formData.leave_code">
+                                            <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group"><label>Start Date</label>
-                                        <div class="input-group date" data-provide="datepicker">
+                                        <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" name="start_date" id="start_date">
+                                            <input type="text" class="form-control" name="start_date" id="start_date"  v-model="formData.start_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Number of days</label>
-                                        <input type="number" placeholder="Number of days" class="form-control" name="no_of_days" id="no_of_days"></div>
+                                        <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days"></div>
                                     <div class="text-center">
-                                        <button class="ladda-button btn btn-primary" data-style="expand-right" type="submit"><strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
+                                        <button class="ladda-button btn btn-primary" data-style="expand-right" @click="calculate"> <strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
                                     </div>
                                     <div class="form-group"><label>End Date</label>
                                         <div class="input-group date" data-provide="datepicker">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly name="end_date" id="end_date">
+                                            <input type="text" class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Return Date</label>
@@ -285,17 +283,17 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly name="return_date" id="return_date">
+                                            <input type="text" class="form-control" readonly name="return_date" v-model="formData.return_date" id="return_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Comments</label>
-                                        <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
+                                        <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                                <button @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
                             </div>
                         </div>
                     </div>
@@ -313,6 +311,77 @@
             'currentUserData',
             'swapComponent'
         ],
+        data : function(){
+            return {
+                APIENDPOINT : {
+                    CALCULATE : 'api/leave_applications/calculate_leave_dates',
+                    LEAVETYPES : 'api/leave_types',
+                    LEAVEAPPLICATION : 'api/leave_applications '
+                },
+                formData: {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : '',
+                },
+                leaveTypes : {}
+            }
+        },
+        methods : {
+            calculate : function (e) {
+                e.preventDefault();
+                var v = this
+                axios.post(
+                    this.APIENDPOINT.CALCULATE,
+                    this.formData,
+                    {headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }})
+                    .then(function (response) {
+                        console.log('calculated data')
+                        console.log(response.data)
+                        v.formData.end_date = response.data.eDate
+                        v.formData.return_date = response.data.rDate
+                    })
+            },
+            submitLeaveApplication : function (e) {
+                e.preventDefault();
+                var v = this
+                axios.post(
+                    this.APIENDPOINT.LEAVEAPPLICATION,
+                    this.formData,
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }}
+                )
+                    .then(function (response) {
+                        console.log(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
+            getLeaveTypes : function () {
+                var v = this
+                axios.get('api/leave_types')
+                    .then(function (response) {
+                        v.leaveTypes = response.data.data
+                        console.log('leave types')
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
+        },
+        created() {
+            this.getLeaveTypes()
+        }
+
+
+
+
     }
 </script>
 

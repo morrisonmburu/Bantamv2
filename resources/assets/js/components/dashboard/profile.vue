@@ -3,7 +3,7 @@
     <div class="row m-b-lg m-t-lg">
         <div class="col-md-6">
             <div class="profile-image">
-                <img src="img/a4.jpg" class="img-circle circle-border m-b-md" alt="profile">
+                <img :src="'api/employees/' + this.currentUserData.id + '/picture'" class="img-circle circle-border m-b-md" v-bind:alt="profPic">
             </div>
             <div class="profile-info">
                 <div class="">
@@ -293,7 +293,8 @@
         props : [
             'currentUser',
             'currentUserData',
-            'swapComponent'
+            'swapComponent',
+            'profPic'
         ],
         data : function () {
             return {
@@ -301,6 +302,9 @@
             }
         },
         methods : {
+
+        },
+        created : function () {
 
         }
     }

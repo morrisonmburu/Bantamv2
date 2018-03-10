@@ -213,13 +213,13 @@ class NavSyncManager{
 
         ];
 
-        print_r($data);
+//        print_r($data);
         $result = $client->CalculateLeaveDatesWeb($data);
 
         if($result->return_value != 0 && $result->return_value != 1){
             throw new \Exception($this->config->NAV_SOAP_LEAVE_MANAGER_CODES[$result->return_value], 9);
         }
-        print_r($result);
+//        print_r($result);
         return $result;
     }
 
