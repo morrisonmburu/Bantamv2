@@ -7,6 +7,7 @@
                        :swap-component="swapComponent"
                        :search-results="searchResults"
                        :search-term="searchTerm"
+                       :prof-pic="profPic"
             ></component>
     </keep-alive>
 </div>

@@ -2,7 +2,7 @@
     <div class="dropdown profile-element">
 
         <span>
-            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+            <img alt="image" class="img-circle" :src="'api/employees/' + this.currentUserData.id + '/picture'" width="100"/>
         </span>
 
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -11,7 +11,7 @@
                       <strong class="font-bold">{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</strong>
                  </span>
                  <span class="text-muted text-xs block">
-                     Art Director
+                     {{currentUserData.Title == null ? 'My Account' : currentUserData.Title}}
                      <b class="caret"></b>
                  </span>
               </span>

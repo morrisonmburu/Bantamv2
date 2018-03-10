@@ -1428,17 +1428,16 @@ var app = new Vue({
     el: '#app',
     data: {
         currentComponent: 'dashboard',
+        profPic: '',
         currentUser: {},
         currentUserData: {},
         currentEmployeeLeaveApplications: {},
         currentEmployeeLeaveAllocations: {},
-        currentEmployeeProfilePicture: '',
         APIENDPOINTS: {
             CURRENTUSER: 'api/users/current', // Current logged in user
             CURRENTEMPLOYEE: 'api/users@employee', // employee details
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
-            CURRENT_EMPLOYEE_PROFILE_PICTURE: 'api/employees@picture', // current employee profile picture
             SEARCH: 'https://yesno.wtf/api'
         },
         searchResults: '',
@@ -1474,11 +1473,6 @@ var app = new Vue({
 
                         if (Object.keys(v.currentUserData).length !== 0) {
 
-                            // get profile picture
-                            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id)).then(function (response) {
-                                this.currentUser.profPic = response.data.data;
-                            });
-
                             // Fetch current employee's Leave applications
                             axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id)).then(function (response) {
                                 v.currentEmployeeLeaveApplications = response.data.data;
@@ -1494,16 +1488,6 @@ var app = new Vue({
                                 console.log(v.currentEmployeeLeaveAllocations);
                             }).catch(function (error) {
                                 console.log("Error fetching leave allocations data.");
-                                console.log(error);
-                            });
-
-                            // Fetch current employee's profile picture
-
-                            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id)).then(function (response) {
-                                v.currentEmployeeProfilePicture = response.data.data;
-                                console.log(v.currentEmployeeProfilePicture);
-                            }).catch(function (error) {
-                                console.log("Error fetching profile picture.");
                                 console.log(error);
                             });
                         } else {
@@ -46079,7 +46063,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "dropdown profile-element" }, [
-    _vm._m(0),
+    _c("span", [
+      _c("img", {
+        staticClass: "img-circle",
+        attrs: {
+          alt: "image",
+          src: "api/employees/" + this.currentUserData.id + "/picture",
+          width: "100"
+        }
+      })
+    ]),
     _vm._v(" "),
     _c(
       "a",
@@ -46103,7 +46096,18 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("span", { staticClass: "text-muted text-xs block" }, [
+            _vm._v(
+              "\n                 " +
+                _vm._s(
+                  _vm.currentUserData.Title == null
+                    ? "My Account"
+                    : _vm.currentUserData.Title
+                ) +
+                "\n                 "
+            ),
+            _c("b", { staticClass: "caret" })
+          ])
         ])
       ]
     ),
@@ -46124,33 +46128,13 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(0),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(1)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("img", {
-        staticClass: "img-circle",
-        attrs: { alt: "image", src: "img/profile_small.jpg" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-muted text-xs block" }, [
-      _vm._v("\n                 Art Director\n                 "),
-      _c("b", { staticClass: "caret" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46977,7 +46961,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47280,7 +47264,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
-    props: ['currentUser', 'currentUserData', 'swapComponent'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'profPic'],
     data: function data() {
         return {
             fullNames: this.currentUserData.First_Name.trim() + ' ' + this.currentUserData.Middle_Name.trim() + ' ' + this.currentUserData.Last_Name.trim()
@@ -47304,7 +47288,10 @@ var render = function() {
         _c("div", { staticClass: "profile-image" }, [
           _c("img", {
             staticClass: "img-circle circle-border m-b-md",
-            attrs: { src: _vm.currentUser.profPic, alt: "profile" }
+            attrs: {
+              src: "api/employees/" + this.currentUserData.id + "/picture",
+              alt: _vm.profPic
+            }
           })
         ]),
         _vm._v(" "),
@@ -47949,7 +47936,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48267,10 +48254,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "open-applications",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent'],
+    methods: {
+        calculate: function calculate() {}
+    }
+
 });
 
 /***/ }),

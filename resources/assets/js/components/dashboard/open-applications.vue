@@ -241,6 +241,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- ==== Modal for new leave application:: Added by Mayaka == -->
                 <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
@@ -250,7 +251,7 @@
                                 <h4 class="modal-title">New application</h4>
                             </div>
                             <div class="modal-body">
-                                <form role="form">
+                                <form role="form" >
                                     <div class="form-group"><label>Leave type</label>
                                         <select class="form-control col-x-12" name="leave_type" id="leave_type">
                                             <option>1</option>
@@ -313,6 +314,14 @@
             'currentUserData',
             'swapComponent'
         ],
+        methods : {
+            calculate : function () {
+                
+            }
+        }
+        
+
+        
     }
 </script>
 
