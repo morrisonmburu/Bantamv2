@@ -250,7 +250,7 @@
                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                 <h4 class="modal-title">New application</h4>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body" >
                                 <form role="form">
                                     <div class="form-group"><label>Leave type</label>
                                         <select class="form-control col-x-12" name="leave_code" id="leave_code" v-model="formData.leave_code">
@@ -268,7 +268,8 @@
                                     <div class="form-group"><label>Number of days</label>
                                         <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days"></div>
                                     <div class="text-center">
-                                        <button class="ladda-button btn btn-primary" data-style="expand-right" @click="calculate"> <strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
+                                        <button v-if="spinner" class="ladda-button btn btn-primary" data-style="expand-right" @click="calculate"> <strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
+                                        <div v-else class="sk-spinner sk-spinner-pulse"></div>
                                     </div>
                                     <div class="form-group"><label>End Date</label>
                                         <div class="input-group date" data-provide="datepicker">
@@ -313,6 +314,7 @@
         ],
         data : function(){
             return {
+                spinner : true,
                 APIENDPOINT : {
                     CALCULATE : 'api/leave_applications/calculate_leave_dates',
                     LEAVETYPES : 'api/leave_types',
@@ -332,6 +334,7 @@
         methods : {
             calculate : function (e) {
                 e.preventDefault();
+                this.spinner = false
                 var v = this
                 axios.post(
                     this.APIENDPOINT.CALCULATE,
@@ -340,13 +343,14 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }})
                     .then(function (response) {
-                        console.log('calculated data')
-                        console.log(response.data)
                         v.formData.end_date = response.data.eDate
                         v.formData.return_date = response.data.rDate
+                        this.spinner = true
                     })
             },
             submitLeaveApplication : function (e) {
+                $('#myModal').children('.modal-body').toggleClass('sk-loading');
+
                 e.preventDefault();
                 var v = this
                 axios.post(
@@ -357,7 +361,8 @@
                         }}
                 )
                     .then(function (response) {
-                        console.log(response.data)
+                        $('#myModal').children('.modal-body').toggleClass('sk-loading');
+
                     })
                     .catch(function (error) {
                         console.log(error)
