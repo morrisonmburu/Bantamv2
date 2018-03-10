@@ -24,7 +24,11 @@ class LeaveApplicationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "leave_type" => "",
+            "start_date" => "bail|Date|",
+            "no_of_days" => "",
+            "end_date" => "",
+            "return_date" => "",
         ];
     }
 }
