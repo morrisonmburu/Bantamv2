@@ -63,9 +63,13 @@ class Employee extends Model
             $filename = "image.$extension";
             $path = "employees/$this->No/profile_picture/$filename";
 
-            if($extension != "x-empy"){
+            if($extension != "x-empty"){
                 Storage::disk('local')->put($path, $decodedImage);
                 $this->Profile_Picture = $filename;
+                $this->save();
+            }
+            else{
+                $this->Profile_Picture = null;
                 $this->save();
             }
             return true;

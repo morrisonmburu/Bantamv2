@@ -100,11 +100,14 @@ class EmployeeController extends Controller
 
     public function picture(Request $request, Employee $employee){
         if($request->is('api*')){
+            $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
             if($employee->Profile_Picture){
-                return Storage::download("employees/$employee->No/profile_picture/$employee->Profile_Picture", $employee->Profile_Picture);
+                return response()->file($storagePath."employees/$employee->No/profile_picture/$employee->Profile_Picture");
+//                return Storage::download("employees/$employee->No/profile_picture/$employee->Profile_Picture", $employee->Profile_Picture);
             }
             else{
-                return Storage::download("public/default-avatar.jpg", "default-avatar.jpg");
+                return response()->file($storagePath."public/default-avatar.jpg");
+//                return Storage::download("public/default-avatar.jpg", "default-avatar.jpg");
             }
         }
     }
