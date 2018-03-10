@@ -112,8 +112,4 @@ class EmployeeController extends Controller
         }
     }
 
-    public function decodeProfilePic($encodedImage){
-        return base64_decode("aHR0cDovLzEyNy4wLjAuMTo4MDAwL2ltZy9hMi5qcGc=");
-    }
-
 }
