@@ -35,6 +35,10 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
 });
 Route::resource('employees', 'EmployeeController');
+//calculateLeaveDates
+Route::prefix('leave_applications')->group(function () {
+    Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
+});
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationsController');
 Route::resource('leave_types','LeaveTypeController');
