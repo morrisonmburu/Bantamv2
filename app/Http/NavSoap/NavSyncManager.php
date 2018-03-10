@@ -32,7 +32,7 @@ class NavSyncManager{
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
 
-        $this->pushTable(EmployeeLeaveApplication::class, $this->config[EmployeeLeaveApplication::class]["endpoint"]);
+//        $this->pushTable(EmployeeLeaveApplication::class, $this->config[EmployeeLeaveApplication::class]["endpoint"]);
         foreach ($this->syncClasses as $model => $props){
             $this->getTable($model, $props["endpoint"], $props["search_fields"]);
         }
