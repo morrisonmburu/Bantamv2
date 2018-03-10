@@ -15,26 +15,29 @@ class CreateApprovalEntriesTable extends Migration
     {
         Schema::create('approval_entries', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('approval_template',false,true);
-            $table->integer('approver_id',false,true);
-            $table->string('document_no',50);
-            $table->integer('sequence_no');
-            $table->string('employee_no',50);
-            $table->enum('status',['created','open','cancelled','approved','rejected']);
-            $table->datetime('date_sent_for_approval');
-            $table->datetime('last_date_time_modified');
-            $table->string('last_modified_by_id');
-            $table->string('comment');
-            $table->date('due_date');
-            $table->integer("current_year",false,true);
-            $table->boolean("nav_synced")->default(false);
-            $table->boolean("web_synced")->default(true);
-            $table->dateTime("last_nav_synced")->nullable();
-            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));;
-            $table->foreign("approval_template")->references("id")->on("approval_templates")->onDelete('cascade');
-            $table->foreign("approver_id")->references("approver_id")->on("employee_approvers")->onDelete('cascade');
-            $table->foreign("employee_no")->references("No")->on("employees")->onDelete('cascade');
-            $table->foreign("document_no")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->integer('Table_ID',false,true)->unique();
+            $table->string('Document_Type');
+            $table->string('Document_No',50);
+            $table->integer('Sequence_No');
+            $table->string('Status',50);
+            $table->string('Approval_Details',255)->nullable();
+            $table->string('Sender_ID',50)->unique();
+            $table->string('Approver_ID', 50);
+            $table->string('Document_Owner', 50);
+            $table->dateTime('Date_Time_Sent_for_Approval');
+            $table->date('Last_Date_Time_Modified')->nullable();
+            $table->string("Last_Modified_By_ID",50)->nullable();
+            $table->string("Comment",50);
+            $table->date("Due_Date");
+
+            $table->boolean("Nav_Sync")->default(false);
+            $table->boolean("Web_Sync")->default(true);
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+
+            $table->foreign("Approver_ID")->references("Approver")->on("employee_approvers")->onDelete('cascade');
+            $table->foreign("Sender_ID")->references("No")->on("employees")->onDelete('cascade');
+            $table->foreign("Document_No")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }
