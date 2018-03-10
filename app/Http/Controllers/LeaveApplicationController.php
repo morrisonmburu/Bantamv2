@@ -47,10 +47,12 @@ class LeaveApplicationController extends Controller
                 "Start_Date"=>$request->start_date,
                 "Days_Applied"=>$request->no_of_days,
                 "End_Date"=>$request->end_date,
-                "Return_Date"=>$request->return_date
+                "Return_Date"=>$request->return_date,
+            "Application_Code" => uniqid()
             ];
+        $LeaveApplication->fill($data);
         try{
-            if ($LeaveApplication->save($data)){
+            if ($LeaveApplication->save()){
                 return response('Success', 200)->header('Content-Type', 'text/plain');
             }
         }catch (\Exception $e){
