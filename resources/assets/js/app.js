@@ -33,17 +33,16 @@ const app = new Vue({
     el: '#app',
     data: {
         currentComponent: 'dashboard',
+        profPic : '',
         currentUser                         : {},
         currentUserData                     : {},
         currentEmployeeLeaveApplications    : {},
         currentEmployeeLeaveAllocations     : {},
-        currentEmployeeProfilePicture       : '',
         APIENDPOINTS     : {
             CURRENTUSER                             : 'api/users/current',                   // Current logged in user
             CURRENTEMPLOYEE                         : 'api/users@employee',                  // employee details
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees@leave_applications',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
-            CURRENT_EMPLOYEE_PROFILE_PICTURE        : 'api/employees@picture',               // current employee profile picture
             CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
             SEARCH                                  : 'https://yesno.wtf/api'
         },
@@ -79,6 +78,7 @@ const app = new Vue({
                             .then(function (response) {
                                 v.currentUserData = response.data.data
                                  console.log(v.currentUserData)
+
                                 if (Object.keys(v.currentUserData).length !== 0 ){
 
                                     // Fetch current employee's Leave applications
@@ -103,17 +103,6 @@ const app = new Vue({
                                             console.log(error);
                                         })
 
-                                    // Fetch current employee's profile picture
-
-                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE,v.currentUserData.id))
-                                        .then(function (response){
-                                            v.currentEmployeeProfilePicture = response.data.data
-                                            console.log(v.currentEmployeeProfilePicture)
-                                        })
-                                        .catch(function (error) {
-                                            console.log("Error fetching profile picture.");
-                                            console.log(error);
-                                        })
                                 }else{
                                     console.log("Employee data is blank");
                                 }
@@ -148,7 +137,6 @@ const app = new Vue({
         )
 
     },
-
     created : function () {
         this.getData()
     },

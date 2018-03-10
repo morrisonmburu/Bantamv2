@@ -9,9 +9,9 @@ use App\Employee;
 
 class LeaveTypeController extends Controller
 {
-    public function index(LeaveType $leaveTypes)
+    public function index()
     {
-        return new LeaveTypeResource($leaveTypes::all());
+        return new LeaveTypeResource(LeaveType::all());
     }
 
     /**

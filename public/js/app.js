@@ -1428,17 +1428,16 @@ var app = new Vue({
     el: '#app',
     data: {
         currentComponent: 'dashboard',
+        profPic: '',
         currentUser: {},
         currentUserData: {},
         currentEmployeeLeaveApplications: {},
         currentEmployeeLeaveAllocations: {},
-        currentEmployeeProfilePicture: '',
         APIENDPOINTS: {
             CURRENTUSER: 'api/users/current', // Current logged in user
             CURRENTEMPLOYEE: 'api/users@employee', // employee details
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
-            CURRENT_EMPLOYEE_PROFILE_PICTURE: 'api/employees@picture', // current employee profile picture
             CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees@leave_types', // current employee leave types
             SEARCH: 'https://yesno.wtf/api'
         },
@@ -1472,6 +1471,7 @@ var app = new Vue({
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
                         console.log(v.currentUserData);
+
                         if (Object.keys(v.currentUserData).length !== 0) {
 
                             // Fetch current employee's Leave applications
@@ -1489,16 +1489,6 @@ var app = new Vue({
                                 console.log(v.currentEmployeeLeaveAllocations);
                             }).catch(function (error) {
                                 console.log("Error fetching leave allocations data.");
-                                console.log(error);
-                            });
-
-                            // Fetch current employee's profile picture
-
-                            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_PROFILE_PICTURE, v.currentUserData.id)).then(function (response) {
-                                v.currentEmployeeProfilePicture = response.data.data;
-                                console.log(v.currentEmployeeProfilePicture);
-                            }).catch(function (error) {
-                                console.log("Error fetching profile picture.");
                                 console.log(error);
                             });
                         } else {
@@ -1527,7 +1517,6 @@ var app = new Vue({
         }, 500)
 
     },
-
     created: function created() {
         this.getData();
     },
@@ -45986,7 +45975,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46058,13 +46047,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-nav-header",
@@ -46081,7 +46063,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "dropdown profile-element" }, [
-    _vm._m(0),
+    _c("span", [
+      _c("img", {
+        staticClass: "img-circle",
+        attrs: {
+          alt: "image",
+          src: "api/employees/" + this.currentUserData.id + "/picture",
+          width: "100"
+        }
+      })
+    ]),
     _vm._v(" "),
     _c(
       "a",
@@ -46105,7 +46096,18 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("span", { staticClass: "text-muted text-xs block" }, [
+            _vm._v(
+              "\n                 " +
+                _vm._s(
+                  _vm.currentUserData.Title == null
+                    ? "My Account"
+                    : _vm.currentUserData.Title
+                ) +
+                "\n                 "
+            ),
+            _c("b", { staticClass: "caret" })
+          ])
         ])
       ]
     ),
@@ -46126,33 +46128,13 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(0),
       _vm._v(" "),
-      _vm._m(3)
+      _vm._m(1)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [
-      _c("img", {
-        staticClass: "img-circle",
-        attrs: { alt: "image", src: "img/profile_small.jpg" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "text-muted text-xs block" }, [
-      _vm._v("\n                 Art Director\n                 "),
-      _c("b", { staticClass: "caret" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46979,7 +46961,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47282,13 +47264,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
-    props: ['currentUser', 'currentUserData', 'swapComponent'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'profPic'],
     data: function data() {
         return {
             fullNames: this.currentUserData.First_Name.trim() + ' ' + this.currentUserData.Middle_Name.trim() + ' ' + this.currentUserData.Last_Name.trim()
         };
     },
-    methods: {}
+    methods: {},
+    created: function created() {}
 });
 
 /***/ }),
@@ -47302,7 +47285,15 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "row m-b-lg m-t-lg" }, [
       _c("div", { staticClass: "col-md-6" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "profile-image" }, [
+          _c("img", {
+            staticClass: "img-circle circle-border m-b-md",
+            attrs: {
+              src: "api/employees/" + this.currentUserData.id + "/picture",
+              alt: _vm.profPic
+            }
+          })
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "profile-info" }, [
           _c("div", {}, [
@@ -47331,7 +47322,7 @@ var render = function() {
         _c("table", { staticClass: "table table-condensed" }, [
           _c("tbody", [
             _c("tr", [
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47343,7 +47334,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47355,7 +47346,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47367,7 +47358,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(4),
+              _vm._m(3),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47379,7 +47370,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("tr", [
-              _vm._m(5),
+              _vm._m(4),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -47399,7 +47390,7 @@ var render = function() {
         _c("div", { staticClass: "row m-b-lg" }, [
           _c("div", { staticClass: "col-lg-12" }, [
             _c("div", { staticClass: "tabs-container" }, [
-              _vm._m(6),
+              _vm._m(5),
               _vm._v(" "),
               _c("div", { staticClass: "tab-content" }, [
                 _c(
@@ -47502,7 +47493,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(7)
+                _vm._m(6)
               ])
             ])
           ])
@@ -47517,7 +47508,7 @@ var render = function() {
                   attrs: { alt: "image", src: "img/a2.jpg" }
                 }),
                 _vm._v(" "),
-                _vm._m(8),
+                _vm._m(7),
                 _vm._v(" "),
                 _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
                 _vm._v(" "),
@@ -47538,7 +47529,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(9)
+              _vm._m(8)
             ])
           ]),
           _vm._v(" "),
@@ -47550,7 +47541,7 @@ var render = function() {
                   attrs: { alt: "image", src: "img/a2.jpg" }
                 }),
                 _vm._v(" "),
-                _vm._m(10),
+                _vm._m(9),
                 _vm._v(" "),
                 _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
                 _vm._v(" "),
@@ -47569,28 +47560,17 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(11)
+              _vm._m(10)
             ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(12)
+      _vm._m(11)
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "profile-image" }, [
-      _c("img", {
-        staticClass: "img-circle circle-border m-b-md",
-        attrs: { src: "img/a4.jpg", alt: "profile" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -47956,7 +47936,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48272,12 +48252,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "open-applications",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent'],
+    data: function data() {
+        return {
+            APIENDPOINT: {
+                CALCULATE: 'api/leave_applications/calculate_leave_dates',
+                LEAVETYPES: 'api/leave_types',
+                LEAVEAPPLICATION: 'api/leave_applications '
+            },
+            formData: {
+                leave_code: '',
+                start_date: '',
+                no_of_days: '',
+                end_date: '',
+                return_date: '',
+                comment: ''
+            },
+            leaveTypes: {}
+        };
+    },
+    methods: {
+        calculate: function calculate(e) {
+            e.preventDefault();
+            var v = this;
+            axios.post(this.APIENDPOINT.CALCULATE, this.formData, { headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } }).then(function (response) {
+                console.log('calculated data');
+                console.log(response.data);
+                v.formData.end_date = response.data.eDate;
+                v.formData.return_date = response.data.rDate;
+            });
+        },
+        submitLeaveApplication: function submitLeaveApplication(e) {
+            e.preventDefault();
+            var v = this;
+            axios.post(this.APIENDPOINT.LEAVEAPPLICATION, this.formData, { headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } }).then(function (response) {
+                console.log(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        getLeaveTypes: function getLeaveTypes() {
+            var v = this;
+            axios.get('api/leave_types').then(function (response) {
+                v.leaveTypes = response.data.data;
+                console.log('leave types');
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    created: function created() {
+        this.getLeaveTypes();
+    }
 });
 
 /***/ }),
@@ -48288,637 +48321,782 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal inmodal",
+          attrs: {
+            id: "myModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c("div", { staticClass: "modal-dialog" }, [
+            _c("div", { staticClass: "modal-content animated bounceInRight" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("form", { attrs: { role: "form" } }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Leave type")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.formData.leave_code,
+                            expression: "formData.leave_code"
+                          }
+                        ],
+                        staticClass: "form-control col-x-12",
+                        attrs: { name: "leave_code", id: "leave_code" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.formData,
+                              "leave_code",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      _vm._l(_vm.leaveTypes, function(leave) {
+                        return _c(
+                          "option",
+                          { domProps: { value: leave.Code } },
+                          [_vm._v(_vm._s(leave.Description))]
+                        )
+                      })
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Start Date")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "input-group date",
+                        attrs: {
+                          "data-provide": "datepicker",
+                          "data-date-format": "yyyy-mm-dd"
+                        }
+                      },
+                      [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.start_date,
+                              expression: "formData.start_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "start_date",
+                            id: "start_date"
+                          },
+                          domProps: { value: _vm.formData.start_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "start_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Number of days")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.no_of_days,
+                          expression: "formData.no_of_days"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Number of days",
+                        name: "no_of_days",
+                        id: "no_of_days"
+                      },
+                      domProps: { value: _vm.formData.no_of_days },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "no_of_days",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "ladda-button btn btn-primary",
+                        attrs: { "data-style": "expand-right" },
+                        on: { click: _vm.calculate }
+                      },
+                      [_vm._m(4)]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("End Date")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "input-group date",
+                        attrs: { "data-provide": "datepicker" }
+                      },
+                      [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.end_date,
+                              expression: "formData.end_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            readonly: "",
+                            name: "end_date",
+                            id: "end_date"
+                          },
+                          domProps: { value: _vm.formData.end_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "end_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Return Date")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "input-group date",
+                        attrs: { "data-provide": "datepicker" }
+                      },
+                      [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.return_date,
+                              expression: "formData.return_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            readonly: "",
+                            name: "return_date",
+                            id: "return_date"
+                          },
+                          domProps: { value: _vm.formData.return_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "return_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Comments")]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.comment,
+                          expression: "formData.comment"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { rows: "2", id: "comment", name: "comment" },
+                      domProps: { value: _vm.formData.comment },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "comment", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-white",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Close")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: { click: _vm.submitLeaveApplication }
+                  },
+                  [
+                    _vm._v("Apply "),
+                    _c("i", { staticClass: "fa fa-check-circle-o" })
+                  ]
+                )
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-8" }, [
-          _c("div", { staticClass: "ibox float-e-margins" }, [
-            _c("div", { staticClass: "ibox-title" }, [
-              _c("h5", [_vm._v("Open Applications")]),
+    return _c("div", { staticClass: "col-lg-8" }, [
+      _c("div", { staticClass: "ibox float-e-margins" }, [
+        _c("div", { staticClass: "ibox-title" }, [
+          _c("h5", [_vm._v("Open Applications")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "ibox-tools" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-xs btn-primary",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#myModal"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                            New\n                        "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("a", { staticClass: "collapse-link" }, [
+              _c("i", { staticClass: "fa fa-chevron-up" })
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "dropdown-toggle",
+                attrs: { "data-toggle": "dropdown", href: "#" }
+              },
+              [_c("i", { staticClass: "fa fa-wrench" })]
+            ),
+            _vm._v(" "),
+            _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 1")])
+              ]),
               _vm._v(" "),
-              _c("div", { staticClass: "ibox-tools" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-xs btn-primary",
-                    attrs: {
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#myModal"
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            New\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("a", { staticClass: "collapse-link" }, [
-                  _c("i", { staticClass: "fa fa-chevron-up" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [_c("i", { staticClass: "fa fa-wrench" })]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 1")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 2")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "close-link" }, [
-                  _c("i", { staticClass: "fa fa-times" })
-                ])
+              _c("li", [
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 2")])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "ibox-content" }, [
-              _c("table", { staticClass: "table table-hover" }, [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("#")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Leave Type")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Application Date")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Number of Days")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Status")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Action")])
-                  ])
-                ]),
+            _c("a", { staticClass: "close-link" }, [
+              _c("i", { staticClass: "fa fa-times" })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ibox-content" }, [
+          _c("table", { staticClass: "table table-hover" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("#")]),
                 _vm._v(" "),
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Maternity")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("02/08/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("15")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Open")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
-                        _vm._v("view")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Sick")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("02/08/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("15")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Open")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
-                        _vm._v("view")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Educational")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("02/08/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("15")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Open")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
-                        _vm._v("view")
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", [_vm._v("1")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Study")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("02/08/2018")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("15")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v("Open")]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("button", { staticClass: "btn btn-sm bt-default" }, [
-                        _vm._v("view")
-                      ])
-                    ])
+                _c("th", [_vm._v("Leave Type")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Application Date")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Number of Days")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Status")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Action")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", [
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Maternity")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("02/08/2018")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("15")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Open")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                    _vm._v("view")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Sick")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("02/08/2018")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("15")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Open")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                    _vm._v("view")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Educational")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("02/08/2018")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("15")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Open")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                    _vm._v("view")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", [_vm._v("1")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Study")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("02/08/2018")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("15")]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Open")]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("button", { staticClass: "btn btn-sm bt-default" }, [
+                    _vm._v("view")
                   ])
                 ])
               ])
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4" }, [
-          _c("div", { staticClass: "ibox " }, [
-            _c("div", { staticClass: "ibox-title" }, [
-              _c("h5", [_vm._v("Recent Activities")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "ibox-content" }, [
-              _c("div", { staticClass: "activity-stream" }, [
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-pencil" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a5.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Karen Miggel")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Today at 01:32:40 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Add new note to the "
-                    ),
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Martex")]),
-                    _vm._v("  project.\n                            ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-commenting-o" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a4.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("John Mikkens")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 10:00:20 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v("\n                                Commented on "),
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Ariana")]),
-                    _vm._v(" profile.\n                            ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-circle" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a2.jpg" } }),
-                        _vm._v(" "),
-                        _c("img", { attrs: { src: "img/a3.jpg" } }),
-                        _vm._v(" "),
-                        _c("img", { attrs: { src: "img/a4.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            "Mike Johnson, Monica Smith and Karen Dortmund"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 02:13:20 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Changed status of third stage in the "
-                    ),
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Vertex")]),
-                    _vm._v(" project.\n                            ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-circle" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a6.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Jessica Smith")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 08:14:41 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Add new files to own file sharing place.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-send bg-primary" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a7.jpg" } }),
-                        _vm._v(" "),
-                        _c("img", { attrs: { src: "img/a1.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Martha Farter and Mike Rodgers")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 04:18:13 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Sent email to all users participating in new project.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-tag bg-warning" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a7.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Mark Mickens")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 06:00:30 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Has been taged in the latest comments about the new project.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-circle" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a8.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Mike Johnson")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 02:13:20 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Changed status of second stage in the latest project.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-circle" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a1.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Jessica Smith")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 08:14:41 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Add new files to own file sharing place.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-circle" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a6.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Jessica Smith")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 08:14:41 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Add new files to own file sharing place.\n                            "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "stream" }, [
-                  _c("div", { staticClass: "stream-badge" }, [
-                    _c("i", { staticClass: "fa fa-send" })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "stream-panel" }, [
-                    _c("div", { staticClass: "stream-info" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _c("img", { attrs: { src: "img/a7.jpg" } }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Martha Farter")]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "date" }, [
-                          _vm._v("Yesterday at 04:18:13 am")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(
-                      "\n                                Sent email to all users participating in new project.\n                            "
-                    )
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "modal inmodal",
-            attrs: {
-              id: "myModal",
-              tabindex: "-1",
-              role: "dialog",
-              "aria-hidden": "true"
-            }
-          },
-          [
-            _c("div", { staticClass: "modal-dialog" }, [
-              _c(
-                "div",
-                { staticClass: "modal-content animated bounceInRight" },
-                [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ]),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("Close")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("h4", { staticClass: "modal-title" }, [
-                      _vm._v("New application")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("form", { attrs: { role: "form" } }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Leave type")]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
-                            staticClass: "form-control col-x-12",
-                            attrs: { name: "leave_code", id: "leave_code" }
-                          },
-                          [
-                            _c("option", [_vm._v("1")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("2")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("3")]),
-                            _vm._v(" "),
-                            _c("option", [_vm._v("4")])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Start Date")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group date",
-                            attrs: { "data-provide": "datepicker" }
-                          },
-                          [
-                            _c("div", { staticClass: "input-group-addon" }, [
-                              _c("i", { staticClass: "fa fa-calendar" })
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                name: "start_date",
-                                id: "start_date"
-                              }
-                            })
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Number of days")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            placeholder: "Number of days",
-                            name: "no_of_days",
-                            id: "no_of_days"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "text-center" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "ladda-button btn btn-primary",
-                            attrs: {
-                              "data-style": "expand-right",
-                              type: "submit"
-                            }
-                          },
-                          [
-                            _c("strong", [
-                              _vm._v("Calculate "),
-                              _c("i", { staticClass: "fa fa-calculator" })
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("End Date")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group date",
-                            attrs: { "data-provide": "datepicker" }
-                          },
-                          [
-                            _c("div", { staticClass: "input-group-addon" }, [
-                              _c("i", { staticClass: "fa fa-calendar" })
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                readonly: "",
-                                name: "end_date",
-                                id: "end_date"
-                              }
-                            })
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Return Date")]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "input-group date",
-                            attrs: { "data-provide": "datepicker" }
-                          },
-                          [
-                            _c("div", { staticClass: "input-group-addon" }, [
-                              _c("i", { staticClass: "fa fa-calendar" })
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                readonly: "",
-                                name: "return_date",
-                                id: "return_date"
-                              }
-                            })
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("Comments")]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          staticClass: "form-control",
-                          attrs: { rows: "2", id: "comment", name: "comment" }
-                        })
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-white",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Close")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" }
-                      },
-                      [
-                        _vm._v("Apply "),
-                        _c("i", { staticClass: "fa fa-check-circle-o" })
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]
-        )
+        ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4" }, [
+      _c("div", { staticClass: "ibox " }, [
+        _c("div", { staticClass: "ibox-title" }, [
+          _c("h5", [_vm._v("Recent Activities")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ibox-content" }, [
+          _c("div", { staticClass: "activity-stream" }, [
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-pencil" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a5.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Karen Miggel")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Today at 01:32:40 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Add new note to the "
+                ),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Martex")]),
+                _vm._v("  project.\n                            ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-commenting-o" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a4.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("John Mikkens")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 10:00:20 am")
+                    ])
+                  ])
+                ]),
+                _vm._v("\n                                Commented on "),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Ariana")]),
+                _vm._v(" profile.\n                            ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-circle" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a2.jpg" } }),
+                    _vm._v(" "),
+                    _c("img", { attrs: { src: "img/a3.jpg" } }),
+                    _vm._v(" "),
+                    _c("img", { attrs: { src: "img/a4.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [
+                      _vm._v("Mike Johnson, Monica Smith and Karen Dortmund")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 02:13:20 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Changed status of third stage in the "
+                ),
+                _c("a", { attrs: { href: "#" } }, [_vm._v("Vertex")]),
+                _vm._v(" project.\n                            ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-circle" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a6.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Jessica Smith")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 08:14:41 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Add new files to own file sharing place.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-send bg-primary" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a7.jpg" } }),
+                    _vm._v(" "),
+                    _c("img", { attrs: { src: "img/a1.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Martha Farter and Mike Rodgers")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 04:18:13 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Sent email to all users participating in new project.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-tag bg-warning" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a7.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Mark Mickens")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 06:00:30 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Has been taged in the latest comments about the new project.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-circle" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a8.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Mike Johnson")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 02:13:20 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Changed status of second stage in the latest project.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-circle" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a1.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Jessica Smith")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 08:14:41 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Add new files to own file sharing place.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-circle" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a6.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Jessica Smith")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 08:14:41 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Add new files to own file sharing place.\n                            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "stream" }, [
+              _c("div", { staticClass: "stream-badge" }, [
+                _c("i", { staticClass: "fa fa-send" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "stream-panel" }, [
+                _c("div", { staticClass: "stream-info" }, [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _c("img", { attrs: { src: "img/a7.jpg" } }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Martha Farter")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "date" }, [
+                      _vm._v("Yesterday at 04:18:13 am")
+                    ])
+                  ])
+                ]),
+                _vm._v(
+                  "\n                                Sent email to all users participating in new project.\n                            "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [
+          _c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")]),
+          _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
+        ]
+      ),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("New application")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("strong", [
+      _vm._v("Calculate "),
+      _c("i", { staticClass: "fa fa-calculator" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   }
 ]
