@@ -17,7 +17,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\EventListener',
         ],
         'employee.created' => [
-            \App\Listeners\EmployeeCreatedListener::class,
+            \App\Listeners\EmployeeListener::class,
         ],
     ];
 
