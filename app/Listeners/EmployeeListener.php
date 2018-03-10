@@ -36,6 +36,8 @@ class EmployeeListener
         $user->name = "$employee->First_Name $employee->Last_Name";
         $user->save();
 
+        $employee->user_id = $user->id;
+        $employee->save();
         $credentials = ['email' => $user->email];
         $response = Password::sendResetLink($credentials, function ($message) {
             $message->subject($this->getEmailSubject());

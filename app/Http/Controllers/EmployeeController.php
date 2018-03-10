@@ -89,7 +89,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort(404);
     }
 
     public function user(Request $request, Employee $employee){
