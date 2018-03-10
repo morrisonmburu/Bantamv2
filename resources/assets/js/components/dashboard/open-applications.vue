@@ -251,15 +251,24 @@
                             </div>
                             <div class="modal-body">
                                 <form role="form">
+                                    <div class="form-group"><label>Leave type</label>
+                                        <select class="form-control col-x-12" name="leave_type" id="leave_type">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group"><label>Start Date</label>
                                         <div class="input-group date" data-provide="datepicker">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="start_date" id="start_date">
                                         </div>
                                     </div>
-                                    <div class="form-group"><label>Number of days</label> <input type="number" placeholder="Number of days" class="form-control"></div>
+                                    <div class="form-group"><label>Number of days</label>
+                                        <input type="number" placeholder="Number of days" class="form-control" name="no_of_days" id="no_of_days"></div>
                                     <div class="text-center">
                                         <button class="ladda-button btn btn-primary" data-style="expand-right" type="submit"><strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
                                     </div>
@@ -268,7 +277,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly>
+                                            <input type="text" class="form-control" readonly name="end_date" id="end_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Return Date</label>
@@ -276,17 +285,17 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control" readonly>
+                                            <input type="text" class="form-control" readonly name="return_date" id="return_date">
                                         </div>
                                     </div>
                                     <div class="form-group"><label>Comments</label>
-                                        <textarea class="form-control" rows="2" id="comment"></textarea>
+                                        <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                                <button type="submit" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
                             </div>
                         </div>
                     </div>

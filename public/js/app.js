@@ -47949,7 +47949,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47960,6 +47960,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48731,6 +48740,27 @@ var staticRenderFns = [
                   _c("div", { staticClass: "modal-body" }, [
                     _c("form", { attrs: { role: "form" } }, [
                       _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Leave type")]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            staticClass: "form-control col-x-12",
+                            attrs: { name: "leave_type", id: "leave_type" }
+                          },
+                          [
+                            _c("option", [_vm._v("1")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("2")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("3")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("4")])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
                         _c("label", [_vm._v("Start Date")]),
                         _vm._v(" "),
                         _c(
@@ -48746,7 +48776,11 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text" }
+                              attrs: {
+                                type: "text",
+                                name: "start_date",
+                                id: "start_date"
+                              }
                             })
                           ]
                         )
@@ -48759,7 +48793,9 @@ var staticRenderFns = [
                           staticClass: "form-control",
                           attrs: {
                             type: "number",
-                            placeholder: "Number of days"
+                            placeholder: "Number of days",
+                            name: "no_of_days",
+                            id: "no_of_days"
                           }
                         })
                       ]),
@@ -48799,7 +48835,12 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text", readonly: "" }
+                              attrs: {
+                                type: "text",
+                                readonly: "",
+                                name: "end_date",
+                                id: "end_date"
+                              }
                             })
                           ]
                         )
@@ -48821,7 +48862,12 @@ var staticRenderFns = [
                             _vm._v(" "),
                             _c("input", {
                               staticClass: "form-control",
-                              attrs: { type: "text", readonly: "" }
+                              attrs: {
+                                type: "text",
+                                readonly: "",
+                                name: "return_date",
+                                id: "return_date"
+                              }
                             })
                           ]
                         )
@@ -48832,7 +48878,7 @@ var staticRenderFns = [
                         _vm._v(" "),
                         _c("textarea", {
                           staticClass: "form-control",
-                          attrs: { rows: "2", id: "comment" }
+                          attrs: { rows: "2", id: "comment", name: "comment" }
                         })
                       ])
                     ])
@@ -48852,7 +48898,7 @@ var staticRenderFns = [
                       "button",
                       {
                         staticClass: "btn btn-primary",
-                        attrs: { type: "button" }
+                        attrs: { type: "submit" }
                       },
                       [
                         _vm._v("Apply "),
