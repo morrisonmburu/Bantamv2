@@ -40,8 +40,8 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
 });
 Route::resource('leave_applications','LeaveApplicationController');
-Route::resource('leave_allocations','LeaveAllocationsController');
-Route::resource('leave_types','LeaveTypeController@index');
+Route::resource('leave_allocations','LeaveAllocationController');
+Route::resource('leave_types','LeaveTypeController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

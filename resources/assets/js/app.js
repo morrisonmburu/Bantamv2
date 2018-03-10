@@ -137,7 +137,6 @@ const app = new Vue({
         )
 
     },
-
     created : function () {
         this.getData()
     },

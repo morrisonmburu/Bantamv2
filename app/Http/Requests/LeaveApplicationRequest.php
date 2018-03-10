@@ -13,7 +13,7 @@ class LeaveApplicationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,20 +23,21 @@ class LeaveApplicationRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            "Employee_No"=>"required",
-            "Leave_Code"=>'required',
-            "Approved_Start_Date"=>"required",
-            "Approved_Days"=>'Required',
+            "Employee_No"=>"sometimes",
+//            "Leave_Code"=>'required',
+            "start_date"=>"required",
+            "no_of_days"=>'Required',
         ];
     }
     public function messages()
     {
         return [
-            "Employee_No.required"=>"Employee No is blank",
-            "Leave_Code.required"=>"Leave code is blank",
-            "Approved_Start_Date.required"=>"Start date is blank",
-            "Approved_Days.Required"=>"Approved days not specified"
+//            "Employee_No.required"=>"Employee No is blank",
+//            "Leave_Code.required"=>"Leave code is blank",
+            "start_date.required"=>"Start date is blank",
+            "no_of_days.Required"=>"Approved days not specified"
         ];
     }
 }
