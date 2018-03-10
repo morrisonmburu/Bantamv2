@@ -32,10 +32,12 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/picture', 'EmployeeController@picture');
     Route::get('{employee}/leave_allocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
+    Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
 });
 Route::resource('employees', 'EmployeeController');
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationsController');
+Route::resource('leave_types','LeaveTypeController');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

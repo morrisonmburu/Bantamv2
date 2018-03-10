@@ -24,11 +24,19 @@ class LeaveApplicationRequest extends FormRequest
     public function rules()
     {
         return [
-            "leave_type" => "required",
-            "start_date" => "bail|required",
-            "no_of_days" => 'bail|required',
-            "end_date" => 'bail|required',
-            "return_date" => 'required',
+            "Employee_No"=>"required",
+            "Leave_Code"=>'required',
+            "Approved_Start_Date"=>"required",
+            "Approved_Days"=>'Required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            "Employee_No.required"=>"Employee No is blank",
+            "Leave_Code.required"=>"Leave code is blank",
+            "Approved_Start_Date.required"=>"Start date is blank",
+            "Approved_Days.Required"=>"Approved days not specified"
         ];
     }
 }

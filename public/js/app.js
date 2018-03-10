@@ -1439,6 +1439,7 @@ var app = new Vue({
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
             CURRENT_EMPLOYEE_PROFILE_PICTURE: 'api/employees@picture', // current employee profile picture
+            CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees@leave_types', // current employee leave types
             SEARCH: 'https://yesno.wtf/api'
         },
         searchResults: '',
@@ -48752,7 +48753,7 @@ var staticRenderFns = [
                           "select",
                           {
                             staticClass: "form-control col-x-12",
-                            attrs: { name: "leave_type", id: "leave_type" }
+                            attrs: { name: "leave_code", id: "leave_code" }
                           },
                           [
                             _c("option", [_vm._v("1")]),
