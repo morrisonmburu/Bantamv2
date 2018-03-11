@@ -12,14 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(EmployeeLeaveApplication $leaveApplications)
     {
-        //
+        return new LeaveApplicationResource($leaveApplications::all());
     }
 
     /**
