@@ -269,7 +269,14 @@
                                         <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days"></div>
                                     <div class="text-center">
                                         <button v-if="spinner" class="ladda-button btn btn-primary" data-style="expand-right" @click="calculate"> <strong>Calculate <i class="fa fa-calculator"></i> </strong></button>
-                                        <div v-else class="sk-spinner sk-spinner-pulse"></div>
+
+                                        <div v-else class="sk-spinner sk-spinner-wave">
+                                            <div class="sk-rect1"></div>
+                                            <div class="sk-rect2"></div>
+                                            <div class="sk-rect3"></div>
+                                            <div class="sk-rect4"></div>
+                                            <div class="sk-rect5"></div>
+                                        </div>
                                     </div>
                                     <div class="form-group"><label>End Date</label>
                                         <div class="input-group date" data-provide="datepicker">
@@ -345,7 +352,7 @@
                     .then(function (response) {
                         v.formData.end_date = response.data.eDate
                         v.formData.return_date = response.data.rDate
-                        this.spinner = true
+                        v.spinner = true
                     })
             },
             submitLeaveApplication : function (e) {
