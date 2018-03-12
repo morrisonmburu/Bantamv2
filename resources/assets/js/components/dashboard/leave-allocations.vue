@@ -24,12 +24,17 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <ul id="example-1">
-                            <li v-for="allocation in currentEmployeeLeaveAllocations">
-                                {{ allocation.Employee_No}}
-                            </li>
-                        </ul>
-                        <table class="table table-striped">
+
+                        <div v-if="loading" class="spiner-example">
+                            <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </div>
+                        </div>
+                        <table v-else class="table table-striped animated fadeIn">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -38,55 +43,27 @@
                                 <th>Balance</th>
                                 <th>Accrued Days</th>
                                 <th>Days Taken</th>
-                                <th>Days Applied</th>
-                                <th>Days Approved</th>
-                                <th>Days Approved_Taken</th>
                                 <th>Allocated Days</th>
                                 <th>Leave Period</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>L434</td>
-                                <td>05/24/2018</td>
-                                <td>5</td>
-                                <td>2</td>
-                                <td>7</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>21</td>
-                                <td>2018</td>
+                            <tr v-for="(allocation, index) in allocations">
+                                <td>{{index + 1 }}</td>
+                                <td>{{allocation.Leave_Code}}</td>
+                                <td>{{allocation.Maturity_Date}}</td>
+                                <td>{{allocation.Balance}}</td>
+                                <td>{{allocation.Accrued_Days}}</td>
+                                <td>{{allocation.Taken}}</td>
+                                <td>{{allocation.Allocated_Days}}</td>
+                                <td>{{allocation.Leave_Period}}</td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>L434</td>
-                                <td>05/24/2018</td>
-                                <td>5</td>
-                                <td>2</td>
-                                <td>7</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>21</td>
-                                <td>2018</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>L434</td>
-                                <td>05/24/2018</td>
-                                <td>5</td>
-                                <td>2</td>
-                                <td>7</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>21</td>
-                                <td>2018</td>
+                            <tr v-if="isEmptyObject(allocations)">
+                                <td colspan="8" class="text-center"><i class="text-muted">no allocations found</i></td>
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -101,8 +78,41 @@
             'currentUser',
             'currentUserData',
             'swapComponent',
-            'currentEmployeeLeaveAllocations'
+            'currentEmployeeLeaveAllocations',
+            'APIENDPOINTS',
+            'getApiPath',
+            'isEmptyObject'
         ],
+        data : function(){
+            return {
+                allocations     : {},
+                loading         : true
+            }
+        },
+        methods : {
+
+            getLeaveAllocations : function(){
+                var v = this
+
+                axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS, v.currentUserData.id))
+                    .then(function (response) {
+                        v.allocations = response.data.data
+                        v.loading = false
+                        console.log('Leave allocations')
+                        console.log(v.allocations)
+                    })
+                    .catch(function (errro) {
+                        console.log(errro)
+                    })
+            }
+        },
+        created : function () {
+                this.getLeaveAllocations()
+        },
+        watch : {
+
+        }
+
     }
 </script>
 

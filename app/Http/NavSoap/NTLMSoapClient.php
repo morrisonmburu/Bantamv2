@@ -8,7 +8,7 @@
 
 namespace App\Http\NavSoap;
 
-define('USERPWD', 'Michael.kamau:Pass@2018');
+define('USERPWD', env("NAV_USER").':'.env("NAV_PWD"));
 class NTLMSoapClient extends \SoapClient {
 
     function __doRequest($request, $location, $action, $version,$one_way = 0) {

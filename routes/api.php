@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('users')->group(function () {
     Route::get('{user}/employee', 'UserController@employee');
+    Route::get('{user}/notification', 'Notification@UserNotifications');
+    Route::get('{user}/notification/unread', 'Notification@UnreadNotifications');
+    Route::get('{user}/notification/read', 'Notification@ReadNotifications');
     Route::get('current', 'UserController@current');
 });
 Route::resource('users', 'UserController');
@@ -40,9 +43,11 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
     Route::post('requests', 'LeaveApplicationController@requests');
 });
+
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationController');
 Route::resource('leave_types','LeaveTypeController');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

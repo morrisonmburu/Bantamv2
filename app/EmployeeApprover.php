@@ -8,7 +8,7 @@ class EmployeeApprover extends Model
 {
     protected $guarded = [];
     protected $table = "employee_approvers";
-    protected $primaryKey = "Approver_id";
+    protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
 

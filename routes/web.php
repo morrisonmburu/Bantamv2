@@ -17,7 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get("test","TestSoap@ImageTest");
+Route::get("test",function (){
+//    try{
+//        \Illuminate\Support\Facades\Notification::send(\App\User::find(1), new \App\Notifications\AccountActivated());
+//        return "Notification sent";
+//    }catch(Exception $e){
+//        return "Error sending notification:".$e->getMessage();
+//    }
+
+    return env("NAV_USER");
+
+});
 Route::get("phpinformation","TestSoap@phpinformation");
 
 Route::get('/home', 'HomeController@index')->name('home');

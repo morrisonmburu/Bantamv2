@@ -1,14 +1,14 @@
 <template>
-    <div class="dropdown profile-element">
+    <div class="dropdown profile-element ani">
 
-        <span>
-            <img alt="image" class="img-circle" :src="'api/employees/' + this.currentUserData.id + '/picture'" width="100"/>
+        <span v-if="userDetails.profilePicture.length !== 0" class="animated fadeInDown">
+            <img alt="image" class="img-circle" :src="userDetails.profilePicture " width="100"/>
         </span>
 
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
               <span class="clear">
                   <span class="block m-t-xs">
-                      <strong class="font-bold">{{currentUserData.First_Name +' '+ currentUserData.Middle_Name +' '+ currentUserData.Last_Name}}</strong>
+                      <strong class="font-bold">{{userDetails.fullName}}</strong>
                  </span>
                  <span class="text-muted text-xs block">
                      {{currentUserData.Title == null ? 'My Account' : currentUserData.Title}}
@@ -32,8 +32,22 @@
         props : [
             'currentUser',
             'currentUserData',
-            'swapComponent'
+            'swapComponent',
+            'getApiPath',
+            'APIENDPOINTS',
+            'userDetails'
         ],
+        data : function () {
+            return {
+
+            }
+        },
+        methods : {
+
+        },
+        created () {
+
+        }
 
     }
 </script>

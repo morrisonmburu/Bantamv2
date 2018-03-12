@@ -30,4 +30,10 @@ class User extends Authenticatable
     public function Employee_Record(){
         return $this->hasOne("App\Employee");
     }
+
+    // Notification  recipient
+    public function routeNotificationForMail($notification)
+    {
+        return $this->email;
+    }
 }

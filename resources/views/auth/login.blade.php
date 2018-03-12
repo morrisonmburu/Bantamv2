@@ -15,12 +15,13 @@
                 @csrf
 
                 <div class="form-group">
+
                     <input id="login" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="Enter your Email or Employee Number" required autofocus>
 
                     @if ($errors->has('login'))
-                        <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('login') }}</strong>
-                                    </span>
+                    <span class="invalid-feedback">
+                          <strong>{{ $errors->first('login') }}</strong>
+                    </span>
                     @endif
                 </div>
                 <div class="form-group">
@@ -28,8 +29,8 @@
 
                     @if ($errors->has('password'))
                         <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
                     @endif
                 </div>
                 <div class="form-group row">
