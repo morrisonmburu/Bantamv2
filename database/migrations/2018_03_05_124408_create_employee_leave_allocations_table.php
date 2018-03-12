@@ -34,7 +34,7 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
             $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
 
             $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');
-            $table->unique(['Employee_No', 'Leave_Period']);
+            $table->unique(['Employee_No', 'Leave_Period', 'Leave_Code'], 'employee_leave_allocations_composite_key');
             $table->timestamps();
         });
     }
