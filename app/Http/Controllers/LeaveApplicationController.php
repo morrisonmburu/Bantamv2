@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\ApprovalEntry;
+use App\EmployeeApprover;
 use App\EmployeeLeaveAllocation;
+use App\Notifications\NotifyApprover;
+use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\EmployeeLeaveApplicationCollection;
 use App\Http\Resources\LeaveApplicationResource;
+use App\Notifications\LeaveApprovalRequestSent;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
 use App\Employee;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
@@ -41,7 +49,9 @@ class LeaveApplicationController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeaveRequest $request, EmployeeLeaveApplication $LeaveApplication)
+
+
+    public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
@@ -53,18 +63,63 @@ class LeaveApplicationController extends Controller
         $LeaveApplication->fill($data);
         try {
             if ($LeaveApplication->save()) {
-                return response('Success', 200)->header('Content-Type', 'text/plain');
+                if ($this->createApprovalEntry($data)){
+                    Notification::send(Auth::user(),new LeaveApprovalRequestSent());
+                    return response('Success', 200)->header('Content-Type', 'text/plain');
+                }else{
+                    return response("Failed! You don't have any approver",500)->header('Content-Type', 'text/plain');
+                }
+            }else{
+                return response("Failed! Leave application not created.",500)->header('Content-Type', 'text/plain');
             }
+
         } catch (\Exception $e) {
-            return response('Error occurred while creating leave application :' . $e->getMessage(), 500)->header('Content-Type', 'text/plain');
+            return response('Error occurred:' . $e->getMessage(), 500)->header('Content-Type', 'text/plain');
         }
     }
 
+    public function createApprovalEntry($data){
+        $approvalEntry = new ApprovalEntry();
+        try {
+            $approver = EmployeeApprover::where(["Employee" => Auth::user()->Employee_Record->No])->first(); // Returns first approver in the list
+            if (count($approver)>0){
+                try{
+                    $approvalEntryData=[
+                        "Table_ID"=>uniqid(),
+                        "Document_No"=>$data["Application_Code"],
+                        "Document_Type"=>"Leave",
+                        "Sequence_No"=>$approver->Approval_Level,
+                        "Status" => "Pending",
+                        "Approval_Details" => $approver->NamesApprvr,
+                        "Sender_ID" => $data["Employee_No"],
+                        "Approver_ID" => $approver->Approver,
+                        "Document_Owner" => $data["Employee_No"],
+                        "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
+                    ];
+                    $approvalEntry->fill($approvalEntryData);
+                    if ($approvalEntry->save()) {
+                        Notification::send($approver->user, new NotifyApprover());
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }catch(\Exception $e){
+//                    return 'Error occurred while creating approval entry:' . $e->getMessage();
+                return false;
+                }
+            }else{
+                return false;
+            }
+
+        }catch(ModelNotFoundException $e){
+//            return 'Error!You don\'t have any approver';
+            return false;
+        }
+    }
     /**
      * Display the specified resource.
      *
      * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
-     * @return \Illuminate\Http\Response
      */
     public function show(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
     {
