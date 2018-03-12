@@ -16,4 +16,12 @@ class EmployeeApprover extends Model
     public function Approval_entries(){
         return $this->hasMany(ApprovalEntry::class,"Approver_id",'id');
     }
+
+    public function employee(){
+        return $this->belongsTo(Employee::class, "Employee", "No");
+    }
+
+    public function approver(){
+        return $this->belongsTo(Employee::class, "Approver", "No");
+    }
 }

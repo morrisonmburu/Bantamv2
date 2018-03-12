@@ -59,6 +59,18 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function approvers(){
+        return $this->hasManyThrough(
+            Employee::class,
+            EmployeeApprover::class,
+            'No',
+            'Approver',
+            'No',
+            'Employee'
+
+        );
+    }
+
     public function saveProfilePic($encodedImage){
         try{
             $decodedImage = base64_decode($encodedImage);
