@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use App\Http\NavSoap\NTLMStream;
 use App\Http\NavSoap\NTLMSoapClient;
+use App\Notifications\NotifyApprover;
 use GuzzleHttp\Client;
+use App\User;
+use App\EmployeeApprover;
 use App\Http\Controllers\EmployeeController;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\RequestOptions;
@@ -12,6 +15,21 @@ use Illuminate\Support\Facades\Storage;
 class TestSoap extends Controller
 {
 
+    protected $user;
+    protected $approver;
+
+    public function __construct(User $user,EmployeeApprover $approver)
+    {
+        $this->user = $user;
+        $this->approver = $approver;
+    }
+
+    public function sendNote(){
+        $content = [
+          "Message"=>"Welcome to our app"
+        ];
+        $this->user->notify(new NotifyApprover($this->approver));
+    }
     public function phpinformation(){
         dd(phpinfo());
     }

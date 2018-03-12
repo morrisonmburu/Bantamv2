@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\EmployeeLeaveApplicationCollection;
+use App\Http\Resources\NotificationResource;
+use App\User;
 use Illuminate\Http\Request;
 
-class LeaveApplication extends Controller
+class Notification extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $data = EmployeeLeaveApplicationCollection::paginate();
-        if($request->is('api*')){
-            return new EmployeeLeaveApplicationCollection($data);
-        }
+        //
     }
 
     /**
@@ -25,21 +23,9 @@ class LeaveApplication extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $data = EmployeeLeaveApplicationCollection::paginate();
-
-        $validatedData = $request->validate([
-            'Start_Date' => 'required|date',
-            'End_Date' => 'required|date',
-            'Return_Date' => 'required|date',
-        ]);
-
-        $elac = EmployeeLeaveApplicationCollection::fill($validatedData);
-
-        if($request->is('api*')){
-            return new EmployeeLeaveApplicationCollection($data);
-        }
+        //
     }
 
     /**
@@ -56,10 +42,10 @@ class LeaveApplication extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
     }
@@ -67,10 +53,10 @@ class LeaveApplication extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -79,10 +65,10 @@ class LeaveApplication extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -90,11 +76,33 @@ class LeaveApplication extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
+    }
+
+
+    // All notifications
+    public function UserNotifications (User $user, Request $request){
+        if ($request->is('api*')){
+            return new NotificationResource($user->notifications);
+        }
+    }
+
+    // Unread notifications
+    public function UnreadNotifications (User $user, Request $request){
+        if ($request->is('api*')){
+            return new NotificationResource($user->unreadNotifications );
+        }
+    }
+
+    //Read notifications
+    public function ReadNotifications (User $user, Request $request){
+        if ($request->is('api*')){
+            return new NotificationResource($user->readNotifications);
+        }
     }
 }

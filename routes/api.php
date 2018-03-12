@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('users')->group(function () {
     Route::get('{user}/employee', 'UserController@employee');
+    Route::get('{user}/notification', 'Notification@UserNotifications');
+    Route::get('{user}/notification/unread', 'Notification@UnreadNotifications');
+    Route::get('{user}/notification/read', 'Notification@ReadNotifications');
     Route::get('current', 'UserController@current');
 });
 Route::resource('users', 'UserController');

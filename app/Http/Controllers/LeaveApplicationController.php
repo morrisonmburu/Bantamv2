@@ -114,13 +114,24 @@ class LeaveApplicationController extends Controller
         ]);
 
         $manager = new NavSyncManager();
-        $result = $manager->calculateLeaveDates(
-            $validatedData['leave_code'],
-            Auth::user()->Employee_Record->No,
-            Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
-            $validatedData['start_date'],
-            $validatedData['no_of_days']
-        );
+
+        try{
+            $result = $manager->calculateLeaveDates(
+                $validatedData['leave_code'],
+                Auth::user()->Employee_Record->No,
+                Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
+                $validatedData['start_date'],
+                $validatedData['no_of_days']
+            );
+        }
+        catch (\Exception $e){
+            if ($e->getCode() == NavSyncManager::$NAV_HTTP_ERROR_CODE)
+                abort(400, $e->getMessage());
+            else{
+                throw $e;
+            }
+        }
+
 
         return json_encode((array)$result);
 

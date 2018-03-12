@@ -15,12 +15,13 @@
                 @csrf
 
                 <div class="form-group">
-                    <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email or Employee No." required autofocus>
 
-                    @if ($errors->has('email'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
+                    <input id="login" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="Enter your Email or Employee Number" required autofocus>
+
+                    @if ($errors->has('login'))
+                    <span class="invalid-feedback">
+                          <strong>{{ $errors->first('login') }}</strong>
+                    </span>
                     @endif
                 </div>
                 <div class="form-group">
