@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'employee.created' => [
             \App\Listeners\EmployeeListener::class,
         ],
+        'approval_entry.updated' => [
+            \App\Listeners\ApprovalEntryUpdatedListener::class,
+        ],
     ];
 
     /**

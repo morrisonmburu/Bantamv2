@@ -58,17 +58,44 @@ class Employee extends Model
     }
 
     public function approvers(){
+        return $this->hasMany(
+            EmployeeApprover::class,
+            'Employee',
+            'No'
+        );
+    }
+
+    public function approvees(){
+        return $this->hasMany(
+            EmployeeApprover::class,
+            'Approver',
+            'No'
+        );
+    }
+
+    public function employee_approvers(){
         return $this->hasManyThrough(
             Employee::class,
             EmployeeApprover::class,
+            'Employee',
             'No',
+            'No',
+            'Approver'
+
+        );
+    }
+
+    public function employee_approvees(){
+        return $this->hasManyThrough(
+            Employee::class,
+            EmployeeApprover::class,
             'Approver',
+            'No',
             'No',
             'Employee'
 
         );
     }
-
     public function saveProfilePic($encodedImage){
         try{
             $decodedImage = base64_decode($encodedImage);
