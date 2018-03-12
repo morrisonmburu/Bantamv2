@@ -53973,7 +53973,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54056,16 +54056,17 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
     methods: {
         getNotifications: function getNotifications() {
             var v = this;
-            axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.userDetails.id)).then(function (response) {
-                v.notification = response.data;
-                conole.log(v.notification);
+
+            axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, 1)).then(function (response) {
+                v.notification = response.data.data;
+                console.log('notification');
+                console.log(v.notification);
             }).catch(function (error) {
                 console.log(error);
             });
         }
     },
     created: function created() {
-        alert(this.userDetails.id);
         this.getNotifications();
     }
 });

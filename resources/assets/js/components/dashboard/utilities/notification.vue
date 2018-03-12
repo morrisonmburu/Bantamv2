@@ -76,10 +76,15 @@
         methods : {
             getNotifications : function () {
                 var v = this
-                axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.userDetails.id))
+
+
+                
+
+                axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, 1))
                     .then(function (response) {
-                        v.notification = response.data
-                        conole.log( v.notification)
+                        v.notification = response.data.data
+                        console.log('notification')
+                        console.log( v.notification)
                     })
                     .catch(function (error) {
                         console.log(error)
@@ -87,7 +92,6 @@
             }
         },
         created() {
-            alert(this.userDetails.id)
             this.getNotifications()
         },
     }
