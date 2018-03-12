@@ -60,6 +60,22 @@ class Employee extends Model
     }
 
     public function approvers(){
+        return $this->hasMany(
+            EmployeeApprover::class,
+            'Employee',
+            'No'
+        );
+    }
+
+    public function approvees(){
+        return $this->hasMany(
+            EmployeeApprover::class,
+            'Approver',
+            'No'
+        );
+    }
+
+    public function employee_approvers(){
         return $this->hasManyThrough(
             Employee::class,
             EmployeeApprover::class,
@@ -71,7 +87,7 @@ class Employee extends Model
         );
     }
 
-    public function approvees(){
+    public function employee_approvees(){
         return $this->hasManyThrough(
             Employee::class,
             EmployeeApprover::class,

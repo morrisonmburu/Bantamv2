@@ -20,4 +20,16 @@ class ApprovalEntry extends Model
             Event::fire('approval_entry.updated', $entry);
         });
     }
+
+    public function employee(){
+        $this->belongsTo(Employee::class, "Sender_ID", "No");
+    }
+
+    public function approver(){
+        $this->belongsTo(Employee::class, "Approver_ID", "No");
+    }
+
+    public function leave_application(){
+        $this->belongsTo(EmployeeLeaveApplication::class, "Document_No", "Application_Code");
+    }
 }
