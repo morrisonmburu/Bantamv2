@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\EmployeeLeaveAllocation;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
+use App\Http\Resources\EmployeeLeaveApplicationCollection;
 use App\Http\Resources\LeaveApplicationResource;
 use Illuminate\Http\Request;
 use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
@@ -12,9 +14,16 @@ use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
 {
-    public function index(EmployeeLeaveApplication $leaveApplications)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-        return new LeaveApplicationResource($leaveApplications::all());
+        if ($request->is('api*')) {
+            return new EmployeeLeaveApplicationCollection(EmployeeLeaveApplication::all());
+        }
     }
 
     /**
@@ -30,46 +39,45 @@ class LeaveApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
+    public function store(LeaveRequest $request, EmployeeLeaveApplication $LeaveApplication)
     {
         $data = [
-                "Employee_No"=> Auth::user()->Employee_Record->No,
-//                "Leave_Period"=>$request->Leave_Period,
-                "Leave_Code"=>$request->leave_code,
-                "Start_Date"=>$request->start_date,
-                "Days_Applied"=>$request->no_of_days,
-//                "End_Date"=>$request->end_date,
-//                "Return_Date"=>$request->return_date,
+            "Employee_No" => Auth::user()->Employee_Record->No,
+            "Leave_Code" => $request->leave_code,
+            "Start_Date" => $request->start_date,
+            "Days_Applied" => $request->no_of_days,
             "Application_Code" => uniqid()
-            ];
+        ];
         $LeaveApplication->fill($data);
-        try{
-            if ($LeaveApplication->save()){
+        try {
+            if ($LeaveApplication->save()) {
                 return response('Success', 200)->header('Content-Type', 'text/plain');
             }
-        }catch (\Exception $e){
-            return  response('Error occurred while creating leave application :'.$e->getMessage(), 500)->header('Content-Type', 'text/plain');
+        } catch (\Exception $e) {
+            return response('Error occurred while creating leave application :' . $e->getMessage(), 500)->header('Content-Type', 'text/plain');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\EmployeeLeaveApplication  $employeeLeaveApplication
+     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
      * @return \Illuminate\Http\Response
      */
-    public function show(EmployeeLeaveApplication $employeeLeaveApplication)
+    public function show(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
     {
-        //
+        if ($request->is('api*')) {
+            return new LeaveApplicationResource($employeeLeaveApplication);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\EmployeeLeaveApplication  $employeeLeaveApplication
+     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
      * @return \Illuminate\Http\Response
      */
     public function edit(EmployeeLeaveApplication $employeeLeaveApplication)
@@ -80,19 +88,19 @@ class LeaveApplicationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EmployeeLeaveApplication  $employeeLeaveApplication
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
     {
-        //
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\EmployeeLeaveApplication  $employeeLeaveApplication
+     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
      * @return \Illuminate\Http\Response
      */
     public function destroy(EmployeeLeaveApplication $employeeLeaveApplication)
@@ -100,13 +108,23 @@ class LeaveApplicationController extends Controller
         //
     }
 
-    public function EmployeeLeaveApplications(Employee $employee, Request $request){
-        if ($request->is('api*')){
+    public function EmployeeLeaveApplications(Employee $employee, Request $request)
+    {
+        if ($request->is('api*')) {
             return new LeaveApplicationResource($employee->Employee_leave_applications);
         }
     }
 
-    public function calculateLeaveDates(Request $request){
+    public function requests(Request $request){
+        $requests = Emp;
+
+        if ($request->is('api*')) {
+            return new EmployeeLeaveApplicationCollection($requests);
+        }
+    }
+
+    public function calculateLeaveDates(Request $request)
+    {
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'no_of_days' => 'required|numeric',
@@ -115,7 +133,7 @@ class LeaveApplicationController extends Controller
 
         $manager = new NavSyncManager();
 
-        try{
+        try {
             $result = $manager->calculateLeaveDates(
                 $validatedData['leave_code'],
                 Auth::user()->Employee_Record->No,
@@ -123,15 +141,13 @@ class LeaveApplicationController extends Controller
                 $validatedData['start_date'],
                 $validatedData['no_of_days']
             );
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             if ($e->getCode() == NavSyncManager::$NAV_HTTP_ERROR_CODE)
                 abort(400, $e->getMessage());
-            else{
+            else {
                 throw $e;
             }
         }
-
 
         return json_encode((array)$result);
 

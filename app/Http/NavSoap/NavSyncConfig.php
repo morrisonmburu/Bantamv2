@@ -2,7 +2,7 @@
 return (object)array(
     'NAV_USER' => env("NAV_USER"),
     'NAV_PWD' => env("NAV_PWD"),
-    'NAV_BASE_URL' => 'http://172.16.200.67:9347/NAVDEMO/WS/CRONUS International Ltd.',
+    'NAV_BASE_URL' => 'http://172.16.200.67:9347/NAVDEMO/WS/CRONUS%20International%20Ltd.',
     'NAV_SOAP_EMPLOYEE' => 'Page/Employees',
     'NAV_SOAP_LEAVE_ALLOC' => 'Page/LeaveAlloc',
     'NAV_SOAP_LEAVE_APPS' => 'Page/LeaveApps',

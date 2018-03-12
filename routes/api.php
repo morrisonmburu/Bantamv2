@@ -42,6 +42,7 @@ Route::resource('employees', 'EmployeeController');
 //calculateLeaveDates
 Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
+    Route::post('requests', 'LeaveApplicationController@requests');
 });
 
 Route::resource('leave_applications','LeaveApplicationController');
