@@ -76,11 +76,7 @@
         methods : {
             getNotifications : function () {
                 var v = this
-
-
-                
-
-                axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, 1))
+                axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id))
                     .then(function (response) {
                         v.notification = response.data.data
                         console.log('notification')
@@ -92,8 +88,12 @@
             }
         },
         created() {
-            this.getNotifications()
+
         },
+        mounted() {
+            setTimeout(() =>  this.getNotifications(), 1500);
+
+        }
     }
 </script>
 
