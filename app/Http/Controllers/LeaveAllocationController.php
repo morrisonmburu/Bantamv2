@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeLeaveAllocation;
+use App\Http\Resources\EmployeeLeaveAllocationCollection;
 use App\Http\Resources\LeaveAllocationResource;
 use Illuminate\Http\Request;
 use App\Employee;
 
 class LeaveAllocationController extends Controller
 {
-    public function index(EmployeeLeaveAllocation $leaveAllocations)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-         return new LeaveAllocationResource($leaveAllocations::all());
+        if ($request->is('api*')) {
+            return new EmployeeLeaveAllocationCollection(EmployeeLeaveAllocation::all());
+        }
     }
 
     public function create()
@@ -36,9 +44,11 @@ class LeaveAllocationController extends Controller
      * @param  \App\EmployeeLeaveAllocation  $employeeLeaveAllocation
      * @return \Illuminate\Http\Response
      */
-    public function show(EmployeeLeaveAllocation $employeeLeaveAllocation)
+    public function show(EmployeeLeaveAllocation $employeeLeaveAllocation, Request $request)
     {
-        //
+        if ($request->is('api*')) {
+            return new LeaveAllocationResource($employeeLeaveAllocation);
+        }
     }
 
     /**
@@ -78,6 +88,8 @@ class LeaveAllocationController extends Controller
     //Get current employee's leave allocations
 
     public function EmployeeLeaveAllocations(Employee $employee, Request $request){
-        return new LeaveAllocationResource($employee->Employee_leave_allocations);
+        if ($request->is('api*')) {
+            return new LeaveAllocationResource($employee->Employee_leave_allocations);
+        }
     }
 }

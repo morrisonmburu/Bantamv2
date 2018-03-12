@@ -51,14 +51,8 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $syncManager = new NavSyncManager();
-            $syncManager->calculateLeaveDates(
-                "ANNUAL",
-                "LM",
-                "GB",
-                "2010-10-18",
-                "10"
-            );
+            $employee =Employee::find(1);
+            print (var_dump($employee->approvers));
         }
         catch (\Exception $e){
             print ($e);

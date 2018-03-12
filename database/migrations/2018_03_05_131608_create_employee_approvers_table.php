@@ -22,7 +22,8 @@ class CreateEmployeeApproversTable extends Migration
             $table->string("NamesApprvr");
             $table->string("Comments", 50)->nullable();
             $table->foreign('Employee')->references('No')->on('employees');
-            $table->unique(['Employee', 'Approver']);
+            $table->foreign('Approver')->references('No')->on('employees');
+            $table->unique(['Employee', 'Approver', 'Approval_Level']);
 
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
