@@ -251,7 +251,7 @@
                                             <!--<div class="input-group-addon">-->
                                                 <!--<i class="fa fa-calendar"></i>-->
                                             <!--</div>-->
-                                            <date-picker v-model="formData.start_date" lang="en" format="yyyy-mm-dd" input-class="form-control mx-input "></date-picker>
+                                            <date-picker v-model="formData.start_date" width="10" type="date" lang="en" format="yyyy-MM-dd" input-class="form-control mx-input "></date-picker>
                                             <!--<input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">-->
                                         <!--</div>-->
                                     </div>
@@ -361,10 +361,6 @@
             }
         },
         methods : {
-            getDate : function () {
-                alert('change dates')
-                this.formData.start_date = this.formData.start_date + ' '
-            },
             getLeaveApplications : function(){
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
@@ -379,10 +375,10 @@
                     })
             },
             calculate : function (e) {
-
                 e.preventDefault();
                 this.spinner = false
                 var v = this
+                v.formData.start_date = (v.formData.start_date).toISOString().substring(0,9)
                 axios.post(
                     this.APIENDPOINTS.CALCULATE,
                     this.formData,

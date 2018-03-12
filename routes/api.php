@@ -28,6 +28,7 @@ Route::prefix('users')->group(function () {
     Route::get('{user}/notification/read', 'Notification@ReadNotifications');
     Route::get('current', 'UserController@current');
 });
+
 Route::resource('users', 'UserController');
 
 Route::prefix('employees')->group(function () {

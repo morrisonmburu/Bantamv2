@@ -15,19 +15,20 @@ class CreateApprovalEntriesTable extends Migration
     {
         Schema::create('approval_entries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Table_ID',50)->unique();
-            $table->string('Document_Type');
+
+            $table->string('Table_ID', 50)->unique();
+            $table->enum('Document_Type', ['Leave', 'Training', 'Appraisal', 'Succession', 'Payroll', 'Recruitment']);
             $table->string('Document_No',50);
             $table->integer('Sequence_No');
-            $table->string('Status',50);
+            $table->enum('Status',['Created', 'Open', 'Canceled', 'Rejected', 'Approved']);
             $table->string('Approval_Details',255)->nullable();
             $table->string('Sender_ID',50);
             $table->string('Approver_ID', 50);
-            $table->string('Document_Owner', 50);
-            $table->dateTime('Date_Time_Sent_for_Approval');
+            $table->string('Document_Owner', 50)->nullable();
+            $table->dateTime('Date_Time_Sent_for_Approval')->nullable();
             $table->date('Last_Date_Time_Modified')->nullable();
             $table->string("Last_Modified_By_ID",50)->nullable();
-            $table->string("Comment",50)->nullabe()->default(null);
+            $table->string("Comment",50)->nullable();
             $table->date("Due_Date")->nullable();
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
