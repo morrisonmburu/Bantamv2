@@ -47987,7 +47987,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48320,6 +48320,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -48349,7 +48351,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 end: new Date()
             }],
             btnType: 'btn-primary',
-            btnIcon: 'fa fa-calculator'
+            btnIcon: 'fa fa-calculator',
+            date: '04/05/2017'
+
         };
     },
     methods: {
@@ -48368,7 +48372,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             e.preventDefault();
             this.spinner = false;
             var v = this;
-            v.formData.start_date = v.formData.start_date.toISOString().substring(0, 9);
+            // v.formData.start_date = new Date(v.formData.start_date )
             axios.post(this.APIENDPOINTS.CALCULATE, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
@@ -48409,6 +48413,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getLeaveApplications();
         this.getLeaveTypes();
     },
+
+    watch: {},
     mounted: function mounted() {}
 });
 
@@ -48599,29 +48605,51 @@ var render = function() {
                       _vm._v("Start Date")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-sm-8" },
-                      [
-                        _c("date-picker", {
+                    _c("div", { staticClass: "col-sm-8" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "input-group date",
                           attrs: {
-                            width: "10",
-                            type: "date",
-                            lang: "en",
-                            format: "yyyy-MM-dd",
-                            "input-class": "form-control mx-input "
-                          },
-                          model: {
-                            value: _vm.formData.start_date,
-                            callback: function($$v) {
-                              _vm.$set(_vm.formData, "start_date", $$v)
-                            },
-                            expression: "formData.start_date"
+                            "data-provide": "datepicker",
+                            "data-date-format": "yyyy-mm-dd"
                           }
-                        })
-                      ],
-                      1
-                    )
+                        },
+                        [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.formData.start_date,
+                                expression: "formData.start_date"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              name: "start_date",
+                              id: "start_date"
+                            },
+                            domProps: { value: _vm.formData.start_date },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.formData,
+                                  "start_date",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -48710,28 +48738,45 @@ var render = function() {
                       _vm._v("End Date")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-sm-8" },
-                      [
-                        _c("date-picker", {
+                    _c("div", { staticClass: "col-sm-8" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("i", {
+                          staticClass: "mx-input-icon mx-input-icon__calendar"
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.end_date,
+                              expression: "formData.end_date"
+                            }
+                          ],
+                          staticClass: "form-control",
                           attrs: {
-                            lang: "en",
-                            format: "yyyy-mm-dd",
+                            type: "text",
                             disabled: "",
-                            "input-class": "form-control mx-input "
+                            readonly: "",
+                            name: "end_date",
+                            id: "end_date"
                           },
-                          model: {
-                            value: _vm.formData.end_date,
-                            callback: function($$v) {
-                              _vm.$set(_vm.formData, "end_date", $$v)
-                            },
-                            expression: "formData.end_date"
+                          domProps: { value: _vm.formData.end_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "end_date",
+                                $event.target.value
+                              )
+                            }
                           }
                         })
-                      ],
-                      1
-                    )
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -48739,28 +48784,45 @@ var render = function() {
                       _vm._v("Return Date")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-sm-8" },
-                      [
-                        _c("date-picker", {
+                    _c("div", { staticClass: "col-sm-8" }, [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("i", {
+                          staticClass: "mx-input-icon mx-input-icon__calendar"
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.return_date,
+                              expression: "formData.return_date"
+                            }
+                          ],
+                          staticClass: "form-control",
                           attrs: {
-                            lang: "en",
-                            format: "yyyy-mm-dd",
+                            type: "text",
                             disabled: "",
-                            "input-class": "form-control mx-input "
+                            readonly: "",
+                            name: "return_date",
+                            id: "return_date"
                           },
-                          model: {
-                            value: _vm.formData.return_date,
-                            callback: function($$v) {
-                              _vm.$set(_vm.formData, "return_date", $$v)
-                            },
-                            expression: "formData.return_date"
+                          domProps: { value: _vm.formData.return_date },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "return_date",
+                                $event.target.value
+                              )
+                            }
                           }
                         })
-                      ],
-                      1
-                    )
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
@@ -49167,6 +49229,14 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("New application")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   }
 ]

@@ -109,6 +109,7 @@ class LeaveApplicationController extends Controller
 
     public function EmployeeLeaveApplications(Employee $employee, Request $request)
     {
+
         if ($request->is('api*')) {
             return new LeaveApplicationResource($employee->Employee_leave_applications);
         }
@@ -124,6 +125,7 @@ class LeaveApplicationController extends Controller
 
     public function calculateLeaveDates(Request $request)
     {
+
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'no_of_days' => 'required|numeric',

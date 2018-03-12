@@ -26,7 +26,7 @@ class LeaveApplicationRequest extends FormRequest
 
         return [
             "Employee_No"=>"sometimes",
-            "Leave_Code"=>'required',
+            "leave_code"=>'required',
             "start_date"=>"required",
             "no_of_days"=>'Required',
         ];
