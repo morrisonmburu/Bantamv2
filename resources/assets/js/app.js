@@ -29,6 +29,7 @@ Vue.component('payslip', require('./components/dashboard/payslip'));
 Vue.component('faq', require('./components/dashboard/faq'));
 Vue.component('faq', require('./components/dashboard/faq'));
 Vue.component('wave-loader', require('./components/dashboard/utilities/wave-loader'));
+Vue.component('notification', require('./components/dashboard/utilities/notification'));
 
 
 const app = new Vue({
@@ -40,7 +41,8 @@ const app = new Vue({
         currentUserData                     : {},
         userDetails   : {
             fullName        : '',
-            profilePicture  : ''
+            profilePicture  : '',
+            id              : ''
         },
         currentEmployeeLeaveApplications    : {},
         currentEmployeeLeaveAllocations     : {},
@@ -55,6 +57,7 @@ const app = new Vue({
             LEAVETYPES : 'api/leave_types',
             LEAVEAPPLICATION : 'api/leave_applications ',
             PROFILEPICTURE : 'api/employees@picture',
+            NOTIFICATIONS : 'api/users@notification'
 
         },
         searchResults : '',
@@ -87,6 +90,7 @@ const app = new Vue({
         setUserDetails : function () {
             this.userDetails.fullName = this.currentUserData.First_Name +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
+            this.userDetails.id = this.currentUser.id
         },
 
         getData : function () {
@@ -94,39 +98,12 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
-                    console.log(v.currentUser)
-
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
                                 v.setUserDetails()
-                                console.log(v.currentUserData)
-
-
                                 if (Object.keys(v.currentUserData).length !== 0 ){
-
-                                    // // Fetch current employee's Leave applications
-                                    // axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS,v.currentUserData.id))
-                                    //     .then(function (response){
-                                    //         v.currentEmployeeLeaveApplications = response.data.data
-                                    //         console.log(v.currentEmployeeLeaveApplications)
-                                    //     })
-                                    //     .catch(function (error) {
-                                    //         console.log("Error fetching leave applications data.");
-                                    //         console.log(error);
-                                    //     })
-
-                                    // // Fetch current employee's leave allocations
-                                    // axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS,v.currentUserData.id))
-                                    //     .then(function (response){
-                                    //         v.currentEmployeeLeaveAllocations = response.data.data
-                                    //         console.log(v.currentEmployeeLeaveAllocations)
-                                    //     })
-                                    //     .catch(function (error) {
-                                    //         console.log("Error fetching leave allocations data.");
-                                    //         console.log(error);
-                                    //     })
 
                                 }else{
                                     console.log("Employee data is blank");
