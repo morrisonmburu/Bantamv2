@@ -3,13 +3,13 @@
     <div class="row m-b-lg m-t-lg">
         <div class="col-md-6">
             <div class="profile-image">
-                <img :src="'api/employees/' + this.currentUserData.id + '/picture'" class="img-circle circle-border m-b-md" v-bind:alt="profPic">
+                <img :src="userDetails.profilePicture " class="img-circle circle-border m-b-md" alt="Profile Picture">
             </div>
             <div class="profile-info">
                 <div class="">
                     <div>
                         <h1 class="no-margins" >
-                            {{fullNames}}
+                            {{userDetails.fullName}}
                         </h1>
                         <h4>{{currentUserData.Job_Title}}</h4>
                         <small>
@@ -294,11 +294,11 @@
             'currentUser',
             'currentUserData',
             'swapComponent',
-            'profPic'
+            'userDetails'
         ],
         data : function () {
             return {
-                fullNames : this.currentUserData.First_Name.trim() +' '+ this.currentUserData.Middle_Name.trim() +' '+ this.currentUserData.Last_Name.trim()
+
             }
         },
         methods : {
