@@ -6,11 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\EmployeeApprover;
-class NotifyApprover extends Notification implements ShouldQueue
+
+class AccountActivated extends Notification implements ShouldQueue
 {
     use Queueable;
-    protected $approver;
+
     /**
      * Create a new notification instance.
      *
@@ -29,7 +29,7 @@ class NotifyApprover extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database','mail'];
     }
 
     /**
@@ -41,12 +41,13 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject('Account Activated')
                     ->greeting('Hello?')
-                    ->line('You have a new approval request. Login to view details.')
-                    ->subject("New leave approval request")
-                    ->action('CLick to login', url('/')) // Approval URL
+                    ->line('Your account has been activated. ')
+                    ->action('Click to set a password', url('/'))
                     ->line('Thank you.');
     }
+
     /**
      * Get the array representation of the notification.
      *
@@ -56,7 +57,7 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            "Message"=>"Account activated."
         ];
     }
 }

@@ -6,11 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\EmployeeApprover;
-class NotifyApprover extends Notification implements ShouldQueue
+
+class LeaveApprovalFail extends Notification implements ShouldQueue
 {
     use Queueable;
-    protected $approver;
+
     /**
      * Create a new notification instance.
      *
@@ -29,7 +29,7 @@ class NotifyApprover extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database','mail'];
     }
 
     /**
@@ -42,11 +42,13 @@ class NotifyApprover extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->greeting('Hello?')
-                    ->line('You have a new approval request. Login to view details.')
-                    ->subject("New leave approval request")
-                    ->action('CLick to login', url('/')) // Approval URL
+                    ->subject('Leave Approval Fail.')
+                    ->error()
+                    ->line('This is to notify you that your leave application request did not succeed.')
+                    ->action('Login to view details', url('/'))
                     ->line('Thank you.');
     }
+
     /**
      * Get the array representation of the notification.
      *
@@ -56,7 +58,7 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            "message"=>"Your leave approval request failed."
         ];
     }
 }
