@@ -27,7 +27,9 @@ Vue.component('leave-allocations', require('./components/dashboard/leave-allocat
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
 Vue.component('payslip', require('./components/dashboard/payslip'));
 Vue.component('faq', require('./components/dashboard/faq'));
-Vue.component('search-results', require('./components/dashboard/search-results'));
+Vue.component('faq', require('./components/dashboard/faq'));
+Vue.component('wave-loader', require('./components/dashboard/utilities/wave-loader'));
+
 
 const app = new Vue({
     el: '#app',
@@ -36,6 +38,10 @@ const app = new Vue({
         profPic : '',
         currentUser                         : {},
         currentUserData                     : {},
+        userDetails   : {
+            fullName        : '',
+            profilePicture  : ''
+        },
         currentEmployeeLeaveApplications    : {},
         currentEmployeeLeaveAllocations     : {},
         APIENDPOINTS     : {
@@ -44,12 +50,20 @@ const app = new Vue({
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees@leave_applications',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
             CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
-            SEARCH                                  : 'https://yesno.wtf/api'
+            SEARCH                                  : 'https://yesno.wtf/api',
+            CALCULATE : 'api/leave_applications/calculate_leave_dates',
+            LEAVETYPES : 'api/leave_types',
+            LEAVEAPPLICATION : 'api/leave_applications ',
+            PROFILEPICTURE : 'api/employees@picture',
+
         },
         searchResults : '',
         searchTerm : ''
     },
     methods : {
+        isEmptyObject : function (object) {
+            return (Object.keys(object).length === 0)
+        },
         swapComponent: function (component) {
             if (Vue.options.components[component]) {
                 this.currentComponent = component
@@ -57,9 +71,11 @@ const app = new Vue({
                 alert(component + ' component not found');
             }
         },
+
         sanitizeHeaders: function (heading) {
             return heading.replace('-', ' ');
         },
+
         getApiPath: function (rawPath, data) {
             if (data.length == 0) {
                 return rawPath.replace('@', '/')
@@ -67,41 +83,50 @@ const app = new Vue({
                 return rawPath.replace('@', '/' + data + '/');
             }
         },
+
+        setUserDetails : function () {
+            this.userDetails.fullName = this.currentUserData.First_Name +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
+            this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
+        },
+
         getData : function () {
             var v = this
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
                     console.log(v.currentUser)
+
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
-                                 console.log(v.currentUserData)
+                                v.setUserDetails()
+                                console.log(v.currentUserData)
+
 
                                 if (Object.keys(v.currentUserData).length !== 0 ){
 
-                                    // Fetch current employee's Leave applications
-                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS,v.currentUserData.id))
-                                        .then(function (response){
-                                            v.currentEmployeeLeaveApplications = response.data.data
-                                            console.log(v.currentEmployeeLeaveApplications)
-                                        })
-                                        .catch(function (error) {
-                                            console.log("Error fetching leave applications data.");
-                                            console.log(error);
-                                        })
+                                    // // Fetch current employee's Leave applications
+                                    // axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS,v.currentUserData.id))
+                                    //     .then(function (response){
+                                    //         v.currentEmployeeLeaveApplications = response.data.data
+                                    //         console.log(v.currentEmployeeLeaveApplications)
+                                    //     })
+                                    //     .catch(function (error) {
+                                    //         console.log("Error fetching leave applications data.");
+                                    //         console.log(error);
+                                    //     })
 
-                                    // Fetch current employee's leave allocations
-                                    axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS,v.currentUserData.id))
-                                        .then(function (response){
-                                            v.currentEmployeeLeaveAllocations = response.data.data
-                                            console.log(v.currentEmployeeLeaveAllocations)
-                                        })
-                                        .catch(function (error) {
-                                            console.log("Error fetching leave allocations data.");
-                                            console.log(error);
-                                        })
+                                    // // Fetch current employee's leave allocations
+                                    // axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS,v.currentUserData.id))
+                                    //     .then(function (response){
+                                    //         v.currentEmployeeLeaveAllocations = response.data.data
+                                    //         console.log(v.currentEmployeeLeaveAllocations)
+                                    //     })
+                                    //     .catch(function (error) {
+                                    //         console.log("Error fetching leave allocations data.");
+                                    //         console.log(error);
+                                    //     })
 
                                 }else{
                                     console.log("Employee data is blank");

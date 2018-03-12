@@ -57,11 +57,19 @@ class NavSyncManager{
         $records = $model::where('Nav_Sync', false)->get();
 
         foreach ($records as $record){
-            $this->create($endpoint, (object) $record->toArray());
+            try{
+                $this->create($endpoint, (object) $record->toArray());
 
-            $record->Nav_Sync = false;
-            $record->Nav_Sync_TimeStamp = date("Y-m-d");
-            $record->save();
+                $record->Nav_Sync = false;
+                $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                $record->save();
+                print ("success");
+            }
+            catch (\Exception $e){
+                print ($e->getMessage()."\n\n");
+//                print ($e);
+            }
+
         }
     }
 
@@ -136,7 +144,16 @@ class NavSyncManager{
         return $client->ReadMultiple(['filter' => $criteria, 'setSize'=> 0])->ReadMultiple_Result;
     }
 
-    public function create($enpoint, $data){
+    public function create($endpoint, $data){
+        $url = $this->config->NAV_BASE_URL."/$endpoint";
+
+        $this->prepareWrapper();
+        $client = new NTLMSoapClient($url, ['trace' => 1]);
+        $resource_name = explode("/", $endpoint);
+        $resource_name = end($resource_name);
+        $update = [$resource_name => (object)$data];
+
+        return $client->Create((object)$update);
 
     }
 

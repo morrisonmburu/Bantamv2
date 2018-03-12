@@ -7,7 +7,10 @@
                        :swap-component="swapComponent"
                        :search-results="searchResults"
                        :search-term="searchTerm"
-                       :prof-pic="profPic"
+                       :user-details="userDetails"
+                       :a-p-i-e-n-d-p-o-i-n-t-s="APIENDPOINTS"
+                       :get-api-path="getApiPath"
+                       :is-empty-object="isEmptyObject"
             ></component>
     </keep-alive>
 </div>
