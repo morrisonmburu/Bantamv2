@@ -61,13 +61,13 @@ class LeaveApplicationController extends Controller
     }
 
     public function createApprovalEntry($data){
-        $approvalEntry = new ApprovalEntry();
         try {
             $approvers = EmployeeApprover::where(["Employee" => Auth::user()->Employee_Record->No])->get(); // Returns all approvers in the list
             if (count($approvers)>0){
                 try{
                     $i=1;
                     foreach ($approvers as $approver) {
+                        $approvalEntry = new ApprovalEntry();
                         $approvalEntryData=[
                             "Table_ID"=>uniqid(),
                             "Document_No"=>$data["Application_Code"],
