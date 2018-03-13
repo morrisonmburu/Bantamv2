@@ -9,14 +9,12 @@ use Illuminate\Http\Request;
 
 class Notification extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    // all user notifications
+    public function index(User $user, Request $request)
     {
-        //
+        if ($request->is('api*')){
+            return new NotificationResource($user->notifications);
+        }
     }
 
     /**
@@ -90,14 +88,6 @@ class Notification extends Controller
     public function destroy(User $user)
     {
         //
-    }
-
-
-    // All notifications
-    public function UserNotifications (User $user, Request $request){
-        if ($request->is('api*')){
-            return new NotificationResource($user->notifications);
-        }
     }
 
     // Unread notifications
