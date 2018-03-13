@@ -59,6 +59,9 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function approvals(){
+        return $this->hasMany(ApprovalEntry::class, 'Approver_ID', 'No');
+    }
     public function approvers(){
         return $this->hasMany(
             EmployeeApprover::class,
