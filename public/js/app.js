@@ -47990,7 +47990,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48334,8 +48334,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
     data: function data() {
+        this;
         return {
             calculateButtonText: 'Calculate',
+            submittButtonText: 'Submit Application',
             spinner: true,
             formData: {
                 leave_code: '',
@@ -48365,13 +48367,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             applications: {},
             loading: true,
             submitting: true,
-            shortcuts: [{
-                text: 'Today',
-                start: new Date(),
-                end: new Date()
-            }],
-            btnType: 'btn-primary',
-            btnIcon: 'fa fa-calculator',
+            calculateButton: {
+                text: 'Calculate',
+                icon: 'fa fa-calculator',
+                status: 'btn-primary',
+                loading: true
+            },
+            submitButton: {
+                text: 'Submit Application',
+                icon: 'fa fa-send',
+                status: 'btn-primary',
+                loading: true
+            },
             timer: ''
         };
     },
@@ -48400,6 +48407,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.error.start_date = '';
             this.states.no_of_days = '';
             this.error.no_of_days = '';
+            this.calculateButton.status = 'btn btn-primary';
+            this.calculateButton.text = 'Calculate';
+            this.calculateButton.icon = 'fa fa-calculator';
 
             if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0) {
 
@@ -48424,7 +48434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         getCalculatedDates: function getCalculatedDates() {
-            this.spinner = false;
+            this.calculateButton.loading = false;
             var v = this;
             // v.formData.start_date = new Date(v.formData.start_date )
             axios.post(this.APIENDPOINTS.CALCULATE, this.formData, { headers: {
@@ -48432,29 +48442,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } }).then(function (response) {
                 v.formData.end_date = response.data.eDate;
                 v.formData.return_date = response.data.rDate;
-                v.spinner = true;
+                v.calculateButton.loading = true;
             }).catch(function (error) {
-                v.spinner = true;
-                v.btnType = 'btn-warning';
-                v.calculateButtonText = 'connection problem please try again ';
-                v.btnIcon = 'fa fa-warning';
+                v.calculateButton.loading = true;
+                v.calculateButton.status = 'btn btn-warning';
+                v.calculateButton.text = 'connection problem please try again ';
+                v.calculateButton.icon = 'fa fa-warning';
                 console.log(error);
             });
         },
         submitLeaveApplication: function submitLeaveApplication(e) {
             e.preventDefault();
-            this.submitting = false;
+            this.submitButton.loading = false;
             var v = this;
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
-                v.submitting = false;
+                v.submitButton.loading = true;
                 v.getLeaveApplications();
-                v.loading = true;
+                // v.loading = true
                 $('#myModal').modal('hide');
             }).catch(function (error) {
-                v.submitting = false;
-                console.log(error);
+                v.submitButton.loading = true;
+                v.submitButton.text = 'Error Submitting Application';
+                v.submitButton.status = 'btn btn-warning';
             });
         },
         getLeaveTypes: function getLeaveTypes() {
@@ -48766,19 +48777,19 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-8" }, [
-                      _vm.spinner
+                      _vm.calculateButton.loading
                         ? _c(
                             "button",
                             {
-                              staticClass: "ladda-button btn btn-block",
-                              class: [_vm.btnType],
+                              staticClass: "btn btn-block",
+                              class: _vm.calculateButton.status,
                               attrs: { "data-style": "expand-right" },
                               on: { click: _vm.calculate }
                             },
                             [
                               _c("strong", [
-                                _vm._v(_vm._s(_vm.calculateButtonText) + " "),
-                                _c("i", { class: [_vm.btnIcon] })
+                                _vm._v(_vm._s(_vm.calculateButton.text) + " "),
+                                _c("i", { class: _vm.calculateButton.icon })
                               ])
                             ]
                           )
@@ -48935,19 +48946,20 @@ var render = function() {
                 [_vm._v("Close")]
               ),
               _vm._v(" "),
-              _vm.submitting
+              _vm.submitButton.loading
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
+                      staticClass: "btn ",
+                      class: _vm.submitButton.status,
                       on: { click: _vm.submitLeaveApplication }
                     },
                     [
-                      _vm._v("Apply "),
-                      _c("i", { staticClass: "fa fa-check-circle-o" })
+                      _vm._v(_vm._s(_vm.submitButton.text) + " "),
+                      _c("i", { class: _vm.submitButton.icon })
                     ]
                   )
-                : _c("button", { staticClass: "sk-spinner sk-spinner-wave" }, [
+                : _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
                     _c("div", { staticClass: "sk-rect1" }),
                     _vm._v(" "),
                     _c("div", { staticClass: "sk-rect2" }),

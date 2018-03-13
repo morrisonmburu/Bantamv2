@@ -262,7 +262,7 @@
                                 <div class="form-group text-center">
                                     <label  class="col-sm-4 control-label">&nbsp;</label>
                                     <div class="col-sm-8">
-                                        <button v-if="spinner" class="ladda-button btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="[btnType]"> <strong>{{ calculateButtonText}} <i :class="[btnIcon ]"></i> </strong></button>
+                                        <button v-if="calculateButton.loading" class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>
                                         <div v-else class="sk-spinner sk-spinner-wave">
                                             <div class="sk-rect1"></div>
                                             <div class="sk-rect2"></div>
@@ -301,14 +301,14 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button v-if="submitting" @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
-                            <button v-else class="sk-spinner sk-spinner-wave">
+                            <button v-if="submitButton.loading" @click="submitLeaveApplication" class="btn " :class="submitButton.status" >{{ submitButton.text }} <i :class="submitButton.icon"></i> </button>
+                            <div v-else class="sk-spinner sk-spinner-wave">
                                 <div class="sk-rect1"></div>
                                 <div class="sk-rect2"></div>
                                 <div class="sk-rect3"></div>
                                 <div class="sk-rect4"></div>
                                 <div class="sk-rect5"></div>
-                            </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -337,9 +337,10 @@
             'isEmptyObject',
             'validateField'
         ],
-        data : function(){
+        data : function(){this
             return {
                 calculateButtonText : 'Calculate',
+                submittButtonText   : 'Submit Application',
                 spinner : true,
                 formData: {
                     leave_code : '',
@@ -369,15 +370,18 @@
                 applications    : {},
                 loading         : true,
                 submitting      : true,
-                shortcuts: [
-                    {
-                        text: 'Today',
-                        start: new Date(),
-                        end: new Date()
-                    }
-                ],
-                btnType : 'btn-primary',
-                btnIcon :  'fa fa-calculator',
+                calculateButton   : {
+                    text    : 'Calculate',
+                    icon    : 'fa fa-calculator',
+                    status  : 'btn-primary',
+                    loading : true
+                },
+                submitButton : {
+                    text    : 'Submit Application',
+                    icon    : 'fa fa-send',
+                    status  : 'btn-primary',
+                    loading : true
+                },
                 timer   : ''
             }
         },
@@ -408,6 +412,9 @@
                 this.error.start_date = ''
                 this.states.no_of_days = ''
                 this.error.no_of_days = ''
+                this.calculateButton.status = 'btn btn-primary'
+                this.calculateButton.text = 'Calculate'
+                this.calculateButton.icon = 'fa fa-calculator'
 
                 if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
 
@@ -434,7 +441,7 @@
             },
 
             getCalculatedDates : function () {
-                this.spinner = false
+                this.calculateButton.loading = false
                 var v = this
                // v.formData.start_date = new Date(v.formData.start_date )
                 axios.post(
@@ -446,20 +453,20 @@
                     .then(function (response) {
                         v.formData.end_date = response.data.eDate
                         v.formData.return_date = response.data.rDate
-                        v.spinner = true
+                        v.calculateButton.loading  = true
                     })
                     .catch(function (error) {
-                        v.spinner = true
-                        v.btnType = 'btn-warning'
-                        v.calculateButtonText = 'connection problem please try again '
-                        v.btnIcon = 'fa fa-warning'
+                        v.calculateButton.loading = true
+                        v.calculateButton.status = 'btn btn-warning'
+                        v.calculateButton.text = 'connection problem please try again '
+                        v.calculateButton.icon = 'fa fa-warning'
                         console.log(error)
 
                     })
             },
             submitLeaveApplication : function (e) {
                 e.preventDefault();
-                this.submitting = false
+                this.submitButton.loading = false
                 var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
@@ -469,15 +476,16 @@
                         }}
                 )
                     .then(function (response) {
-                        v.submitting = false
+                        v.submitButton.loading  = true
                         v.getLeaveApplications()
-                        v.loading = true
+                        // v.loading = true
                         $('#myModal').modal('hide')
 
                     })
                     .catch(function (error) {
-                        v.submitting = false
-                        console.log(error)
+                        v.submitButton.loading  = true
+                        v.submitButton.text = 'Error Submitting Application'
+                        v.submitButton.status = 'btn btn-warning'
                     })
             },
             getLeaveTypes : function () {
