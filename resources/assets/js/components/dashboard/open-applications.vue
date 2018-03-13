@@ -247,14 +247,18 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <!--<date-picker v-model="formData.start_date" type="date" format="MM-DD-YY" input-class="form-control mx-input "></date-picker>-->
-                                            <!--<date-picker :date="date" v-model="date"></date-picker>-->
-                                            <input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">
-                                        </div>
+                                        <!--<div class="input-group date" >-->
+                                            <!--<div class="input-group-addon">-->
+                                                <!--<i class="fa fa-calendar"></i>-->
+                                            <!--</div>-->
+
+                                            <datepicker format="yyyy-MM-dd" v-model="formData.start_date" name="start_date" id="start_date"  input-class="form-control"></datepicker>
+
+
+
+
+                                            <!--<input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">-->
+                                        <!--</div>-->
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -280,8 +284,6 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" >End Date</label>
                                     <div class="col-sm-8">
-                                        <!--<date-picker v-model="formData.end_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
-
                                         <div class="input-group">
                                             <i class="mx-input-icon mx-input-icon__calendar"></i>
                                             <input type="text" disabled class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">
@@ -291,8 +293,6 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <!--<date-picker v-model="formData.return_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
-
                                         <div class="input-group">
                                             <i class="mx-input-icon mx-input-icon__calendar"></i>
                                             <input type="text" disabled class="form-control" readonly  name="return_date" v-model="formData.return_date" id="return_date">
@@ -315,17 +315,16 @@
                 </div>
             </div>
         <!-- End of New leave application modal -->
-
     </div>
 </template>
 
 <script>
-    import DatePicker from 'vue2-datepicker'
+    import Datepicker from 'vuejs-datepicker'
 
     export default {
         name: "open-applications",
-        components : {
-            DatePicker
+        components: {
+            Datepicker
         },
         props : [
             'currentUser',
@@ -360,8 +359,6 @@
                 ],
                 btnType : 'btn-primary',
                 btnIcon :  'fa fa-calculator',
-                date : '04/05/2017',
-
             }
         },
         methods : {
@@ -443,7 +440,7 @@
         },
         mounted(){
 
-        }
+        },
     }
 
 </script>

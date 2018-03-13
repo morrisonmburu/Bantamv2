@@ -1,7 +1,7 @@
 <template>
     <li class="dropdown">
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+            <i class="fa fa-bell"></i>  <span class="label label-primary">{{notification.length + 1}}</span>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
             <li>
@@ -13,33 +13,7 @@
                         </span>
                     </div>
                 </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="profile.html">
-                    <div>
-                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="grid_options.html">
-                    <div>
-                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <div class="text-center link-block">
-                    <a href="notifications.html">
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
+                <div class="divider"></div>
             </li>
         </ul>
     </li>
