@@ -83,6 +83,7 @@
                     :a-p-i-e-n-d-p-o-i-n-t-s="APIENDPOINTS"
                     :get-api-path="getApiPath"
                     :is-empty-object="isEmptyObject"
+                    :validate-field="validateField"
             ></notification>
 
             {{--Log out link--}}

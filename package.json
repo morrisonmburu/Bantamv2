@@ -22,6 +22,7 @@
     "dependencies": {
         "npm": "^5.7.1",
         "vue-timeago": "^3.4.4",
-        "vue2-datepicker": "^1.8.3"
+        "vue2-datepicker": "^1.8.3",
+        "vuejs-datepicker": "^0.9.29"
     }
 }

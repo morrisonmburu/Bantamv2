@@ -74,6 +74,9 @@ const app = new Vue({
                 alert(component + ' component not found');
             }
         },
+        validateField : function (field) {
+          return field.length !== 0
+        },
 
         sanitizeHeaders: function (heading) {
             return heading.replace('-', ' ');
