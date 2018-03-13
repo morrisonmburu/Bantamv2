@@ -8,6 +8,7 @@ use App\EmployeeLeaveAllocation;
 use App\Notifications\cancelledLeave;
 use App\Notifications\LeaveCancelled;
 use App\Notifications\NotifyApprover;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
@@ -43,6 +44,9 @@ class LeaveApplicationController extends Controller
             "Leave_Code" => $request->leave_code,
             "Start_Date" => $request->start_date,
             "Days_Applied" => $request->no_of_days,
+//            "End_Date" => $request->end_date,
+//            "Return_Date" => $request->return_date,
+//            "Application_Date" => Carbon::now(),
             "Application_Code" => uniqid()
         ];
         $LeaveApplication->fill($data);
