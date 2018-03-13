@@ -26,7 +26,7 @@ class LeaveApplicationRequest extends FormRequest
 
         return [
             "Employee_No"=>"sometimes",
-            "Leave_Code"=>'required',
+            "leave_code"=>'required',
             "start_date"=>"required",
             "no_of_days"=>'Required',
         ];
@@ -35,9 +35,9 @@ class LeaveApplicationRequest extends FormRequest
     {
         return [
 //            "Employee_No.required"=>"Employee No is blank",
-            "Leave_Code.required"=>"Leave code is blank",
+            "leave_code.required"=>"Leave code cannot be blank",
             "start_date.required"=>"Start date is blank",
-            "no_of_days.Required"=>"Approved days not specified"
+            "no_of_days.Required"=>"You must specify the number of leave days"
         ];
     }
 }

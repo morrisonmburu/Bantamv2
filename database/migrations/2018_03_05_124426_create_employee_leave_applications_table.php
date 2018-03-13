@@ -38,6 +38,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->dateTime("Nav_Sync_TimeStamp")->nullable();
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');
+            $table->foreign("Next_Approver")->references("No")->on("employees")->onDelete('cascade');
             $table->foreign("Leave_Code")->references("Code")->on("leave_types")->onDelete('cascade');
             $table->timestamps();
         });

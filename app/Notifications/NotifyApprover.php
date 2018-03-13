@@ -10,43 +10,24 @@ use App\EmployeeApprover;
 class NotifyApprover extends Notification implements ShouldQueue
 {
     use Queueable;
-    protected $approver;
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         //
     }
-
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database','mail'];
     }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
                     ->greeting('Hello?')
-                    ->line('You have a new approval request. Login to view details.')
                     ->subject("New leave approval request")
+                    ->line('You have a new approval request. Login to view details.')
                     ->action('CLick to login', url('/')) // Approval URL
                     ->line('Thank you.');
     }
+
     /**
      * Get the array representation of the notification.
      *
@@ -56,7 +37,7 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            "message"=>"You have a new leave application request"
         ];
     }
 }

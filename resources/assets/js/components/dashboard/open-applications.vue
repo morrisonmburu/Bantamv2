@@ -247,13 +247,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <!--<div class="input-group date" >&lt;!&ndash;data-provide="datepicker" data-date-format="yyyy-mm-dd"&ndash;&gt;-->
-                                            <!--<div class="input-group-addon">-->
-                                                <!--<i class="fa fa-calendar"></i>-->
-                                            <!--</div>-->
-                                            <date-picker v-model="formData.start_date" lang="en" format="yyyy-mm-dd" input-class="form-control mx-input "></date-picker>
-                                            <!--<input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">-->
-                                        <!--</div>-->
+                                        <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <!--<date-picker v-model="formData.start_date" type="date" format="MM-DD-YY" input-class="form-control mx-input "></date-picker>-->
+                                            <!--<date-picker :date="date" v-model="date"></date-picker>-->
+                                            <input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -279,23 +280,23 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" >End Date</label>
                                     <div class="col-sm-8">
-                                        <date-picker v-model="formData.end_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>
+                                        <!--<date-picker v-model="formData.end_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
 
-                                        <!--<div class="input-group">-->
-                                            <!--<input type="text" disabled class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">-->
-                                            <!--<i class="mx-input-icon mx-input-icon__calendar"></i>-->
-                                        <!--</div>-->
+                                        <div class="input-group">
+                                            <i class="mx-input-icon mx-input-icon__calendar"></i>
+                                            <input type="text" disabled class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <date-picker v-model="formData.return_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>
+                                        <!--<date-picker v-model="formData.return_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
 
-                                        <!--<div class="input-group">-->
-                                            <!--<input type="text" disabled class="form-control" readonly  name="return_date" v-model="formData.return_date" id="return_date">-->
-                                            <!--<i class="mx-input-icon mx-input-icon__calendar"></i>-->
-                                        <!--</div>-->
+                                        <div class="input-group">
+                                            <i class="mx-input-icon mx-input-icon__calendar"></i>
+                                            <input type="text" disabled class="form-control" readonly  name="return_date" v-model="formData.return_date" id="return_date">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -320,6 +321,7 @@
 
 <script>
     import DatePicker from 'vue2-datepicker'
+
     export default {
         name: "open-applications",
         components : {
@@ -357,14 +359,12 @@
                     }
                 ],
                 btnType : 'btn-primary',
-                btnIcon :  'fa fa-calculator'
+                btnIcon :  'fa fa-calculator',
+                date : '04/05/2017',
+
             }
         },
         methods : {
-            getDate : function () {
-                alert('change dates')
-                this.formData.start_date = this.formData.start_date + ' '
-            },
             getLeaveApplications : function(){
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
@@ -379,10 +379,10 @@
                     })
             },
             calculate : function (e) {
-
                 e.preventDefault();
                 this.spinner = false
                 var v = this
+               // v.formData.start_date = new Date(v.formData.start_date )
                 axios.post(
                     this.APIENDPOINTS.CALCULATE,
                     this.formData,
@@ -438,7 +438,10 @@
             this.getLeaveApplications()
             this.getLeaveTypes()
         },
-        mounted() {
+        watch : {
+
+        },
+        mounted(){
 
         }
     }

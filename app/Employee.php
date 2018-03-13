@@ -45,9 +45,7 @@ class Employee extends Model
 
     //Gets employee approval request
     public function Approval_Request(){
-        return $this->hasMany(ApprovalEntry::class,"Employee_No","No")
-            ->join("employee_approvers","employee_approvers.id","=","approval_entries.Approver_id")
-            ->join("approval_templates","approval_templates.id","=","approval_entries.Approval_template");
+        return $this->hasMany(ApprovalEntry::class,"Approver","No")->orderByDesc("updated_at");
     }
 
     //Gets Employee leave planners
