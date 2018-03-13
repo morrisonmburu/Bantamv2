@@ -31,9 +31,11 @@ class NavSyncManager{
     }
 
     public function sendLeaveApplication(EmployeeLeaveApplication $application){
-        $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object) $application->toArray());
+        $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object) $application->toArray());
+        $application->fill((array)$result);
         $application->Nav_Sync = false;
         $application->Nav_Sync_TimeStamp = date("Y-m-d");
+
         $application->save();
 
     }
