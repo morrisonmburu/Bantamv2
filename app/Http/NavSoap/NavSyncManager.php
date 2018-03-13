@@ -162,9 +162,7 @@ class NavSyncManager{
         $resource_name = explode("/", $endpoint);
         $resource_name = end($resource_name);
         $update = [$resource_name => (object)$data];
-
         return $client->Create((object)$update);
-
     }
 
     /**

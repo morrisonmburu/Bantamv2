@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
+use App\Jobs\SendLeaveApplicationToNav;
 
 class LeaveApplicationCreatedListener
 {
@@ -58,15 +59,21 @@ class LeaveApplicationCreatedListener
 
                         if($i == 1) Notification::send($approver->employee->user, new NotifyApprover());
                         $i++;
+
                     }
+                    // TODO: Add nav sync dispatch
+                    try{
+                        SendLeaveApplicationToNav::dispatch($application);
+                    }catch (\Exception $e){
+                        throw new \Exception("Error sending application to Nav:".$e->getMessage());
+                    }
+
                 }catch(\Exception $e){
                     throw new \Exception('Error occurred while creating approval entry:' . $e->getMessage());
                 }
-            }else{
             }
-
-        }catch(ModelNotFoundException $e){
-            throw new \Exception('You don\'t have any approver:'.$e->getMessage() . $e->getMessage());
+        }catch(\Exception $e){
+            throw new \Exception("You don\'t have any approver:".$e->getMessage());
         }
     }
 }
