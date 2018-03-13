@@ -22,14 +22,14 @@ class ApprovalEntry extends Model
     }
 
     public function employee(){
-        $this->belongsTo(Employee::class, "Sender_ID", "No");
+        return $this->belongsTo(Employee::class, "Sender_ID", "No");
     }
 
     public function approver(){
-        $this->belongsTo(Employee::class, "Approver_ID", "No");
+        return $this->belongsTo(Employee::class, "Approver_ID", "No");
     }
 
     public function leave_application(){
-        $this->belongsTo(EmployeeLeaveApplication::class, "Document_No", "Application_Code");
+        return $this->belongsTo(EmployeeLeaveApplication::class, "Document_No", "Application_Code");
     }
 }

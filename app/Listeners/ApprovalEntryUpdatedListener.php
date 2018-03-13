@@ -48,8 +48,9 @@ class ApprovalEntryUpdatedListener
                     $leave_application->Status = "Approved";
                     $leave_application->Next_Approver = null;
                     $leave_application->save();
-                    Notification::send($nextEntry->approver->user, new \App\Notifications\LeaveApprovalSuccess());
+                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalSuccess());
                 }
+                break;
             case "Rejected":
                 $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)
                     ->where('Sequence_No', '>', $entry->Sequence_No)
@@ -62,7 +63,10 @@ class ApprovalEntryUpdatedListener
                 else{
                     $leave_application = $entry->leave_application;
                     $leave_application->Status = "Rejected";
-                    Notification::send($nextEntry->approver->user, new \App\Notifications\LeaveApprovalFail());
+                    $leave_application->Next_Approver = null;
+                    $leave_application->save();
+
+                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalFail());
                 }
                 break;
             case "Canceled":
