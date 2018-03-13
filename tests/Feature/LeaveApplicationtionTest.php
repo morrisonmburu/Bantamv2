@@ -35,6 +35,7 @@ class LeaveApplicationtionTest extends TestCase
             $approver->NamesApprvr = $employees[$i]->First_Name;
             $approver->Comments = "Hello";
             $approver->Approval_Level = $i;
+            $approver->save();
         }
 
 
@@ -58,6 +59,7 @@ class LeaveApplicationtionTest extends TestCase
         $application->Application_Date = '2018-03-09';
         $application->save();
 
+        $this->assertEquals(EmployeeLeaveApplication::where('Application_Code', $code)->get()->count(), 1);
         $no_of_approvers = 5;
         $entries = ApprovalEntry::where('Document_No', $code)->get();
 
