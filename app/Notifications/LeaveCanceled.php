@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Notifications;
-
+use App\EmployeeApprover;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,15 +9,18 @@ use Illuminate\Notifications\Messages\MailMessage;
 class LeaveCanceled extends Notification implements  ShouldQueue
 {
     use Queueable;
+    protected $approver;
+    protected $leaveRec;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(EmployeeApprover $approver,$leaveRec)
     {
-        //
+        $this->approver=$approver;
+        $this->leaveRec=$leaveRec;
     }
 
     /**
@@ -55,7 +57,7 @@ class LeaveCanceled extends Notification implements  ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            "message"=>"Leave code ".$this->leaveRec->Application_Code." has been cancelled."
         ];
     }
 }
