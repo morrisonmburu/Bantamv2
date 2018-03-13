@@ -28,6 +28,6 @@ Route::get("test",function (){
     return env("NAV_USER");
 
 });
-Route::get("phpinformation","TestSoap@phpinformation");
+//Route::get("phpinformation","TestSoap@phpinformation");
 
 Route::get('/home', 'HomeController@index')->name('home');
