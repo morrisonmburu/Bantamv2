@@ -26,6 +26,7 @@ Route::prefix('users')->group(function () {
     Route::get('{user}/notification', 'Notification@UserNotifications');
     Route::get('{user}/notification/unread', 'Notification@UnreadNotifications');
     Route::get('{user}/notification/read', 'Notification@ReadNotifications');
+    Route::get('{user}/notification/markasread', 'Notification@update');
     Route::get('current', 'UserController@current');
 });
 
