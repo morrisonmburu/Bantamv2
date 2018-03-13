@@ -5,19 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Resources\NotificationResource;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Notification extends Controller
 {
     // all user notifications
-    public function index(User $user, Request $request)
+    public function index(Request $request)
     {
         if ($request->is('api*')){
+            $user= User::find(Auth::user()->id);
             return new NotificationResource($user->notifications);
         }
     }
-    public function update(Request $request,User $user)
+    public function update(Request $request)
     {
         if ($request->is('api*')){
+            $user= User::find(Auth::user()->id);
             try{
                 $user->unreadNotifications->markAsRead();
                 return response("Success",200);
@@ -39,15 +42,17 @@ class Notification extends Controller
     }
 
     // Unread notifications
-    public function UnreadNotifications (User $user, Request $request){
+    public function UnreadNotifications (Request $request){
         if ($request->is('api*')){
+            $user= User::find(Auth::user()->id);
             return new NotificationResource($user->unreadNotifications );
         }
     }
 
     //Read notifications
-    public function ReadNotifications (User $user, Request $request){
+    public function ReadNotifications (Request $request){
         if ($request->is('api*')){
+            $user= User::find(Auth::user()->id);
             return new NotificationResource($user->readNotifications);
         }
     }

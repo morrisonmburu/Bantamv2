@@ -23,10 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('users')->group(function () {
     Route::get('{user}/employee', 'UserController@employee');
-    Route::get('{user}/notification', 'Notification@index');
-    Route::get('{user}/notification/unread', 'Notification@UnreadNotifications');
-    Route::get('{user}/notification/read', 'Notification@ReadNotifications');
-    Route::get('{user}/notification/markasread', 'Notification@update');
+    Route::get('notification', 'Notification@index');
+    Route::get('notification/unread', 'Notification@UnreadNotifications');
+    Route::get('notification/read', 'Notification@ReadNotifications');
+    Route::get('notification/markasread', 'Notification@update');
     Route::get('current', 'UserController@current');
 });
 
@@ -36,6 +36,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/picture', 'EmployeeController@picture');
     Route::get('{employee}/leave_allocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
+    Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
     Route::get('{employee}/approvals', 'ApprovalEntryController@employee_approvals');
 });

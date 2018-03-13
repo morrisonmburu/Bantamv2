@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\ApprovalEntry;
 use App\EmployeeApprover;
 use App\EmployeeLeaveAllocation;
+use App\Notifications\cancelledLeave;
+use App\Notifications\LeaveCancelled;
 use App\Notifications\NotifyApprover;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
@@ -18,6 +20,7 @@ use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
 use App\Employee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 class LeaveApplicationController extends Controller
 {
@@ -114,9 +117,23 @@ class LeaveApplicationController extends Controller
     {
         //
     }
-    public function update(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
+    public function update(Request $request, EmployeeLeaveApplication $employeeLeaveApplication,$appCode)
     {
-
+        try{
+            $appRec=$employeeLeaveApplication::where(["Application_Code"=>$appCode])->first();
+            if($employeeLeaveApplication->where(["Application_Code"=>$appCode])->update(["status"=>"Cancelled"])){
+                Notification::send(Auth::User(),new cancelledLeave(Auth::user(),$appRec));
+                $appEntry=ApprovalEntry::where(["Document_No"=>$appRec->Application_Code])->get();
+                foreach ($appEntry as $entry){
+                    ApprovalEntry::where(["Table_ID"=>$entry->Table_ID])->update(["Status"=>"Cancelled"]);
+                    $approver = EmployeeApprover::where(["Approver"=>$entry->Approver_ID])->first();
+                    Notification::send($approver->employee->user,new LeaveCancelled($approver->employee->user,$appRec));
+                }
+            }
+            return  "Success";
+        }catch(Exception $e){
+            return $e->getMessage();
+        }
     }
     public function destroy(EmployeeLeaveApplication $employeeLeaveApplication)
     {

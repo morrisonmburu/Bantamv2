@@ -2,13 +2,14 @@
 
 namespace App\Notifications;
 
+use App\EmployeeLeaveApplication;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class cancelledLeave extends Notification
+class cancelledLeave extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $user;
@@ -19,9 +20,10 @@ class cancelledLeave extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, $leaveRec)
+    public function __construct(User $user, EmployeeLeaveApplication $leaveRec)
     {
-        //
+        $this->user= $user;
+        $this->leaveRec= $leaveRec;
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 namespace App\Notifications;
 use App\EmployeeApprover;
+use App\EmployeeLeaveApplication;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,7 +19,7 @@ class LeaveCancelled extends Notification implements  ShouldQueue
      *
      * @return void
      */
-    public function __construct(EmployeeApprover $approver,$leaveRec)
+    public function __construct(User $approver,EmployeeLeaveApplication $leaveRec)
     {
         $this->approver=$approver;
         $this->leaveRec=$leaveRec;
