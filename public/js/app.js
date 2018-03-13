@@ -1502,7 +1502,7 @@ var app = new Vue({
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications ',
             PROFILEPICTURE: 'api/employees@picture',
-            NOTIFICATIONS: 'api/users@notification'
+            NOTIFICATIONS: 'api/users/notification'
 
         },
         searchResults: '',
@@ -47990,7 +47990,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48003,6 +48003,13 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48357,6 +48364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             leaveTypes: {},
             applications: {},
             loading: true,
+            submitting: true,
             shortcuts: [{
                 text: 'Today',
                 start: new Date(),
@@ -48435,14 +48443,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         submitLeaveApplication: function submitLeaveApplication(e) {
             e.preventDefault();
+            this.submitting = false;
             var v = this;
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
+                v.submitting = false;
                 v.getLeaveApplications();
                 v.loading = true;
                 $('#myModal').modal('hide');
             }).catch(function (error) {
+                v.submitting = false;
                 console.log(error);
             });
         },
@@ -48450,7 +48461,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             axios.get('api/leave_types').then(function (response) {
                 v.leaveTypes = response.data.data;
-                console.log('leave types');
             }).catch(function (error) {
                 console.log(error);
             });
@@ -48925,17 +48935,29 @@ var render = function() {
                 [_vm._v("Close")]
               ),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.submitLeaveApplication }
-                },
-                [
-                  _vm._v("Apply "),
-                  _c("i", { staticClass: "fa fa-check-circle-o" })
-                ]
-              )
+              _vm.submitting
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      on: { click: _vm.submitLeaveApplication }
+                    },
+                    [
+                      _vm._v("Apply "),
+                      _c("i", { staticClass: "fa fa-check-circle-o" })
+                    ]
+                  )
+                : _c("button", { staticClass: "sk-spinner sk-spinner-wave" }, [
+                    _c("div", { staticClass: "sk-rect1" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sk-rect2" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sk-rect3" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sk-rect4" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sk-rect5" })
+                  ])
             ])
           ])
         ])
