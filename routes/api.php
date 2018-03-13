@@ -36,6 +36,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_allocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
+    Route::get('{employee}/approvals', 'ApprovalEntryController@employee_approvals');
 });
 Route::resource('employees', 'EmployeeController');
 //calculateLeaveDates
