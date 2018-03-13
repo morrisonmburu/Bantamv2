@@ -2,23 +2,28 @@
 
 namespace App\Notifications;
 
+use App\EmployeeLeaveApplication;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LeaveCanceled extends Notification implements  ShouldQueue
+class cancelledLeave extends Notification implements ShouldQueue
 {
     use Queueable;
+    protected $user;
+    protected $leaveRec;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, EmployeeLeaveApplication $leaveRec)
     {
-        //
+        $this->user= $user;
+        $this->leaveRec= $leaveRec;
     }
 
     /**
@@ -41,9 +46,10 @@ class LeaveCanceled extends Notification implements  ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('Hello?')
+                    ->subject('Leave Cancelled')
+                    ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been cancelled")
+                    ->line('Thank you.');
     }
 
     /**
@@ -55,7 +61,7 @@ class LeaveCanceled extends Notification implements  ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            "message"=>"You have cancelled leave code ".$this->leaveRec->Application_Code
         ];
     }
 }
