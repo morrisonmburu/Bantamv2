@@ -27,7 +27,8 @@ class ApprovalEntryUpdatedListener
      */
     public function handle(ApprovalEntry $entry)
     {
-        if($entry->getOriginal()->Status == $entry->Status) return;
+
+        if($entry->getOriginal()["Status"] == $entry->Status) return;
 
         switch ($entry->Status){
             case "Approved":

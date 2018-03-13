@@ -65,4 +65,67 @@ class LeaveApplicationtionTest extends TestCase
 
         $this->assertEquals($no_of_approvers, $entries->count());
     }
+
+    public  function testCancelledApplication(){
+        $employee = Employee::all()->first();
+        $leave_type = LeaveType::all()->first();
+        $code = "LV0000";
+        $application = new EmployeeLeaveApplication();
+        $application->Leave_Period = "YR2018";
+        $application->Employee_No = $employee->No;
+        $application->Status = "Open";
+        $application->Application_Code = $code;
+        $application->Leave_Code = $leave_type->Code;
+        $application->Days_Applied = 5;
+        $application->Start_Date = '2018-03-09';
+        $application->End_Date = '2018-03-09';
+        $application->Return_Date = '2018-03-09';
+        $application->Application_Date = '2018-03-09';
+        $application->save();
+
+        $application->Status = "Canceled";
+        $application->save();
+
+        $entries = ApprovalEntry::where('Document_No', $code)->get();
+
+        foreach ($entries as $entry){
+            $this->assertEquals("Canceled", $entry->Status);
+        }
+    }
+
+    public function testRejectedApplication(){
+        $employee = Employee::all()->first();
+        $leave_type = LeaveType::all()->first();
+
+        $approvers = $employee->approvers->orderBy('Approval_Level')->get();
+
+        $code = "LV0000";
+        $application = new EmployeeLeaveApplication();
+        $application->Leave_Period = "YR2018";
+        $application->Employee_No = $employee->No;
+        $application->Status = "Open";
+        $application->Next_Approver = $approvers->approver->No;
+        $application->Application_Code = $code;
+        $application->Leave_Code = $leave_type->Code;
+        $application->Days_Applied = 5;
+        $application->Start_Date = '2018-03-09';
+        $application->End_Date = '2018-03-09';
+        $application->Return_Date = '2018-03-09';
+        $application->Application_Date = '2018-03-09';
+        $application->save();
+
+        $firstEntry = ApprovalEntry::where('Document_No', $code)
+            ->where('Sender_ID', $employee->No)->first();
+
+        $firstEntry->Status = "Rejected";
+        $firstEntry->save();
+
+        $entries = ApprovalEntry::where('Document_No', $code)
+            ->where('Sender_ID', $employee->No)->first();
+
+        foreach ($entries as $entry){
+
+        }
+    }
+
 }
