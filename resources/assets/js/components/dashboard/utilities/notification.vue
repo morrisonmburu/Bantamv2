@@ -3,9 +3,9 @@
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notification.length !== 0">{{notification.length}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-alerts">
+        <ul class="dropdown-menu dropdown-alerts" v-show="notification.length !== 0">
             <li v-for="(notice, index) in notification">
-                <a href="mailbox.html">
+                <a href="#">
                     <div>
                         <i class="fa fa-envelope fa-fw"></i> {{notice.data.message}}
                         <span class="pull-right text-muted small">
@@ -38,12 +38,17 @@
             'APIENDPOINTS',
             'getApiPath',
             'isEmptyObject',
-            'userDetails'
+            'userDetails',
+            'validateField'
         ],
         data : function () {
             return{
                 notification : {},
-                time  : Date.now()
+                timer  : '',
+                noticeIcons : {
+                    ApprovalRequest : '',
+
+            }
 
             }
         },
@@ -65,8 +70,7 @@
 
         },
         mounted() {
-            setTimeout(() =>  this.getNotifications(), 2000);
-
+            this.timer = setInterval(this.getNotifications, 20000)
         }
     }
 </script>
