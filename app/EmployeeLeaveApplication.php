@@ -38,4 +38,8 @@ class EmployeeLeaveApplication extends Model
     public function approval_entries(){
         return $this->hasMany(ApprovalEntry::class,"Document_no","Application_Code");
     }
+
+    public function employee(){
+        return $this->belongsTo(Employee::class, "Employee_No", "No");
+    }
 }

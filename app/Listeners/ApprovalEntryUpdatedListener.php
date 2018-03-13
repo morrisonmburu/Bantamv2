@@ -62,7 +62,10 @@ class ApprovalEntryUpdatedListener
                 else{
                     $leave_application = $entry->leave_application;
                     $leave_application->Status = "Rejected";
-                    Notification::send($nextEntry->approver->user, new \App\Notifications\LeaveApprovalFail());
+                    $leave_application->Next_Approver = null;
+                    $leave_application->save();
+
+                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalFail());
                 }
                 break;
             case "Canceled":
