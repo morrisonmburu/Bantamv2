@@ -1,19 +1,19 @@
 <template>
     <li class="dropdown">
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell"></i>  <span class="label label-primary">{{notification.length + 1}}</span>
+            <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notification.length !== 0">{{notification.length}}</span>
         </a>
         <ul class="dropdown-menu dropdown-alerts">
-            <li>
+            <li v-for="(notice, index) in notification">
                 <a href="mailbox.html">
                     <div>
-                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                        <i class="fa fa-envelope fa-fw"></i> {{notice.data.message}}
                         <span class="pull-right text-muted small">
-                           <timeago :since="time"></timeago>
+                           <timeago :since="notice.created_at"></timeago>
                         </span>
                     </div>
                 </a>
-                <div class="divider"></div>
+                <div class="divider" v-show="notification.length !== 1 && notification.length === (index + 1)"></div>
             </li>
         </ul>
     </li>
@@ -65,7 +65,7 @@
 
         },
         mounted() {
-            setTimeout(() =>  this.getNotifications(), 1500);
+            setTimeout(() =>  this.getNotifications(), 2000);
 
         }
     }

@@ -47987,7 +47987,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48365,8 +48365,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(errro);
             });
         },
+
+        formartDate: function formartDate(date) {
+            return date.toISOString().slice(0, 10);
+        },
         calculate: function calculate(e) {
             e.preventDefault();
+
+            // Formats date from yyyy-MM-ddThh-mm-ssZ to yyyy-MM-dd
+            this.formData.start_date = this.formartDate(this.formData.start_date);
+
             this.spinner = false;
             var v = this;
             // v.formData.start_date = new Date(v.formData.start_date )
@@ -54074,7 +54082,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
 
         setTimeout(function () {
             return _this.getNotifications();
-        }, 1500);
+        }, 2000);
     }
 });
 
@@ -54277,30 +54285,61 @@ var render = function() {
       [
         _c("i", { staticClass: "fa fa-bell" }),
         _vm._v(" "),
-        _c("span", { staticClass: "label label-primary" }, [
-          _vm._v(_vm._s(_vm.notification.length + 1))
-        ])
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.notification.length !== 0,
+                expression: "notification.length !== 0"
+              }
+            ],
+            staticClass: "label label-primary"
+          },
+          [_vm._v(_vm._s(_vm.notification.length))]
+        )
       ]
     ),
     _vm._v(" "),
-    _c("ul", { staticClass: "dropdown-menu dropdown-alerts" }, [
-      _c("li", [
-        _c("a", { attrs: { href: "mailbox.html" } }, [
-          _c("div", [
-            _c("i", { staticClass: "fa fa-envelope fa-fw" }),
-            _vm._v(" You have 16 messages\n                    "),
-            _c(
-              "span",
-              { staticClass: "pull-right text-muted small" },
-              [_c("timeago", { attrs: { since: _vm.time } })],
-              1
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "divider" })
-      ])
-    ])
+    _c(
+      "ul",
+      { staticClass: "dropdown-menu dropdown-alerts" },
+      _vm._l(_vm.notification, function(notice, index) {
+        return _c("li", [
+          _c("a", { attrs: { href: "mailbox.html" } }, [
+            _c("div", [
+              _c("i", { staticClass: "fa fa-envelope fa-fw" }),
+              _vm._v(
+                " " + _vm._s(notice.data.message) + "\n                    "
+              ),
+              _c(
+                "span",
+                { staticClass: "pull-right text-muted small" },
+                [_c("timeago", { attrs: { since: notice.created_at } })],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value:
+                  _vm.notification.length !== 1 &&
+                  _vm.notification.length === index + 1,
+                expression:
+                  "notification.length !== 1 && notification.length === (index + 1)"
+              }
+            ],
+            staticClass: "divider"
+          })
+        ])
+      })
+    )
   ])
 }
 var staticRenderFns = []

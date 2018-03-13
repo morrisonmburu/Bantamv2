@@ -375,8 +375,16 @@
                         console.log(errro)
                     })
             },
+
+            formartDate : function (date) {
+                return date.toISOString().slice(0,10)
+            },
             calculate : function (e) {
                 e.preventDefault();
+
+                // Formats date from yyyy-MM-ddThh-mm-ssZ to yyyy-MM-dd
+                this.formData.start_date = this.formartDate(this.formData.start_date)
+
                 this.spinner = false
                 var v = this
                // v.formData.start_date = new Date(v.formData.start_date )
