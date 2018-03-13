@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LeaveCanceled extends Notification implements  ShouldQueue
+class LeaveCancelled extends Notification implements  ShouldQueue
 {
     use Queueable;
     protected $approver;
@@ -43,9 +43,10 @@ class LeaveCanceled extends Notification implements  ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->greeting('Hello?')
+            ->subject('Leave Cancelled')
+            ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been cancelled")
+            ->line('Thank you.');
     }
 
     /**
