@@ -29,28 +29,40 @@ class ApprovalEntryUpdatedListener
     {
         switch ($entry->Status){
             case "Approved":
-                $approvers = $entry->employee->approvers->where('Approval_Level', '>', $entry->Sequence_No)
-                    ->orderBy('Sequence_No');
-                $nextApprover = $approvers->first();
-                $nextEntry = new ApprovalEntry();
-                $nextEntry->Table_ID = uniqid();
-                $nextEntry->Document_Type = $entry->Document_Type;
-                $nextEntry->Document_No = $entry->Document_No;
-                $nextEntry->Status = "Open";
-                $nextEntry->Sequence_No = $nextApprover->Approval_Level;
-                $nextEntry->Sender_ID = $entry->Sender_ID;
-                $nextEntry->Approver_ID = $nextApprover->approver->No;
-
-                $nextEntry->save();
-
+                $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)
+                    ->where('Sequence_No', '>', $entry->Sequence_No)
+                    ->orderBy('Sequence_No')->first();
                 $leave_application = $entry->leave_application;
-                $leave_application->Next_Approver = $nextEntry->Approver_ID;
-                $leave_application->save();
+                if($nextEntry){
+                    $nextEntry->Status = "Open";
+                    $nextEntry->save();
+                    Notification::send($nextEntry->approver->user, new \App\Notifications\NotifyApprover());
+                    $leave_application = $entry->leave_application;
+                    $leave_application->Next_Approver = $nextEntry->Approver_ID;
+                    $leave_application->save();
+                }
+                else{
+                    $leave_application->Status = "Approved";
+                    $leave_application->Next_Approver = null;
+                    $leave_application->save();
+                    Notification::send($nextEntry->approver->user, new \App\Notifications\LeaveApprovalSuccess());
+                }
+            case "Rejected":
+                $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)
+                    ->where('Sequence_No', '>', $entry->Sequence_No)
+                    ->orderBy('Sequence_No')->first();
 
-                Notification::send($nextApprover->approver->user, new \App\Notifications\NotifyApprover());
-
-
-
+                if($nextEntry){
+                    $nextEntry->Status = "Rejected";
+                    $nextEntry->save();
+                }
+                else{
+                    $leave_application = $entry->leave_application;
+                    $leave_application->Status = "Rejected";
+                    Notification::send($nextEntry->approver->user, new \App\Notifications\LeaveApprovalFail());
+                }
+                break;
+            case "Canceled":
                 break;
             default:
                 break;
