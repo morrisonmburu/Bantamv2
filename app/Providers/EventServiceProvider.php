@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         'employee_leave_application.created' => [
             \App\Listeners\LeaveApplicationCreatedListener::class,
         ],
+        'employee_leave_application.canceled' => [
+            \App\Listeners\LeaveApplicationCanceledListener::class,
+        ],
     ];
 
     /**

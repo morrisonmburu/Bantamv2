@@ -30,6 +30,14 @@ class NavSyncManager{
         ];
     }
 
+    public function sendLeaveApplication(EmployeeLeaveApplication $application){
+        $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object) $application->toArray());
+        $application->Nav_Sync = false;
+        $application->Nav_Sync_TimeStamp = date("Y-m-d");
+        $application->save();
+
+    }
+
     public function sync(){
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
@@ -65,7 +73,7 @@ class NavSyncManager{
                 $record->Nav_Sync = false;
                 $record->Nav_Sync_TimeStamp = date("Y-m-d");
                 $record->save();
-                print ("success");
+//                print ("success");
             }
             catch (\Exception $e){
                 print ($e->getMessage()."\n\n");
