@@ -22,11 +22,18 @@ class NotifyApprover extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->greeting('Hello?')
-                    ->line('You have a new approval request. Login to view details.')
                     ->subject("New leave approval request")
+                    ->line('You have a new approval request. Login to view details.')
                     ->action('CLick to login', url('/')) // Approval URL
                     ->line('Thank you.');
     }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function toArray($notifiable)
     {
         return [

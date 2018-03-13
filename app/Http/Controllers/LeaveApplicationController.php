@@ -45,12 +45,11 @@ class LeaveApplicationController extends Controller
         $LeaveApplication->fill($data);
         try {
             if ($LeaveApplication->save()) {
-                $execResults=$this->createApprovalEntry($data);
-                if ($execResults == "Success"){
+                if ($this->createApprovalEntry($data) ){
                     Notification::send(Auth::user(),new LeaveApprovalRequestSent());
                     return response('Success', 200)->header('Content-Type', 'text/plain');
                 }else{
-                    return response('Error occurred creating leave approval request entry:'.$execResults,500)->header('Content-Type', 'text/plain');
+                    return response('Error occurred creating leave approval request entry:',500)->header('Content-Type', 'text/plain');
                 }
             }else{
                 return response("Failed! Leave application not created.",500)->header('Content-Type', 'text/plain');
@@ -64,44 +63,34 @@ class LeaveApplicationController extends Controller
     public function createApprovalEntry($data){
         $approvalEntry = new ApprovalEntry();
         try {
-            $approver = EmployeeApprover::where(["Employee" => Auth::user()->Employee_Record->No])->first(); // Returns first approver in the list
-            if (count($approver)>0){
+            $approvers = EmployeeApprover::where(["Employee" => Auth::user()->Employee_Record->No])->get(); // Returns all approvers in the list
+            if (count($approvers)>0){
                 try{
-                    $approvalEntryData=[
-                        "Table_ID"=>uniqid(),
-                        "Document_No"=>$data["Application_Code"],
-                        "Document_Type"=>"Leave",
-                        "Sequence_No"=>$approver->Approval_Level,
-                        "Status" => "Pending",
-                        "Approval_Details" => $approver->NamesApprvr,
-                        "Sender_ID" => $data["Employee_No"],
-                        "Approver_ID" => $approver->Approver,
-                        "Document_Owner" => $data["Employee_No"],
-                        "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
-                    ];
-                    if ($this->checkIfNotExists(["Document_Type"=>"Leave",
-                        "Sequence_No"=>$approver->Approval_Level,
-                        "Status" => "Pending",
-                        "Approval_Details" => $approver->NamesApprvr,
-                        "Sender_ID" => $data["Employee_No"],
-                        "Approver_ID" => $approver->Approver,
-                        "Document_Owner" => $data["Employee_No"]])){
+                    $i=1;
+                    foreach ($approvers as $approver) {
+                        $approvalEntryData=[
+                            "Table_ID"=>uniqid(),
+                            "Document_No"=>$data["Application_Code"],
+                            "Document_Type"=>"Leave",
+                            "Sequence_No"=>$approver->Approval_Level,
+                            "Status" => $i!=1?"Pending":"Open",
+                            "Approval_Details" => $approver->NamesApprvr,
+                            "Sender_ID" => $data["Employee_No"],
+                            "Approver_ID" => $approver->Approver,
+                            "Document_Owner" => $data["Employee_No"],
+                            "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
+                        ];
                         $approvalEntry->fill($approvalEntryData);
-                        if ($approvalEntry->save()) {
-                            Notification::send($approver->employee->user, new NotifyApprover());
-                            return "Success";
-                        }else{
-                            return 'Error occurred while creating approval entry';
-                        }
-                    }else{
-                        return 'Same pending application exists';
+                        $approvalEntry->save();
+                        Notification::send($approver->employee->user, new NotifyApprover());
+                        $i++;
                     }
-
+                    return true;
                 }catch(\Exception $e){
                     return 'Error occurred while creating approval entry:' . $e->getMessage();
                 }
             }else{
-                return 'You don\'t have any approver';
+                return false;
             }
 
         }catch(ModelNotFoundException $e){
