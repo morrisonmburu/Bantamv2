@@ -1,45 +1,19 @@
 <template>
     <li class="dropdown">
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+            <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notification.length !== 0">{{notification.length}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-alerts">
-            <li>
-                <a href="mailbox.html">
+        <ul class="dropdown-menu dropdown-alerts" v-show="notification.length !== 0">
+            <li v-for="(notice, index) in notification">
+                <a href="#">
                     <div>
-                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                        <i class="fa fa-envelope fa-fw"></i> {{notice.data.message}}
                         <span class="pull-right text-muted small">
-                           <timeago :since="time"></timeago>
+                           <timeago :since="notice.created_at"></timeago>
                         </span>
                     </div>
                 </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="profile.html">
-                    <div>
-                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                        <span class="pull-right text-muted small">12 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="grid_options.html">
-                    <div>
-                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                        <span class="pull-right text-muted small">4 minutes ago</span>
-                    </div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <div class="text-center link-block">
-                    <a href="notifications.html">
-                        <strong>See All Alerts</strong>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
+                <div class="divider" v-show="notification.length !== 1 && notification.length === (index + 1)"></div>
             </li>
         </ul>
     </li>
@@ -64,12 +38,17 @@
             'APIENDPOINTS',
             'getApiPath',
             'isEmptyObject',
-            'userDetails'
+            'userDetails',
+            'validateField'
         ],
         data : function () {
             return{
                 notification : {},
-                time  : Date.now()
+                timer  : '',
+                noticeIcons : {
+                    ApprovalRequest : '',
+
+            }
 
             }
         },
@@ -91,8 +70,7 @@
 
         },
         mounted() {
-            setTimeout(() =>  this.getNotifications(), 1500);
-
+            this.timer = setInterval(this.getNotifications, 20000)
         }
     }
 </script>

@@ -57,7 +57,7 @@ const app = new Vue({
             LEAVETYPES : 'api/leave_types',
             LEAVEAPPLICATION : 'api/leave_applications ',
             PROFILEPICTURE : 'api/employees@picture',
-            NOTIFICATIONS : 'api/users@notification'
+            NOTIFICATIONS : 'api/users/notification'
 
         },
         searchResults : '',
@@ -73,6 +73,9 @@ const app = new Vue({
             } else {
                 alert(component + ' component not found');
             }
+        },
+        validateField : function (field) {
+          return field.length !== 0
         },
 
         sanitizeHeaders: function (heading) {

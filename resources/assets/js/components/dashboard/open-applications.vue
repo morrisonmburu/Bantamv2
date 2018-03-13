@@ -34,7 +34,7 @@
                                 <th>Start Date</th>
                                 <th>Return Date</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <!--<th>Action</th>-->
                             </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,7 @@
                                 <td>{{application.Start_Date}}</td>
                                 <td>{{application.Return_Date}}</td>
                                 <td>{{application.Status}}</td>
-                                <td><button class="btn btn-sm bt-default">view</button></td>
+                                <!--<td><button class="btn btn-sm bt-default" @click="showDetails(index, application)" >view</button></td>-->
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
                                 <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
@@ -236,31 +236,27 @@
                         </div>
                         <div class="modal-body" >
                             <form class="form-horizontal" role="form">
-                                <div class="form-group">
+                                <div class="form-group" :class="states.leave_code">
                                     <label class="col-sm-4 control-label">Leave type</label>
                                     <div class="col-sm-8">
                                         <select class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.leave_code">
                                             <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
                                         </select>
+                                        <span id="helpBlockLeaveCode" class="help-block">{{error.leave_code}}</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" :class="states.start_date">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group date" data-provide="datepicker" data-date-format="yyyy-mm-dd">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <!--<date-picker v-model="formData.start_date" type="date" format="MM-DD-YY" input-class="form-control mx-input "></date-picker>-->
-                                            <!--<date-picker :date="date" v-model="date"></date-picker>-->
-                                            <input type="text" class="form-control" name="start_date" id="start_date" v-model="formData.start_date">
-                                        </div>
+                                        <datepicker format="yyyy-MM-dd" v-model="formData.start_date" name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                        <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" :class="states.no_of_days">
                                     <label  class="col-sm-4 control-label">Number of days</label>
                                     <div class="col-sm-8">
                                          <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
+                                        <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group text-center">
@@ -280,22 +276,18 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label" >End Date</label>
                                     <div class="col-sm-8">
-                                        <!--<date-picker v-model="formData.end_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
-
                                         <div class="input-group">
-                                            <i class="mx-input-icon mx-input-icon__calendar"></i>
-                                            <input type="text" disabled class="form-control" readonly name="end_date" v-model="formData.end_date" id="end_date">
+                                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="text" disabled class="form-control" name="end_date" v-model="formData.end_date" id="end_date">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <!--<date-picker v-model="formData.return_date" lang="en" format="yyyy-mm-dd" disabled input-class="form-control mx-input "></date-picker>-->
-
                                         <div class="input-group">
-                                            <i class="mx-input-icon mx-input-icon__calendar"></i>
-                                            <input type="text" disabled class="form-control" readonly  name="return_date" v-model="formData.return_date" id="return_date">
+                                            <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">
                                         </div>
                                     </div>
                                 </div>
@@ -309,23 +301,31 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                            <button v-if="submitting" @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                            <button v-else class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         <!-- End of New leave application modal -->
 
+
     </div>
 </template>
 
 <script>
-    import DatePicker from 'vue2-datepicker'
+    import Datepicker from 'vuejs-datepicker'
 
     export default {
         name: "open-applications",
-        components : {
-            DatePicker
+        components: {
+            Datepicker
         },
         props : [
             'currentUser',
@@ -334,7 +334,8 @@
             'currentEmployeeLeaveAllocations',
             'APIENDPOINTS',
             'getApiPath',
-            'isEmptyObject'
+            'isEmptyObject',
+            'validateField'
         ],
         data : function(){
             return {
@@ -348,9 +349,26 @@
                     return_date : '',
                     comment : '',
                 },
+                states : {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : '',
+                },
+                error : {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : '',
+                },
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
+                submitting      : true,
                 shortcuts: [
                     {
                         text: 'Today',
@@ -360,8 +378,7 @@
                 ],
                 btnType : 'btn-primary',
                 btnIcon :  'fa fa-calculator',
-                date : '04/05/2017',
-
+                timer   : ''
             }
         },
         methods : {
@@ -378,8 +395,45 @@
                         console.log(errro)
                     })
             },
+
+            formartDate : function (date) {
+                return date.toISOString().slice(0,10)
+            },
             calculate : function (e) {
                 e.preventDefault();
+
+                this.states.leave_code = ''
+                this.error.leave_code = ''
+                this.states.start_date = ''
+                this.error.start_date = ''
+                this.states.no_of_days = ''
+                this.error.no_of_days = ''
+
+                if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+
+                    if(this.formData.leave_code.length === 0){
+                        this.states.leave_code = 'has-warning'
+                        this.error.leave_code = 'Leave Code is required'
+                    }
+                    if(this.formData.start_date.length === 0){
+                        this.states.start_date = 'has-warning'
+                        this.error.start_date = 'start date is required'
+                    }
+                    if(this.formData.no_of_days.length === 0){
+                        this.states.no_of_days = 'has-warning'
+                        this.error.no_of_days = 'Number of days is required'
+                    }
+
+                }else {
+
+                    // Formats date from yyyy-MM-ddThh-mm-ssZ to yyyy-MM-dd
+                    this.formData.start_date = this.formartDate(this.formData.start_date)
+                    this.getCalculatedDates()
+                }
+
+            },
+
+            getCalculatedDates : function () {
                 this.spinner = false
                 var v = this
                // v.formData.start_date = new Date(v.formData.start_date )
@@ -404,8 +458,8 @@
                     })
             },
             submitLeaveApplication : function (e) {
-
                 e.preventDefault();
+                this.submitting = false
                 var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
@@ -415,10 +469,14 @@
                         }}
                 )
                     .then(function (response) {
+                        v.submitting = false
+                        v.getLeaveApplications()
+                        v.loading = true
                         $('#myModal').modal('hide')
 
                     })
                     .catch(function (error) {
+                        v.submitting = false
                         console.log(error)
                     })
             },
@@ -427,7 +485,6 @@
                 axios.get('api/leave_types')
                     .then(function (response) {
                         v.leaveTypes = response.data.data
-                        console.log('leave types')
                     })
                     .catch(function (error) {
                         console.log(error)
@@ -437,13 +494,18 @@
         created() {
             this.getLeaveApplications()
             this.getLeaveTypes()
+
+
+            //check for applications after every five minutes
+            this.timer = setInterval(this.getLeaveApplications, 300000)
+
         },
         watch : {
 
         },
         mounted(){
 
-        }
+        },
     }
 
 </script>
