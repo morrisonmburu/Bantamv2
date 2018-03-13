@@ -27,6 +27,8 @@ class ApprovalEntryUpdatedListener
      */
     public function handle(ApprovalEntry $entry)
     {
+        if($entry->getOriginal()->Status == $entry->Status) return;
+
         switch ($entry->Status){
             case "Approved":
                 $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)

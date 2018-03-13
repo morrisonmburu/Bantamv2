@@ -15,7 +15,6 @@ class CreateApprovalEntriesTable extends Migration
     {
         Schema::create('approval_entries', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('Table_ID', 50)->unique();
             $table->enum('Document_Type', ['Leave', 'Training', 'Appraisal', 'Succession', 'Payroll', 'Recruitment']);
             $table->string('Document_No',50);
@@ -34,7 +33,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->boolean("Web_Sync")->default(true);
             $table->dateTime("Nav_Sync_TimeStamp")->nullable();
             $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign("Approver_ID")->references("Approver")->on("employee_approvers")->onDelete('cascade');
+            $table->foreign("Approver_ID")->references("no")->on("employees")->onDelete('cascade');
             $table->foreign("Sender_ID")->references("No")->on("employees")->onDelete('cascade');
             $table->foreign("Document_No")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
