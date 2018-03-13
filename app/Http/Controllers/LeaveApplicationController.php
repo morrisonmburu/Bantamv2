@@ -12,7 +12,6 @@ use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\EmployeeLeaveApplicationCollection;
 use App\Http\Resources\LeaveApplicationResource;
 use App\Notifications\LeaveApprovalRequestSent;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
@@ -22,11 +21,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LeaveApplicationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         if ($request->is('api*')) {
@@ -34,22 +28,10 @@ class LeaveApplicationController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-
 
     public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
@@ -63,11 +45,12 @@ class LeaveApplicationController extends Controller
         $LeaveApplication->fill($data);
         try {
             if ($LeaveApplication->save()) {
-                if ($this->createApprovalEntry($data)){
+                $execResults=$this->createApprovalEntry($data);
+                if ($execResults == "Success"){
                     Notification::send(Auth::user(),new LeaveApprovalRequestSent());
                     return response('Success', 200)->header('Content-Type', 'text/plain');
                 }else{
-                    return response("Failed! You don't have any approver",500)->header('Content-Type', 'text/plain');
+                    return response('Error occurred creating leave approval request entry:'.$execResults,500)->header('Content-Type', 'text/plain');
                 }
             }else{
                 return response("Failed! Leave application not created.",500)->header('Content-Type', 'text/plain');
@@ -96,67 +79,56 @@ class LeaveApplicationController extends Controller
                         "Document_Owner" => $data["Employee_No"],
                         "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
                     ];
-                    $approvalEntry->fill($approvalEntryData);
-                    if ($approvalEntry->save()) {
-                        Notification::send($approver->user, new NotifyApprover());
-                        return true;
+                    if ($this->checkIfNotExists(["Document_Type"=>"Leave",
+                        "Sequence_No"=>$approver->Approval_Level,
+                        "Status" => "Pending",
+                        "Approval_Details" => $approver->NamesApprvr,
+                        "Sender_ID" => $data["Employee_No"],
+                        "Approver_ID" => $approver->Approver,
+                        "Document_Owner" => $data["Employee_No"]])){
+                        $approvalEntry->fill($approvalEntryData);
+                        if ($approvalEntry->save()) {
+                            Notification::send($approver->employee->user, new NotifyApprover());
+                            return "Success";
+                        }else{
+                            return 'Error occurred while creating approval entry';
+                        }
                     }else{
-                        return false;
+                        return 'Same pending application exists';
                     }
+
                 }catch(\Exception $e){
-//                    return 'Error occurred while creating approval entry:' . $e->getMessage();
-                return false;
+                    return 'Error occurred while creating approval entry:' . $e->getMessage();
                 }
             }else{
-                return false;
+                return 'You don\'t have any approver';
             }
 
         }catch(ModelNotFoundException $e){
-//            return 'Error!You don\'t have any approver';
-            return false;
+            return 'You don\'t have any approver:'.$e->getMessage();
         }
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
-     */
+    public function checkIfNotExists($params){
+        $approvalEntry = new ApprovalEntry();
+        if (count($approvalEntry::where($params))>0){
+            return false;
+        }
+        return true;
+    }
     public function show(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
     {
         if ($request->is('api*')) {
             return new LeaveApplicationResource($employeeLeaveApplication);
         }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
-     * @return \Illuminate\Http\Response
-     */
     public function edit(EmployeeLeaveApplication $employeeLeaveApplication)
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
     {
 
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\EmployeeLeaveApplication $employeeLeaveApplication
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(EmployeeLeaveApplication $employeeLeaveApplication)
     {
         //
