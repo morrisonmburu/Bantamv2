@@ -7,6 +7,8 @@ use App\Employee;
 use App\Http\Resources\ApprovalEntryCollection;
 use App\Http\Resources\ApprovalEntryResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use function Symfony\Component\VarDumper\Dumper\esc;
 
 class ApprovalEntryController extends Controller
 {
@@ -27,9 +29,35 @@ class ApprovalEntryController extends Controller
         }
     }
 
-    public function employee_approvals(Request $request, Employee $employee){
+    public function status(Request $request, ApprovalEntry $entry)
+    {
+        if($entry->Approver_ID != Auth::user()->Employee_Record->No){
+            abort(401);
+        }
+
+        $validatedData = $request->validate([
+            'status' => "required|in:Rejected|Approved"
+        ]);
+
+        $entry->status = $validatedData['status'];
+        $entry->save();
+    }
+
+    public function employee_approvals(Request $request){
+        $status = $request->query('status');
+
+        $approvals = null;
+
+        if($status){
+            $approvals = ApprovalEntry::where("Status", $status)
+                ->where("Approver_ID", Auth::user()->Employee_Record->No )->get();
+        }
+        else{
+            $approvals = Auth::user()->Employee_Record->approvals;
+        }
+
         if($request->is('api*')){
-            return new ApprovalEntryCollection($employee->approvals);
+            return new ApprovalEntryCollection($approvals);
         }
     }
 }

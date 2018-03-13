@@ -38,7 +38,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
     Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
-    Route::get('{employee}/approvals', 'ApprovalEntryController@employee_approvals');
+    Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
 });
 Route::resource('employees', 'EmployeeController');
 //calculateLeaveDates
@@ -46,6 +46,12 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
     Route::post('requests', 'LeaveApplicationController@requests');
 });
+
+
+Route::prefix('approvals')->group(function () {
+    Route::post('{approval}/status', 'ApprovalEntryController@status');
+});
+Route::resource('approvals','ApprovalEntryController');
 
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationController');
