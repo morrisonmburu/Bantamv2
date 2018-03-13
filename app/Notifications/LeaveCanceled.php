@@ -6,26 +6,44 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\EmployeeApprover;
-class NotifyApprover extends Notification implements ShouldQueue
+
+class LeaveCanceled extends Notification implements  ShouldQueue
 {
     use Queueable;
+
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
         //
     }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function via($notifiable)
     {
         return ['database','mail'];
     }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello?')
-                    ->subject("New leave approval request")
-                    ->line('You have a new approval request. Login to view details.')
-                    ->action('CLick to login', url('/')) // Approval URL
-                    ->line('Thank you.');
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -37,7 +55,7 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"You have a new leave application request"
+            //
         ];
     }
 }

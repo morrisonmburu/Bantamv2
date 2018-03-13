@@ -51,8 +51,8 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $employee =Employee::find(1);
-            print (var_dump($employee->approvers));
+            $employee =Employee::find(2);
+            print ($employee->approvers);
         }
         catch (\Exception $e){
             print ($e);
