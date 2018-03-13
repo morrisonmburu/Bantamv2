@@ -30,7 +30,6 @@ Route::prefix('users')->group(function () {
 });
 
 Route::resource('users', 'UserController');
-
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
     Route::get('{employee}/picture', 'EmployeeController@picture');
