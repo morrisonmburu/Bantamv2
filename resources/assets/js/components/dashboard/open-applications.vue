@@ -301,7 +301,14 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                            <button v-if="submitting" @click="submitLeaveApplication" class="btn btn-primary">Apply <i class="fa fa-check-circle-o"></i> </button>
+                            <button v-else class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -361,6 +368,7 @@
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
+                submitting      : true,
                 shortcuts: [
                     {
                         text: 'Today',
@@ -451,6 +459,7 @@
             },
             submitLeaveApplication : function (e) {
                 e.preventDefault();
+                this.submitting = false
                 var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
@@ -460,12 +469,14 @@
                         }}
                 )
                     .then(function (response) {
+                        v.submitting = false
                         v.getLeaveApplications()
                         v.loading = true
                         $('#myModal').modal('hide')
 
                     })
                     .catch(function (error) {
+                        v.submitting = false
                         console.log(error)
                     })
             },
@@ -474,7 +485,6 @@
                 axios.get('api/leave_types')
                     .then(function (response) {
                         v.leaveTypes = response.data.data
-                        console.log('leave types')
                     })
                     .catch(function (error) {
                         console.log(error)
