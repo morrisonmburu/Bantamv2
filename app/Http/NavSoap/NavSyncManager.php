@@ -31,13 +31,23 @@ class NavSyncManager{
     }
 
     public function sendLeaveApplication(EmployeeLeaveApplication $application){
-        $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object) $application->toArray());
-        $application->fill((array)($result->LeaveApps));
-        $application->Nav_Sync = false;
-        $application->Nav_Sync_TimeStamp = date("Y-m-d");
 
-        $application->save();
+        $application = EmployeeLeaveApplication::find($application->id);
 
+        if($application->Nav_Sync == 0){
+            try{
+                $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+
+                $new_application = (array)($result->LeaveApps);
+                unset($new_application["Application_Code"]);
+                $application->fill((array) $new_application);
+//
+                $application->save();
+            }
+            catch (\Exception $e){
+            }
+
+        }
     }
 
     public function sync(){
@@ -153,7 +163,9 @@ class NavSyncManager{
             }
         }
 
-        return $client->ReadMultiple(['filter' => $criteria, 'setSize'=> 0])->ReadMultiple_Result;
+        $res =  $client->ReadMultiple(['filter' => $criteria, 'setSize'=> 0])->ReadMultiple_Result;
+        $this->restoreWrapper();
+        return $res;
     }
 
     public function create($endpoint, $data){
@@ -164,7 +176,9 @@ class NavSyncManager{
         $resource_name = explode("/", $endpoint);
         $resource_name = end($resource_name);
         $update = [$resource_name => (object)$data];
-        return $client->Create((object)$update);
+        $result =  $client->Create((object)$update);
+        $this->restoreWrapper();
+        return $result;
     }
 
     /**
@@ -198,7 +212,9 @@ class NavSyncManager{
         $resource_name = end($resource_name);
         $update = [$resource_name => (object)$record];
 
-        return $client->Update((object)$update);
+        $res =  $client->Update((object)$update);
+        $this->restoreWrapper();
+        return $res;
 
     }
 
@@ -215,6 +231,7 @@ class NavSyncManager{
 
 
         return $client->GetEmployeePic($params)->return_value;
+        $this->restoreWrapper();
 
     }
     public function prepareWrapper(){
@@ -247,6 +264,7 @@ class NavSyncManager{
 //            throw new NavHttpException($this->config->NAV_SOAP_LEAVE_MANAGER_CODES[$result->return_value], static::$NAV_HTTP_ERROR_CODE);
 //        }
 //      print_r($result);
+        $this->restoreWrapper();
         return $result;
     }
 
