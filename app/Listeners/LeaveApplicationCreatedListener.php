@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use App\Jobs\SendLeaveApplicationToNav;
+use App\Jobs\SendApprovalEntriesToNav;
 
 class LeaveApplicationCreatedListener
 {
@@ -54,7 +55,7 @@ class LeaveApplicationCreatedListener
                     ];
                     $approvalEntry->fill($approvalEntryData);
                     $approvalEntry->save();
-
+                    SendApprovalEntriesToNav::dispatch($approvalEntry);
                     if ($i == 1) {
                         Notification::send($approver->approver->user, new NotifyApprover());
                         $application->save();

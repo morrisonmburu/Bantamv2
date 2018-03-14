@@ -16,6 +16,7 @@ use App\Http\Requests\LeaveApplicationRequest as LeaveRequest;
 use App\Employee;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception;
+use App\Jobs\SendApprovalEntriesToNav;
 
 class LeaveApplicationController extends Controller
 {
@@ -80,6 +81,7 @@ class LeaveApplicationController extends Controller
                         $entry->Nav_Sync = 0;
                         $entry->save();
                         Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
+                        SendApprovalEntriesToNav::dispatch($entry);
                     }
                 }
 

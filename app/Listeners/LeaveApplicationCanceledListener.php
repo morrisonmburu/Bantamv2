@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\EmployeeLeaveApplication;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Jobs\SendApprovalEntriesToNav;
 
 class LeaveApplicationCanceledListener
 {
@@ -28,7 +29,7 @@ class LeaveApplicationCanceledListener
     {
         $entries = $application->approval_entries;
         foreach ($entries as $entry){
-            $entry->Status = "canceled";
+            $entry->Status = "Canceled";
             $entry->Nav_Sync = 0;
             $entry->save();
         }
