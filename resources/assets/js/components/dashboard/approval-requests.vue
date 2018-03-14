@@ -59,74 +59,28 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Employee No.</th>
-                                    <th>Document No.</th>
-                                    <th>Date Created</th>
+                                    <th>Approver</th>
                                     <th>Date Sent</th>
-                                    <th>Due Date</th>
+                                    <th>Document No</th>
+                                    <th>Document Owner</th>
+                                    <th>Document Type</th>
                                     <th>Status</th>
+                                    <th>Due Date</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>E84354</td>
-                                    <td>DOC272</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td><span class="label label-danger">Rejected</span></td>
+                                <tr v-for="(request, index) in requests">
+                                    <td>{{index + 1}}</td>
+                                    <td>{{request.Approval_Details}}</td>
+                                    <td>{{request.Date_Time_Sent_for_Approval}}</td>
+                                    <td>{{request.Document_No}}</td>
+                                    <td>{{request.Document_Owner}}</td>
+                                    <td>{{request.Document_Type}}</td>
+                                    <td>{{request.Status}}</td>
+                                    <td>{{request.Due_Date}}</td>
                                     <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest">Process</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>E84354</td>
-                                    <td>DOC272</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td><span class="label label-info">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest">Process</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>E84354</td>
-                                    <td>DOC272</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td><span class="label label-info">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest">Process</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>E84354</td>
-                                    <td>DOC272</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td><span class="label label-primary">Approved</span></td>
-                                    <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest">Process</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>E84354</td>
-                                    <td>DOC272</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td>02/07/2018</td>
-                                    <td><span class="label label-info">Pending</span></td>
-                                    <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest">Process</button>
+                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest" @click="runModal(request)">Process</button>
                                     </td>
                                 </tr>
 
@@ -151,7 +105,7 @@
                                     <div class="row">
                                         <div class="col-xs-12 content no-top-border">
                                             <p class="m-b-xs"><strong>Employee Details</strong></p>
-                                            <p><strong>Name:</strong> John Doe</p>
+                                            <p><strong>Name:</strong> {{modalData.Approver_ID}}</p>
                                             <div class="row">
                                                 <div class="col-xs-6">
                                                     <p><strong>Title:</strong> Tech Nerd</p>
@@ -255,15 +209,20 @@
         data : function () {
             return{
                 requests : {},
-                loading : true
+                loading : true,
+                modalData : {}
             }
         },
         methods : {
+            runModal : function (data) {
+                this.modalData = data
+            },
             getOpenRequests : function() {
                 var v = this
 
                 axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, ''))
                     .then(function (response) {
+                        v.requests = response.data.data
                         console.log('approval requests')
                         console.log(response.data.data)
                         v.loading = false

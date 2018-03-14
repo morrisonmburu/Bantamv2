@@ -1,6 +1,6 @@
 <template>
     <li class="dropdown">
-        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ><!--@click="ReadNotifications"-->
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" @click="ReadNotifications">
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
         <ul class="dropdown-menu dropdown-alerts" v-show="notification.length !== 0" >
@@ -72,7 +72,6 @@
             ReadNotifications : function () {
                 var v = this
                 v.notify = false
-                alert('read notifications')
                 axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
                     .then(function (response) {
                        v.getNotifications()
