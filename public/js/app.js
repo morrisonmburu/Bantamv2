@@ -1502,7 +1502,7 @@ var app = new Vue({
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications ',
             PROFILEPICTURE: 'api/employees@picture',
-            NOTIFICATIONS: 'api/users/notification',
+            NOTIFICATIONS: 'api/users/notification/unread',
             READNOTIFICATIONS: 'api/users/notification/markasread'
 
         },
