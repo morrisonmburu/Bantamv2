@@ -50,10 +50,10 @@ class ApprovalEntryController extends Controller
 
         if($status){
             $approvals = ApprovalEntry::where("Status", $status)
-                ->where("Approver_ID", Auth::user()->Employee_Record->No )->get();
+                ->where("Approver_ID", Auth::user()->Employee_Record->No )->paginate();
         }
         else{
-            $approvals = Auth::user()->Employee_Record->approvals;
+            $approvals = Auth::user()->Employee_Record->approvals()->paginate();
         }
 
         if($request->is('api*')){
