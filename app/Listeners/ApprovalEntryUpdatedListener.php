@@ -42,11 +42,13 @@ class ApprovalEntryUpdatedListener
                     Notification::send($nextEntry->approver->user, new \App\Notifications\NotifyApprover());
                     $leave_application = $entry->leave_application;
                     $leave_application->Next_Approver = $nextEntry->Approver_ID;
+                    $leave_application->Nav_Sync = 0;
                     $leave_application->save();
                 }
                 else{
                     $leave_application->Status = "Approved";
                     $leave_application->Next_Approver = null;
+                    $leave_application->Nav_Sync = 0;
                     $leave_application->save();
                     Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalSuccess());
                 }
@@ -58,12 +60,14 @@ class ApprovalEntryUpdatedListener
 
                 if($nextEntry){
                     $nextEntry->Status = "Rejected";
+                    $nextEntry->Nav_Sync = 0;
                     $nextEntry->save();
                 }
                 else{
                     $leave_application = $entry->leave_application;
                     $leave_application->Status = "Rejected";
                     $leave_application->Next_Approver = null;
+                    $leave_application->Nav_Sync = 0;
                     $leave_application->save();
 
                     Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalFail());

@@ -35,29 +35,21 @@ class NavSyncManager{
         $application = EmployeeLeaveApplication::find($application->id);
 
         if($application->Nav_Sync == 0){
-            try{
-                $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
-
-                $new_application = (array)($result->LeaveApps);
-                unset($new_application["Application_Code"]);
-                $application->fill((array) $new_application);
-                $application->save();
-            }
-            catch (\Exception $e){
-            }
-
+            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+            $new_application = (array)($result->LeaveApps);
+            unset($new_application["Application_Code"]);
+            $application->fill((array) $new_application);
+            $application->save();
         }
     }
 
 
     public function sendLeaveApprovals(ApprovalEntry $approvalEntry){
         if($approvalEntry->Nav_Sync == 0){
-            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
-
-            $new_application = (array)($result->LeaveApps);
-            unset($new_application["Application_Code"]);
-            $application->fill((array) $new_application);
-            $application->save();
+            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$approvalEntry->toArray());
+            $new_approval = (array)($result->LeaveApps);
+            $approvalEntry->fill((array) $new_approval);
+            $approvalEntry->save();
         }
     }
     public function sync(){
@@ -65,9 +57,24 @@ class NavSyncManager{
         print ("--------------- NAV SYNCING STARTED -----------------\n");
 
         $this->pushTable(EmployeeLeaveApplication::class, $this->syncClasses[EmployeeLeaveApplication::class]["endpoint"]);
+
+
+        print ("\n");
+        print ("--------------- PULLING NAV DATA STARTED -----------------\n");
         foreach ($this->syncClasses as $model => $props){
             $this->getTable($model, $props["endpoint"], $props["search_fields"]);
         }
+        print ("--------------- PULLING NAV DATA FINISHED -----------------\n");
+        print ("\n");
+
+        print ("\n");
+        print ("--------------- UPDATING NAV DATA STARTED -----------------\n");
+        foreach ($this->syncClasses as $model => $props){
+            $this->updateTable($model, $props["endpoint"], $props["search_fields"]);
+        }
+        print ("--------------- UPDATING NAV DATA FINISHED -----------------\n");
+        print ("\n");
+
 
         $employees = $this->get($this->config->NAV_SOAP_EMPLOYEE)->Employees;
         foreach ($employees as $employee){
@@ -78,6 +85,9 @@ class NavSyncManager{
             if (!$instance->saveProfilePic($encoded_image)) print "Failed to save prof pic\n";
             print ("\n\n");
         }
+
+
+
 
 
         print ("--------------- NAV SYNCING ENDED -----------------");
@@ -102,6 +112,32 @@ class NavSyncManager{
 //                print ($e);
             }
 
+        }
+    }
+
+    public function updateTable($model, $endpoint, $filters)
+    {
+        $records = $model::where('Nav_Sync', 0)->whereNotNull('Nav_Sync_TimeStamp')->get();
+        foreach ($records as $record){
+            try{
+
+                $filter_array = [];
+
+                foreach ($filters as $filter){
+                    array_push($filter_array, $record[$filter]);
+                }
+
+                $this->update($endpoint, (object) $record->toArray(), $filter_array);
+
+                $record->Nav_Sync = false;
+                $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                $record->save();
+//                print ("success");
+            }
+            catch (\Exception $e){
+                print ($e->getMessage()."\n\n");
+//                print ($e);
+            }
         }
     }
 
