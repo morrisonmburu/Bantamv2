@@ -49,6 +49,17 @@ class NavSyncManager{
         }
     }
 
+
+    public function sendLeaveApprovals(ApprovalEntry $approvalEntry){
+        if($approvalEntry->Nav_Sync == 0){
+            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+
+            $new_application = (array)($result->LeaveApps);
+            unset($new_application["Application_Code"]);
+            $application->fill((array) $new_application);
+            $application->save();
+        }
+    }
     public function sync(){
         print ("\n");
         print ("--------------- NAV SYNCING STARTED -----------------\n");
