@@ -56,7 +56,7 @@ class LeaveApplicationCreatedListener
                     $approvalEntry->save();
 
                     if ($i == 1) {
-                        Notification::send($approver->employee->user, new NotifyApprover());
+                        Notification::send($approver->approver->user, new NotifyApprover());
                         $application->save();
                     }
                     $i++;
