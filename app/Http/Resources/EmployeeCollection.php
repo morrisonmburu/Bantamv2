@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\EmployeeApprover;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EmployeeCollection extends ResourceCollection
