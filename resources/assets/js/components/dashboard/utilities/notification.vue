@@ -1,9 +1,9 @@
 <template>
     <li class="dropdown">
-        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ><!--@click="ReadNotifications"-->
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notification.length !== 0">{{notification.length}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-alerts" v-show="notification.length !== 0">
+        <ul class="dropdown-menu dropdown-alerts" >
             <li v-for="(notice, index) in notification">
                 <a href="#">
                     <div>
@@ -47,7 +47,6 @@
                 timer  : '',
                 noticeIcons : {
                     ApprovalRequest : '',
-
             }
 
             }
@@ -57,14 +56,27 @@
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id))
                     .then(function (response) {
-                        v.notification = response.data.data
-                        console.log('notification')
-                        console.log( v.notification)
+
+                        //Update notification when notifications are available
+                        // if (response.data.data.length !==0){
+                            v.notification = response.data.data
+                        // }
                     })
                     .catch(function (error) {
                         console.log(error)
                     })
-            }
+            },
+
+            // ReadNotifications : function () {
+            //     var v = this
+            //     axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
+            //         .then(function (response) {
+            //            // v.getNotifications()
+            //         })
+            //         .catch(function (error) {
+            //
+            //         })
+            // }
         },
         created() {
 

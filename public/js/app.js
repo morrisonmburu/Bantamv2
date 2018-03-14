@@ -1502,7 +1502,8 @@ var app = new Vue({
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications ',
             PROFILEPICTURE: 'api/employees@picture',
-            NOTIFICATIONS: 'api/users/notification'
+            NOTIFICATIONS: 'api/users/notification/unread',
+            READNOTIFICATIONS: 'api/users/notification/markasread'
 
         },
         searchResults: '',
@@ -47990,7 +47991,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48324,6 +48325,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -48334,8 +48336,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
     data: function data() {
+        this;
         return {
             calculateButtonText: 'Calculate',
+            submittButtonText: 'Submit Application',
             spinner: true,
             formData: {
                 leave_code: '',
@@ -48365,13 +48369,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             applications: {},
             loading: true,
             submitting: true,
-            shortcuts: [{
-                text: 'Today',
-                start: new Date(),
-                end: new Date()
-            }],
-            btnType: 'btn-primary',
-            btnIcon: 'fa fa-calculator',
+            calculateButton: {
+                text: 'Calculate',
+                icon: 'fa fa-calculator',
+                status: 'btn-primary',
+                loading: true
+            },
+            submitButton: {
+                text: 'Submit Application',
+                icon: 'fa fa-send',
+                status: 'btn-primary',
+                loading: true,
+                errorMessage: ''
+            },
             timer: ''
         };
     },
@@ -48400,6 +48410,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.error.start_date = '';
             this.states.no_of_days = '';
             this.error.no_of_days = '';
+            this.calculateButton.status = 'btn btn-primary';
+            this.calculateButton.text = 'Calculate';
+            this.calculateButton.icon = 'fa fa-calculator';
 
             if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0) {
 
@@ -48424,7 +48437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         getCalculatedDates: function getCalculatedDates() {
-            this.spinner = false;
+            this.calculateButton.loading = false;
             var v = this;
             // v.formData.start_date = new Date(v.formData.start_date )
             axios.post(this.APIENDPOINTS.CALCULATE, this.formData, { headers: {
@@ -48432,29 +48445,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } }).then(function (response) {
                 v.formData.end_date = response.data.eDate;
                 v.formData.return_date = response.data.rDate;
-                v.spinner = true;
+                v.calculateButton.loading = true;
             }).catch(function (error) {
-                v.spinner = true;
-                v.btnType = 'btn-warning';
-                v.calculateButtonText = 'connection problem please try again ';
-                v.btnIcon = 'fa fa-warning';
+                v.calculateButton.loading = true;
+                v.calculateButton.status = 'btn btn-warning';
+                v.calculateButton.text = 'please try again ';
+                v.calculateButton.icon = 'fa fa-warning';
+                v.calculateButton.errorMessage = error.message;
                 console.log(error);
             });
         },
         submitLeaveApplication: function submitLeaveApplication(e) {
             e.preventDefault();
-            this.submitting = false;
+            this.submitButton.loading = false;
             var v = this;
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
-                v.submitting = false;
+                v.submitButton.loading = true;
                 v.getLeaveApplications();
-                v.loading = true;
+                // v.loading = true
                 $('#myModal').modal('hide');
+                v.formData = {};
             }).catch(function (error) {
-                v.submitting = false;
-                console.log(error);
+                v.submitButton.loading = true;
+                v.submitButton.text = 'Error Submitting Application';
+                v.submitButton.status = 'btn btn-warning';
             });
         },
         getLeaveTypes: function getLeaveTypes() {
@@ -48766,19 +48782,19 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "col-sm-8" }, [
-                      _vm.spinner
+                      _vm.calculateButton.loading
                         ? _c(
                             "button",
                             {
-                              staticClass: "ladda-button btn btn-block",
-                              class: [_vm.btnType],
+                              staticClass: "btn btn-block",
+                              class: _vm.calculateButton.status,
                               attrs: { "data-style": "expand-right" },
                               on: { click: _vm.calculate }
                             },
                             [
                               _c("strong", [
-                                _vm._v(_vm._s(_vm.calculateButtonText) + " "),
-                                _c("i", { class: [_vm.btnIcon] })
+                                _vm._v(_vm._s(_vm.calculateButton.text) + " "),
+                                _c("i", { class: _vm.calculateButton.icon })
                               ])
                             ]
                           )
@@ -48796,7 +48812,16 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "sk-rect5" })
                             ]
-                          )
+                          ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "help-block",
+                          attrs: { id: "helpBlokError" }
+                        },
+                        [_vm._v(_vm._s(_vm.calculateButton.errorMessage))]
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -48935,19 +48960,20 @@ var render = function() {
                 [_vm._v("Close")]
               ),
               _vm._v(" "),
-              _vm.submitting
+              _vm.submitButton.loading
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
+                      staticClass: "btn ",
+                      class: _vm.submitButton.status,
                       on: { click: _vm.submitLeaveApplication }
                     },
                     [
-                      _vm._v("Apply "),
-                      _c("i", { staticClass: "fa fa-check-circle-o" })
+                      _vm._v(_vm._s(_vm.submitButton.text) + " "),
+                      _c("i", { class: _vm.submitButton.icon })
                     ]
                   )
-                : _c("button", { staticClass: "sk-spinner sk-spinner-wave" }, [
+                : _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
                     _c("div", { staticClass: "sk-rect1" }),
                     _vm._v(" "),
                     _c("div", { staticClass: "sk-rect2" }),
@@ -54118,7 +54144,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54171,7 +54197,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
             timer: '',
             noticeIcons: {
                 ApprovalRequest: ''
-
             }
 
         };
@@ -54180,13 +54205,26 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
         getNotifications: function getNotifications() {
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id)).then(function (response) {
+
+                //Update notification when notifications are available
+                // if (response.data.data.length !==0){
                 v.notification = response.data.data;
-                console.log('notification');
-                console.log(v.notification);
+                // }
             }).catch(function (error) {
                 console.log(error);
             });
         }
+
+        // ReadNotifications : function () {
+        //     var v = this
+        //     axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
+        //         .then(function (response) {
+        //            // v.getNotifications()
+        //         })
+        //         .catch(function (error) {
+        //
+        //         })
+        // }
     },
     created: function created() {},
     mounted: function mounted() {
@@ -54413,17 +54451,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.notification.length !== 0,
-            expression: "notification.length !== 0"
-          }
-        ],
-        staticClass: "dropdown-menu dropdown-alerts"
-      },
+      { staticClass: "dropdown-menu dropdown-alerts" },
       _vm._l(_vm.notification, function(notice, index) {
         return _c("li", [
           _c("a", { attrs: { href: "#" } }, [
