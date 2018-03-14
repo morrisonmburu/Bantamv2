@@ -138,7 +138,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group"><label>Number of days</label>
-                                                <input type="number" placeholder="Number of days" class="form-control" v-model="modalData.application.no_of_days">
+                                                <input type="number" placeholder="Number of days" readonly class="form-control" v-model="modalData.application.no_of_days">
                                             </div>
                                         </div>
                                         <div class="col-xs-6">
@@ -171,8 +171,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-xs btn-success">Approve</button>
-                        <button type="button" class="btn btn-xs btn-danger">Reject</button>
+                        <button type="button" class="btn btn-xs btn-success" @click="approveEntry(modalData.id)">Approve</button>
+                        <button type="button" class="btn btn-xs btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
                         <button type="button" class="btn btn-xs btn-warning">Escalate</button>
                     </div>
                 </div>
@@ -198,9 +198,13 @@
         ],
         data : function () {
             return{
+                formData : {
+                    status : ''
+                },
                 requests : {},
                 loading : true,
                 modalData : {
+                    id : '',
                     application : {
                         start_date : '',
                         no_of_days : '',
@@ -225,7 +229,7 @@
         methods : {
             runModal : function (data) {
                 // this.modalData = data
-
+                this.modalData.id = data.id
                 this.modalData.application.start_date  = data.Application_Details.Start_Date
                 this.modalData.application.no_of_days  = data.Application_Details.Days_Applied
                 this.modalData.application.end_date  = data.Application_Details.End_Date
@@ -240,13 +244,41 @@
                 this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' +data.Employee_Details.Last_Name + ' '
                 this.modalData.applicant.title  = data.Employee_Details.Title
                 this.modalData.applicant.department = data.Employee_Details.Department
-
-
-
-
-
-
                 // $('#approveRequest').modal('show')
+            },
+            approveEntry : function (id) {
+                var v = this
+                v.formData.status = 'Approved'
+                axios.post(
+                    v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id),
+                    v.formData,
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }}
+                )
+                    .then(function (response) {
+                        v.getOpenRequests()
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
+            rejectEntry : function () {
+                var v = this
+                v.formData.status = 'Rejected'
+                axios.post(
+                    v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id),
+                    v.formData,
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }}
+                )
+                    .then(function (response) {
+                        v.getOpenRequests()
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
             },
             getOpenRequests : function() {
                 let v = this

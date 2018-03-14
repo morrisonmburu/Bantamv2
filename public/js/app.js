@@ -1504,8 +1504,9 @@ var app = new Vue({
             PROFILEPICTURE: 'api/employees@picture',
             NOTIFICATIONS: 'api/users/notification/unread',
             READNOTIFICATIONS: 'api/users/notification/markasread',
-            OPENAPPROVALREQUESTS: 'http://localhost:8000/api/employees/approvals?status=Open'
-
+            OPENAPPROVALREQUESTS: 'http://localhost:8000/api/employees/approvals?status=Open',
+            APPROVEENTRY: 'api/approvals@status',
+            REJECTENTRY: 'api/approvals@status'
         },
         searchResults: '',
         searchTerm: ''
@@ -50180,7 +50181,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50382,9 +50383,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
     data: function data() {
         return {
+            formData: {
+                status: ''
+            },
             requests: {},
             loading: true,
             modalData: {
+                id: '',
                 application: {
                     start_date: '',
                     no_of_days: '',
@@ -50409,7 +50414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         runModal: function runModal(data) {
             // this.modalData = data
-
+            this.modalData.id = data.id;
             this.modalData.application.start_date = data.Application_Details.Start_Date;
             this.modalData.application.no_of_days = data.Application_Details.Days_Applied;
             this.modalData.application.end_date = data.Application_Details.End_Date;
@@ -50424,8 +50429,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' ';
             this.modalData.applicant.title = data.Employee_Details.Title;
             this.modalData.applicant.department = data.Employee_Details.Department;
-
             // $('#approveRequest').modal('show')
+        },
+        approveEntry: function approveEntry(id) {
+            var v = this;
+            v.formData.status = 'Approved';
+            axios.post(v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id), v.formData, { headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } }).then(function (response) {
+                v.getOpenRequests();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        rejectEntry: function rejectEntry() {
+            var v = this;
+            v.formData.status = 'Rejected';
+            axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formData, { headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } }).then(function (response) {
+                v.getOpenRequests();
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
         getOpenRequests: function getOpenRequests() {
             var v = this;
@@ -50667,7 +50693,8 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               type: "number",
-                              placeholder: "Number of days"
+                              placeholder: "Number of days",
+                              readonly: ""
                             },
                             domProps: {
                               value: _vm.modalData.application.no_of_days
@@ -50785,7 +50812,53 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(12)
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-white",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.approveEntry(_vm.modalData.id)
+                    }
+                  }
+                },
+                [_vm._v("Approve")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-danger",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.rejectEntry(_vm.modalData.id)
+                    }
+                  }
+                },
+                [_vm._v("Reject")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-warning",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("Escalate")]
+              )
+            ])
           ])
         ])
       ]
@@ -51022,39 +51095,6 @@ var staticRenderFns = [
           attrs: { diabled: "", rows: "2", id: "comment" }
         })
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-xs btn-white",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-xs btn-success", attrs: { type: "button" } },
-        [_vm._v("Approve")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-xs btn-danger", attrs: { type: "button" } },
-        [_vm._v("Reject")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-xs btn-warning", attrs: { type: "button" } },
-        [_vm._v("Escalate")]
-      )
     ])
   }
 ]
