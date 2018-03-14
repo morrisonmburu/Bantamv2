@@ -97,7 +97,7 @@ class LeaveApplicationController extends Controller
     {
 
         if ($request->is('api*')) {
-            return new LeaveApplicationResource($employee->Employee_leave_applications);
+            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications);
         }
     }
 

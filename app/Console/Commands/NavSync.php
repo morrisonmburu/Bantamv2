@@ -53,8 +53,6 @@ class NavSync extends Command
         try{
             $syncManager = new NavSyncManager();
             $syncManager->sync();
-            $syncManager->sendLeaveApplication(
-            );
         }
         catch (\Exception $e){
             print ($e);

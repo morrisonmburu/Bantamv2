@@ -32,7 +32,9 @@ class NavSyncManager{
 
     public function sendLeaveApplication(EmployeeLeaveApplication $application){
         $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object) $application->toArray());
-        $application->fill((array)$result);
+        $application->fill((array)($result->LeaveApps));
+
+        dd($application);
         $application->Nav_Sync = false;
         $application->Nav_Sync_TimeStamp = date("Y-m-d");
 
@@ -51,7 +53,7 @@ class NavSyncManager{
 
         $employees = $this->get($this->config->NAV_SOAP_EMPLOYEE)->Employees;
         foreach ($employees as $employee){
-            print ("Profile Pic for: $employee->First_Name $employee->Last_Name");
+            print ("Profile Pic for: $employee->No");
             $encoded_image = $this->getProfilePic($this->config->NAV_SOAP_PROFILE_PIC, ["empNo" => $employee->No]);
 
             $instance = Employee::where('No', $employee->No)->first();
