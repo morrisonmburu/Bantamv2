@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\ApprovalEntry;
+use App\EmployeeLeaveAllocation;
+use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
 use App\User;
 use Carbon\Carbon;
@@ -51,8 +54,9 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $employee =Employee::find(2);
-            print ($employee->approvers);
+            $entry = EmployeeLeaveApplication::find(16);
+            $manager = new NavSyncManager();
+            $manager->sendLeaveApplication($entry);
         }
         catch (\Exception $e){
             print ($e);
