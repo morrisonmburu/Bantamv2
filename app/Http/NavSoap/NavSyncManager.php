@@ -34,8 +34,21 @@ class NavSyncManager{
 
         $application = EmployeeLeaveApplication::find($application->id);
 
-        if($application->Nav_Sync == 0){
-            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+        if(!$application->Nav_Sync == 0){
+            $result = null;
+            if($application->Nav_Sync_TimeStamp){
+                $result =  $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+            }
+            else{
+                $search_fields = $this->syncClasses[EmployeeLeaveApplication::class]["search_fields"];
+                $filters = [];
+                foreach ($search_fields as $search_field){
+                    array_push($filters, $application[$search_field]);
+                }
+                $result =  $this->update($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"],
+                    (object)$application->toArray(), $filters);
+            }
+
             $new_application = (array)($result->LeaveApps);
             unset($new_application["Application_Code"]);
             $application->fill((array) $new_application);
@@ -46,8 +59,22 @@ class NavSyncManager{
 
     public function sendLeaveApprovals(ApprovalEntry $approvalEntry){
         if($approvalEntry->Nav_Sync == 0){
-            $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$approvalEntry->toArray());
-            $new_approval = (array)($result->LeaveApps);
+            $result = null;
+
+            if(!$approvalEntry->Nav_Sync_TimeStamp){
+                $result =  $this->create($this->syncClasses[ApprovalEntry::class]["endpoint"], (object)$approvalEntry->toArray());
+            }
+            else{
+                $search_fields = $this->syncClasses[ApprovalEntry::class]["search_fields"];
+                $filters = [];
+                foreach ($search_fields as $search_field){
+                    array_push($filters, $approvalEntry[$search_field]);
+                }
+                $result =  $this->update($this->syncClasses[ApprovalEntry::class]["endpoint"],
+                    (object)$approvalEntry->toArray(), $filters);
+            }
+            $new_approval = (array)($result->HRApprovals);
+            unset($new_approval["Table_ID"]);
             $approvalEntry->fill((array) $new_approval);
             $approvalEntry->save();
         }
