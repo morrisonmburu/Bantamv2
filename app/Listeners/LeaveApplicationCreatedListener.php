@@ -32,51 +32,41 @@ class LeaveApplicationCreatedListener
      */
     public function handle(EmployeeLeaveApplication $application)
     {
-        try {
-            $approvers = EmployeeApprover::where(["Employee" => $application->Employee_No])->orderBy('Approval_Level')->get(); // Returns all approvers in the list
+        try{
+            $i=1;
+            $approvers = $application->employee->approvers;
+            foreach ($approvers as $approver) {
+                $approvalEntry = new ApprovalEntry();
+                $approvalEntryData=[
+                    "Table_ID"=> uniqid(),
+                    "Document_No"=>$application->Application_Code,
+                    "Document_Type"=>"Leave",
+                    "Sequence_No"=>$approver->Approval_Level,
+                    "Status" => $i!=1?"Created":"Open",
+                    "Approval_Details" => $approver->NamesApprvr,
+                    "Sender_ID" => $application->Employee_No,
+                    "Approver_ID" => $approver->Approver,
+                    "Document_Owner" => $application->Employee_No,
+                    "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
+                ];
+                $approvalEntry->fill($approvalEntryData);
+                $approvalEntry->save();
 
-            if (count($approvers)>0){
-                try{
-                    $i=1;
-                    foreach ($approvers as $approver) {
-                        $approvalEntry = new ApprovalEntry();
-                        $unqueid = uniqid();
-                        print ($unqueid);
-                        $approvalEntryData=[
-                            "Table_ID"=> $unqueid,
-                            "Document_No"=>$application->Application_Code,
-                            "Document_Type"=>"Leave",
-                            "Sequence_No"=>$approver->Approval_Level,
-                            "Status" => $i!=1?"Created":"Open",
-                            "Approval_Details" => $approver->NamesApprvr,
-                            "Sender_ID" => $application->Employee_No,
-                            "Approver_ID" => $approver->Approver,
-                            "Document_Owner" => $application->Employee_No,
-                            "Date_Time_Sent_for_Approval" =>DB::raw('CURRENT_TIMESTAMP')
-                        ];
-                        $approvalEntry->fill($approvalEntryData);
-                        $approvalEntry->save();
-
-                        if($i == 1) {
-                            Notification::send($approver->employee->user, new NotifyApprover());
-                            $application->save();
-                        }
-                        $i++;
-
-                    }
-                    // TODO: Add nav sync dispatch
-                    try{
-                        SendLeaveApplicationToNav::dispatch($application);
-                    }catch (\Exception $e){
-                        throw new \Exception("Error sending application to Nav:".$e->getMessage());
-                    }
-
-                }catch(\Exception $e){
-                    throw new \Exception('Error occurred while creating approval entry:' . $e->getMessage());
+                if($i == 1) {
+                    Notification::send($approver->employee->user, new NotifyApprover());
+                    $application->save();
                 }
+                $i++;
+
             }
+            try{
+                SendLeaveApplicationToNav::dispatch($application);
+            }catch (\Exception $e){
+                throw new \Exception("Error sending application to Nav:".$e->getMessage());
+            }
+
         }catch(\Exception $e){
-            throw new \Exception("You don\'t have any approver:".$e->getMessage());
+            throw new \Exception('Error occurred while creating approval entry:' . $e->getMessage());
         }
     }
 }

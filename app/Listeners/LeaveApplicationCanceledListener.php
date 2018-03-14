@@ -28,7 +28,7 @@ class LeaveApplicationCanceledListener
     {
         $entries = $application->approval_entries;
         foreach ($entries as $entry){
-            $entry->Status = "Canceled";
+            $entry->Status = "canceled";
             $entry->save();
         }
     }

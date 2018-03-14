@@ -57,7 +57,8 @@ class LeaveApprovalSuccess extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Approval request successful"
+            "message"=>"Approval request successful",
+            "type" =>"success"
         ];
     }
 }

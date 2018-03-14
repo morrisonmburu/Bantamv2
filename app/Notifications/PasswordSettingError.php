@@ -57,7 +57,8 @@ class PasswordSettingError extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Error setting password"
+            "message"=>"Error setting password",
+            "type" =>"danger"
         ];
     }
 }

@@ -57,7 +57,8 @@ class LeaveAllocations extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"You have leave allocations"
+            "message"=>"You have leave allocations",
+            "type" =>"info"
         ];
     }
 }
