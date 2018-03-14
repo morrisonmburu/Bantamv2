@@ -1503,7 +1503,8 @@ var app = new Vue({
             LEAVEAPPLICATION: 'api/leave_applications ',
             PROFILEPICTURE: 'api/employees@picture',
             NOTIFICATIONS: 'api/users/notification/unread',
-            READNOTIFICATIONS: 'api/users/notification/markasread'
+            READNOTIFICATIONS: 'api/users/notification/markasread',
+            OPENAPPROVALREQUESTS: 'http://localhost:8000/api/employees/approvals?status=Open'
 
         },
         searchResults: '',
@@ -50179,7 +50180,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50421,11 +50422,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "approval-requests",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
+    data: function data() {
+        return {
+            requests: {},
+            loading: true
+        };
+    },
+    methods: {
+        getOpenRequests: function getOpenRequests() {
+            var v = this;
 
+            axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, '')).then(function (response) {
+                console.log('approval requests');
+                console.log(response.data.data);
+                v.loading = false;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    created: function created() {
+        this.getOpenRequests();
+    }
 });
 
 /***/ }),
@@ -50436,625 +50468,614 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "ibox float-e-margins" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "ibox-content" }, [
+            _vm.loading
+              ? _c("div", { staticClass: "spiner-example" }, [_vm._m(1)])
+              : _c("div", [_vm._m(2), _vm._v(" "), _vm._m(3)])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._m(4)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-12" }, [
-          _c("div", { staticClass: "ibox float-e-margins" }, [
-            _c("div", { staticClass: "ibox-title" }, [
-              _c("h5", [_vm._v("Approval Requests")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "ibox-tools" }, [
-                _c("a", { staticClass: "collapse-link" }, [
-                  _c("i", { staticClass: "fa fa-chevron-up" })
-                ]),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-toggle",
-                    attrs: { "data-toggle": "dropdown", href: "#" }
-                  },
-                  [_c("i", { staticClass: "fa fa-wrench" })]
-                ),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 1")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v("Config option 2")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("a", { staticClass: "close-link" }, [
-                  _c("i", { staticClass: "fa fa-times" })
-                ])
+    return _c("div", { staticClass: "ibox-title" }, [
+      _c("h5", [_vm._v("Approval Requests")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ibox-tools" }, [
+        _c("a", { staticClass: "collapse-link" }, [
+          _c("i", { staticClass: "fa fa-chevron-up" })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "dropdown-toggle",
+            attrs: { "data-toggle": "dropdown", href: "#" }
+          },
+          [_c("i", { staticClass: "fa fa-wrench" })]
+        ),
+        _vm._v(" "),
+        _c("ul", { staticClass: "dropdown-menu dropdown-user" }, [
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 1")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Config option 2")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "close-link" }, [
+          _c("i", { staticClass: "fa fa-times" })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
+      _c("div", { staticClass: "sk-rect1" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect5" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-5 m-b-xs" }, [
+        _c(
+          "select",
+          { staticClass: "input-sm form-control input-s-sm inline" },
+          [
+            _c("option", { attrs: { value: "0" } }, [_vm._v("All")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Date")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Department")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("Employee")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-4 m-b-xs" }, [
+        _c(
+          "div",
+          { staticClass: "btn-group", attrs: { "data-toggle": "buttons" } },
+          [
+            _c("label", { staticClass: "btn btn-sm btn-white" }, [
+              _c("input", {
+                attrs: { type: "radio", id: "option1", name: "options" }
+              }),
+              _vm._v(" Today ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "btn btn-sm btn-white active" }, [
+              _c("input", {
+                attrs: { type: "radio", id: "option2", name: "options" }
+              }),
+              _vm._v(" This Week ")
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "btn btn-sm btn-white" }, [
+              _c("input", {
+                attrs: { type: "radio", id: "option3", name: "options" }
+              }),
+              _vm._v(" This Month ")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
+            staticClass: "input-sm form-control",
+            attrs: { type: "text", placeholder: "Search" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "input-group-btn" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                attrs: { type: "button" }
+              },
+              [_vm._v(" Go!")]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "table-responsive" }, [
+      _c("table", { staticClass: "table table-striped" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", [_vm._v("#")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Employee No.")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Document No.")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Date Created")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Date Sent")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Due Date")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Status")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Actions")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v("1")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("E84354")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("DOC272")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "label label-danger" }, [
+                _vm._v("Rejected")
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "ibox-content" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-5 m-b-xs" }, [
-                  _c(
-                    "select",
-                    { staticClass: "input-sm form-control input-s-sm inline" },
-                    [
-                      _c("option", { attrs: { value: "0" } }, [_vm._v("All")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [_vm._v("Date")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [
-                        _vm._v("Department")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "3" } }, [
-                        _vm._v("Employee")
-                      ])
-                    ]
-                  )
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#approveRequest"
+                  }
+                },
+                [_vm._v("Process")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("2")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("E84354")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("DOC272")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "label label-info" }, [
+                _vm._v("Pending")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#approveRequest"
+                  }
+                },
+                [_vm._v("Process")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("3")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("E84354")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("DOC272")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "label label-info" }, [
+                _vm._v("Pending")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#approveRequest"
+                  }
+                },
+                [_vm._v("Process")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("4")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("E84354")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("DOC272")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "label label-primary" }, [
+                _vm._v("Approved")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#approveRequest"
+                  }
+                },
+                [_vm._v("Process")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("5")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("E84354")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("DOC272")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("02/07/2018")]),
+            _vm._v(" "),
+            _c("td", [
+              _c("span", { staticClass: "label label-info" }, [
+                _vm._v("Pending")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: {
+                    "data-toggle": "modal",
+                    "data-target": "#approveRequest"
+                  }
+                },
+                [_vm._v("Process")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal inmodal",
+        attrs: {
+          id: "approveRequest",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content animated bounceInRight" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [
+                  _c("span", { attrs: { "aria-hidden": "true" } }, [
+                    _vm._v("×")
+                  ]),
+                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
+                ]
+              ),
+              _vm._v(" "),
+              _c("h5", { staticClass: "modal-title" }, [
+                _vm._v("Approval processing")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "ibox-content inspinia-timeline" }, [
+                _c("div", { staticClass: "timeline-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-xs-12 content no-top-border" },
+                      [
+                        _c("p", { staticClass: "m-b-xs" }, [
+                          _c("strong", [_vm._v("Employee Details")])
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Name:")]),
+                          _vm._v(" John Doe")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-xs-6" }, [
+                            _c("p", [
+                              _c("strong", [_vm._v("Title:")]),
+                              _vm._v(" Tech Nerd")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-xs-6" }, [
+                            _c("p", [
+                              _c("strong", [_vm._v("Department:")]),
+                              _vm._v(" IT")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sm-4 m-b-xs" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "btn-group",
-                      attrs: { "data-toggle": "buttons" }
-                    },
-                    [
-                      _c("label", { staticClass: "btn btn-sm btn-white" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            id: "option1",
-                            name: "options"
-                          }
-                        }),
-                        _vm._v(" Today ")
+                _c("div", { staticClass: "timeline-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-xs-12 content" }, [
+                      _c("p", { staticClass: "m-b-xs" }, [
+                        _c("strong", [_vm._v("Leave Details")])
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "label",
-                        { staticClass: "btn btn-sm btn-white active" },
-                        [
-                          _c("input", {
-                            attrs: {
-                              type: "radio",
-                              id: "option2",
-                              name: "options"
-                            }
-                          }),
-                          _vm._v(" This Week ")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("label", { staticClass: "btn btn-sm btn-white" }, [
-                        _c("input", {
-                          attrs: {
-                            type: "radio",
-                            id: "option3",
-                            name: "options"
-                          }
-                        }),
-                        _vm._v(" This Month ")
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-xs-6" }, [
+                          _c("p", [
+                            _c("strong", [_vm._v("Type:")]),
+                            _vm._v(" Annual leave")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("strong", [_vm._v("Start Date:")]),
+                            _vm._v(" 03/20/2018")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("strong", [_vm._v("Days:")]),
+                            _vm._v(" 30 days")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-xs-6" }, [
+                          _c("p", [
+                            _c("strong", [_vm._v("End Date:")]),
+                            _vm._v(" 03/20/2018")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("strong", [_vm._v("Return Date:")]),
+                            _vm._v(" 05/20/2018")
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("strong", [_vm._v("Balance:")]),
+                            _vm._v(" 2 days")
+                          ])
+                        ])
                       ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-3" }, [
-                  _c("div", { staticClass: "input-group" }, [
-                    _c("input", {
-                      staticClass: "input-sm form-control",
-                      attrs: { type: "text", placeholder: "Search" }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "input-group-btn" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm btn-primary",
-                          attrs: { type: "button" }
-                        },
-                        [_vm._v(" Go!")]
-                      )
                     ])
                   ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "table-responsive" }, [
-                _c("table", { staticClass: "table table-striped" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("#")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Employee No.")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Document No.")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Date Created")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Date Sent")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Due Date")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Status")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Actions")])
-                    ])
-                  ]),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-xs-12 content" }, [
+                  _c("p", {}, [_c("strong", [_vm._v("Processing")])]),
                   _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", [
-                      _c("td", [_vm._v("1")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("E84354")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("DOC272")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "label label-danger" }, [
-                          _vm._v("Rejected")
-                        ])
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-xs-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Start Date")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "input-group date",
+                            attrs: { "data-provide": "datepicker" }
+                          },
+                          [
+                            _c("div", { staticClass: "input-group-addon" }, [
+                              _c("i", { staticClass: "fa fa-calendar" })
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: { type: "text" }
+                            })
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("td", [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Number of days")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            placeholder: "Number of days"
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("End Date")]),
+                        _vm._v(" "),
                         _c(
-                          "button",
+                          "div",
                           {
-                            staticClass: "btn btn-xs btn-success",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#approveRequest"
-                            }
+                            staticClass: "input-group date",
+                            attrs: { "data-provide": "datepicker" }
                           },
-                          [_vm._v("Process")]
+                          [
+                            _c("div", { staticClass: "input-group-addon" }, [
+                              _c("i", { staticClass: "fa fa-calendar" })
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: { type: "text", readonly: "" }
+                            })
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Return Date")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "input-group date",
+                            attrs: { "data-provide": "datepicker" }
+                          },
+                          [
+                            _c("div", { staticClass: "input-group-addon" }, [
+                              _c("i", { staticClass: "fa fa-calendar" })
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: { type: "text", readonly: "" }
+                            })
+                          ]
                         )
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("2")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("E84354")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("DOC272")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "label label-info" }, [
-                          _vm._v("Pending")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-success",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#approveRequest"
-                            }
-                          },
-                          [_vm._v("Process")]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("3")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("E84354")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("DOC272")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "label label-info" }, [
-                          _vm._v("Pending")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-success",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#approveRequest"
-                            }
-                          },
-                          [_vm._v("Process")]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("4")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("E84354")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("DOC272")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "label label-primary" }, [
-                          _vm._v("Approved")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-success",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#approveRequest"
-                            }
-                          },
-                          [_vm._v("Process")]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c("td", [_vm._v("5")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("E84354")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("DOC272")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v("02/07/2018")]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("span", { staticClass: "label label-info" }, [
-                          _vm._v("Pending")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-xs btn-success",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#approveRequest"
-                            }
-                          },
-                          [_vm._v("Process")]
-                        )
+                    _c("div", { staticClass: "col-xs-12" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Comments")]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          staticClass: "form-control",
+                          attrs: { rows: "2", id: "comment" }
+                        })
                       ])
                     ])
                   ])
                 ])
               ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "modal inmodal",
-            attrs: {
-              id: "approveRequest",
-              tabindex: "-1",
-              role: "dialog",
-              "aria-hidden": "true"
-            }
-          },
-          [
-            _c("div", { staticClass: "modal-dialog" }, [
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
               _c(
-                "div",
-                { staticClass: "modal-content animated bounceInRight" },
-                [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×")
-                        ]),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("Close")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("h5", { staticClass: "modal-title" }, [
-                      _vm._v("Approval processing")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "div",
-                      { staticClass: "ibox-content inspinia-timeline" },
-                      [
-                        _c("div", { staticClass: "timeline-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "col-xs-12 content no-top-border"
-                              },
-                              [
-                                _c("p", { staticClass: "m-b-xs" }, [
-                                  _c("strong", [_vm._v("Employee Details")])
-                                ]),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _c("strong", [_vm._v("Name:")]),
-                                  _vm._v(" John Doe")
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "row" }, [
-                                  _c("div", { staticClass: "col-xs-6" }, [
-                                    _c("p", [
-                                      _c("strong", [_vm._v("Title:")]),
-                                      _vm._v(" Tech Nerd")
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-xs-6" }, [
-                                    _c("p", [
-                                      _c("strong", [_vm._v("Department:")]),
-                                      _vm._v(" IT")
-                                    ])
-                                  ])
-                                ])
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "timeline-item" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-xs-12 content" }, [
-                              _c("p", { staticClass: "m-b-xs" }, [
-                                _c("strong", [_vm._v("Leave Details")])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
-                                _c("div", { staticClass: "col-xs-6" }, [
-                                  _c("p", [
-                                    _c("strong", [_vm._v("Type:")]),
-                                    _vm._v(" Annual leave")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _c("strong", [_vm._v("Start Date:")]),
-                                    _vm._v(" 03/20/2018")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _c("strong", [_vm._v("Days:")]),
-                                    _vm._v(" 30 days")
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "col-xs-6" }, [
-                                  _c("p", [
-                                    _c("strong", [_vm._v("End Date:")]),
-                                    _vm._v(" 03/20/2018")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _c("strong", [_vm._v("Return Date:")]),
-                                    _vm._v(" 05/20/2018")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _c("strong", [_vm._v("Balance:")]),
-                                    _vm._v(" 2 days")
-                                  ])
-                                ])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-xs-12 content" }, [
-                        _c("p", {}, [_c("strong", [_vm._v("Processing")])]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-xs-6" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("Start Date")]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "input-group date",
-                                  attrs: { "data-provide": "datepicker" }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "input-group-addon" },
-                                    [_c("i", { staticClass: "fa fa-calendar" })]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    staticClass: "form-control",
-                                    attrs: { type: "text" }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("Number of days")]),
-                              _vm._v(" "),
-                              _c("input", {
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "number",
-                                  placeholder: "Number of days"
-                                }
-                              })
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-xs-6" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("End Date")]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "input-group date",
-                                  attrs: { "data-provide": "datepicker" }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "input-group-addon" },
-                                    [_c("i", { staticClass: "fa fa-calendar" })]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    staticClass: "form-control",
-                                    attrs: { type: "text", readonly: "" }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("Return Date")]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "input-group date",
-                                  attrs: { "data-provide": "datepicker" }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "input-group-addon" },
-                                    [_c("i", { staticClass: "fa fa-calendar" })]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("input", {
-                                    staticClass: "form-control",
-                                    attrs: { type: "text", readonly: "" }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-xs-12" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("Comments")]),
-                              _vm._v(" "),
-                              _c("textarea", {
-                                staticClass: "form-control",
-                                attrs: { rows: "2", id: "comment" }
-                              })
-                            ])
-                          ])
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-white",
-                        attrs: { type: "button", "data-dismiss": "modal" }
-                      },
-                      [_vm._v("Close")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-success",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v("Approve")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-danger",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v("Reject")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-warning",
-                        attrs: { type: "button" }
-                      },
-                      [_vm._v("Escalate")]
-                    )
-                  ])
-                ]
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-white",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("Close")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-success",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("Approve")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-danger",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("Reject")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-xs btn-warning",
+                  attrs: { type: "button" }
+                },
+                [_vm._v("Escalate")]
               )
             ])
-          ]
-        )
-      ])
-    ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -54144,7 +54165,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54195,6 +54216,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
         return {
             notification: {},
             timer: '',
+            notify: false,
             noticeIcons: {
                 ApprovalRequest: ''
             }
@@ -54206,25 +54228,24 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id)).then(function (response) {
 
-                //Update notification when notifications are available
-                // if (response.data.data.length !==0){
-                v.notification = response.data.data;
-                // }
+                // Update notification when notifications are available
+                if (response.data.data.length !== 0) {
+                    v.notification = response.data.data;
+                    v.notify = true;
+                }
             }).catch(function (error) {
                 console.log(error);
             });
-        }
+        },
 
-        // ReadNotifications : function () {
-        //     var v = this
-        //     axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
-        //         .then(function (response) {
-        //            // v.getNotifications()
-        //         })
-        //         .catch(function (error) {
-        //
-        //         })
-        // }
+        ReadNotifications: function ReadNotifications() {
+            var v = this;
+            v.notify = false;
+            alert('read notifications');
+            axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, '')).then(function (response) {
+                v.getNotifications();
+            }).catch(function (error) {});
+        }
     },
     created: function created() {},
     mounted: function mounted() {
@@ -54438,8 +54459,8 @@ var render = function() {
               {
                 name: "show",
                 rawName: "v-show",
-                value: _vm.notification.length !== 0,
-                expression: "notification.length !== 0"
+                value: _vm.notify,
+                expression: "notify"
               }
             ],
             staticClass: "label label-primary"
@@ -54451,7 +54472,17 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      { staticClass: "dropdown-menu dropdown-alerts" },
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.notification.length !== 0,
+            expression: "notification.length !== 0"
+          }
+        ],
+        staticClass: "dropdown-menu dropdown-alerts"
+      },
       _vm._l(_vm.notification, function(notice, index) {
         return _c("li", [
           _c("a", { attrs: { href: "#" } }, [

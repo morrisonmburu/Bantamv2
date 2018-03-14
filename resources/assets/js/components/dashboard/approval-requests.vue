@@ -24,7 +24,17 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <div class="row">
+                        <div v-if="loading" class="spiner-example">
+                            <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </div>
+                        </div>
+                    <div v-else>
+                        <div class="row" >
                             <div class="col-sm-5 m-b-xs"><select class="input-sm form-control input-s-sm inline">
                                 <option value="0">All</option>
                                 <option value="1">Date</option>
@@ -123,7 +133,7 @@
                                 </tbody>
                             </table>
                         </div>
-
+                    </div>
                     </div>
                 </div>
             </div>
@@ -235,8 +245,37 @@
         props : [
             'currentUser',
             'currentUserData',
-            'swapComponent'
+            'swapComponent',
+            'currentEmployeeLeaveAllocations',
+            'APIENDPOINTS',
+            'getApiPath',
+            'isEmptyObject',
+            'validateField'
         ],
+        data : function () {
+            return{
+                requests : {},
+                loading : true
+            }
+        },
+        methods : {
+            getOpenRequests : function() {
+                var v = this
+
+                axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, ''))
+                    .then(function (response) {
+                        console.log('approval requests')
+                        console.log(response.data.data)
+                        v.loading = false
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            }
+        },
+        created () {
+            this.getOpenRequests()
+        }
 
     }
 </script>

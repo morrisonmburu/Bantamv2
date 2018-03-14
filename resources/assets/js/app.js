@@ -58,7 +58,8 @@ const app = new Vue({
             LEAVEAPPLICATION : 'api/leave_applications ',
             PROFILEPICTURE : 'api/employees@picture',
             NOTIFICATIONS : 'api/users/notification/unread',
-            READNOTIFICATIONS : 'api/users/notification/markasread'
+            READNOTIFICATIONS : 'api/users/notification/markasread',
+            OPENAPPROVALREQUESTS  : 'http://localhost:8000/api/employees/approvals?status=Open'
 
         },
         searchResults : '',

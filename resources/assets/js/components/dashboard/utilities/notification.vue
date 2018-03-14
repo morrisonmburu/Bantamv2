@@ -1,9 +1,9 @@
 <template>
     <li class="dropdown">
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ><!--@click="ReadNotifications"-->
-            <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notification.length !== 0">{{notification.length}}</span>
+            <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-alerts" >
+        <ul class="dropdown-menu dropdown-alerts" v-show="notification.length !== 0" >
             <li v-for="(notice, index) in notification">
                 <a href="#">
                     <div>
@@ -45,6 +45,7 @@
             return{
                 notification : {},
                 timer  : '',
+                notify : false,
                 noticeIcons : {
                     ApprovalRequest : '',
             }
@@ -57,26 +58,29 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id))
                     .then(function (response) {
 
-                        //Update notification when notifications are available
-                        // if (response.data.data.length !==0){
+                        // Update notification when notifications are available
+                        if (response.data.data.length !==0){
                             v.notification = response.data.data
-                        // }
+                            v.notify = true
+                        }
                     })
                     .catch(function (error) {
                         console.log(error)
                     })
             },
 
-            // ReadNotifications : function () {
-            //     var v = this
-            //     axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
-            //         .then(function (response) {
-            //            // v.getNotifications()
-            //         })
-            //         .catch(function (error) {
-            //
-            //         })
-            // }
+            ReadNotifications : function () {
+                var v = this
+                v.notify = false
+                alert('read notifications')
+                axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
+                    .then(function (response) {
+                       v.getNotifications()
+                    })
+                    .catch(function (error) {
+
+                    })
+            }
         },
         created() {
 
