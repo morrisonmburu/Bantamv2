@@ -70,12 +70,14 @@ class LeaveApplicationController extends Controller
         if ($request->is('api*')) {
             try{
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
+                $employeeLeaveApplication->Nav_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
                     Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";
+                        $entry->Nav_Sync = 0;
                         $entry->save();
                         Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
                     }

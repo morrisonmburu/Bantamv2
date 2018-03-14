@@ -40,6 +40,7 @@ class ApprovalEntryController extends Controller
         ]);
 
         $entry->status = $validatedData['status'];
+        $entry->Nav_Sync = 0;
         $entry->save();
     }
 
