@@ -1502,7 +1502,8 @@ var app = new Vue({
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications ',
             PROFILEPICTURE: 'api/employees@picture',
-            NOTIFICATIONS: 'api/users/notification'
+            NOTIFICATIONS: 'api/users/notification',
+            READNOTIFICATIONS: 'api/users/notification/markasread'
 
         },
         searchResults: '',
@@ -47990,7 +47991,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48003,6 +48004,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
+//
 //
 //
 //
@@ -48377,7 +48379,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'Submit Application',
                 icon: 'fa fa-send',
                 status: 'btn-primary',
-                loading: true
+                loading: true,
+                errorMessage: ''
             },
             timer: ''
         };
@@ -48446,8 +48449,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 v.calculateButton.loading = true;
                 v.calculateButton.status = 'btn btn-warning';
-                v.calculateButton.text = 'connection problem please try again ';
+                v.calculateButton.text = 'please try again ';
                 v.calculateButton.icon = 'fa fa-warning';
+                v.calculateButton.errorMessage = error.message;
                 console.log(error);
             });
         },
@@ -48462,6 +48466,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.getLeaveApplications();
                 // v.loading = true
                 $('#myModal').modal('hide');
+                v.formData = {};
             }).catch(function (error) {
                 v.submitButton.loading = true;
                 v.submitButton.text = 'Error Submitting Application';
@@ -48807,7 +48812,16 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "sk-rect5" })
                             ]
-                          )
+                          ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "help-block",
+                          attrs: { id: "helpBlokError" }
+                        },
+                        [_vm._v(_vm._s(_vm.calculateButton.errorMessage))]
+                      )
                     ])
                   ]),
                   _vm._v(" "),
@@ -54130,7 +54144,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54183,7 +54197,6 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
             timer: '',
             noticeIcons: {
                 ApprovalRequest: ''
-
             }
 
         };
@@ -54192,13 +54205,26 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
         getNotifications: function getNotifications() {
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.NOTIFICATIONS, v.currentUser.id)).then(function (response) {
+
+                //Update notification when notifications are available
+                // if (response.data.data.length !==0){
                 v.notification = response.data.data;
-                console.log('notification');
-                console.log(v.notification);
+                // }
             }).catch(function (error) {
                 console.log(error);
             });
         }
+
+        // ReadNotifications : function () {
+        //     var v = this
+        //     axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
+        //         .then(function (response) {
+        //            // v.getNotifications()
+        //         })
+        //         .catch(function (error) {
+        //
+        //         })
+        // }
     },
     created: function created() {},
     mounted: function mounted() {
@@ -54425,17 +54451,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.notification.length !== 0,
-            expression: "notification.length !== 0"
-          }
-        ],
-        staticClass: "dropdown-menu dropdown-alerts"
-      },
+      { staticClass: "dropdown-menu dropdown-alerts" },
       _vm._l(_vm.notification, function(notice, index) {
         return _c("li", [
           _c("a", { attrs: { href: "#" } }, [

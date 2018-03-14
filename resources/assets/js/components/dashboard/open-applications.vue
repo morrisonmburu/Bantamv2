@@ -270,6 +270,7 @@
                                             <div class="sk-rect4"></div>
                                             <div class="sk-rect5"></div>
                                         </div>
+                                        <span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -380,7 +381,8 @@
                     text    : 'Submit Application',
                     icon    : 'fa fa-send',
                     status  : 'btn-primary',
-                    loading : true
+                    loading : true,
+                    errorMessage : ''
                 },
                 timer   : ''
             }
@@ -458,8 +460,9 @@
                     .catch(function (error) {
                         v.calculateButton.loading = true
                         v.calculateButton.status = 'btn btn-warning'
-                        v.calculateButton.text = 'connection problem please try again '
+                        v.calculateButton.text = 'please try again '
                         v.calculateButton.icon = 'fa fa-warning'
+                        v.calculateButton.errorMessage = error.message
                         console.log(error)
 
                     })
@@ -480,6 +483,7 @@
                         v.getLeaveApplications()
                         // v.loading = true
                         $('#myModal').modal('hide')
+                        v.formData = {}
 
                     })
                     .catch(function (error) {
