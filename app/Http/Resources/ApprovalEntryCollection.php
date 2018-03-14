@@ -18,15 +18,21 @@ class ApprovalEntryCollection extends ResourceCollection
     public function toArray($request)
     {
 
-        $arr =  parent::toArray($request);
-        try{
-            $arr["Employee_Details"]  = new EmployeeResource(Employee::where('No', $arr["Sender_ID"])->first());
-            $arr["Application_Details"]  = new EmployeeLeaveApplicationResource(
-                EmployeeLeaveApplication::where('Application_Code', $arr["Document_No"])->first());
-        }
-        catch (\Exception $e){
+        $arrs =  parent::toArray($request);
+        $new_arrs = [];
 
+        foreach ($arrs as $arr){
+            try{
+                $arr["Employee_Details"]  = new EmployeeResource(Employee::where('No', $arr["Sender_ID"])->first());
+                $arr["Application_Details"]  = new EmployeeLeaveApplicationResource(
+                    EmployeeLeaveApplication::where('Application_Code', $arr["Document_No"])->first());
+                array_push($new_arrs, $arr);
+            }
+            catch (\Exception $e){
+                throw $e;
+            }
         }
-        return $arr;
+
+        return $new_arrs;
     }
 }
