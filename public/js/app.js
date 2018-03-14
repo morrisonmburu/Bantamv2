@@ -50180,7 +50180,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50375,17 +50375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "approval-requests",
@@ -50394,12 +50384,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             requests: {},
             loading: true,
-            modalData: {}
+            modalData: {
+                application: {
+                    start_date: '',
+                    no_of_days: '',
+                    end_date: '',
+                    return_date: ''
+                },
+                leave: {
+                    type: '',
+                    start_date: '',
+                    days: '',
+                    end_date: '',
+                    return_date: ''
+                },
+                applicant: {
+                    EmployeeName: '',
+                    title: '',
+                    department: ''
+                }
+            }
         };
     },
     methods: {
         runModal: function runModal(data) {
-            this.modalData = data;
+            // this.modalData = data
+
+            this.modalData.application.start_date = data.Application_Details.Start_Date;
+            this.modalData.application.no_of_days = data.Application_Details.Days_Applied;
+            this.modalData.application.end_date = data.Application_Details.End_Date;
+            this.modalData.application.return_date = data.Application_Details.Return_Date;
+
+            this.modalData.leave.type = data.Application_Details.Leave_Code;
+            this.modalData.leave.start_date = data.Application_Details.Start_Date;
+            this.modalData.leave.days = data.Application_Details.Days_Applied;
+            this.modalData.leave.end_date = data.Application_Details.End_Date;
+            this.modalData.leave.return_date = data.Application_Details.Return_Date;
+
+            this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' ';
+            this.modalData.applicant.title = data.Employee_Details.Title;
+            this.modalData.applicant.department = data.Employee_Details.Department;
+
+            // $('#approveRequest').modal('show')
         },
         getOpenRequests: function getOpenRequests() {
             var v = this;
@@ -50495,57 +50521,275 @@ var render = function() {
                 ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal inmodal",
-          attrs: {
-            id: "approveRequest",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-hidden": "true"
-          }
-        },
-        [
-          _c("div", { staticClass: "modal-dialog" }, [
-            _c("div", { staticClass: "modal-content animated bounceInRight" }, [
-              _vm._m(4),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("div", { staticClass: "ibox-content inspinia-timeline" }, [
-                  _c("div", { staticClass: "timeline-item" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col-xs-12 content no-top-border" },
-                        [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("p", [
-                            _c("strong", [_vm._v("Name:")]),
-                            _vm._v(" " + _vm._s(_vm.modalData.Approver_ID))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(6)
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(7)
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal inmodal",
+        attrs: {
+          id: "approveRequest",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content animated bounceInRight" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "ibox-content inspinia-timeline" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "col-xs-12 content no-top-border" },
+                    [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Name:")]),
+                          _vm._v(
+                            " " + _vm._s(_vm.modalData.applicant.EmployeeName)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Title:")]),
+                          _vm._v(" " + _vm._s(_vm.modalData.applicant.title))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Department:")]),
+                          _vm._v(
+                            " " + _vm._s(_vm.modalData.applicant.department)
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Type:")]),
+                          _vm._v(" " + _vm._s(_vm.modalData.leave.type))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Start Date:")]),
+                          _vm._v(" " + _vm._s(_vm.modalData.leave.start_date))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Days:")]),
+                          _vm._v(_vm._s(_vm.modalData.leave.days))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("End Date:")]),
+                          _vm._v(_vm._s(_vm.modalData.leave.end_date))
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _c("strong", [_vm._v("Return Date:")]),
+                          _vm._v(" " + _vm._s(_vm.modalData.leave.return_date))
+                        ])
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
-                _vm._m(8)
-              ]),
-              _vm._v(" "),
-              _vm._m(9)
-            ])
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-xs-12 content" }, [
+                    _vm._m(7),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Start Date")]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group date",
+                              attrs: { "data-provide": "datepicker" }
+                            },
+                            [
+                              _vm._m(8),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.modalData.application.start_date,
+                                    expression:
+                                      "modalData.application.start_date"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: "", type: "text" },
+                                domProps: {
+                                  value: _vm.modalData.application.start_date
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.modalData.application,
+                                      "start_date",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Number of days")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.modalData.application.no_of_days,
+                                expression: "modalData.application.no_of_days"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "number",
+                              placeholder: "Number of days"
+                            },
+                            domProps: {
+                              value: _vm.modalData.application.no_of_days
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.modalData.application,
+                                  "no_of_days",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-xs-6" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("End Date")]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group date",
+                              attrs: { "data-provide": "datepicker" }
+                            },
+                            [
+                              _vm._m(9),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.modalData.application.end_date,
+                                    expression: "modalData.application.end_date"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { readonly: "", type: "text" },
+                                domProps: {
+                                  value: _vm.modalData.application.end_date
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.modalData.application,
+                                      "end_date",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Return Date")]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "input-group date",
+                              attrs: { "data-provide": "datepicker" }
+                            },
+                            [
+                              _vm._m(10),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value:
+                                      _vm.modalData.application.return_date,
+                                    expression:
+                                      "modalData.application.return_date"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", readonly: "" },
+                                domProps: {
+                                  value: _vm.modalData.application.return_date
+                                },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.modalData.application,
+                                      "return_date",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(11)
+                    ])
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(12)
           ])
-        ]
-      )
-    ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -50723,7 +50967,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "m-b-xs" }, [
+    return _c("h3", { staticClass: "m-b-xs" }, [
       _c("strong", [_vm._v("Employee Details")])
     ])
   },
@@ -50731,159 +50975,52 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xs-6" }, [
-        _c("p", [_c("strong", [_vm._v("Title:")]), _vm._v(" Tech Nerd")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-6" }, [
-        _c("p", [_c("strong", [_vm._v("Department:")]), _vm._v(" IT")])
-      ])
+    return _c("h3", { staticClass: "m-b-xs" }, [
+      _c("strong", [_vm._v("Leave Details")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "timeline-item" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-12 content" }, [
-          _c("p", { staticClass: "m-b-xs" }, [
-            _c("strong", [_vm._v("Leave Details")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xs-6" }, [
-              _c("p", [
-                _c("strong", [_vm._v("Type:")]),
-                _vm._v(" Annual leave")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("strong", [_vm._v("Start Date:")]),
-                _vm._v(" 03/20/2018")
-              ]),
-              _vm._v(" "),
-              _c("p", [_c("strong", [_vm._v("Days:")]), _vm._v(" 30 days")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-6" }, [
-              _c("p", [
-                _c("strong", [_vm._v("End Date:")]),
-                _vm._v(" 03/20/2018")
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("strong", [_vm._v("Return Date:")]),
-                _vm._v(" 05/20/2018")
-              ]),
-              _vm._v(" "),
-              _c("p", [_c("strong", [_vm._v("Balance:")]), _vm._v(" 2 days")])
-            ])
-          ])
-        ])
-      ])
+    return _c("p", {}, [_c("strong", [_vm._v("Processing")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xs-12 content" }, [
-        _c("p", {}, [_c("strong", [_vm._v("Processing")])]),
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Comments")]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Start Date")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "input-group date",
-                  attrs: { "data-provide": "datepicker" }
-                },
-                [
-                  _c("div", { staticClass: "input-group-addon" }, [
-                    _c("i", { staticClass: "fa fa-calendar" })
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text" }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Number of days")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "number", placeholder: "Number of days" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xs-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("End Date")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "input-group date",
-                  attrs: { "data-provide": "datepicker" }
-                },
-                [
-                  _c("div", { staticClass: "input-group-addon" }, [
-                    _c("i", { staticClass: "fa fa-calendar" })
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", readonly: "" }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Return Date")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "input-group date",
-                  attrs: { "data-provide": "datepicker" }
-                },
-                [
-                  _c("div", { staticClass: "input-group-addon" }, [
-                    _c("i", { staticClass: "fa fa-calendar" })
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: { type: "text", readonly: "" }
-                  })
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xs-12" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Comments")]),
-              _vm._v(" "),
-              _c("textarea", {
-                staticClass: "form-control",
-                attrs: { rows: "2", id: "comment" }
-              })
-            ])
-          ])
-        ])
+        _c("textarea", {
+          staticClass: "form-control",
+          attrs: { diabled: "", rows: "2", id: "comment" }
+        })
       ])
     ])
   },

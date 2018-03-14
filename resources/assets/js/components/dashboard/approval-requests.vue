@@ -91,52 +91,39 @@
                     </div>
                 </div>
             </div>
-            <!-- ==== Modal for leave application approval:: Added by Mayaka == -->
-            <div class="modal inmodal" id="approveRequest" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content animated bounceInRight">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h5 class="modal-title">Approval processing</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div class="ibox-content inspinia-timeline">
-                                <div class="timeline-item">
-                                    <div class="row">
-                                        <div class="col-xs-12 content no-top-border">
-                                            <p class="m-b-xs"><strong>Employee Details</strong></p>
-                                            <p><strong>Name:</strong> {{modalData.Approver_ID}}</p>
-                                            <div class="row">
-                                                <div class="col-xs-6">
-                                                    <p><strong>Title:</strong> Tech Nerd</p>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <p><strong>Department:</strong> IT</p>
-                                                </div>
-                                            </div>
-                                        </div>
+        </div>
+        <!--approval modal here -->
+        <!-- ==== Modal for leave application approval:: Added by Mayaka == -->
+        <div class="modal inmodal" id="approveRequest" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content animated bounceInRight">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5 class="modal-title">Approval processing</h5>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="ibox-content inspinia-timeline">
+                            <div class="row">
+                                <div class="col-xs-12 content no-top-border">
+                                    <div class="col-xs-6">
+                                        <h3 class="m-b-xs"><strong>Employee Details</strong></h3>
+                                        <p><strong>Name:</strong> {{modalData.applicant.EmployeeName}}</p>
+                                        <p><strong>Title:</strong> {{modalData.applicant.title}}</p>
+                                        <p><strong>Department:</strong> {{modalData.applicant.department}}</p>
                                     </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="row">
-                                        <div class="col-xs-12 content">
-                                            <p class="m-b-xs"><strong>Leave Details</strong></p>
-                                            <div class="row">
-                                                <div class="col-xs-6">
-                                                    <p><strong>Type:</strong> Annual leave</p>
-                                                    <p><strong>Start Date:</strong> 03/20/2018</p>
-                                                    <p><strong>Days:</strong> 30 days</p>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <p><strong>End Date:</strong> 03/20/2018</p>
-                                                    <p><strong>Return Date:</strong> 05/20/2018</p>
-                                                    <p><strong>Balance:</strong> 2 days</p>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <div class="col-xs-6">
+                                        <h3 class="m-b-xs"><strong>Leave Details</strong></h3>
+                                        <p><strong>Type:</strong> {{modalData.leave.type}}</p>
+                                        <p><strong>Start Date:</strong> {{modalData.leave.start_date}}</p>
+                                        <p><strong>Days:</strong>{{modalData.leave.days}}</p>
+                                        <p><strong>End Date:</strong>{{modalData.leave.end_date}}</p>
+                                        <p><strong>Return Date:</strong> {{modalData.leave.return_date}}</p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xs-12 content">
                                     <p class=""><strong>Processing</strong></p>
@@ -147,10 +134,12 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control">
+                                                    <input readonly type="text" class="form-control" v-model="modalData.application.start_date">
                                                 </div>
                                             </div>
-                                            <div class="form-group"><label>Number of days</label> <input type="number" placeholder="Number of days" class="form-control"></div>
+                                            <div class="form-group"><label>Number of days</label>
+                                                <input type="number" placeholder="Number of days" class="form-control" v-model="modalData.application.no_of_days">
+                                            </div>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="form-group"><label>End Date</label>
@@ -158,7 +147,7 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control" readonly>
+                                                    <input readonly type="text" class="form-control" v-model="modalData.application.end_date">
                                                 </div>
                                             </div>
                                             <div class="form-group"><label>Return Date</label>
@@ -166,34 +155,35 @@
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </div>
-                                                    <input type="text" class="form-control" readonly>
+                                                    <input v-model="modalData.application.return_date" type="text" class="form-control" readonly>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group"><label>Comments</label>
-                                                <textarea class="form-control" rows="2" id="comment"></textarea>
+                                                <textarea diabled class="form-control" rows="2" id="comment" ></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-xs btn-success">Approve</button>
-                            <button type="button" class="btn btn-xs btn-danger">Reject</button>
-                            <button type="button" class="btn btn-xs btn-warning">Escalate</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-xs btn-success">Approve</button>
+                        <button type="button" class="btn btn-xs btn-danger">Reject</button>
+                        <button type="button" class="btn btn-xs btn-warning">Escalate</button>
                     </div>
                 </div>
             </div>
-            <!-- End of New leave application approval modal -->
         </div>
+        <!-- End of New leave application approval modal -->
     </div>
 </template>
 
 <script>
+
     export default {
         name: "approval-requests",
         props : [
@@ -210,15 +200,56 @@
             return{
                 requests : {},
                 loading : true,
-                modalData : {}
+                modalData : {
+                    application : {
+                        start_date : '',
+                        no_of_days : '',
+                        end_date : '',
+                        return_date : '',
+                     },
+                    leave : {
+                         type : '',
+                         start_date : '',
+                         days : '',
+                         end_date : '',
+                         return_date : '',
+                     },
+                    applicant : {
+                        EmployeeName : '',
+                        title : '',
+                        department : ''
+                    }
+                }
             }
         },
         methods : {
             runModal : function (data) {
-                this.modalData = data
+                // this.modalData = data
+
+                this.modalData.application.start_date  = data.Application_Details.Start_Date
+                this.modalData.application.no_of_days  = data.Application_Details.Days_Applied
+                this.modalData.application.end_date  = data.Application_Details.End_Date
+                this.modalData.application.return_date  = data.Application_Details.Return_Date
+
+                this.modalData.leave.type  = data.Application_Details.Leave_Code
+                this.modalData.leave.start_date  = data.Application_Details.Start_Date
+                this.modalData.leave.days  = data.Application_Details.Days_Applied
+                this.modalData.leave.end_date  = data.Application_Details.End_Date
+                this.modalData.leave.return_date = data.Application_Details.Return_Date
+
+                this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' +data.Employee_Details.Last_Name + ' '
+                this.modalData.applicant.title  = data.Employee_Details.Title
+                this.modalData.applicant.department = data.Employee_Details.Department
+
+
+
+
+
+
+                // $('#approveRequest').modal('show')
             },
             getOpenRequests : function() {
-                var v = this
+                let v = this
 
                 axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, ''))
                     .then(function (response) {
