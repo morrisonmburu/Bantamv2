@@ -44,7 +44,7 @@ class LeaveApprovalSuccess extends Notification implements ShouldQueue
             ->greeting('Hello?')
             ->subject('Approval Request Success')
             ->success()
-            ->line('Your leave approval request has been accepted.')
+            ->line('Your leave application has been approved.')
             ->line('Thank you.');
     }
 
@@ -57,7 +57,7 @@ class LeaveApprovalSuccess extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Approval request successful",
+            "message"=>"Leave application approved",
             "type" =>"success"
         ];
     }

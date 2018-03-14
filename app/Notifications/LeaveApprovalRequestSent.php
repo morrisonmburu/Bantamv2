@@ -43,7 +43,7 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
         return (new MailMessage)
                     ->greeting('Hello?')
                     ->subject('Approval Request Sent')
-                    ->line('Your leave approval request has been sent.')
+                    ->line('Your leave application has been sent.')
                     ->line('Thank you.');
     }
 
@@ -56,7 +56,7 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave approval request sent",
+            "message"=>"Leave application sent",
             "type" =>"success"
         ];
     }
