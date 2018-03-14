@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\EmployeeApprover;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EmployeeCollection extends ResourceCollection
@@ -14,6 +15,8 @@ class EmployeeCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $arr = parent::toArray($request);
+        $arr["is_approver"] = EmployeeApprover::where('Approver', $arr['No'])->count() > 0;
+        return $arr;
     }
 }

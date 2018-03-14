@@ -38,4 +38,9 @@ class SendLeaveApplicationToNav implements ShouldQueue
         $NavSyncManager = new NavSyncManager();
         $NavSyncManager->sendLeaveApplication($this->leaveApplication);
     }
+
+    public function failed(Exception $exception)
+    {
+
+    }
 }
