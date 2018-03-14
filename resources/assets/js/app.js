@@ -59,8 +59,9 @@ const app = new Vue({
             PROFILEPICTURE : 'api/employees@picture',
             NOTIFICATIONS : 'api/users/notification/unread',
             READNOTIFICATIONS : 'api/users/notification/markasread',
-            OPENAPPROVALREQUESTS  : 'http://localhost:8000/api/employees/approvals?status=Open'
-
+            OPENAPPROVALREQUESTS  : 'http://localhost:8000/api/employees/approvals?status=Open',
+            APPROVEENTRY : 'api/approvals@status',
+            REJECTENTRY : 'api/approvals@status'
         },
         searchResults : '',
         searchTerm : ''

@@ -10,6 +10,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use App\Http\NavSoap\NavSyncManager;
 use App\ApprovalEntry;
 use App\Notifications\FailedUpdatingApprovalsEntriesToNav;
+use Illuminate\Support\Facades\Notification;
 
 class SendApprovalEntriesToNav implements ShouldQueue
 {
@@ -35,8 +36,8 @@ class SendApprovalEntriesToNav implements ShouldQueue
         $NavSyncManager->sendLeaveApprovals($this->approvalEntry);
     }
 
-    public function failed(Exception $exception)
+    public function failed(\Exception $exception)
     {
-        Notification::send(Auth::user(), new FailedUpdatingApprovalsEntriesToNav());
+        Notification::send($this->approvalEntry->employee->user, new FailedUpdatingApprovalsEntriesToNav());
     }
 }
