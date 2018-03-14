@@ -58,7 +58,8 @@ class LeaveApprovalFail extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Your leave approval request failed."
+            "message"=>"Approval request failed.",
+            "type" =>"danger"
         ];
     }
 }

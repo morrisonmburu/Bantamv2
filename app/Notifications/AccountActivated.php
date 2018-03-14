@@ -57,7 +57,8 @@ class AccountActivated extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "Message"=>"Account activated."
+            "Message"=>"Account activated.",
+            "type" =>"info"
         ];
     }
 }

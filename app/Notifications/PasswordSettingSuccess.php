@@ -57,7 +57,8 @@ class PasswordSettingSuccess extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Password set successfully"
+            "message"=>"Password set successfully",
+            "type" =>"success"
         ];
     }
 }

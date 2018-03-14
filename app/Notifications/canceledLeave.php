@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class cancelledLeave extends Notification implements ShouldQueue
+class canceledLeave extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $user;
@@ -47,8 +47,8 @@ class cancelledLeave extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->greeting('Hello?')
-                    ->subject('Leave Cancelled')
-                    ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been cancelled")
+                    ->subject('Leave Canceled')
+                    ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been canceled")
                     ->line('Thank you.');
     }
 
@@ -61,7 +61,8 @@ class cancelledLeave extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"You have cancelled leave code ".$this->leaveRec->Application_Code
+            "message"=>"Leave code ".$this->leaveRec->Application_Code." canceled.",
+            "type" =>"success"
         ];
     }
 }
