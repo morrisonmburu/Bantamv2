@@ -56,7 +56,8 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave approval request sent"
+            "message"=>"Leave approval request sent",
+            "type" =>"success"
         ];
     }
 }
