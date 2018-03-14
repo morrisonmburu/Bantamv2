@@ -79,13 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Bantam
+                    THE NAIROBI HOSPITAL
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://github.com/laravel/laravel">GitLab</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">News</a>
+                    <a href="#">GitLab</a>
                 </div>
             </div>
         </div>
