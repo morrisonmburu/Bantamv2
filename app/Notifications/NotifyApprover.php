@@ -37,7 +37,7 @@ class NotifyApprover extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"New leave application request",
+            "message"=>"Approval request",
             "type" =>"info"
         ];
     }
