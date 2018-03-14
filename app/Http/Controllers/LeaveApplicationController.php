@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
 use App\Notifications\canceledLeave;
+use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\LeaveCanceled;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
@@ -44,6 +45,7 @@ class LeaveApplicationController extends Controller
         ];
         $LeaveApplication->fill($data);
         $LeaveApplication->save();
+        Notification::send(Auth::user(), new LeaveApprovalRequestSent());
     }
 
     public function checkIfNotExists($params){
