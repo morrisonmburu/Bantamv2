@@ -41,7 +41,6 @@ class NavSyncManager{
                 $new_application = (array)($result->LeaveApps);
                 unset($new_application["Application_Code"]);
                 $application->fill((array) $new_application);
-//
                 $application->save();
             }
             catch (\Exception $e){
