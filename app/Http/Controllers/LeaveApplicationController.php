@@ -81,7 +81,7 @@ class LeaveApplicationController extends Controller
                         $entry->Nav_Sync = 0;
                         $entry->save();
                         Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
-                        SendApprovalEntriesToNav::dispatch($entry);
+//                        SendApprovalEntriesToNav::dispatch($entry);
                     }
                 }
 
