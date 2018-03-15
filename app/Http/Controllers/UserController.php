@@ -17,6 +17,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('index', User::class);
         $data = User::paginate();
         if($request->is('api*')){
             return new UserCollection($data);
@@ -52,6 +53,7 @@ class UserController extends Controller
      */
     public function show(User $user, Request $request)
     {
+        $this->authorize('view', $user);
         if($request->is('api*')){
             return new UserResource($user);
         }
@@ -92,6 +94,7 @@ class UserController extends Controller
     }
 
     public function employee(User $user, Request $request){
+        $this->authorize('view', $user);
         if($request->is('api*')){
             return new UserResource($user->Employee_Record);
         }

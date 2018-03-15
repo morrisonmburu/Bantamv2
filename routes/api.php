@@ -30,7 +30,7 @@ Route::prefix('users')->group(function () {
     Route::get('current', 'UserController@current');
 });
 
-Route::resource('users', 'UserController');
+Route::resource('users', 'UserController')->only(['index', 'show']);
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
     Route::get('{employee}/picture', 'EmployeeController@picture');
@@ -41,7 +41,7 @@ Route::prefix('employees')->group(function () {
     Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
 });
 Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
-//calculateLeaveDates
+
 Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
     Route::post('requests', 'LeaveApplicationController@requests');
