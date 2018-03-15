@@ -22,18 +22,20 @@ class LeaveApplicationController extends Controller
 {
     public function index(Request $request)
     {
+        $this->authorize('index', EmployeeLeaveApplication::class);
         if ($request->is('api*')) {
-            return new EmployeeLeaveApplicationCollection(EmployeeLeaveApplication::all());
+            return new EmployeeLeaveApplicationCollection(EmployeeLeaveApplication::paginate());
         }
     }
 
     public function create()
     {
-        //
+        $this->authorize('create', EmployeeLeaveApplication::class);
     }
 
     public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
+        $this->authorize('create', EmployeeLeaveApplication::class);
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
             "Leave_Code" => $request->leave_code,
@@ -56,21 +58,24 @@ class LeaveApplicationController extends Controller
         }
         return true;
     }
-    public function show(Request $request, EmployeeLeaveApplication $employeeLeaveApplication)
+    public function show(Request $request, EmployeeLeaveApplication $leave_application)
     {
+        $this->authorize('view',$leave_application);
         if ($request->is('api*')) {
-            return new LeaveApplicationResource($employeeLeaveApplication);
+            return new LeaveApplicationResource($leave_application);
         }
     }
-    public function edit(EmployeeLeaveApplication $employeeLeaveApplication)
+    public function edit(EmployeeLeaveApplication $leave_application)
     {
-        //
+        $this->authorize('update',$leave_application);
     }
     public function update(Request $request,$appCode)
     {
+
         if ($request->is('api*')) {
             try{
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
+                $this->authorize('update',$employeeLeaveApplication);
                 $employeeLeaveApplication->Nav_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
@@ -99,8 +104,10 @@ class LeaveApplicationController extends Controller
     public function EmployeeLeaveApplications(Employee $employee, Request $request)
     {
 
+        $this->authorize('employee', [EmployeeLeaveApplication::class, $employee]);
+
         if ($request->is('api*')) {
-            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications);
+            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications()->paginate());
         }
     }
 

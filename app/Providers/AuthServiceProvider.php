@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Employee;
 use App\EmployeeLeaveAllocation;
+use App\EmployeeLeaveApplication;
 use App\Policies\EmployeeLeaveAllocationPolicy;
+use App\Policies\EmployeeLeaveApplicationPolicy;
 use App\Policies\EmployeePolicy;
 use App\Policies\UserPolicy;
 use App\User;
@@ -22,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         Employee::class => EmployeePolicy::class,
         User::class => UserPolicy::class,
         EmployeeLeaveAllocation::class => EmployeeLeaveAllocationPolicy::class,
+        EmployeeLeaveApplication::class => EmployeeLeaveApplicationPolicy::class,
     ];
 
     /**
