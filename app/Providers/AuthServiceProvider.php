@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Employee;
+use App\EmployeeLeaveAllocation;
+use App\Policies\EmployeeLeaveAllocationPolicy;
+use App\Policies\EmployeePolicy;
+use App\Policies\UserPolicy;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -13,8 +19,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Employee' => 'App\Policies\EmployeePolicy',
-        'App\User' => 'App\Policies\UserPolicy',
+        Employee::class => EmployeePolicy::class,
+        User::class => UserPolicy::class,
+        EmployeeLeaveAllocation::class => EmployeeLeaveAllocationPolicy::class,
     ];
 
     /**

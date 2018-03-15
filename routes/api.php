@@ -34,7 +34,7 @@ Route::resource('users', 'UserController')->only(['index', 'show']);
 Route::prefix('employees')->group(function () {
     Route::get('{employee}/user', 'EmployeeController@user');
     Route::get('{employee}/picture', 'EmployeeController@picture');
-    Route::get('{employee}/leave_allocations', 'LeaveALlocationController@EmployeeLeaveAllocations');
+    Route::get('{employee}/leave_allocations', 'LeaveAllocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
     Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
@@ -54,7 +54,7 @@ Route::prefix('approvals')->group(function () {
 Route::resource('approvals','ApprovalEntryController');
 
 Route::resource('leave_applications','LeaveApplicationController');
-Route::resource('leave_allocations','LeaveAllocationController');
+Route::resource('leave_allocations','LeaveAllocationController')->only(['index', 'show']);
 Route::resource('leave_types','LeaveTypeController');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

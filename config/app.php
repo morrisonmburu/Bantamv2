@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', "http://".$_SERVER['HTTP_HOST']),
+    'url' => env('APP_URL', isset($_SERVER['HTTP_HOST']) ? "http://".$_SERVER['HTTP_HOST']: "http://localhost"),
 
     /*
     |--------------------------------------------------------------------------
