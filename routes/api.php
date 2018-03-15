@@ -40,7 +40,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
     Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
 });
-Route::resource('employees', 'EmployeeController');
+Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 //calculateLeaveDates
 Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');

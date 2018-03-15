@@ -18,6 +18,7 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('index', Employee::class);
         $data = Employee::paginate();
         if($request->is('api*')){
             return new EmployeeCollection($data);
@@ -53,6 +54,7 @@ class EmployeeController extends Controller
      */
     public function show(Request $request, Employee $employee)
     {
+        $this->authorize('view', $employee);
         if($request->is('api*')){
             return new EmployeeResource($employee);
         }
@@ -93,12 +95,14 @@ class EmployeeController extends Controller
     }
 
     public function user(Request $request, Employee $employee){
+        $this->authorize('view', $employee);
         if($request->is('api*')){
             return new UserResource($employee->user);
         }
     }
 
     public function picture(Request $request, Employee $employee){
+        $this->authorize('view', $employee);
         if($request->is('api*')){
             $storagePath  = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix();
             try{
@@ -107,7 +111,6 @@ class EmployeeController extends Controller
             }
             catch (\Exception $e){
                 return response()->file($storagePath."public/default-avatar.jpg");
-//                return Storage::download("public/default-avatar.jpg", "default-avatar.jpg");
             }
         }
     }

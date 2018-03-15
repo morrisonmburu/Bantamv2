@@ -15,8 +15,13 @@ class EmployeeCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $arr = parent::toArray($request);
-        $arr["is_approver"] = EmployeeApprover::where('Approver', $arr['No'])->count() > 0;
-        return $arr;
+        $arrs = parent::toArray($request);
+        $new_arrs = [];
+        foreach($arrs as $arr){
+            $arr["is_approver"] = EmployeeApprover::where('Approver', $arr['No'])->count() > 0;
+            array_push($new_arrs, $arr);
+        }
+
+        return $new_arrs;
     }
 }
