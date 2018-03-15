@@ -6,7 +6,7 @@
             <div>
                 <h2 class="logo-name">NH</h2>
             </div>
-            <h3>Welcome to Bantam</h3>
+            <h3>Welcome to ESS</h3>
             {{--<p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.--}}
             {{--<!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->--}}
             {{--</p>--}}
@@ -47,7 +47,7 @@
 
                 <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
             </form>
-            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+            <p class="m-t"> <small>The Nairobi Hospital Copyright ©2018 all rights reserved</small> </p>
         </div>
     </div>
 @endsection
