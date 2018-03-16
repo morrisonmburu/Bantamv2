@@ -76,7 +76,7 @@ class EmployeeLeaveApplicationPolicy
 
     public function index(User $user)
     {
-        return true;
+        return false;
     }
 
     public function employee(User $user, Employee $employee)

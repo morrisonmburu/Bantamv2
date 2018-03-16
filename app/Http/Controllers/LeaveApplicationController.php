@@ -24,8 +24,7 @@ class LeaveApplicationController extends Controller
     {
         $this->authorize('index', EmployeeLeaveApplication::class);
         if ($request->is('api*')) {
-            return new EmployeeLeaveApplicationCollection(EmployeeLeaveApplication::paginate()
-                ->orderBy('created_at'));
+            return new EmployeeLeaveApplicationCollection(EmployeeLeaveApplication::paginate());
         }
     }
 

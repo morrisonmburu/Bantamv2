@@ -40,6 +40,8 @@ Route::prefix('employees')->group(function () {
     Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
     Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
+    Route::get('/approvers', 'EmployeeApproverController@approvers');
+    Route::get('{employee}/approvers', 'EmployeeApproverController@employee_approvers');
 });
 Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 
