@@ -5,7 +5,7 @@
         <li><a href="#"  @click="swapComponent('open-applications')">Leave Application</a></li>
         <li><a href="#" @click="swapComponent('leave-allocations')">Leave Allocations</a></li>
         {{--<li><a href="#"  @click="swapComponent('pending-applications')">Pending</a></li>--}}
-        <li><a href="#"  @click="swapComponent('posted-applications')">Leave History</a></li>
+        <li><a href="#"  @click="swapComponent('leave-history')">Leave History</a></li>
         <li><a href="#"  @click="swapComponent('leave-planner')">Leave Planner</a></li>
         <li><a href="#"  @click="swapComponent('department-planner')">Department Planner</a></li>
         <li><a href="#"  @click="swapComponent('statistics')">Statistics</a></li>

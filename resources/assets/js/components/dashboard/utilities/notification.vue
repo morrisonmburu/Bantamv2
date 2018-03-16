@@ -85,6 +85,7 @@
 
         },
         mounted() {
+            setTimeout(this.getNotifications , 3000)
             this.timer = setInterval(this.getNotifications, 20000)
         }
     }
