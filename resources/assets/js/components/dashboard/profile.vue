@@ -164,8 +164,8 @@
             </div>
 
             <!--Approvers-->
-            <div class="row">
-                <div class="col-lg-6">
+            <div v-if="approvers.length !== 0" class="row">
+                <div class="col-lg-6" v-for="approver in approvers">
                     <div class="contact-box center-version">
                         <a href="profile.html">
                             <img alt="image" class="img-circle" src="img/a2.jpg">
@@ -182,10 +182,20 @@
                                 <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
+            <div v-else class="row">
+                <div class="jumbotron text-center">
+                    <h1>no approvers found</h1>
+                </div>
+            </div>
+
+
+
+
+
+
         </div>
 
         <div class="col-lg-4 m-b-lg">
@@ -283,7 +293,7 @@
         ],
         data : function () {
             return {
-                approver : {},
+                approvers : {},
             }
         },
         methods : {
@@ -292,10 +302,10 @@
 
                 axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, ''))
                     .then(function (response) {
-                        v.approver = response.data.data
+                        v.approvers = response.data.data
 
                         consol.log('approvers')
-                        console.log(v.approver)
+                        console.log(v.approvers)
                     })
                     .catch(function (error) {
                         console.log(error)

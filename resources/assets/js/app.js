@@ -67,7 +67,8 @@ const app = new Vue({
             APPROVEDAPPROVALREQUESTS                : 'api/employees/approvals?status=Approved',
             APPROVEENTRY                            : 'api/approvals@status',
             REJECTENTRY                             : 'api/approvals@status',
-            APPROVERS                               : 'api/employees/approvers'
+            APPROVERS                               : 'api/employees/approvers',
+            PAYSLIPCURRENTEMPLOYEE                  : 'api/employees/payslip'
         },
         searchResults : '',
         searchTerm : ''
@@ -75,6 +76,12 @@ const app = new Vue({
     methods : {
         isEmptyObject : function (object) {
             return (Object.keys(object).length === 0)
+        },
+        fullNames : function(nameOne, nameTwo, nameThree, nameFour){
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
+            name = nameOne.length === 0 ? '' : nameOne.trim()
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
         },
         swapComponent: function (component) {
             if (Vue.options.components[component]) {

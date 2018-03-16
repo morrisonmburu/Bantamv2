@@ -1512,7 +1512,8 @@ var app = new Vue({
             APPROVEDAPPROVALREQUESTS: 'api/employees/approvals?status=Approved',
             APPROVEENTRY: 'api/approvals@status',
             REJECTENTRY: 'api/approvals@status',
-            APPROVERS: 'api/employees/approvers'
+            APPROVERS: 'api/employees/approvers',
+            PAYSLIPCURRENTEMPLOYEE: 'api/employees/payslip'
         },
         searchResults: '',
         searchTerm: ''
@@ -1520,6 +1521,12 @@ var app = new Vue({
     methods: {
         isEmptyObject: function isEmptyObject(object) {
             return Object.keys(object).length === 0;
+        },
+        fullNames: function fullNames(nameOne, nameTwo, nameThree, nameFour) {
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
+            name = nameOne.length === 0 ? '' : nameOne.trim();
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
         },
         swapComponent: function swapComponent(component) {
             if (Vue.options.components[component]) {
@@ -47028,7 +47035,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47308,13 +47315,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'userDetails'],
     data: function data() {
         return {
-            approver: {}
+            approvers: {}
         };
     },
     methods: {
@@ -47322,10 +47339,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
 
             axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, '')).then(function (response) {
-                v.approver = response.data.data;
+                v.approvers = response.data.data;
 
                 consol.log('approvers');
-                console.log(v.approver);
+                console.log(v.approvers);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -47561,43 +47578,53 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-6" }, [
-            _c("div", { staticClass: "contact-box center-version" }, [
-              _c("a", { attrs: { href: "profile.html" } }, [
-                _c("img", {
-                  staticClass: "img-circle",
-                  attrs: { alt: "image", src: "img/a2.jpg" }
-                }),
-                _vm._v(" "),
-                _vm._m(7),
-                _vm._v(" "),
-                _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
-                _vm._v(" "),
-                _c("address", { staticClass: "m-t-xs" }, [
-                  _vm._v(
-                    "\r\n                                johnsmith@email.com"
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-                  _vm._v(
-                    "  " +
-                      _vm._s(_vm.currentUserData.Phone_No) +
-                      "   " +
-                      _vm._s(_vm.currentUserData.Phone_No) +
-                      "\r\n                            "
-                  )
+        _vm.approvers.length !== 0
+          ? _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.approvers, function(approver) {
+                return _c("div", { staticClass: "col-lg-6" }, [
+                  _c("div", { staticClass: "contact-box center-version" }, [
+                    _c("a", { attrs: { href: "profile.html" } }, [
+                      _c("img", {
+                        staticClass: "img-circle",
+                        attrs: { alt: "image", src: "img/a2.jpg" }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(7, true),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "font-bold" }, [
+                        _vm._v("Manager")
+                      ]),
+                      _vm._v(" "),
+                      _c("address", { staticClass: "m-t-xs" }, [
+                        _vm._v(
+                          "\r\n                                johnsmith@email.com"
+                        ),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("abbr", { attrs: { title: "Phone" } }, [
+                          _vm._v("P:")
+                        ]),
+                        _vm._v(
+                          "  " +
+                            _vm._s(_vm.currentUserData.Phone_No) +
+                            "   " +
+                            _vm._s(_vm.currentUserData.Phone_No) +
+                            "\r\n                            "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(8, true)
+                  ])
                 ])
-              ]),
-              _vm._v(" "),
-              _vm._m(8)
-            ])
-          ])
-        ])
+              })
+            )
+          : _c("div", { staticClass: "row" }, [_vm._m(9)])
       ]),
       _vm._v(" "),
-      _vm._m(9)
+      _vm._m(10)
     ])
   ])
 }
@@ -47698,6 +47725,14 @@ var staticRenderFns = [
           _vm._v(" Email")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "jumbotron text-center" }, [
+      _c("h1", [_vm._v("no approvers found")])
     ])
   },
   function() {
@@ -52150,7 +52185,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52161,89 +52196,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
 //
 //
 //
@@ -52263,9 +52217,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "payslip",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    components: {
+        Datepicker: __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default.a
+    },
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
+    data: function data() {
+        return {
+            formData: {
+                period: '',
+                link: ''
+            }
+        };
+    },
+    methods: {
+        getPayslip: function getPayslip() {
+            if (this.formData.length !== 0) {
+                this.formData.period = this.formData.period.toISOString().slice(0, 10);
+                this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' + this.formData.period;
+                window.open(this.formData.link, '_blank');
+            } else {
+                alert('select period');
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -52276,193 +52254,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "ibox-content p-xl" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-6" }, [
-            _c("h5", [_vm._v("From:")]),
-            _vm._v(" "),
-            _c("address", [
-              _c("strong", [_vm._v("Inspinia, Inc.")]),
-              _c("br"),
-              _vm._v("\n                    106 Jorg Avenu, 600/10"),
-              _c("br"),
-              _vm._v("\n                    Chicago, VT 32456"),
-              _c("br"),
-              _vm._v(" "),
-              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-              _vm._v(" (123) 601-4590\n                ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-6 text-right" }, [
-            _c("h4", [_vm._v("Invoice No.")]),
-            _vm._v(" "),
-            _c("h4", { staticClass: "text-navy" }, [_vm._v("INV-000567F7-00")]),
-            _vm._v(" "),
-            _c("span", [_vm._v("To:")]),
-            _vm._v(" "),
-            _c("address", [
-              _c("strong", [_vm._v("Corporate, Inc.")]),
-              _c("br"),
-              _vm._v("\n                    112 Street Avenu, 1080"),
-              _c("br"),
-              _vm._v("\n                    Miami, CT 445611"),
-              _c("br"),
-              _vm._v(" "),
-              _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-              _vm._v(" (120) 9000-4321\n                ")
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _c("span", [
-                _c("strong", [_vm._v("Invoice Date:")]),
-                _vm._v(" Marh 18, 2014")
-              ]),
-              _c("br"),
-              _vm._v(" "),
-              _c("span", [
-                _c("strong", [_vm._v("Due Date:")]),
-                _vm._v(" March 24, 2014")
-              ])
-            ])
-          ])
-        ]),
+  return _c("div", [
+    _c("div", { staticClass: "ibox-content p-xl" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("datepicker", {
+              attrs: {
+                format: "yyyy-MM-dd",
+                name: "period",
+                id: "period",
+                "input-class": "form-control"
+              },
+              model: {
+                value: _vm.formData.period,
+                callback: function($$v) {
+                  _vm.$set(_vm.formData, "period", $$v)
+                },
+                expression: "formData.period"
+              }
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "table-responsive m-t" }, [
-          _c("table", { staticClass: "table invoice-table" }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", [_vm._v("Item List")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Quantity")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Unit Price")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Tax")]),
-                _vm._v(" "),
-                _c("th", [_vm._v("Total Price")])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tbody", [
-              _c("tr", [
-                _c("td", [
-                  _c("div", [
-                    _c("strong", [
-                      _vm._v("Admin Theme with psd project layouts")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("small", [
-                    _vm._v(
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v("1")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$26.00")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$5.98")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$31,98")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [
-                  _c("div", [
-                    _c("strong", [_vm._v("Wodpress Them customization")])
-                  ]),
-                  _vm._v(" "),
-                  _c("small", [
-                    _vm._v(
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                            Eiusmod tempor incididunt ut labore et dolore magna aliqua.\n                        "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v("2")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$80.00")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$36.80")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$196.80")])
-              ]),
-              _vm._v(" "),
-              _c("tr", [
-                _c("td", [
-                  _c("div", [
-                    _c("strong", [_vm._v("Angular JS & Node JS Application")])
-                  ]),
-                  _vm._v(" "),
-                  _c("small", [
-                    _vm._v(
-                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("td", [_vm._v("3")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$420.00")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$193.20")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("$1033.20")])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("table", { staticClass: "table invoice-total" }, [
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_c("strong", [_vm._v("Sub Total :")])]),
-              _vm._v(" "),
-              _c("td", [_vm._v("$1026.00")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_c("strong", [_vm._v("TAX :")])]),
-              _vm._v(" "),
-              _c("td", [_vm._v("$235.98")])
-            ]),
-            _vm._v(" "),
-            _c("tr", [
-              _c("td", [_c("strong", [_vm._v("TOTAL :")])]),
-              _vm._v(" "),
-              _c("td", [_vm._v("$1261.98")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "text-right" }, [
-          _c("button", { staticClass: "btn btn-primary" }, [
-            _c("i", { staticClass: "fa fa-dollar" }),
-            _vm._v(" Make A Payment")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "well m-t" }, [
-          _c("strong", [_vm._v("Comments")]),
-          _vm._v(
-            "\n            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less\n        "
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "button",
+            { attrs: { type: "submit" }, on: { click: _vm.getPayslip } },
+            [_vm._v("Generate payslip")]
           )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
