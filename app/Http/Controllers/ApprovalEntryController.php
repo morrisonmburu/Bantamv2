@@ -43,7 +43,6 @@ class ApprovalEntryController extends Controller
 
         $entry->Status = $validatedData['status'];
         $entry->Nav_Sync = 0;
-//        dd("We here bois");
         $entry->save();
         return new ApprovalEntryResource($entry);
     }
@@ -54,8 +53,25 @@ class ApprovalEntryController extends Controller
         $approvals = null;
 
         if($status){
-            $approvals = ApprovalEntry::where("Status", $status)
-                ->where("Approver_ID", Auth::user()->Employee_Record->No )->paginate();
+            $approvals = ApprovalEntry::where("Approver_ID", Auth::user()->Employee_Record->No );
+            if(is_array($status)){
+                $count = 0;
+
+                foreach ($status as $s){
+                    if($count == 0){
+                        $approvals = $approvals->where("Status", $s);
+                    }
+                    else{
+                        $approvals->orWhere("Status", $s);
+                    }
+                    $count++;
+                }
+            }
+            else{
+                $approvals = $approvals->where("Status", $status);
+            }
+            $approvals = $approvals->paginate();
+//            dd("here");
         }
         else{
             $approvals = Auth::user()->Employee_Record->approvals()->paginate();

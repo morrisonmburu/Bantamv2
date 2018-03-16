@@ -36,6 +36,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/picture', 'EmployeeController@picture');
     Route::get('{employee}/leave_allocations', 'LeaveAllocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
+    Route::get('/leave_applications', 'LeaveApplicationController@leave_applications');
     Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
     Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
