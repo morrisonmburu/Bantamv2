@@ -83,6 +83,9 @@
                                         <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest" @click="runModal(request)">Process</button>
                                     </td>
                                 </tr>
+                                <tr v-if="requests.length === 0">
+                                    <td  class="text-center text-muted" colspan="9"><i>No Approval Requests</i></td>
+                                </tr>
 
                                 </tbody>
                             </table>
@@ -170,10 +173,10 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-xs btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-xs btn-success" @click="approveEntry(modalData.id)">Approve</button>
-                        <button type="button" class="btn btn-xs btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
-                        <button type="button" class="btn btn-xs btn-warning">Escalate</button>
+                        <button type="button" class="btn  btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn  btn-success" @click="approveEntry(modalData.id)">Approve</button>
+                        <button type="button" class="btn  btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
+                        <button type="button" class="btn  btn-warning">Escalate</button>
                     </div>
                 </div>
             </div>

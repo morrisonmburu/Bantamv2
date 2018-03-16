@@ -59,7 +59,7 @@ const app = new Vue({
             PROFILEPICTURE : 'api/employees@picture',
             NOTIFICATIONS : 'api/users/notification/unread',
             READNOTIFICATIONS : 'api/users/notification/markasread',
-            OPENAPPROVALREQUESTS  : 'http://localhost:8000/api/employees/approvals?status=Open',
+            OPENAPPROVALREQUESTS  : 'api/employees/approvals?status=Open',
             APPROVEENTRY : 'api/approvals@status',
             REJECTENTRY : 'api/approvals@status'
         },
@@ -94,7 +94,7 @@ const app = new Vue({
         },
 
         setUserDetails : function () {
-            this.userDetails.fullName = this.currentUserData.First_Name +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
+            this.userDetails.fullName = this.currentUserData.First_Name == null ? "": this.currentUserData.First_Name  +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
             this.userDetails.id = this.currentUser.id
         },
@@ -109,8 +109,8 @@ const app = new Vue({
                             .then(function (response) {
                                 v.currentUserData = response.data.data
                                 v.setUserDetails()
-                                if (Object.keys(v.currentUserData).length !== 0 ){
 
+                                if (Object.keys(v.currentUserData).length !== 0 ){
                                 }else{
                                     console.log("Employee data is blank");
                                 }

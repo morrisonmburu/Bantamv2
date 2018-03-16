@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         Employee::observe(EmployeeObserver::class);
+
         Auth::setProvider(new EmployeeUserProvider(app(Hasher::class), User::class));
     }
 

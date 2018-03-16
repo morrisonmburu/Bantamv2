@@ -274,42 +274,45 @@
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group">
+                                <div class="form-group" :class="states.end_date">
                                     <label class="col-sm-4 control-label" >End Date</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
                                             <input type="text" disabled class="form-control" name="end_date" v-model="formData.end_date" id="end_date">
+                                            <span class="help-block">{{error.end_date}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" :class="states.return_date">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
                                             <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>
                                             <input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">
+                                            <span class="help-block">{{error.return_date}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group"  :class="states.comment">
                                     <label class="col-sm-4 control-label" >Comments</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
+                                        <span id="helpBlocNoSubmitting" class="help-block">{{error.comment}}</span>
+
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button v-if="submitButton.loading" @click="submitLeaveApplication" class="btn " :class="submitButton.status" >{{ submitButton.text }} <i :class="submitButton.icon"></i> </button>
-                            <div v-else class="sk-spinner sk-spinner-wave">
-                                <div class="sk-rect1"></div>
-                                <div class="sk-rect2"></div>
-                                <div class="sk-rect3"></div>
-                                <div class="sk-rect4"></div>
-                                <div class="sk-rect5"></div>
-                            </div>
+                            <button v-if="submitButton.loading" @click="submitLeaveApplication" class="btn "  :class="submitButton.status" >
+                                {{ submitButton.text }} <i :class="submitButton.icon"></i>
+                            </button>
+                            <button v-else class="btn "  :class="submitButton.status" >
+                                Sending <span class="loading bullet"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -366,6 +369,7 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
+                    submitting : ''
                 },
                 leaveTypes      : {},
                 applications    : {},
@@ -407,17 +411,7 @@
             },
             calculate : function (e) {
                 e.preventDefault();
-
-                this.states.leave_code = ''
-                this.error.leave_code = ''
-                this.states.start_date = ''
-                this.error.start_date = ''
-                this.states.no_of_days = ''
-                this.error.no_of_days = ''
-                this.calculateButton.status = 'btn btn-primary'
-                this.calculateButton.text = 'Calculate'
-                this.calculateButton.icon = 'fa fa-calculator'
-
+                this.clearFieldsErrors()
                 if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
 
                     if(this.formData.leave_code.length === 0){
@@ -441,7 +435,6 @@
                 }
 
             },
-
             getCalculatedDates : function () {
                 this.calculateButton.loading = false
                 var v = this
@@ -469,6 +462,33 @@
             },
             submitLeaveApplication : function (e) {
                 e.preventDefault();
+                this.clearFieldsErrors()
+                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+                    if(this.formData.end_date.length === 0){
+                        this.error.end_date = 'End Date is Required'
+                    }
+                    if(this.formData.return_date.length === 0){
+                         this.error.return_date = 'Return Date are Required'
+                    }
+                    if(this.formData.leave_code.length === 0){
+                        this.states.leave_code = 'has-warning'
+                        this.error.leave_code = 'Leave Code is required'
+                    }
+                    if(this.formData.start_date.length === 0){
+                        this.states.start_date = 'has-warning'
+                        this.error.start_date = 'start date is required'
+                    }
+                    if(this.formData.no_of_days.length === 0){
+                        this.states.no_of_days = 'has-warning'
+                        this.error.no_of_days = 'Number of days is required'
+                    }
+
+                }else {
+                    this.sendLeaveApplication()
+                }
+            },
+            sendLeaveApplication : function () {
+
                 this.submitButton.loading = false
                 var v = this
                 axios.post(
@@ -484,12 +504,15 @@
                         // v.loading = true
                         $('#myModal').modal('hide')
                         v.formData = {}
+                        v.error.submitting = ''
 
                     })
                     .catch(function (error) {
                         v.submitButton.loading  = true
                         v.submitButton.text = 'Error Submitting Application'
                         v.submitButton.status = 'btn btn-warning'
+                        v.error.submitting = ''
+
                     })
             },
             getLeaveTypes : function () {
@@ -502,6 +525,20 @@
                         console.log(error)
                     })
             },
+            clearFieldsErrors : function () {
+                this.error.return_date = ''
+                this.error.end_date = ''
+                this.states.leave_code = ''
+                this.error.leave_code = ''
+                this.states.start_date = ''
+                this.error.start_date = ''
+                this.states.no_of_days = ''
+                this.error.no_of_days = ''
+                this.calculateButton.status = 'btn btn-primary'
+                this.calculateButton.text = 'Calculate'
+                this.calculateButton.icon = 'fa fa-calculator'
+                this.calculateButton.errorMessage = ''
+            }
         },
         created() {
             this.getLeaveApplications()

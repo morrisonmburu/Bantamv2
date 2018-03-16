@@ -24,6 +24,10 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+
+    <!--- for text spinners-->
+    <link href="{{ asset('css/plugins/textSpinners/spinners.css') }}" rel="stylesheet">
+
 <!--- Added when adding calender in leave planner view
 -->
     <link href="{{ asset('css/plugins/iCheck/custom.css')}}" rel="stylesheet">
@@ -69,6 +73,12 @@
 <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 <script src="{{ asset('js/plugins/dataTables/datatables.min.js') }}"></script>
 
+<!-- Ladda  :: added  by @mayaka-->
+<script src="{{asset("js/plugins/ladda/spin.min.js")}}"></script>
+<script src="{{asset("js/plugins/ladda/ladda.min.js")}}"></script>
+<script src="{{asset("js/plugins/ladda/ladda.jquery.min.js")}}"></script>
+<!--  End of ladda -->
+
 
 
 
@@ -111,11 +121,9 @@
 <!-- Full Calendar -->
 {{--<script src="js/plugins/fullcalendar/fullcalendar.min.js"></script>--}}
 
-{{--<!-- Ladda  :: added  by @mayaka-->--}}
-{{--<script src="{{asset("js/plugins/ladda/spin.min.js")}}"></script>--}}
-{{--<script src="{{asset("js/plugins/ladda/ladda.min.js")}}"></script>--}}
-{{--<script src="{{asset("js/plugins/ladda/ladda.jquery.min.js")}}"></script>--}}
-<!--  End of ladda -->
+
+
+
 {{--<script>--}}
     {{--$(document).ready(function() {--}}
         {{--// $('.datepicker').datepicker({--}}
