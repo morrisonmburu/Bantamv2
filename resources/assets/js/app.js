@@ -22,7 +22,7 @@ Vue.component('profile', require('./components/dashboard/profile.vue'));
 Vue.component('open-applications', require('./components/dashboard/open-applications.vue'));
 Vue.component('pending-applications', require('./components/dashboard/pending-application.vue'));
 Vue.component('approval-request', require('./components/dashboard/approval-requests.vue'));
-Vue.component('posted-applications', require('./components/dashboard/posted-applications.vue'));
+Vue.component('leave-history', require('./components/dashboard/leave-history.vue'));
 Vue.component('leave-allocations', require('./components/dashboard/leave-allocations.vue'));
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
 Vue.component('payslip', require('./components/dashboard/payslip'));
@@ -55,7 +55,7 @@ const app = new Vue({
             SEARCH                                  : 'https://yesno.wtf/api',
             CALCULATE : 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES : 'api/leave_types',
-            LEAVEAPPLICATION : 'api/leave_applications ',
+            LEAVEAPPLICATION : 'api/leave_applications',
             PROFILEPICTURE : 'api/employees@picture',
             NOTIFICATIONS : 'api/users/notification/unread',
             READNOTIFICATIONS : 'api/users/notification/markasread',
@@ -108,6 +108,7 @@ const app = new Vue({
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
+
                                 v.setUserDetails()
 
                                 if (Object.keys(v.currentUserData).length !== 0 ){

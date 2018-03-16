@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
 use App\User;
@@ -96,7 +97,7 @@ class UserController extends Controller
     public function employee(User $user, Request $request){
         $this->authorize('view', $user);
         if($request->is('api*')){
-            return new UserResource($user->Employee_Record);
+            return new EmployeeResource($user->Employee_Record);
         }
     }
 

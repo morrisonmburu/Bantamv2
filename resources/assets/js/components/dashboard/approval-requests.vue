@@ -80,7 +80,7 @@
                                     <td>{{request.Status}}</td>
                                     <td>{{request.Due_Date}}</td>
                                     <td>
-                                        <button class="btn btn-xs btn-success" data-toggle="modal" data-target="#approveRequest" @click="runModal(request)">Process</button>
+                                        <button class="btn btn-success" data-toggle="modal" data-target="#approveRequest" @click="runModal(request)">Process <i class="fa fa-external-link-square" ></i></button>
                                     </td>
                                 </tr>
                                 <tr v-if="requests.length === 0">
@@ -89,7 +89,24 @@
 
                                 </tbody>
                             </table>
+
                         </div>
+                    </div>
+                    <div class="row text-right" >
+                        <ul class="pagination" v-show="showPagination">
+                            <li class="paginate_button previous "  :class="paginateButtons.firts">
+                                <a @click="paginate(paginateLinks.first)" tabindex="0"><< First</a>
+                            </li>
+                            <li class="paginate_button" :class="paginateButtons.previous">
+                                <a @click="paginate(paginateLinks.prev)" tabindex="0">< Previous</a>
+                            </li>
+                            <li class="paginate_button " :class="paginateButtons.next">
+                                <a  @click="paginate(paginateLinks.next)" tabindex="0">Next ></a>
+                            </li>
+                            <li  class="paginate_button next" :class="paginateButtons.last">
+                                <a @click="paginate(paginateLinks.last)" tabindex="0">Last >></a>
+                            </li>
+                        </ul>
                     </div>
                     </div>
                 </div>
@@ -98,8 +115,8 @@
         <!--approval modal here -->
         <!-- ==== Modal for leave application approval:: Added by Mayaka == -->
         <div class="modal inmodal" id="approveRequest" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content animated bounceInRight">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content animated fadeInDown">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h5 class="modal-title">Approval processing</h5>
@@ -174,8 +191,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn  btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn  btn-success" @click="approveEntry(modalData.id)">Approve</button>
-                        <button type="button" class="btn  btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
+                        <button v-if="approveButton.loading" type="button" class="btn  btn-success" @click="approveEntry(modalData.id)">Approve</button>
+                        <button v-else type="button" class="btn  btn-success"><span class="loading bullet"></span></button>
+                        <button v-if="rejectButton.loading" type="button" class="btn  btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
+                        <button v-else type="button" class="btn  btn-danger"  ><span class="loading bullet"></span></button>
                         <button type="button" class="btn  btn-warning">Escalate</button>
                     </div>
                 </div>
@@ -205,7 +224,21 @@
                     status : ''
                 },
                 requests : {},
+                paginateLinks : {},
                 loading : true,
+                approveButton : {
+                    loading : true
+                },
+                rejectButton : {
+                    loading : true
+                },
+                showPagination : false,
+                paginateButtons : {
+                    previous : '',
+                    firts : '',
+                    next : '',
+                    last : '',
+                },
                 modalData : {
                     id : '',
                     application : {
@@ -226,7 +259,8 @@
                         title : '',
                         department : ''
                     }
-                }
+                },
+
             }
         },
         methods : {
@@ -251,6 +285,7 @@
             },
             approveEntry : function (id) {
                 var v = this
+                v.approveButton.loading = false
                 v.formData.status = 'Approved'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id),
@@ -261,13 +296,19 @@
                 )
                     .then(function (response) {
                         v.getOpenRequests()
+                        v.approveButton.loading = true
+                        $('#approveRequest').modal('hide')
+
                     })
                     .catch(function (error) {
+                        v.approveButton.loading = true
+                        $('#approveRequest').modal('hide')
                         console.log(error)
                     })
             },
-            rejectEntry : function () {
+            rejectEntry : function (id) {
                 var v = this
+                v.rejectButton.loading = false
                 v.formData.status = 'Rejected'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id),
@@ -278,8 +319,12 @@
                 )
                     .then(function (response) {
                         v.getOpenRequests()
+                        v.rejectButton.loading = true
+                        $('#approveRequest').modal('hide')
                     })
                     .catch(function (error) {
+                        v.rejectButton.loading = true
+                        $('#approveRequest').modal('hide')
                         console.log(error)
                     })
             },
@@ -289,6 +334,14 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, ''))
                     .then(function (response) {
                         v.requests = response.data.data
+                        v.paginateLinks = response.data.links
+
+                        if(v.paginateLinks.prev === null && v.paginateLinks.next === null){
+                           v.showPagination = true
+                        }else {
+                            v.showPagination = true
+                        }
+
                         console.log('approval requests')
                         console.log(response.data.data)
                         v.loading = false
@@ -296,6 +349,21 @@
                     .catch(function (error) {
                         console.log(error)
                     })
+            },
+            paginate : function (link) {
+                var v = this
+                v.loading = true
+                if(link !== null){
+                    axios.get(link)
+                        .then(function (response) {
+                            v.requests = response.data.data
+                            v.loading = false
+                        })
+                        .catch(function (error) {
+                            v.loading = false
+                            console.log(error)
+                        })
+                }
             }
         },
         created () {
