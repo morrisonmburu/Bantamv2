@@ -337,7 +337,7 @@
                         v.paginateLinks = response.data.links
 
                         if(v.paginateLinks.prev === null && v.paginateLinks.next === null){
-                           v.showPagination = true
+                           v.showPagination = false
                         }else {
                             v.showPagination = true
                         }

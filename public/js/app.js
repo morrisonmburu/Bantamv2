@@ -1501,10 +1501,15 @@ var app = new Vue({
             CALCULATE: 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications',
+            HISTORICLEAVEAPPLICATIONS: 'api/leave_applications?status[]=',
             PROFILEPICTURE: 'api/employees@picture',
             NOTIFICATIONS: 'api/users/notification/unread',
             READNOTIFICATIONS: 'api/users/notification/markasread',
             OPENAPPROVALREQUESTS: 'api/employees/approvals?status=Open',
+            REJECCTEDAPPROVALREQUESTS: 'api/employees/approvals?status=Rejected',
+            REJECTEDMULTIPLEAPPROVALREQUESTS: 'api/employees/approvals?status[]=Rejected&status[]=Canceled',
+            CREATEDAPPROVALREQUESTS: 'api/employees/approvals?status=Created',
+            APPROVEDAPPROVALREQUESTS: 'api/employees/approvals?status=Approved',
             APPROVEENTRY: 'api/approvals@status',
             REJECTENTRY: 'api/approvals@status'
         },
@@ -50583,7 +50588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.paginateLinks = response.data.links;
 
                 if (v.paginateLinks.prev === null && v.paginateLinks.next === null) {
-                    v.showPagination = true;
+                    v.showPagination = false;
                 } else {
                     v.showPagination = true;
                 }
