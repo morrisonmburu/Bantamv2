@@ -251,8 +251,6 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.HISTORICLEAVEAPPLICATIONS, v.currentUserData.id))
                     .then(function (response) {
                         v.applications = response.data.data
-                        console.log('leave applications')
-                        console.log(v.applications)
                         v.loading = false
                     })
                     .catch(function (errro) {
