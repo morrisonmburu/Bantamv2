@@ -108,6 +108,7 @@ const app = new Vue({
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
+
                                 v.setUserDetails()
 
                                 if (Object.keys(v.currentUserData).length !== 0 ){

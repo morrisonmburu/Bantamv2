@@ -1551,6 +1551,7 @@ var app = new Vue({
                 if (Object.keys(v.currentUser).length !== 0) {
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
+
                         v.setUserDetails();
 
                         if (Object.keys(v.currentUserData).length !== 0) {} else {
@@ -50255,7 +50256,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50515,18 +50516,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.getOpenRequests();
+                $('#approveRequest').modal('hide');
             }).catch(function (error) {
+                $('#approveRequest').modal('hide');
                 console.log(error);
             });
         },
-        rejectEntry: function rejectEntry() {
+        rejectEntry: function rejectEntry(id) {
             var v = this;
             v.formData.status = 'Rejected';
             axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.getOpenRequests();
+                $('#approveRequest').modal('hide');
             }).catch(function (error) {
+                $('#approveRequest').modal('hide');
                 console.log(error);
             });
         },

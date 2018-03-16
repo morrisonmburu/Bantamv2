@@ -261,12 +261,14 @@
                 )
                     .then(function (response) {
                         v.getOpenRequests()
+                        $('#approveRequest').modal('hide')
                     })
                     .catch(function (error) {
+                        $('#approveRequest').modal('hide')
                         console.log(error)
                     })
             },
-            rejectEntry : function () {
+            rejectEntry : function (id) {
                 var v = this
                 v.formData.status = 'Rejected'
                 axios.post(
@@ -278,8 +280,10 @@
                 )
                     .then(function (response) {
                         v.getOpenRequests()
+                        $('#approveRequest').modal('hide')
                     })
                     .catch(function (error) {
+                        $('#approveRequest').modal('hide')
                         console.log(error)
                     })
             },
