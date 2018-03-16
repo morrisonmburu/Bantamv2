@@ -185,26 +185,6 @@
 
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="contact-box center-version">
-                        <a href="profile.html">
-                            <img alt="image" class="img-circle" src="img/a2.jpg">
-                            <h3 class="m-b-xs"><strong>John Smith</strong></h3>
-                            <div class="font-bold">Manager</div>
-                            <address class="m-t-xs">
-                                johnsmith@email.com<br>
-                                <abbr title="Phone">P:</abbr> {{currentUserData.Phone_No}}
-                            </address>
-                        </a>
-                        <div class="contact-box-footer">
-                            <div class="m-t-xs btn-group">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -294,18 +274,36 @@
             'currentUser',
             'currentUserData',
             'swapComponent',
+            'currentEmployeeLeaveAllocations',
+            'APIENDPOINTS',
+            'getApiPath',
+            'isEmptyObject',
+            'validateField',
             'userDetails'
         ],
         data : function () {
             return {
-
+                approver : {},
             }
         },
         methods : {
+            getApprovers : function () {
+                var v = this
 
+                axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, ''))
+                    .then(function (response) {
+                        v.approver = response.data.data
+
+                        consol.log('approvers')
+                        console.log(v.approver)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            }
         },
-        created : function () {
-
+        created () {
+            this.getApprovers()
         }
     }
 </script>

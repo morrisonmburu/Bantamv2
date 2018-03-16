@@ -1511,7 +1511,8 @@ var app = new Vue({
             CREATEDAPPROVALREQUESTS: 'api/employees/approvals?status=Created',
             APPROVEDAPPROVALREQUESTS: 'api/employees/approvals?status=Approved',
             APPROVEENTRY: 'api/approvals@status',
-            REJECTENTRY: 'api/approvals@status'
+            REJECTENTRY: 'api/approvals@status',
+            APPROVERS: 'api/employees/approvers'
         },
         searchResults: '',
         searchTerm: ''
@@ -47027,7 +47028,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47307,35 +47308,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'userDetails'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'userDetails'],
     data: function data() {
-        return {};
+        return {
+            approver: {}
+        };
     },
-    methods: {},
-    created: function created() {}
+    methods: {
+        getApprovers: function getApprovers() {
+            var v = this;
+
+            axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, '')).then(function (response) {
+                v.approver = response.data.data;
+
+                consol.log('approvers');
+                console.log(v.approver);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    },
+    created: function created() {
+        this.getApprovers();
+    }
 });
 
 /***/ }),
@@ -47595,42 +47593,11 @@ var render = function() {
               _vm._v(" "),
               _vm._m(8)
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6" }, [
-            _c("div", { staticClass: "contact-box center-version" }, [
-              _c("a", { attrs: { href: "profile.html" } }, [
-                _c("img", {
-                  staticClass: "img-circle",
-                  attrs: { alt: "image", src: "img/a2.jpg" }
-                }),
-                _vm._v(" "),
-                _vm._m(9),
-                _vm._v(" "),
-                _c("div", { staticClass: "font-bold" }, [_vm._v("Manager")]),
-                _vm._v(" "),
-                _c("address", { staticClass: "m-t-xs" }, [
-                  _vm._v(
-                    "\r\n                                johnsmith@email.com"
-                  ),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("abbr", { attrs: { title: "Phone" } }, [_vm._v("P:")]),
-                  _vm._v(
-                    " " +
-                      _vm._s(_vm.currentUserData.Phone_No) +
-                      "\r\n                            "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(10)
-            ])
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(11)
+      _vm._m(9)
     ])
   ])
 }
@@ -47703,32 +47670,6 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("tr", [_c("td", [_vm._v("Account No.")]), _vm._v(" "), _c("td")])
           ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "m-b-xs" }, [
-      _c("strong", [_vm._v("John Smith")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-box-footer" }, [
-      _c("div", { staticClass: "m-t-xs btn-group" }, [
-        _c("a", { staticClass: "btn btn-xs btn-white" }, [
-          _c("i", { staticClass: "fa fa-phone" }),
-          _vm._v(" Call ")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-xs btn-white" }, [
-          _c("i", { staticClass: "fa fa-envelope" }),
-          _vm._v(" Email")
         ])
       ])
     ])
