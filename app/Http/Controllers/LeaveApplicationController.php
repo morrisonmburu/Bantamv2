@@ -120,6 +120,39 @@ class LeaveApplicationController extends Controller
         }
     }
 
+    public function leave_applications(Request $request){
+        $status = $request->query('status');
+
+        $applications = null;
+
+        if($status){
+            $applications = EmployeeLeaveApplication::where("Employee_No", Auth::user()->Employee_Record->No );
+            if(is_array($status)){
+                $count = 0;
+                foreach ($status as $s){
+                    if($count == 0){
+                        $applications = $applications->where("Status", $s);
+                    }
+                    else{
+                        $applications->orWhere("Status", $s);
+                    }
+                    $count++;
+                }
+            }
+            else{
+                $applications = $applications->where("Status", $status);
+            }
+            $applications = $applications->paginate();
+        }
+        else{
+            $applications = Auth::user()->Employee_Record->Employee_leave_applications()->paginate();
+        }
+//        dd($applications);
+        if($request->is('api*')){
+            return new EmployeeLeaveApplicationCollection($applications);
+        }
+    }
+
     public function calculateLeaveDates(Request $request)
     {
 
