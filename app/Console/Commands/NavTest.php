@@ -54,9 +54,11 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $entry = EmployeeLeaveApplication::find(16);
-            $manager = new NavSyncManager();
-            $manager->sendLeaveApplication($entry);
+            $entry = ApprovalEntry::find(1);
+            $entry->Nav_Sync = 1;
+            $entry->save();
+//            $manager = new NavSyncManager();
+//            $manager->sendLeaveApplication($entry);
         }
         catch (\Exception $e){
             print ($e);

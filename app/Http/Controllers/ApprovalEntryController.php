@@ -32,9 +32,6 @@ class ApprovalEntryController extends Controller
     public function status(  $id, Request $request)
     {
         $entry = ApprovalEntry::find($id);
-//        dd(json_encode($entry->toArray()));
-        $approver_id = $entry->Approver_ID ;
-        $emp_No = Auth::user()->Employee_Record->No;
 
         if($entry->Approver_ID != Auth::user()->Employee_Record->No){
             abort(401);
@@ -44,8 +41,9 @@ class ApprovalEntryController extends Controller
             'status' => "required|in:Rejected,Approved"
         ]);
 
-        $entry->status = $validatedData['status'];
+        $entry->Status = $validatedData['status'];
         $entry->Nav_Sync = 0;
+//        dd("We here bois");
         $entry->save();
         return new ApprovalEntryResource($entry);
     }

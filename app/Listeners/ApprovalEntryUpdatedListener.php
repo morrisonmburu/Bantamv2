@@ -29,15 +29,16 @@ class ApprovalEntryUpdatedListener
     {
 
         if($entry->getOriginal()["Status"] == $entry->Status) return;
-
         switch ($entry->Status){
             case "Approved":
+//                dd($entry->toArray());
                 $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)
                     ->where('Sequence_No', '>', $entry->Sequence_No)
                     ->orderBy('Sequence_No')->first();
                 $leave_application = $entry->leave_application;
                 if($nextEntry){
                     $nextEntry->Status = "Open";
+                    $nextEntry->Nav_Sync = 0;
                     $nextEntry->save();
                     Notification::send($nextEntry->approver->user, new \App\Notifications\NotifyApprover());
                     $leave_application = $entry->leave_application;
