@@ -17,6 +17,7 @@ class LeaveAllocationController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('index', EmployeeLeaveAllocation::class);
         if ($request->is('api*')) {
             return new EmployeeLeaveAllocationCollection(EmployeeLeaveAllocation::all());
         }
@@ -44,10 +45,11 @@ class LeaveAllocationController extends Controller
      * @param  \App\EmployeeLeaveAllocation  $employeeLeaveAllocation
      * @return \Illuminate\Http\Response
      */
-    public function show(EmployeeLeaveAllocation $employeeLeaveAllocation, Request $request)
+    public function show(EmployeeLeaveAllocation $leave_allocation, Request $request)
     {
+        $this->authorize('view', $leave_allocation);
         if ($request->is('api*')) {
-            return new LeaveAllocationResource($employeeLeaveAllocation);
+            return new LeaveAllocationResource($leave_allocation);
         }
     }
 
@@ -57,7 +59,7 @@ class LeaveAllocationController extends Controller
      * @param  \App\EmployeeLeaveAllocation  $employeeLeaveAllocation
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmployeeLeaveAllocation $employeeLeaveAllocation)
+    public function edit(EmployeeLeaveAllocation $leave_allocation)
     {
         //
     }
@@ -69,7 +71,7 @@ class LeaveAllocationController extends Controller
      * @param  \App\EmployeeLeaveAllocation  $employeeLeaveAllocation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmployeeLeaveAllocation $employeeLeaveAllocation)
+    public function update(Request $request, EmployeeLeaveAllocation $leave_allocation)
     {
         //
     }
@@ -80,7 +82,7 @@ class LeaveAllocationController extends Controller
      * @param  \App\EmployeeLeaveAllocation  $employeeLeaveAllocation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EmployeeLeaveAllocation $employeeLeaveAllocation)
+    public function destroy(EmployeeLeaveAllocation $leave_allocation)
     {
         //
     }
@@ -88,8 +90,9 @@ class LeaveAllocationController extends Controller
     //Get current employee's leave allocations
 
     public function EmployeeLeaveAllocations(Employee $employee, Request $request){
+        $this->authorize('employee', [EmployeeLeaveAllocation::class, $employee]);
         if ($request->is('api*')) {
-            return new LeaveAllocationResource($employee->Employee_leave_allocations);
+            return new LeaveAllocationResource($employee->Employee_leave_allocations()->paginate());
         }
     }
 }

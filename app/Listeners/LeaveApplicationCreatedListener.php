@@ -55,7 +55,7 @@ class LeaveApplicationCreatedListener
                     ];
                     $approvalEntry->fill($approvalEntryData);
                     $approvalEntry->save();
-                    SendApprovalEntriesToNav::dispatch($approvalEntry);
+//                    SendApprovalEntriesToNav::dispatch($approvalEntry);
                     if ($i == 1) {
                         Notification::send($approver->approver->user, new NotifyApprover());
                         $application->save();

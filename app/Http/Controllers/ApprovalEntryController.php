@@ -29,19 +29,23 @@ class ApprovalEntryController extends Controller
         }
     }
 
-    public function status(Request $request, ApprovalEntry $entry)
+    public function status(  $id, Request $request)
     {
+        $entry = ApprovalEntry::find($id);
+
         if($entry->Approver_ID != Auth::user()->Employee_Record->No){
             abort(401);
         }
 
         $validatedData = $request->validate([
-            'status' => "required|in:Rejected|Approved"
+            'status' => "required|in:Rejected,Approved"
         ]);
 
-        $entry->status = $validatedData['status'];
+        $entry->Status = $validatedData['status'];
         $entry->Nav_Sync = 0;
+//        dd("We here bois");
         $entry->save();
+        return new ApprovalEntryResource($entry);
     }
 
     public function employee_approvals(Request $request){
