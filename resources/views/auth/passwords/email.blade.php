@@ -4,7 +4,11 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-                <h2 class="logo-name">NH</h2>
+                <img src="img/tnhlogo.jpg" width="200">
+                <br>
+                <br>
+                <br>
+                {{--<h2 class="logo-name">NH</h2>--}}
             </div>
             <h3>Reset Password</h3>
             {{--<p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.--}}
