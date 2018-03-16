@@ -1539,7 +1539,7 @@ var app = new Vue({
         },
 
         setUserDetails: function setUserDetails() {
-            this.userDetails.fullName = this.currentUserData.First_Name + ' ' + this.currentUserData.Middle_Name + ' ' + this.currentUserData.Last_Name;
+            this.userDetails.fullName = this.currentUserData.First_Name == null ? "" : this.currentUserData.First_Name + ' ' + this.currentUserData.Middle_Name + ' ' + this.currentUserData.Last_Name;
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id);
             this.userDetails.id = this.currentUser.id;
         },
@@ -1552,6 +1552,7 @@ var app = new Vue({
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
                         v.currentUserData = response.data.data;
                         v.setUserDetails();
+
                         if (Object.keys(v.currentUserData).length !== 0) {} else {
                             console.log("Employee data is blank");
                         }
@@ -50254,7 +50255,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50265,6 +50266,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -50570,50 +50574,59 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "tbody",
-                        _vm._l(_vm.requests, function(request, index) {
-                          return _c("tr", [
-                            _c("td", [_vm._v(_vm._s(index + 1))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(request.Approval_Details))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(request.Date_Time_Sent_for_Approval)
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.Document_No))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.Document_Owner))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.Document_Type))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.Status))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(request.Due_Date))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-xs btn-success",
-                                  attrs: {
-                                    "data-toggle": "modal",
-                                    "data-target": "#approveRequest"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.runModal(request)
+                        [
+                          _vm._l(_vm.requests, function(request, index) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(index + 1))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(request.Approval_Details))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(
+                                  _vm._s(request.Date_Time_Sent_for_Approval)
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(request.Document_No))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(request.Document_Owner))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(request.Document_Type))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(request.Status))]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(request.Due_Date))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-xs btn-success",
+                                    attrs: {
+                                      "data-toggle": "modal",
+                                      "data-target": "#approveRequest"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.runModal(request)
+                                      }
                                     }
-                                  }
-                                },
-                                [_vm._v("Process")]
-                              )
+                                  },
+                                  [_vm._v("Process")]
+                                )
+                              ])
                             ])
-                          ])
-                        })
+                          }),
+                          _vm._v(" "),
+                          _vm.requests.length === 0
+                            ? _c("tr", [_vm._m(4)])
+                            : _vm._e()
+                        ],
+                        2
                       )
                     ])
                   ])
@@ -50637,7 +50650,7 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content animated bounceInRight" }, [
-            _vm._m(4),
+            _vm._m(5),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "ibox-content inspinia-timeline" }, [
@@ -50647,7 +50660,7 @@ var render = function() {
                     { staticClass: "col-xs-12 content no-top-border" },
                     [
                       _c("div", { staticClass: "col-xs-6" }, [
-                        _vm._m(5),
+                        _vm._m(6),
                         _vm._v(" "),
                         _c("p", [
                           _c("strong", [_vm._v("Name:")]),
@@ -50670,7 +50683,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-xs-6" }, [
-                        _vm._m(6),
+                        _vm._m(7),
                         _vm._v(" "),
                         _c("p", [
                           _c("strong", [_vm._v("Type:")]),
@@ -50703,7 +50716,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-xs-12 content" }, [
-                    _vm._m(7),
+                    _vm._m(8),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-xs-6" }, [
@@ -50717,7 +50730,7 @@ var render = function() {
                               attrs: { "data-provide": "datepicker" }
                             },
                             [
-                              _vm._m(8),
+                              _vm._m(9),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -50799,7 +50812,7 @@ var render = function() {
                               attrs: { "data-provide": "datepicker" }
                             },
                             [
-                              _vm._m(9),
+                              _vm._m(10),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -50842,7 +50855,7 @@ var render = function() {
                               attrs: { "data-provide": "datepicker" }
                             },
                             [
-                              _vm._m(10),
+                              _vm._m(11),
                               _vm._v(" "),
                               _c("input", {
                                 directives: [
@@ -50878,7 +50891,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(11)
+                      _vm._m(12)
                     ])
                   ])
                 ])
@@ -50889,7 +50902,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-xs btn-white",
+                  staticClass: "btn  btn-white",
                   attrs: { type: "button", "data-dismiss": "modal" }
                 },
                 [_vm._v("Close")]
@@ -50898,7 +50911,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-xs btn-success",
+                  staticClass: "btn  btn-success",
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
@@ -50912,7 +50925,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-xs btn-danger",
+                  staticClass: "btn  btn-danger",
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
@@ -50925,10 +50938,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "button",
-                {
-                  staticClass: "btn btn-xs btn-warning",
-                  attrs: { type: "button" }
-                },
+                { staticClass: "btn  btn-warning", attrs: { type: "button" } },
                 [_vm._v("Escalate")]
               )
             ])
@@ -51088,6 +51098,16 @@ var staticRenderFns = [
         _c("th", [_vm._v("Actions")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "text-center text-muted", attrs: { colspan: "9" } },
+      [_c("i", [_vm._v("No Approval Requests")])]
+    )
   },
   function() {
     var _vm = this
