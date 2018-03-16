@@ -10,6 +10,7 @@ return (object)array(
     'NAV_SOAP_LEAVE_PERIODS' => 'Page/LeavePeriods',
     'NAV_SOAP_LEAVE_TYPES' => 'Page/LeaveTypes',
     'NAV_SOAP_PROFILE_PIC' => 'Codeunit/ProfilePics',
+    'NAV_PAYSLIP_URL' => 'Codeunit/BlobHandling',
     'NAV_SOAP_APPROVERS' => 'Page/Approvers',
     'NAV_HR_APPROVALS' => 'Page/HRApprovals',
     'NAV_SOAP_LEAVE_MANAGER_CODES' => [

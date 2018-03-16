@@ -306,10 +306,25 @@ class NavSyncManager{
         $client = new NTLMSoapClient($url, ['trace' => 1]);
 
 
-        return $client->GetEmployeePic($params)->return_value;
-        $this->restoreWrapper();
-
+        $res =  $client->GetEmployeePic($params)->return_value;
+        $this->restoreWrapper(); return $res;
     }
+
+    public function getPayslip(Employee $employee, $period)
+    {
+        $url = $this->config->NAV_BASE_URL . "/". $this->config->NAV_PAYSLIP_URL;
+        $this->prepareWrapper();
+        $client = new NTLMSoapClient($url,['trace' => 1]);
+        $params = [
+            "returnString" => null,
+            "employee_Code" => $employee->No,
+            "payrol_Period" => $period
+        ];
+        $res =  $client->ProcessBlobs($params)->returnString;
+        $this->restoreWrapper();
+        return $res;
+    }
+
     public function prepareWrapper(){
         stream_wrapper_unregister('http');
         stream_wrapper_register('http', NTLMStream::class) or die("Failed to register protocol");

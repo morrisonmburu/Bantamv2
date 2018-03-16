@@ -54,11 +54,10 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $entry = ApprovalEntry::find(1);
-            $entry->Nav_Sync = 1;
-            $entry->save();
-//            $manager = new NavSyncManager();
-//            $manager->sendLeaveApplication($entry);
+            $entry = Employee::find(1);
+            $manager = new NavSyncManager();
+            $res = $manager->getPayslip($entry, "December");
+            dd($res);
         }
         catch (\Exception $e){
             print ($e);
