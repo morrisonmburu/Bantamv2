@@ -139,7 +139,7 @@ class EmployeeController extends Controller
 
         $headers = [
             'Content-type'        => 'application/pdf',
-            'Content-Disposition' => 'attachment; filename="'."$employee->No-$validatedData->period.pdf".'"',
+            'Content-Disposition' => 'inline; filename="'."$employee->No-$validatedData->period.pdf".'"',
         ];
 
         return \Response::make($pdf_string, 200, $headers);

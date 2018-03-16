@@ -52264,6 +52264,9 @@ var render = function() {
             _c("datepicker", {
               attrs: {
                 format: "yyyy-MM-dd",
+                minimumView: "month",
+                maximumView: "year",
+                initialView: "month",
                 name: "period",
                 id: "period",
                 "input-class": "form-control"

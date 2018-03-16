@@ -4,7 +4,7 @@
 
             <div class="row">
                 <div class="form-group" >
-                    <datepicker format="yyyy-MM-dd" v-model="formData.period" name="period" id="period"  input-class="form-control"></datepicker>
+                    <datepicker format="yyyy-MM-dd" :minimumView="'month'" :maximumView="'year'" :initialView="'month'" v-model="formData.period" name="period" id="period"  input-class="form-control"></datepicker>
                 </div>
                 <div class="form-group" >
                     <button type="submit" @click="getPayslip">Generate payslip</button>
