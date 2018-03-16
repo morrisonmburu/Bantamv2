@@ -42,6 +42,7 @@ class LeaveApplicationController extends Controller
             "Leave_Code" => $request->leave_code,
             "Start_Date" => $request->start_date,
             "Days_Applied" => $request->no_of_days,
+            "Status" => "New",
 //            "End_Date" => $request->end_date,
 //            "Return_Date" => $request->return_date,
 //            "Application_Date" => Carbon::now(),

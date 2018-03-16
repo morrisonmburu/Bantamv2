@@ -37,7 +37,8 @@ class NavSyncManager{
             if ($application->Nav_Sync == 0) {
 
                 $result = null;
-                if (!$application->Nav_Sync_TimeStamp) {
+                if (true){
+                    dd("here");
                     $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
                 } else {
                     $search_fields = $this->syncClasses[EmployeeLeaveApplication::class]["search_fields"];

@@ -1494,14 +1494,14 @@ var app = new Vue({
         APIENDPOINTS: {
             CURRENTUSER: 'api/users/current', // Current logged in user
             CURRENTEMPLOYEE: 'api/users@employee', // employee details
-            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees@leave_applications', // current employee leave applications
+            CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees/leave_applications?status=New', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
             CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees@leave_types', // current employee leave types
             SEARCH: 'https://yesno.wtf/api',
             CALCULATE: 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES: 'api/leave_types',
             LEAVEAPPLICATION: 'api/leave_applications',
-            HISTORICLEAVEAPPLICATIONS: 'api/leave_applications?status[]=',
+            HISTORICLEAVEAPPLICATIONS: 'api/employees/leave_applications?status[]=Approved&status[]=Rejected',
             PROFILEPICTURE: 'api/employees@picture',
             NOTIFICATIONS: 'api/users/notification/unread',
             READNOTIFICATIONS: 'api/users/notification/markasread',
@@ -54193,7 +54193,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54431,105 +54431,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "posted-applications",
-    props: ['currentUser', 'currentUserData', 'swapComponent']
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
+    data: function data() {
+        return {
+            applications: {},
+            loading: true
+
+        };
+    },
+    methods: {
+        getLeaveApplications: function getLeaveApplications() {
+            var v = this;
+            axios.get(v.getApiPath(v.APIENDPOINTS.HISTORICLEAVEAPPLICATIONS, v.currentUserData.id)).then(function (response) {
+                v.applications = response.data.data;
+                console.log('leave applications');
+                console.log(v.applications);
+                v.loading = false;
+            }).catch(function (errro) {
+                console.log(errro);
+                v.loading = false;
+            });
+        }
+    },
+    created: function created() {
+        this.getLeaveApplications();
+    }
 });
 
 /***/ }),
@@ -54604,432 +54533,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(4),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal inmodal",
-        attrs: {
-          id: "myModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content animated fadeInDown" }, [
-            _vm._m(5),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "form",
-                { staticClass: "form-horizontal", attrs: { role: "form" } },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "form-group", class: _vm.states.leave_code },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Leave type")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.formData.leave_code,
-                                expression: "formData.leave_code"
-                              }
-                            ],
-                            staticClass: "form-control col-sm-2",
-                            attrs: { name: "leave_code", id: "leave_code" },
-                            on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.formData,
-                                  "leave_code",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
-                            }
-                          },
-                          _vm._l(_vm.leaveTypes, function(leave) {
-                            return _c(
-                              "option",
-                              { domProps: { value: leave.Code } },
-                              [_vm._v(_vm._s(leave.Description))]
-                            )
-                          })
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "help-block",
-                            attrs: { id: "helpBlockLeaveCode" }
-                          },
-                          [_vm._v(_vm._s(_vm.error.leave_code))]
-                        )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "form-group", class: _vm.states.start_date },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Start Date")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-sm-8" },
-                        [
-                          _c("datepicker", {
-                            attrs: {
-                              format: "yyyy-MM-dd",
-                              name: "start_date",
-                              id: "start_date",
-                              "input-class": "form-control"
-                            },
-                            model: {
-                              value: _vm.formData.start_date,
-                              callback: function($$v) {
-                                _vm.$set(_vm.formData, "start_date", $$v)
-                              },
-                              expression: "formData.start_date"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "help-block",
-                              attrs: { id: "helpBlockdate" }
-                            },
-                            [_vm._v(_vm._s(_vm.error.start_date))]
-                          )
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "form-group", class: _vm.states.no_of_days },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Number of days")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.no_of_days,
-                              expression: "formData.no_of_days"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            placeholder: "Number of days",
-                            name: "no_of_days",
-                            id: "no_of_days"
-                          },
-                          domProps: { value: _vm.formData.no_of_days },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "no_of_days",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "help-block",
-                            attrs: { id: "helpBlocNoOfDays" }
-                          },
-                          [_vm._v(_vm._s(_vm.error.no_of_days))]
-                        )
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group text-center" }, [
-                    _c("label", { staticClass: "col-sm-4 control-label" }, [
-                      _vm._v(" ")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-8" }, [
-                      _vm.calculateButton.loading
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-block",
-                              class: _vm.calculateButton.status,
-                              attrs: { "data-style": "expand-right" },
-                              on: { click: _vm.calculate }
-                            },
-                            [
-                              _c("strong", [
-                                _vm._v(_vm._s(_vm.calculateButton.text) + " "),
-                                _c("i", { class: _vm.calculateButton.icon })
-                              ])
-                            ]
-                          )
-                        : _c(
-                            "div",
-                            { staticClass: "sk-spinner sk-spinner-wave" },
-                            [
-                              _c("div", { staticClass: "sk-rect1" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect2" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect3" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect4" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect5" })
-                            ]
-                          ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass: "help-block",
-                          attrs: { id: "helpBlokError" }
-                        },
-                        [_vm._v(_vm._s(_vm.calculateButton.errorMessage))]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "hr-line-dashed" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "form-group", class: _vm.states.end_date },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("End Date")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c("div", { staticClass: "input-group" }, [
-                          _vm._m(6),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.formData.end_date,
-                                expression: "formData.end_date"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              disabled: "",
-                              name: "end_date",
-                              id: "end_date"
-                            },
-                            domProps: { value: _vm.formData.end_date },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.formData,
-                                  "end_date",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v(_vm._s(_vm.error.end_date))
-                          ])
-                        ])
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "form-group",
-                      class: _vm.states.return_date
-                    },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Return Date")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c("div", { staticClass: "input-group" }, [
-                          _vm._m(7),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.formData.return_date,
-                                expression: "formData.return_date"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              disabled: "",
-                              name: "return_date",
-                              id: "return_date"
-                            },
-                            domProps: { value: _vm.formData.return_date },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.formData,
-                                  "return_date",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "help-block" }, [
-                            _vm._v(_vm._s(_vm.error.return_date))
-                          ])
-                        ])
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "form-group", class: _vm.states.comment },
-                    [
-                      _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Comments")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.comment,
-                              expression: "formData.comment"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { rows: "2", id: "comment", name: "comment" },
-                          domProps: { value: _vm.formData.comment },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "comment",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass: "help-block",
-                            attrs: { id: "helpBlocNoSubmitting" }
-                          },
-                          [_vm._v(_vm._s(_vm.error.comment))]
-                        )
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-white",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              ),
-              _vm._v(" "),
-              _vm.submitButton.loading
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn ",
-                      class: _vm.submitButton.status,
-                      on: { click: _vm.submitLeaveApplication }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(_vm.submitButton.text) +
-                          " "
-                      ),
-                      _c("i", { class: _vm.submitButton.icon })
-                    ]
-                  )
-                : _c(
-                    "button",
-                    { staticClass: "btn ", class: _vm.submitButton.status },
-                    [
-                      _vm._v("\n                        Sending "),
-                      _c("span", { staticClass: "loading bullet" })
-                    ]
-                  )
-            ])
-          ])
-        ])
-      ]
-    )
+    _vm._m(4)
   ])
 }
 var staticRenderFns = [
@@ -55090,7 +54594,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: "text-center", attrs: { colspan: "8" } }, [
-      _c("i", { staticClass: "text-muted" }, [_vm._v("no applications found")])
+      _c("i", { staticClass: "text-muted" }, [
+        _vm._v("no historical applications found")
+      ])
     ])
   },
   function() {
@@ -55352,46 +54858,6 @@ var staticRenderFns = [
         ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [
-          _c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")]),
-          _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-        ]
-      ),
-      _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [_vm._v("New application")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "input-group-addon", attrs: { id: "basic-addon1" } },
-      [_c("i", { staticClass: "glyphicon glyphicon-calendar" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "input-group-addon", attrs: { id: "basic-addon2" } },
-      [_c("i", { staticClass: "glyphicon glyphicon-calendar" })]
-    )
   }
 ]
 render._withStripped = true
