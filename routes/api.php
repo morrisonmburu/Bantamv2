@@ -32,16 +32,19 @@ Route::prefix('users')->group(function () {
 
 Route::resource('users', 'UserController')->only(['index', 'show']);
 Route::prefix('employees')->group(function () {
+    Route::get('/leave_applications', 'LeaveApplicationController@leave_applications');
+    Route::put('/leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
+    Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
+    Route::get('/approvers', 'EmployeeApproverController@approvers');
+    Route::get('/payslip', 'EmployeeController@payslip');
+
     Route::get('{employee}/user', 'EmployeeController@user');
     Route::get('{employee}/picture', 'EmployeeController@picture');
     Route::get('{employee}/leave_allocations', 'LeaveAllocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
-    Route::get('/leave_applications', 'LeaveApplicationController@leave_applications');
-    Route::put('leave_application/{appCode}/cancel', 'LeaveApplicationController@update');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
-    Route::get('/approvals', 'ApprovalEntryController@employee_approvals');
-    Route::get('/approvers', 'EmployeeApproverController@approvers');
     Route::get('{employee}/approvers', 'EmployeeApproverController@employee_approvers');
+    Route::get('{employee}/payslip', 'EmployeeController@employee_payslip');
 });
 Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 

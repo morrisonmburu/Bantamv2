@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserResource;
@@ -113,6 +114,35 @@ class EmployeeController extends Controller
                 return response()->file($storagePath."public/default-avatar.jpg");
             }
         }
+    }
+
+    public function payslip(Request $request){
+        $this->authorize('view', $request->user()->Employee_Record);
+        $employee = $request->user()->Employee_Record;
+        return $this->getEmployeePayslip($employee, $request);
+    }
+
+    public function employee_payslip(Request $request, Employee $employee){
+        return $this->getEmployeePayslip($employee, $request);
+    }
+
+    private function getEmployeePayslip(Employee $employee, $request){
+
+        $validatedData = (object)$request->validate([
+            'period' => "required"
+        ]);
+
+        $manager = new NavSyncManager();
+
+        $base64 = $manager->getPayslip($request->user()->Employee_Record, $validatedData->period );
+        $pdf_string = base64_decode($base64);
+
+        $headers = [
+            'Content-type'        => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="'."$employee->No-$validatedData->period.pdf".'"',
+        ];
+
+        return \Response::make($pdf_string, 200, $headers);
     }
 
 }
