@@ -38,10 +38,19 @@ class LeaveApplicationController extends Controller
         $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
 
-        if(EmployeeLeaveApplication::where('Start_Date', '<=',$request->start_date)
-            ->where('End_Date', '>=', $request->end_date)->count()){
-            abort(400, "Leave application overlapps with another.");
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+            $q->where('Start_Date', '<=', $start_date);
+            $q->where('End_Date', '>=', $start_date);
+        })->orWhere(function ($q) use($end_date) {
+            $q->where('Start_Date', '<=', $end_date);
+            $q->where('End_Date', '>=', $end_date);
+        })->count())
+        {
+            abort(400, "Leave application overlaps with another.");
         }
+
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
             "Leave_Code" => $request->leave_code,

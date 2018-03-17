@@ -63,6 +63,20 @@ class NavTest extends Command
 //                date("Y-m-d")
 //            );
 //            dd($res);
+            $start_date = "2018-03-07";
+            $end_date = '2018-03-07';
+            if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+                $q->where('Start_Date', '<=', $start_date);
+                $q->where('End_Date', '>=', $start_date);
+            })->orWhere(function ($q) use($end_date) {
+                $q->where('Start_Date', '<=', $end_date);
+                $q->where('End_Date', '>=', $end_date);
+            })->count())
+            {
+                dd( "Leave application overlaps with another.");
+            }else{
+                dd("no overlaps");
+            }
         }
         catch (\Exception $e){
             print ($e);
