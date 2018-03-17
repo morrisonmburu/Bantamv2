@@ -49,7 +49,6 @@ class LeaveApplicationController extends Controller
         ];
         $LeaveApplication->fill($data);
         $LeaveApplication->save();
-        Notification::send(Auth::user(), new LeaveApprovalRequestSent());
     }
 
     public function checkIfNotExists($params){
@@ -97,6 +96,34 @@ class LeaveApplicationController extends Controller
             }
         }
     }
+
+    public function status(Request $request, EmployeeLeaveApplication $leave_application)
+    {
+        $this->authorize('update', $leave_application);
+        $validatedData = (object)$request->validate([
+           'Status' => 'in:Review,Canceled'
+        ]);
+
+        $leave_application->Nav_Sync = 0;
+
+        switch ($validatedData->Status){
+            case 'Canceled':
+                if (!$leave_application->Status != "Review")
+                    abort(400, "Cannot Cancel an application which is not in review");
+                break;
+            case 'Review':
+                if($leave_application->Status != "New" || !$leave_application->Status)
+                    abort(400, "Cannot send application");
+                break;
+        }
+        $leave_application->Status = $validatedData->Status;
+        $leave_application->save();
+
+        if ($request->is('api*')) {
+            return new LeaveApplicationResource($leave_application);
+        }
+    }
+
     public function destroy(EmployeeLeaveApplication $employeeLeaveApplication)
     {
         //
