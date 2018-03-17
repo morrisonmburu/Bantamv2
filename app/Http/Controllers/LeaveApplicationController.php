@@ -126,7 +126,14 @@ class LeaveApplicationController extends Controller
 
     public function destroy(EmployeeLeaveApplication $employeeLeaveApplication)
     {
-        //
+        $this->authorize('delete', $employeeLeaveApplication);
+
+        if(!$employeeLeaveApplication != "New"){
+            abort(400, "Cannot delete an application which is not new");
+        }
+
+        return $employeeLeaveApplication->delete();
+
     }
 
     public function EmployeeLeaveApplications(Employee $employee, Request $request)
