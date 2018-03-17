@@ -272,7 +272,10 @@
                                             <div class="sk-rect4"></div>
                                             <div class="sk-rect5"></div>
                                         </div>
-                                        <span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>
+                                        <!--<span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>-->
+                                        <div v-show="calculateButton.errorMessage.length !== 0" class="alert alert-warning text-centre col-sm-12">
+                                            {{calculateButton.errorMessage}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
@@ -308,8 +311,9 @@
                                     <label class="col-sm-4 control-label" >Comments</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
-                                        <span id="helpBlocNoSubmitting" class="help-block">{{error.submitting}}</span>
-
+                                        <div v-show="error.submitting.length !== 0" class="alert alert-warning text-centre">
+                                            {{error.submitting}}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -411,7 +415,8 @@
                     text    : 'Calculate',
                     icon    : 'fa fa-calculator',
                     status  : 'btn-primary',
-                    loading : true
+                    loading : true,
+                    errorMessage : ''
                 },
                 submitButton : {
                     text    : 'Submit',
@@ -421,7 +426,7 @@
                     errorMessage : ''
                 },
                 saveButton : {
-                    text    : 'Save ',
+                    text    : 'Save and new ',
                     icon    : 'fa fa-save',
                     status  : 'btn-success',
                     loading : true,
@@ -549,8 +554,11 @@
                 }
             },
             sendLeaveApplication : function () {
+                let v = this
+                //for testing only
+                v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
+                //
 
-                var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
                     this.formData,
@@ -563,8 +571,19 @@
                         v.saveButton.loading  = true
                         v.getLeaveApplications()
                         // v.loading = true
-                        $('#myModal').modal('hide')
-                        v.formData = {}
+                        if (v.formData.status === 'New'){
+                            $('#myModal').modal('hide')
+                            v.clearFieldsErrors()
+                            v.formData = {}
+                            setTimeout($('#myModal').modal('show'), 1000)
+                            v.dateRange = []
+
+                        }else {
+                            $('#myModal').modal('hide')
+                            v.formData = {}
+                            v.dateRange = []
+                        }
+
                         v.error.submitting = ''
 
                     })
@@ -573,7 +592,13 @@
                         v.saveButton.loading  = true
                         // v.submitButton.text = 'Error Submitting Application'
                         // v.submitButton.status = 'btn btn-warning'
+                        // if (formData.status === 'save'){
+                        //     $('#myModal').modal('hide')
+                        //     v.clearFieldsErrors()
+                        //     $('#myModal').modal('show')
+                        // }
                         v.error.submitting = error.message
+                        console.log(error)
 
                     })
             },
@@ -603,6 +628,7 @@
             clearFieldsErrors : function () {
                 this.error.submitting = ''
                 this.error.return_date = ''
+                this.states.return_date = ''
                 this.error.end_date = ''
                 this.states.leave_code = ''
                 this.error.leave_code = ''
