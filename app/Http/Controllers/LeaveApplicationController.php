@@ -36,12 +36,14 @@ class LeaveApplicationController extends Controller
     public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
     {
         $this->authorize('create', EmployeeLeaveApplication::class);
+
+
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
             "Leave_Code" => $request->leave_code,
             "Start_Date" => $request->start_date,
             "Days_Applied" => $request->no_of_days,
-            "Status" => "New",
+            "Status" => $request->status,
 //            "End_Date" => $request->end_date,
 //            "Return_Date" => $request->return_date,
 //            "Application_Date" => Carbon::now(),
