@@ -50,7 +50,7 @@
                                 <td>{{application.Status}}</td>
                                 <td>
                                     <button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>
-                                    <button class="btn btn-sm btn-danger" @click="submitApplication(application, 'Canceled')" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Delete <i class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -601,7 +601,7 @@
                         //     v.clearFieldsErrors()
                         //     $('#myModal').modal('show')
                         // }
-                        v.error.submitting = error.Response.message
+                        v.error.submitting = error.response.message
                         console.log(error)
 
                     })
@@ -649,6 +649,8 @@
             },
             submitApplication : function (application, status) {
                 var v = this
+
+
                 var apiPath = v.getApiPath(v.APIENDPOINTS.CHANGEAPPLICATIONSTATUS, application.id) + 'status'
                 alert(apiPath)
                 v.formData.status = status
@@ -663,6 +665,24 @@
                         v.getLeaveApplications()
                     })
                     .catch(function (error) {
+                        v.getLeaveApplications()
+                        console.log(error.response.message)
+                    })
+            },
+            deleteApplication : function (application) {
+                var v = this
+                axios.post(
+                    v.getApiPath(v.APIENDPOINTS.CHANGEAPPLICATIONSTATUS, '') + application.id,
+                    '',
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }}
+                )
+                    .then(function (response) {
+                        v.getLeaveApplications()
+                    })
+                    .catch(function (error) {
+                        v.getLeaveApplications()
                         console.log(error.response.message)
                     })
             }
