@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="form-group" >
                     <!--<datepicker format="yyyy-MM-dd" :minimumView="'month'" :maximumView="'year'" :initialView="'month'" v-model="formData.period" name="period" id="period"  input-class="form-control"></datepicker>-->
-                    
+                    <DatePicker  v-model="testdate"  type="date" format="yyyy-MM-dd" range lang="en"></DatePicker>
 
 
 
@@ -22,14 +22,14 @@
 <script>
    // import Datepicker from 'vuejs-datepicker';
 
-    import Datepicker from 'vuejs-datepicker';
+   import DatePicker from 'vue2-datepicker';
 
 
 
     export default {
         name: "payslip",
         components: {
-            Datepicker
+            DatePicker
         },
         props : [
             'currentUser',
@@ -45,19 +45,38 @@
             return{
                formData : {
                    period : '',
-                   link : ''
-               }
+                   link : '',
+
+               },
+                testdate : '',
+                time1: '',
+                time2: '',
+                shortcuts: [
+                    {
+                        text: 'Today',
+                        start: new Date(),
+                        end: new Date()
+                    }
+                ]
             }
         },
         methods : {
             getPayslip : function () {
-                if (this.formData.period.length !== 0){
-                    this.formData.period = (this.formData.period).toISOString().slice(0,10)
-                    this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' +  this.formData.period
-                    window.open(this.formData.link, '_blank');
-                }else {
-                    alert('select period')
-                }
+
+                // console.log(this.testdate[0])
+                this.testdate[0] = this.testdate[0].toISOString().slice(0,10)
+                this.testdate[1] = this.testdate[1].toISOString().slice(0,10)
+
+                console.log(this.testdate[0])
+                console.log(this.testdate[1])
+
+                // if (this.formData.period.length !== 0){
+                //     this.formData.period = (this.formData.period).toISOString().slice(0,10)
+                //     this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' +  this.formData.period
+                //     window.open(this.formData.link, '_blank');
+                // }else {
+                //     alert('select period')
+                // }
             }
         }
     }

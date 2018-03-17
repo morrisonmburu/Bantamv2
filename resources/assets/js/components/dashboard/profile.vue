@@ -169,7 +169,7 @@
                     <div class="contact-box center-version">
                         <a href="profile.html">
                             <img alt="image" class="img-circle" src="img/a2.jpg">
-                            <h3 class="m-b-xs"><strong>{{getFullNames}}</strong></h3>
+                            <h3 class="m-b-xs"><strong>{{}}</strong></h3>
                             <div class="font-bold">{{approver.Approver_Details.Title}}</div>
                             <address class="m-t-xs">
                                 {{approver.Approver_Details.Company_E_Mail}}<br>

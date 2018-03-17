@@ -248,22 +248,24 @@
                                 <div class="form-group" :class="states.start_date">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker format="yyyy-MM-dd" v-model="formData.start_date" name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                        <datepicker confirm format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                     </div>
                                 </div>
-                                <div class="form-group" :class="states.no_of_days">
-                                    <label  class="col-sm-4 control-label">Number of days</label>
-                                    <div class="col-sm-8">
-                                         <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
-                                        <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
-                                    </div>
-                                </div>
+                                <!--<div class="form-group" :class="states.end_date">-->
+                                    <!--<label class="col-sm-4 control-label" >End Date</label>-->
+                                    <!--<div class="col-sm-8">-->
+                                        <!--<-->
+                                        <!--<input type="text"  class="form-control" name="end_date" v-model="formData.end_date" id="end_date">-->
+                                        <!--<span class="help-block">{{error.end_date}}</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
                                 <div class="form-group text-center">
                                     <label  class="col-sm-4 control-label">&nbsp;</label>
                                     <div class="col-sm-8">
-                                        <button v-if="calculateButton.loading" class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>
-                                        <div v-else class="sk-spinner sk-spinner-wave">
+                                        <!--<button  class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>-->
+                                        <div v-if="!calculateButton.loading" class="sk-spinner sk-spinner-wave">
                                             <div class="sk-rect1"></div>
                                             <div class="sk-rect2"></div>
                                             <div class="sk-rect3"></div>
@@ -274,14 +276,12 @@
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group" :class="states.end_date">
-                                    <label class="col-sm-4 control-label" >End Date</label>
+
+                                <div class="form-group" :class="states.no_of_days">
+                                    <label  class="col-sm-4 control-label">Number of days</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="text" disabled class="form-control" name="end_date" v-model="formData.end_date" id="end_date">
-                                            <span class="help-block">{{error.end_date}}</span>
-                                        </div>
+                                        <input type="number" disabled placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
+                                        <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.return_date">
@@ -292,6 +292,15 @@
                                             <input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">
                                             <span class="help-block">{{error.return_date}}</span>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group" :class="states.handOverTo">
+                                    <label class="col-sm-4 control-label">Leave type</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.handOverTo">
+                                            <option v-for="departmentEmployee in departmentEmployees" v-bind:value="departmentEmployee.Code">{{departmentEmployee.Description}}</option>
+                                        </select>
+                                        <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group"  :class="states.comment">
@@ -324,7 +333,10 @@
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker'
+    // import Datepicker from 'vuejs-datepicker'
+
+    import Datepicker from 'vue2-datepicker';
+
 
     export default {
         name: "open-applications",
@@ -341,11 +353,12 @@
             'isEmptyObject',
             'validateField'
         ],
-        data : function(){this
+        data : function(){
             return {
                 calculateButtonText : 'Calculate',
                 submittButtonText   : 'Submit Application',
                 spinner : true,
+                dateRange : [],
                 formData: {
                     leave_code : '',
                     start_date : '',
@@ -371,6 +384,13 @@
                     comment : '',
                     submitting : ''
                 },
+                shortcuts: [
+                    {
+                        text: 'Today',
+                        start: new Date(),
+                        end: new Date()
+                    }
+                ],
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
@@ -388,10 +408,17 @@
                     loading : true,
                     errorMessage : ''
                 },
-                timer   : ''
+                timer   : '',
+                departmentEmployees : {}
             }
         },
         methods : {
+            setDates : function () {
+                console.log(this.dateRange)
+                this.formData.start_date   =  (this.dateRange[0]).toISOString().slice(0,10)
+                this.formData.end_date     =  (this.dateRange[1]).toISOString().slice(0,10)
+                this.calculate()
+            },
             getLeaveApplications : function(){
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
@@ -403,14 +430,12 @@
                         console.log(errro)
                     })
             },
-
             formartDate : function (date) {
                 return date.toISOString().slice(0,10)
             },
-            calculate : function (e) {
-                e.preventDefault();
+            calculate : function () {
                 this.clearFieldsErrors()
-                if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+                if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 ){
 
                     if(this.formData.leave_code.length === 0){
                         this.states.leave_code = 'has-warning'
@@ -420,15 +445,11 @@
                         this.states.start_date = 'has-warning'
                         this.error.start_date = 'start date is required'
                     }
-                    if(this.formData.no_of_days.length === 0){
-                        this.states.no_of_days = 'has-warning'
-                        this.error.no_of_days = 'Number of days is required'
-                    }
 
                 }else {
 
                     // Formats date from yyyy-MM-ddThh-mm-ssZ to yyyy-MM-dd
-                    this.formData.start_date = this.formartDate(this.formData.start_date)
+                   // this.formData.start_date = this.formartDate(this.formData.start_date)
                     this.getCalculatedDates()
                 }
 
@@ -444,7 +465,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }})
                     .then(function (response) {
-                        v.formData.end_date = response.data.eDate
+                        v.formData.no_of_days = response.data.lDays
                         v.formData.return_date = response.data.rDate
                         v.calculateButton.loading  = true
                     })
@@ -523,6 +544,17 @@
                         console.log(error)
                     })
             },
+            getDepartmentEmployees : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + v.currentUserData.Department == null ? '' : v.currentUserData.Department)
+                    .then(function (response) {
+                        v.departmentEmployees = response.data.data
+                        console.log(v.departmentEmployees)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
             clearFieldsErrors : function () {
                 this.error.return_date = ''
                 this.error.end_date = ''
@@ -541,14 +573,19 @@
         created() {
             this.getLeaveApplications()
             this.getLeaveTypes()
+            this.getDepartmentEmployees()
 
 
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
 
         },
-        watch : {
 
+
+        watch : {
+            dateRange : function (newVal, OldVal) {
+                this.setDates()
+            }
         },
         mounted(){
 
