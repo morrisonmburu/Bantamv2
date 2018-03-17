@@ -48,7 +48,10 @@
                                 <td>{{application.Start_Date}}</td>
                                 <td>{{application.Return_Date}}</td>
                                 <td>{{application.Status}}</td>
-                                <td><button class="btn btn-sm bt-default" @click="submitApplication(application)" >Submit <i class="fa fa-send"></i> </button></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success" @click="submitApplication(application,'Reviewed')" >Submit <i class="fa fa-send"></i> </button>
+                                    <button class="btn btn-sm btn-danger" @click="submitApplication(application, 'Canceled')" >Cancel <i class="fa fa-close"></i> </button>
+                                </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
                                 <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
@@ -598,7 +601,7 @@
                         //     v.clearFieldsErrors()
                         //     $('#myModal').modal('show')
                         // }
-                        v.error.submitting = error.message
+                        v.error.submitting = error.Response.message
                         console.log(error)
 
                     })
@@ -644,17 +647,24 @@
                 this.states.handOverTo = ''
                 this.error.handOverTo = ''
             },
-            submitApplication : function (application) {
+            submitApplication : function (application, status) {
                 var v = this
-                v.formData.leave_code  = application.Leave_Code
-                v.formData.start_date  = application.Start_Date
-                v.formData.no_of_days  = application.Days_Applied
-                v.formData.end_date    = application.End_Date
-                v.formData.return_date = application.Return_Date
-                // v.formData.handOverTo  = application.
-                v.formData.status      = 'Review'
-                v.sendLeaveApplication()
-
+                var apiPath = v.getApiPath(v.APIENDPOINTS.CHANGEAPPLICATIONSTATUS, application.id) + 'status'
+                alert(apiPath)
+                v.formData.status = status
+                axios.post(
+                    apiPath,
+                    v.formData,
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }}
+                )
+                    .then(function (response) {
+                        v.getLeaveApplications()
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.message)
+                    })
             }
         },
         created() {

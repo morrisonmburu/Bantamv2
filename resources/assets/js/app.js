@@ -69,8 +69,9 @@ const app = new Vue({
             APPROVEENTRY                            : 'api/approvals@status',
             REJECTENTRY                             : 'api/approvals@status',
             APPROVERS                               : 'api/employees/approvers',
-            PAYSLIPCURRENTEMPLOYEE                  : 'api/employees/payslip'
-        },
+            PAYSLIPCURRENTEMPLOYEE                  : 'api/employees/payslip',
+            CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@'
+                    },
         searchResults : '',
         searchTerm : ''
     },
