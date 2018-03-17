@@ -35,11 +35,20 @@ class LeaveApplicationController extends Controller
 
     public function store(LeaveRequest $request)
     {
+        $validatedData = (object) $request->validate([
+            'end_date' => 'required|date',
+            'start_date' => 'required|date',
+            'handOverTo' => 'required|exists:employees,No',
+            'leave_code' => 'required|exists:leave_types,Code',
+            'no_of_days' => 'required|numeric',
+            'return_date' => 'required|date',
+            'status' => 'required|in:Review,New',
+        ]);
         $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
 
-        $start_date = $request->start_date;
-        $end_date = $request->end_date;
+        $start_date = $validatedData->start_date;
+        $end_date = $validatedData->end_date;
         if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
             $q->where('Start_Date', '<=', $start_date);
             $q->where('End_Date', '>=', $start_date);
@@ -53,13 +62,12 @@ class LeaveApplicationController extends Controller
 
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
-            "Leave_Code" => $request->leave_code,
-            "Start_Date" => $request->start_date,
-            "Days_Applied" => $request->no_of_days,
-            "Status" => $request->status,
-//            "End_Date" => $request->end_date,
-//            "Return_Date" => $request->return_date,
-//            "Application_Date" => Carbon::now(),
+            "Leave_Code" => $validatedData->leave_code,
+            "Start_Date" => $validatedData->start_date,
+            "Days_Applied" => $validatedData->no_of_days,
+            "Status" => $validatedData->status,
+            "End_Date" => $validatedData->end_date,
+            "Return_Date" => $validatedData->return_date,
             "Application_Code" => uniqid()
         ];
         $LeaveApplication->fill($data);
