@@ -33,10 +33,23 @@ class LeaveApplicationController extends Controller
         $this->authorize('create', EmployeeLeaveApplication::class);
     }
 
-    public function store(LeaveRequest $request,EmployeeLeaveApplication $LeaveApplication)
+    public function store(LeaveRequest $request)
     {
+        $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
 
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+            $q->where('Start_Date', '<=', $start_date);
+            $q->where('End_Date', '>=', $start_date);
+        })->orWhere(function ($q) use($end_date) {
+            $q->where('Start_Date', '<=', $end_date);
+            $q->where('End_Date', '>=', $end_date);
+        })->count())
+        {
+            abort(400, "Leave application overlaps with another.");
+        }
 
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
@@ -194,7 +207,7 @@ class LeaveApplicationController extends Controller
 
         $validatedData = $request->validate([
             'start_date' => 'required|date',
-            'no_of_days' => 'required|numeric',
+            'end_date' => 'required|numeric',
             'leave_code' => 'required'
         ]);
 
