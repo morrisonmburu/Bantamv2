@@ -248,7 +248,7 @@
                                 <div class="form-group" :class="states.start_date">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker confirm format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                        <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                     </div>
                                 </div>
@@ -280,14 +280,14 @@
                                 <div class="form-group" :class="states.no_of_days">
                                     <label  class="col-sm-4 control-label">Number of days</label>
                                     <div class="col-sm-8">
-                                        <input type="number" disabled placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
+                                        <input type="number"  placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
                                         <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.return_date">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker disabled confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
+                                        <datepicker  confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
                                         <!--<div class="input-group">-->
                                             <!--<span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>-->
                                             <!--<input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">-->
@@ -524,6 +524,7 @@
                     }
                     if(this.formData.return_date.length === 0){
                         this.error.return_date = 'Return Date are Required'
+                        this.states.return_date = 'has-warning'
                     }
                     if(this.formData.leave_code.length === 0){
                         this.states.leave_code = 'has-warning'
