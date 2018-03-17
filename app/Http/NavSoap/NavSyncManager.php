@@ -31,14 +31,13 @@ class NavSyncManager{
     }
 
     public function sendLeaveApplication(EmployeeLeaveApplication $application){
-
+        try {
             $application = EmployeeLeaveApplication::find($application->id);
 
             if ($application->Nav_Sync == 0) {
 
                 $result = null;
-                if (true){
-                    dd("here");
+                if (true) {
                     $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
                 } else {
                     $search_fields = $this->syncClasses[EmployeeLeaveApplication::class]["search_fields"];
@@ -55,6 +54,10 @@ class NavSyncManager{
                 $application->fill((array)$new_application);
                 $application->save();
             }
+        }
+        catch (\Exception $e){
+            dd($e);
+        }
     }
 
 
@@ -99,6 +102,14 @@ class NavSyncManager{
         print ("\n");
 
         print ("\n");
+        print ("--------------- CREATING NAV DATA STARTED -----------------\n");
+        foreach ($this->syncClasses as $model => $props){
+            $this->pushTable($model, $props["endpoint"]);
+        }
+        print ("--------------- CREATING NAV DATA FINISHED -----------------\n");
+        print ("\n");
+
+        print ("\n");
         print ("--------------- UPDATING NAV DATA STARTED -----------------\n");
         foreach ($this->syncClasses as $model => $props){
             $this->updateTable($model, $props["endpoint"], $props["search_fields"]);
@@ -127,12 +138,13 @@ class NavSyncManager{
 
 
     public function pushTable($model, $endpoint){
-        $records = $model::where('Nav_Sync', false)->get();
+        $records = $model::where(['Nav_Sync' => 0, 'Nav_Sync_TimeStamp' => null])->get();
 
         foreach ($records as $record){
             try{
-                $this->create($endpoint, (object) $record->toArray());
+                $result = (array)$this->create($endpoint, (object) $record->toArray());
 
+                $record->fill(reset($result));
                 $record->Nav_Sync = false;
                 $record->Nav_Sync_TimeStamp = date("Y-m-d");
                 $record->save();
@@ -148,6 +160,9 @@ class NavSyncManager{
 
     public function updateTable($model, $endpoint, $filters)
     {
+
+        print ("\n");
+        print ("--------------- STARTED UPDATING $endpoint -----------------\n");
         $records = $model::where('Nav_Sync', 0)->whereNotNull('Nav_Sync_TimeStamp')->get();
         foreach ($records as $record){
             try{
@@ -155,21 +170,22 @@ class NavSyncManager{
                 $filter_array = [];
 
                 foreach ($filters as $filter){
-                    array_push($filter_array, $record[$filter]);
+                    $filter_array[$filter] = $record[$filter];
                 }
-
-                $this->update($endpoint, (object) $record->toArray(), $filter_array);
+                $this->update($endpoint, $record->toArray(), $filter_array);
 
                 $record->Nav_Sync = false;
                 $record->Nav_Sync_TimeStamp = date("Y-m-d");
                 $record->save();
-//                print ("success");
             }
             catch (\Exception $e){
                 print ($e->getMessage()."\n\n");
-//                print ($e);
             }
         }
+
+
+        print ("--------------- FININSHED UPDATING $endpoint -----------------\n");
+        print ("\n");
     }
 
     public function getTable($model, $endpoint, $search_fields){
@@ -268,10 +284,9 @@ class NavSyncManager{
      * @return mixed
      */
     public function update($endpoint, $data, $filters){
-
         $url = $this->config->NAV_BASE_URL."/$endpoint";
         $record = (array)$this->get($endpoint, null, $filters);
-        $record = reset( $record);
+        $record = (array)reset( $record);
 
         array_walk($record, function (&$var, $key) use($data, $record){
             try{
@@ -343,7 +358,7 @@ class NavSyncManager{
                 "leaveEmployee" => $employeeCode,
                 "baseCalendarCode" => $baseCalendarCode,
                 "sDate" => $sDate,
-                "lDays" => 0.0,
+                "lDays" => 5,
                 "eDate" => $eDate,
                 "rDate" => date("Y-m-d"),
 
