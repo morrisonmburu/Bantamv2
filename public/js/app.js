@@ -48026,7 +48026,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48039,6 +48039,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
+//
+//
+//
+//
 //
 //
 //
@@ -48439,7 +48443,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 text: 'Calculate',
                 icon: 'fa fa-calculator',
                 status: 'btn-primary',
-                loading: true
+                loading: true,
+                errorMessage: ''
             },
             submitButton: {
                 text: 'Submit',
@@ -48449,7 +48454,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 errorMessage: ''
             },
             saveButton: {
-                text: 'Save ',
+                text: 'Save and new ',
                 icon: 'fa fa-save',
                 status: 'btn-success',
                 loading: true,
@@ -48565,8 +48570,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         sendLeaveApplication: function sendLeaveApplication() {
-
             var v = this;
+            //for testing only
+            v.formData.return_date = v.formData.return_date.toISOString().slice(0, 10);
+            //
+
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
@@ -48574,15 +48582,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.saveButton.loading = true;
                 v.getLeaveApplications();
                 // v.loading = true
-                $('#myModal').modal('hide');
-                v.formData = {};
+                if (v.formData.status === 'New') {
+                    $('#myModal').modal('hide');
+                    v.clearFieldsErrors();
+                    v.formData = {};
+                    setTimeout($('#myModal').modal('show'), 1000);
+                    v.dateRange = [];
+                } else {
+                    $('#myModal').modal('hide');
+                    v.formData = {};
+                    v.dateRange = [];
+                }
+
                 v.error.submitting = '';
             }).catch(function (error) {
                 v.submitButton.loading = true;
                 v.saveButton.loading = true;
                 // v.submitButton.text = 'Error Submitting Application'
                 // v.submitButton.status = 'btn btn-warning'
+                // if (formData.status === 'save'){
+                //     $('#myModal').modal('hide')
+                //     v.clearFieldsErrors()
+                //     $('#myModal').modal('show')
+                // }
                 v.error.submitting = error.message;
+                console.log(error);
             });
         },
         getLeaveTypes: function getLeaveTypes() {
@@ -48607,6 +48631,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clearFieldsErrors: function clearFieldsErrors() {
             this.error.submitting = '';
             this.error.return_date = '';
+            this.states.return_date = '';
             this.error.end_date = '';
             this.states.leave_code = '';
             this.error.leave_code = '';
@@ -48898,12 +48923,28 @@ var render = function() {
                         : _vm._e(),
                       _vm._v(" "),
                       _c(
-                        "span",
+                        "div",
                         {
-                          staticClass: "help-block",
-                          attrs: { id: "helpBlokError" }
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.calculateButton.errorMessage.length !== 0,
+                              expression:
+                                "calculateButton.errorMessage.length !== 0"
+                            }
+                          ],
+                          staticClass:
+                            "alert alert-warning text-centre col-sm-12"
                         },
-                        [_vm._v(_vm._s(_vm.calculateButton.errorMessage))]
+                        [
+                          _vm._v(
+                            "\n                                        " +
+                              _vm._s(_vm.calculateButton.errorMessage) +
+                              "\n                                    "
+                          )
+                        ]
                       )
                     ])
                   ]),
@@ -49119,12 +49160,25 @@ var render = function() {
                         }),
                         _vm._v(" "),
                         _c(
-                          "span",
+                          "div",
                           {
-                            staticClass: "help-block",
-                            attrs: { id: "helpBlocNoSubmitting" }
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.error.submitting.length !== 0,
+                                expression: "error.submitting.length !== 0"
+                              }
+                            ],
+                            staticClass: "alert alert-warning text-centre"
                           },
-                          [_vm._v(_vm._s(_vm.error.submitting))]
+                          [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.error.submitting) +
+                                "\n                                    "
+                            )
+                          ]
                         )
                       ])
                     ]
