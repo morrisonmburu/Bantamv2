@@ -251,8 +251,104 @@
             'currentUser',
             'currentUserData',
             'swapComponent'
-        ]
-
+        ],
+        created(){
+            // let chartScript = document.createElement('script');
+            // chartScript.setAttribute('src', 'https://code.highcharts.com/highcharts.js');
+            // document.head.appendChild(chartScript);
+            // let chartScriptExporting = document.createElement('script');
+            // chartScriptExporting.setAttribute('src', 'https://code.highcharts.com/modules/exporting.js');
+            // document.head.appendChild(chartScriptExporting);
+        },
+        mounted(){
+            //Leave types vs days bar graph
+           $('#leaveDaysChart').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: ['Annual', 'Compassionate', 'Maternity', 'Off days', 'Paternity','Sick']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Total fruit consumption'
+                    }
+                },
+                legend: {
+                    reversed: true
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                series: [{
+                    name: 'Allocated',
+                    data: [5, 3, 4, 7, 2,5],
+                    color: '#78f78d'
+                }, {
+                    name: 'Taken',
+                    data: [2, 2, 3, 2, 1,4],
+                    color: '#ff9548'
+                }, {
+                    name: 'Balance',
+                    data: [3, 4, 4, 2, 5,1],
+                    color: '#57bbec'
+                }]
+            });
+            //Leave application statistics pie chart
+            $('#leaveApplicationsChart').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
+                    }
+                },
+                series: [{
+                    name: 'Applications',
+                    colorByPoint: true,
+                    data: [{
+                        name: 'All',
+                        y: 61.41,
+                        sliced: true,
+                        selected: true,
+                        color:"#f7ed06"
+                    }, {
+                        name: 'Successful',
+                        y: 11.84,
+                        color:'#78f78d'
+                    }, {
+                        name: 'Pending',
+                        y: 10.85,
+                        color:'#2addf7'
+                    }, {
+                        name: 'Rejected',
+                        y: 4.67,
+                        color:'#f73c31'
+                    }]
+                }]
+            });
+        }
     }
 </script>
 
