@@ -58,7 +58,22 @@
         </div>
         <div class="row">
             <div class="col-lg-8">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Leave types bar graph</h5>
+                    </div>
+                    <div class="ibox-content"  id="leaveDaysChart">
 
+                    </div>
+                </div>
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Leave application statistics pie chart</h5>
+                    </div>
+                    <div class="ibox-content"  id="leaveApplicationsChart">
+
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4">
                 <div class="ibox ">
@@ -227,8 +242,6 @@
         </div>
 
     </div>
-
-
 </template>
 
 <script>
@@ -238,7 +251,8 @@
             'currentUser',
             'currentUserData',
             'swapComponent'
-        ],
+        ]
+
     }
 </script>
 

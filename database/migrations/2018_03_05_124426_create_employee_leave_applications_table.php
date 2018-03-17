@@ -18,7 +18,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->increments('id');
             $table->string('Leave_Period',50)->nullable();
             $table->string('Employee_No',50);
-            $table->string('Status',50)->nullable();
+            $table->enum('Status',['New', 'Review', 'Approved', 'Rejected', 'Canceled']);
             $table->string('Application_Code',50)->unique();
             $table->string('Leave_Code', 50);
             $table->decimal("Days_Applied", 5, 2);

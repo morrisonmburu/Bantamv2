@@ -33,9 +33,8 @@ class LeaveApplicationCreatedListener
      */
     public function handle(EmployeeLeaveApplication $application)
     {
-
+        if($application->Status != "Review") return;
         try {
-
             if($application->Nav_Sync == 0) {
                 $i = 1;
                 $approvers = $application->employee->approvers;

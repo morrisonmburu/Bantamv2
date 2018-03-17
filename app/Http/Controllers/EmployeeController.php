@@ -7,7 +7,9 @@ use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserResource;
+use function foo\func;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
@@ -20,7 +22,8 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $this->authorize('index', Employee::class);
-        $data = Employee::paginate();
+//        dd($request->all());
+        $data = $this->filter($request->all())->paginate();
         if($request->is('api*')){
             return new EmployeeCollection($data);
         }
@@ -143,6 +146,53 @@ class EmployeeController extends Controller
         ];
 
         return \Response::make($pdf_string, 200, $headers);
+    }
+
+    private function filter($filters){
+        $model = Employee::class;
+        $query = $model::query();
+        $count = 0;
+
+        $columns = Schema::getColumnListing((new $model())->getTable());
+        foreach ($filters as $key => $val){
+            if(!in_array($key, $columns)){
+                unset($filters[$key]);
+            }
+        }
+
+        foreach ((new $model())->getHidden() as $hidden){
+            if(key_exists($hidden, $filters)){
+                unset($filters[$hidden]);
+            }
+        }
+//        dd($filters);
+        foreach ($filters as $key => $value){
+            if(is_array($value)){
+                $query->where(function($arr_query) use ($value, $key){
+                    $arr_count = 0;
+                    foreach ($value as $item){
+                        if($arr_count == 0){
+                            $arr_query->where($key, $item);
+                        }
+                        else{
+                            $arr_query->orWhere($key, $item);
+                        }
+                        $arr_count++;
+                    }
+                });
+
+            }
+            else{
+                if($count == 0){
+                    $query = $query->where($key, $value);
+                }
+                else{
+                    $query = $query->where($key, $value);
+                }
+            }
+            $count++;
+        }
+        return $query;
     }
 
 }

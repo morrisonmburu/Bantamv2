@@ -23,14 +23,8 @@ class EmployeeLeaveApplication extends Model
         });
 
         static::updated(function ($employee_leave_application){
-            try{
-                if($employee_leave_application->getOriginal()["Status"] != $employee_leave_application->Status &&
-                    $employee_leave_application->Status == "Canceled")
-                    Event::fire('employee_leave_application.canceled', $employee_leave_application);
-            }catch (\Exception $e){
-
-            }
-
+            if($employee_leave_application->getOriginal()["Status"] != $employee_leave_application->Status)
+                Event::fire('employee_leave_application.updated.status', $employee_leave_application);
         });
     }
 
