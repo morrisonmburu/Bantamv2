@@ -49,6 +49,7 @@ const app = new Vue({
         APIENDPOINTS     : {
             CURRENTUSER                             : 'api/users/current',                   // Current logged in user
             CURRENTEMPLOYEE                         : 'api/users@employee',                  // employee details
+            ALLEMPLOYEES                            : 'api/employees',
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees/leave_applications?status=New',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
             CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
@@ -78,9 +79,9 @@ const app = new Vue({
             return (Object.keys(object).length === 0)
         },
         fullNames : function(nameOne, nameTwo, nameThree){
-            nameOne     = nameOne === null ? '' : nameOne.trim()
-            nameTwo     = nameTwo === null ? '' : nameTwo.trim()
-            nameThree   = nameThree === null ? '' : nameThree.trim()
+            nameOne     = nameOne.length === 0 ? '' : nameOne.trim()
+            nameTwo     = nameTwo.length === 0 ? '' : nameTwo.trim()
+            nameThree   = nameThree.length === 0 ? '' : nameThree.trim()
             return nameOne + ' ' + nameTwo + ' ' + nameThree
         },
         swapComponent: function (component) {
@@ -107,7 +108,9 @@ const app = new Vue({
         },
 
         setUserDetails : function () {
-            this.userDetails.fullName = this.currentUserData.First_Name == null ? "": this.currentUserData.First_Name  +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
+
+            this.userDetails.fullName =  this.fullNames(this.currentUserData.First_Name, this.currentUserData.First_Name, this.currentUserData.Middle_Name)
+            // this.userDetails.fullName = this.currentUserData.First_Name == null ? "": this.currentUserData.First_Name  +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
             this.userDetails.id = this.currentUser.id
         },

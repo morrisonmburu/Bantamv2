@@ -248,58 +248,72 @@
                                 <div class="form-group" :class="states.start_date">
                                     <label class="col-sm-4 control-label" >Start Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker format="yyyy-MM-dd" v-model="formData.start_date" name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                        <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                     </div>
                                 </div>
-                                <div class="form-group" :class="states.no_of_days">
-                                    <label  class="col-sm-4 control-label">Number of days</label>
-                                    <div class="col-sm-8">
-                                         <input type="number" placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
-                                        <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
-                                    </div>
-                                </div>
+                                <!--<div class="form-group" :class="states.end_date">-->
+                                    <!--<label class="col-sm-4 control-label" >End Date</label>-->
+                                    <!--<div class="col-sm-8">-->
+                                        <!--<-->
+                                        <!--<input type="text"  class="form-control" name="end_date" v-model="formData.end_date" id="end_date">-->
+                                        <!--<span class="help-block">{{error.end_date}}</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
                                 <div class="form-group text-center">
                                     <label  class="col-sm-4 control-label">&nbsp;</label>
                                     <div class="col-sm-8">
-                                        <button v-if="calculateButton.loading" class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>
-                                        <div v-else class="sk-spinner sk-spinner-wave">
+                                        <!--<button  class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>-->
+                                        <div v-if="!calculateButton.loading" class="sk-spinner sk-spinner-wave">
                                             <div class="sk-rect1"></div>
                                             <div class="sk-rect2"></div>
                                             <div class="sk-rect3"></div>
                                             <div class="sk-rect4"></div>
                                             <div class="sk-rect5"></div>
                                         </div>
-                                        <span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>
+                                        <!--<span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>-->
+                                        <div v-show="calculateButton.errorMessage.length !== 0" class="alert alert-warning text-centre col-sm-12">
+                                            {{calculateButton.errorMessage}}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="hr-line-dashed"></div>
-                                <div class="form-group" :class="states.end_date">
-                                    <label class="col-sm-4 control-label" >End Date</label>
+
+                                <div class="form-group" :class="states.no_of_days">
+                                    <label  class="col-sm-4 control-label">Number of days</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="text" disabled class="form-control" name="end_date" v-model="formData.end_date" id="end_date">
-                                            <span class="help-block">{{error.end_date}}</span>
-                                        </div>
+                                        <input type="number"  placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
+                                        <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.return_date">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">
-                                            <span class="help-block">{{error.return_date}}</span>
-                                        </div>
+                                        <datepicker  confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
+                                        <!--<div class="input-group">-->
+                                            <!--<span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>-->
+                                            <!--<input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">-->
+                                        <!--</div>-->
+                                        <span class="help-block">{{error.return_date}}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group" :class="states.handOverTo">
+                                    <label class="col-sm-4 control-label">Delegate to</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
+                                            <option v-for="(departmentEmployee, index) in departmentEmployees" v-bind:value="departmentEmployee.No">{{(index + 1) + ". "+departmentEmployee.First_Name + " " + departmentEmployee.Middle_Name + " " +departmentEmployee.Last_Name}}</option>
+                                        </select>
+                                        <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group"  :class="states.comment">
                                     <label class="col-sm-4 control-label" >Comments</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
-                                        <span id="helpBlocNoSubmitting" class="help-block">{{error.comment}}</span>
-
+                                        <div v-show="error.submitting.length !== 0" class="alert alert-warning text-centre">
+                                            {{error.submitting}}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -307,7 +321,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button v-if="submitButton.loading" @click="submitLeaveApplication" class="btn "  :class="submitButton.status" >
+                            <button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >
+                                {{ saveButton.text }} <i :class="saveButton.icon"></i>
+                            </button>
+                            <button v-else class="btn "  :class="saveButton.status">
+                                Sending <span class="loading bullet"></span>
+                            </button>
+                            <button type="submit" v-if="submitButton.loading"    @click="submitLeaveApplication"   class="btn "  :class="submitButton.status" >
                                 {{ submitButton.text }} <i :class="submitButton.icon"></i>
                             </button>
                             <button v-else class="btn "  :class="submitButton.status" >
@@ -324,7 +344,10 @@
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker'
+    // import Datepicker from 'vuejs-datepicker'
+
+    import Datepicker from 'vue2-datepicker';
+
 
     export default {
         name: "open-applications",
@@ -339,13 +362,15 @@
             'APIENDPOINTS',
             'getApiPath',
             'isEmptyObject',
-            'validateField'
+            'validateField',
+            'fullNames'
         ],
-        data : function(){this
+        data : function(){
             return {
                 calculateButtonText : 'Calculate',
                 submittButtonText   : 'Submit Application',
                 spinner : true,
+                dateRange : [],
                 formData: {
                     leave_code : '',
                     start_date : '',
@@ -353,6 +378,8 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
+                    handOverTo : '',
+                    status : ''
                 },
                 states : {
                     leave_code : '',
@@ -361,6 +388,7 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
+                    handOverTo : ''
                 },
                 error : {
                     leave_code : '',
@@ -369,8 +397,16 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
-                    submitting : ''
+                    submitting : '',
+                    handOverTo : ''
                 },
+                shortcuts: [
+                    {
+                        text: 'Today',
+                        start: new Date(),
+                        end: new Date()
+                    }
+                ],
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
@@ -379,19 +415,34 @@
                     text    : 'Calculate',
                     icon    : 'fa fa-calculator',
                     status  : 'btn-primary',
-                    loading : true
+                    loading : true,
+                    errorMessage : ''
                 },
                 submitButton : {
-                    text    : 'Submit Application',
+                    text    : 'Submit',
                     icon    : 'fa fa-send',
                     status  : 'btn-primary',
                     loading : true,
                     errorMessage : ''
                 },
-                timer   : ''
+                saveButton : {
+                    text    : 'Save and new ',
+                    icon    : 'fa fa-save',
+                    status  : 'btn-success',
+                    loading : true,
+                    errorMessage : ''
+                },
+                timer   : '',
+                departmentEmployees : {}
             }
         },
         methods : {
+            setDates : function () {
+                console.log(this.dateRange)
+                this.formData.start_date   =  (this.dateRange[0]).toISOString().slice(0,10)
+                this.formData.end_date     =  (this.dateRange[1]).toISOString().slice(0,10)
+                this.calculate()
+            },
             getLeaveApplications : function(){
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
@@ -403,14 +454,12 @@
                         console.log(errro)
                     })
             },
-
             formartDate : function (date) {
                 return date.toISOString().slice(0,10)
             },
-            calculate : function (e) {
-                e.preventDefault();
+            calculate : function () {
                 this.clearFieldsErrors()
-                if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+                if (this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 ){
 
                     if(this.formData.leave_code.length === 0){
                         this.states.leave_code = 'has-warning'
@@ -420,15 +469,11 @@
                         this.states.start_date = 'has-warning'
                         this.error.start_date = 'start date is required'
                     }
-                    if(this.formData.no_of_days.length === 0){
-                        this.states.no_of_days = 'has-warning'
-                        this.error.no_of_days = 'Number of days is required'
-                    }
 
                 }else {
 
                     // Formats date from yyyy-MM-ddThh-mm-ssZ to yyyy-MM-dd
-                    this.formData.start_date = this.formartDate(this.formData.start_date)
+                   // this.formData.start_date = this.formartDate(this.formData.start_date)
                     this.getCalculatedDates()
                 }
 
@@ -444,7 +489,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }})
                     .then(function (response) {
-                        v.formData.end_date = response.data.eDate
+                        v.formData.no_of_days = response.data.lDays
                         v.formData.return_date = response.data.rDate
                         v.calculateButton.loading  = true
                     })
@@ -458,15 +503,33 @@
 
                     })
             },
+
+            saveLeaveApplication : function (e) {
+                e.preventDefault();
+                if(this.validateLeaveApplication()) {
+                    this.formData.status = 'New'
+                    this.saveButton.loading = false
+                    this.sendLeaveApplication()
+                }
+
+            },
             submitLeaveApplication : function (e) {
                 e.preventDefault();
+                if(this.validateLeaveApplication()) {
+                    this.formData.status = 'Review'
+                    this.submitButton.loading = false
+                    this.sendLeaveApplication()
+                }
+            },
+            validateLeaveApplication : function () {
                 this.clearFieldsErrors()
-                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0){
                     if(this.formData.end_date.length === 0){
                         this.error.end_date = 'End Date is Required'
                     }
                     if(this.formData.return_date.length === 0){
-                         this.error.return_date = 'Return Date are Required'
+                        this.error.return_date = 'Return Date are Required'
+                        this.states.return_date = 'has-warning'
                     }
                     if(this.formData.leave_code.length === 0){
                         this.states.leave_code = 'has-warning'
@@ -480,15 +543,22 @@
                         this.states.no_of_days = 'has-warning'
                         this.error.no_of_days = 'Number of days is required'
                     }
+                    if(this.formData.handOverTo.length === 0){
+                        this.states.handOverTo = 'has-warning'
+                        this.error.handOverTo = 'Delagate task to is required'
+                    }
 
                 }else {
-                    this.sendLeaveApplication()
+
+                    return true
                 }
             },
             sendLeaveApplication : function () {
+                let v = this
+                //for testing only
+                v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
+                //
 
-                this.submitButton.loading = false
-                var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
                     this.formData,
@@ -498,18 +568,37 @@
                 )
                     .then(function (response) {
                         v.submitButton.loading  = true
+                        v.saveButton.loading  = true
                         v.getLeaveApplications()
                         // v.loading = true
-                        $('#myModal').modal('hide')
-                        v.formData = {}
+                        if (v.formData.status === 'New'){
+                            $('#myModal').modal('hide')
+                            v.clearFieldsErrors()
+                            v.formData = {}
+                            setTimeout($('#myModal').modal('show'), 1000)
+                            v.dateRange = []
+
+                        }else {
+                            $('#myModal').modal('hide')
+                            v.formData = {}
+                            v.dateRange = []
+                        }
+
                         v.error.submitting = ''
 
                     })
                     .catch(function (error) {
                         v.submitButton.loading  = true
-                        v.submitButton.text = 'Error Submitting Application'
-                        v.submitButton.status = 'btn btn-warning'
-                        v.error.submitting = ''
+                        v.saveButton.loading  = true
+                        // v.submitButton.text = 'Error Submitting Application'
+                        // v.submitButton.status = 'btn btn-warning'
+                        // if (formData.status === 'save'){
+                        //     $('#myModal').modal('hide')
+                        //     v.clearFieldsErrors()
+                        //     $('#myModal').modal('show')
+                        // }
+                        v.error.submitting = error.message
+                        console.log(error)
 
                     })
             },
@@ -523,8 +612,23 @@
                         console.log(error)
                     })
             },
+            getDepartmentEmployees : function () {
+                let v = this
+                var apiPath = v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + (v.currentUserData.Department == null ? '' : v.currentUserData.Department)
+                axios.get(apiPath)
+                    .then(function (response) {
+                        v.departmentEmployees = response.data.data
+                        console.log('handed over to employees')
+                        console.log(v.departmentEmployees)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
             clearFieldsErrors : function () {
+                this.error.submitting = ''
                 this.error.return_date = ''
+                this.states.return_date = ''
                 this.error.end_date = ''
                 this.states.leave_code = ''
                 this.error.leave_code = ''
@@ -536,19 +640,26 @@
                 this.calculateButton.text = 'Calculate'
                 this.calculateButton.icon = 'fa fa-calculator'
                 this.calculateButton.errorMessage = ''
+                this.states.handOverTo = ''
+                this.error.handOverTo = ''
             }
         },
         created() {
             this.getLeaveApplications()
             this.getLeaveTypes()
+            this.getDepartmentEmployees()
 
 
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
 
         },
-        watch : {
 
+
+        watch : {
+            dateRange : function (newVal, OldVal) {
+                this.setDates()
+            }
         },
         mounted(){
 

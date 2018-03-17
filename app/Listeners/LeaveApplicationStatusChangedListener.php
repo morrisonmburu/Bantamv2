@@ -7,6 +7,7 @@ use App\Events\Event;
 use App\Notification;
 use App\Notifications\canceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
+use App\Notifications\LeaveApprovalSuccess;
 use App\Notifications\LeaveCanceled;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -48,6 +49,9 @@ class LeaveApplicationStatusChangedListener
             case "Review":
                 Notification::send($application->employee->user, new LeaveApprovalRequestSent());
                 Event::fire('employee_leave_application.created', $application);
+                break;
+            case "Approved":
+                Notification::send($application->employee->user, new LeaveApprovalSuccess());
                 break;
             default:
                 break;
