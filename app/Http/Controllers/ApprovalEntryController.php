@@ -47,13 +47,19 @@ class ApprovalEntryController extends Controller
         return new ApprovalEntryResource($entry);
     }
 
-    public function employee_approvals(Request $request){
+    public function employee_approvals(Request $request, Employee $employee){
+        return $this->getEmployeeApprovalEntries($request, $employee);
+    }
+
+    public function current_employee_approvals(Request $request){
+        return $this->getEmployeeApprovalEntries($request,  Auth::user()->Employee_Record);
+    }
+
+    private function getEmployeeApprovalEntries(Request $request, Employee $employee){
         $status = $request->query('status');
-
         $approvals = null;
-
         if($status){
-            $approvals = ApprovalEntry::where("Approver_ID", Auth::user()->Employee_Record->No );
+            $approvals = ApprovalEntry::where("Approver_ID", $employee->No );
             if(is_array($status)){
                 $count = 0;
 
@@ -70,15 +76,13 @@ class ApprovalEntryController extends Controller
             else{
                 $approvals = $approvals->where("Status", $status);
             }
-            $approvals = $approvals->paginate();
-//            dd("here");
         }
         else{
-            $approvals = Auth::user()->Employee_Record->approvals()->paginate();
+            $approvals = $employee->approvals();
         }
 
         if($request->is('api*')){
-            return new ApprovalEntryCollection($approvals);
+            return new ApprovalEntryCollection($approvals->paginate());
         }
     }
 }
