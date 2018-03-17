@@ -49,6 +49,7 @@ const app = new Vue({
         APIENDPOINTS     : {
             CURRENTUSER                             : 'api/users/current',                   // Current logged in user
             CURRENTEMPLOYEE                         : 'api/users@employee',                  // employee details
+            ALLEMPLOYEES                            : 'api/employees',
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees/leave_applications?status=New',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
             CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
@@ -77,11 +78,11 @@ const app = new Vue({
         isEmptyObject : function (object) {
             return (Object.keys(object).length === 0)
         },
-        fullNames : function(nameOne, nameTwo, nameThree, nameFour){
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
-            name = nameOne.length === 0 ? '' : nameOne.trim()
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
+        fullNames : function(nameOne, nameTwo, nameThree){
+            nameOne     = nameOne === null ? '' : nameOne.trim()
+            nameTwo     = nameTwo === null ? '' : nameTwo.trim()
+            nameThree   = nameThree === null ? '' : nameThree.trim()
+            return nameOne + ' ' + nameTwo + ' ' + nameThree
         },
         swapComponent: function (component) {
             if (Vue.options.components[component]) {

@@ -12,6 +12,7 @@
                        :get-api-path="getApiPath"
                        :is-empty-object="isEmptyObject"
                        :validate-field="'validateField'"
+                       :full-fames="fullNames"
             ></component>
     </keep-alive>
 </div>
