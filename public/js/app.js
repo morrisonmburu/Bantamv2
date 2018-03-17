@@ -48781,7 +48781,7 @@ var render = function() {
                     { staticClass: "form-group", class: _vm.states.start_date },
                     [
                       _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Start Date")
+                        _vm._v("From date to date")
                       ]),
                       _vm._v(" "),
                       _c(
@@ -48974,7 +48974,7 @@ var render = function() {
                     { staticClass: "form-group", class: _vm.states.handOverTo },
                     [
                       _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Delegate to")
+                        _vm._v("Hand over to")
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-8" }, [

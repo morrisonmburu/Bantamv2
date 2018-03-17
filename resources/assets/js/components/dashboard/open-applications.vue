@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.start_date">
-                                    <label class="col-sm-4 control-label" >Start Date</label>
+                                    <label class="col-sm-4 control-label" >From date to date</label>
                                     <div class="col-sm-8">
                                         <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
@@ -303,7 +303,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.handOverTo">
-                                    <label class="col-sm-4 control-label">Delegate to</label>
+                                    <label class="col-sm-4 control-label">Hand over to</label>
                                     <div class="col-sm-8">
                                         <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
                                             <option v-for="(departmentEmployee, index) in departmentEmployees" v-bind:value="departmentEmployee.No">{{(index + 1) + ". "+departmentEmployee.First_Name + " " + departmentEmployee.Middle_Name + " " +departmentEmployee.Last_Name}}</option>
