@@ -145,4 +145,5 @@ class EmployeeController extends Controller
         return \Response::make($pdf_string, 200, $headers);
     }
 
+
 }
