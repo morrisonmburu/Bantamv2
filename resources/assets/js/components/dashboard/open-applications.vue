@@ -308,7 +308,7 @@
                                     <label class="col-sm-4 control-label" >Comments</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
-                                        <span id="helpBlocNoSubmitting" class="help-block">{{error.comment}}</span>
+                                        <span id="helpBlocNoSubmitting" class="help-block">{{error.submitting}}</span>
 
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@
                             <button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >
                                 {{ saveButton.text }} <i :class="saveButton.icon"></i>
                             </button>
-                            <button v-else class="btn "  :class="saveButton.status" >
+                            <button v-else class="btn "  :class="saveButton.status">
                                 Sending <span class="loading bullet"></span>
                             </button>
                             <button type="submit" v-if="submitButton.loading"    @click="submitLeaveApplication"   class="btn "  :class="submitButton.status" >
@@ -570,9 +570,10 @@
                     })
                     .catch(function (error) {
                         v.submitButton.loading  = true
-                        v.submitButton.text = 'Error Submitting Application'
-                        v.submitButton.status = 'btn btn-warning'
-                        v.error.submitting = ''
+                        v.saveButton.loading  = true
+                        // v.submitButton.text = 'Error Submitting Application'
+                        // v.submitButton.status = 'btn btn-warning'
+                        v.error.submitting = error.message
 
                     })
             },
@@ -600,6 +601,7 @@
                     })
             },
             clearFieldsErrors : function () {
+                this.error.submitting = ''
                 this.error.return_date = ''
                 this.error.end_date = ''
                 this.states.leave_code = ''
