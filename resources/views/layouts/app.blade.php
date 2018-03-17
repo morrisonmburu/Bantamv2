@@ -86,8 +86,8 @@
 <script>
     var leaveAllocations = {};
     $(document).ready(function() {
-        var APP_URL = {!! json_encode(url('/')) !!};
-        var user = {!! Auth::user()->id !!};
+        var APP_URL ={!! json_encode(url('/')) !!};
+        var user ={!!Auth::user()!=null?Auth::user()->id:''!!};
         var url=APP_URL+'/api/employees/'+user+'/leave_allocations';
         $.ajax({
             url: url,
