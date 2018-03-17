@@ -449,6 +449,7 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
                     .then(function (response) {
                         v.applications = response.data.data
+                        console.log(v.applications)
                         v.loading = false
                     })
                     .catch(function (errro) {
@@ -556,7 +557,7 @@
             sendLeaveApplication : function () {
                 let v = this
                 //for testing only
-                v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
+                // v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
                 //
 
                 axios.post(
@@ -644,6 +645,15 @@
                 this.error.handOverTo = ''
             },
             submitApplication : function (application) {
+                var v = this
+                v.formData.leave_code  = application.Leave_Code
+                v.formData.start_date  = application.Start_Date
+                v.formData.no_of_days  = application.Days_Applied
+                v.formData.end_date    = application.End_Date
+                v.formData.return_date = application.Return_Date
+                // v.formData.handOverTo  = application.
+                v.formData.status      = 'Review'
+                v.sendLeaveApplication()
 
             }
         },
