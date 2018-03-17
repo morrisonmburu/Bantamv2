@@ -169,17 +169,17 @@
                     <div class="contact-box center-version">
                         <a href="profile.html">
                             <img alt="image" class="img-circle" src="img/a2.jpg">
-                            <h3 class="m-b-xs"><strong>John Smith</strong></h3>
-                            <div class="font-bold">Manager</div>
+                            <h3 class="m-b-xs"><strong>{{getFullNames}}</strong></h3>
+                            <div class="font-bold">{{approver.Approver_Details.Title}}</div>
                             <address class="m-t-xs">
-                                johnsmith@email.com<br>
-                                <abbr title="Phone">P:</abbr>  {{currentUserData.Phone_No}} &nbsp; {{ currentUserData.Phone_No}}
+                                {{approver.Approver_Details.Company_E_Mail}}<br>
+                                <abbr title="Phone">P:</abbr>  {{approver.Approver_Details.Phone_No}}
                             </address>
                         </a>
                         <div class="contact-box-footer">
                             <div class="m-t-xs btn-group">
-                                <a class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
-                                <a class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
+                                <a v-bind:href="'tel:' + approver.Approver_Details.Phone_No" class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
+                                <a v-bind:href="'mailto:' + approver.Approver_Details.Company_E_Mail"  class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
                             </div>
                         </div>
                     </div>
@@ -289,7 +289,8 @@
             'getApiPath',
             'isEmptyObject',
             'validateField',
-            'userDetails'
+            'userDetails',
+            'fullNames'
         ],
         data : function () {
             return {
@@ -303,9 +304,9 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, ''))
                     .then(function (response) {
                         v.approvers = response.data.data
-
-                        consol.log('approvers')
+                        console.log('approvers')
                         console.log(v.approvers)
+                        // v.fullName = v.fullNames(v.approvers.Approver_Details.First_Name, v.approvers.Approver_Details.Middle_Name, v.approvers.Approver_Details.Last_Name )
                     })
                     .catch(function (error) {
                         console.log(error)

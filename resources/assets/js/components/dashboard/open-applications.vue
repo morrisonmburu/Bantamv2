@@ -7,7 +7,7 @@
                         <h5>Open Applications</h5>
                         <div class="ibox-tools">
                             <button v-show="!loading" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                New
+                                Make Appliction <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -397,8 +397,6 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
                     .then(function (response) {
                         v.applications = response.data.data
-                        console.log('leave applications')
-                        console.log(v.applications)
                         v.loading = false
                     })
                     .catch(function (errro) {

@@ -77,11 +77,11 @@ const app = new Vue({
         isEmptyObject : function (object) {
             return (Object.keys(object).length === 0)
         },
-        fullNames : function(nameOne, nameTwo, nameThree, nameFour){
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
-            name = nameOne.length === 0 ? '' : nameOne.trim()
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim()
+        fullNames : function(nameOne, nameTwo, nameThree){
+            nameOne     = nameOne === null ? '' : nameOne.trim()
+            nameTwo     = nameTwo === null ? '' : nameTwo.trim()
+            nameThree   = nameThree === null ? '' : nameThree.trim()
+            return nameOne + ' ' + nameTwo + ' ' + nameThree
         },
         swapComponent: function (component) {
             if (Vue.options.components[component]) {

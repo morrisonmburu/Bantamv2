@@ -1522,11 +1522,11 @@ var app = new Vue({
         isEmptyObject: function isEmptyObject(object) {
             return Object.keys(object).length === 0;
         },
-        fullNames: function fullNames(nameOne, nameTwo, nameThree, nameFour) {
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
-            name = nameOne.length === 0 ? '' : nameOne.trim();
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
+        fullNames: function fullNames(nameOne, nameTwo, nameThree) {
+            nameOne = nameOne === null ? '' : nameOne.trim();
+            nameTwo = nameTwo === null ? '' : nameTwo.trim();
+            nameThree = nameThree === null ? '' : nameThree.trim();
+            return nameOne + ' ' + nameTwo + ' ' + nameThree;
         },
         swapComponent: function swapComponent(component) {
             if (Vue.options.components[component]) {
@@ -47035,7 +47035,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47328,7 +47328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile",
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'userDetails'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'userDetails', 'fullNames'],
     data: function data() {
         return {
             approvers: {}
@@ -47340,9 +47340,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get(v.getApiPath(v.APIENDPOINTS.APPROVERS, '')).then(function (response) {
                 v.approvers = response.data.data;
-
-                consol.log('approvers');
+                console.log('approvers');
                 console.log(v.approvers);
+                // v.fullName = v.fullNames(v.approvers.Approver_Details.First_Name, v.approvers.Approver_Details.Middle_Name, v.approvers.Approver_Details.Last_Name )
             }).catch(function (error) {
                 console.log(error);
             });
@@ -47591,15 +47591,18 @@ var render = function() {
                         attrs: { alt: "image", src: "img/a2.jpg" }
                       }),
                       _vm._v(" "),
-                      _vm._m(7, true),
+                      _c("h3", { staticClass: "m-b-xs" }, [
+                        _c("strong", [_vm._v(_vm._s(_vm.getFullNames))])
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "font-bold" }, [
-                        _vm._v("Manager")
+                        _vm._v(_vm._s(approver.Approver_Details.Title))
                       ]),
                       _vm._v(" "),
                       _c("address", { staticClass: "m-t-xs" }, [
                         _vm._v(
-                          "\r\n                                johnsmith@email.com"
+                          "\r\n                                " +
+                            _vm._s(approver.Approver_Details.Company_E_Mail)
                         ),
                         _c("br"),
                         _vm._v(" "),
@@ -47608,23 +47611,53 @@ var render = function() {
                         ]),
                         _vm._v(
                           "  " +
-                            _vm._s(_vm.currentUserData.Phone_No) +
-                            "   " +
-                            _vm._s(_vm.currentUserData.Phone_No) +
+                            _vm._s(approver.Approver_Details.Phone_No) +
                             "\r\n                            "
                         )
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(8, true)
+                    _c("div", { staticClass: "contact-box-footer" }, [
+                      _c("div", { staticClass: "m-t-xs btn-group" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-xs btn-white",
+                            attrs: {
+                              href: "tel:" + approver.Approver_Details.Phone_No
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-phone" }),
+                            _vm._v(" Call ")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-xs btn-white",
+                            attrs: {
+                              href:
+                                "mailto:" +
+                                approver.Approver_Details.Company_E_Mail
+                            }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-envelope" }),
+                            _vm._v(" Email")
+                          ]
+                        )
+                      ])
+                    ])
                   ])
                 ])
               })
             )
-          : _c("div", { staticClass: "row" }, [_vm._m(9)])
+          : _c("div", { staticClass: "row" }, [_vm._m(7)])
       ]),
       _vm._v(" "),
-      _vm._m(10)
+      _vm._m(8)
     ])
   ])
 }
@@ -47697,32 +47730,6 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("tr", [_c("td", [_vm._v("Account No.")]), _vm._v(" "), _c("td")])
           ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "m-b-xs" }, [
-      _c("strong", [_vm._v("John Smith")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contact-box-footer" }, [
-      _c("div", { staticClass: "m-t-xs btn-group" }, [
-        _c("a", { staticClass: "btn btn-xs btn-white" }, [
-          _c("i", { staticClass: "fa fa-phone" }),
-          _vm._v(" Call ")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-xs btn-white" }, [
-          _c("i", { staticClass: "fa fa-envelope" }),
-          _vm._v(" Email")
         ])
       ])
     ])
@@ -47976,7 +47983,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48379,8 +48386,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id)).then(function (response) {
                 v.applications = response.data.data;
-                console.log('leave applications');
-                console.log(v.applications);
                 v.loading = false;
             }).catch(function (errro) {
                 console.log(errro);
@@ -48555,9 +48560,8 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                            New\n                        "
-                  )
+                  _vm._v("\n                            Make Appliction "),
+                  _c("i", { staticClass: "fa fa-plus" })
                 ]
               )
             ])
@@ -52185,7 +52189,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52216,6 +52220,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
+// import Datepicker from 'vuejs-datepicker';
 
 
 
@@ -52235,7 +52244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         getPayslip: function getPayslip() {
-            if (this.formData.length !== 0) {
+            if (this.formData.period.length !== 0) {
                 this.formData.period = this.formData.period.toISOString().slice(0, 10);
                 this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' + this.formData.period;
                 window.open(this.formData.link, '_blank');
@@ -52257,31 +52266,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "ibox-content p-xl" }, [
       _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("datepicker", {
-              attrs: {
-                format: "yyyy-MM-dd",
-                minimumView: "month",
-                maximumView: "year",
-                initialView: "month",
-                name: "period",
-                id: "period",
-                "input-class": "form-control"
-              },
-              model: {
-                value: _vm.formData.period,
-                callback: function($$v) {
-                  _vm.$set(_vm.formData, "period", $$v)
-                },
-                expression: "formData.period"
-              }
-            })
-          ],
-          1
-        ),
+        _c("div", { staticClass: "form-group" }),
         _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c(
