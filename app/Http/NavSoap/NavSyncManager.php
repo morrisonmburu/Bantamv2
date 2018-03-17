@@ -332,7 +332,7 @@ class NavSyncManager{
     }
 
     public function calculateLeaveDates(
-        $leaveTypeCode, $employeeCode, $baseCalendarCode, $sDate, $lDays){
+        $leaveTypeCode, $employeeCode, $baseCalendarCode, $sDate, $eDate){
         $url = $this->config->NAV_BASE_URL."/".$this->config->NAV_SOAP_LEAVE_MANAGER;
 
         $this->prepareWrapper();
@@ -343,14 +343,14 @@ class NavSyncManager{
                 "leaveEmployee" => $employeeCode,
                 "baseCalendarCode" => $baseCalendarCode,
                 "sDate" => $sDate,
-                "lDays" => $lDays,
-                "eDate" => date("Y-m-d"),
+                "lDays" => 0.0,
+                "eDate" => $eDate,
                 "rDate" => date("Y-m-d"),
 
         ];
 
 //       print_r($data);
-        $result = $client->CalculateLeaveDates($data);
+        $result = $client->CalculateLeaveDatesWeb($data);
 
 //        if($result->return_value != 0 && $result->return_value != 1){
 //            throw new NavHttpException($this->config->NAV_SOAP_LEAVE_MANAGER_CODES[$result->return_value], static::$NAV_HTTP_ERROR_CODE);

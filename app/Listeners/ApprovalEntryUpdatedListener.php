@@ -47,11 +47,11 @@ class ApprovalEntryUpdatedListener
                     $leave_application->save();
                 }
                 else{
-                    $leave_application->Status = "Approved";
-                    $leave_application->Next_Approver = null;
-                    $leave_application->Nav_Sync = 0;
-                    $leave_application->save();
-                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalSuccess());
+//                    $leave_application->Status = "Approved";
+//                    $leave_application->Next_Approver = null;
+//                    $leave_application->Nav_Sync = 0;
+//                    $leave_application->save();
+//                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalSuccess());
                 }
                 break;
             case "Rejected":
