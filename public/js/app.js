@@ -1524,9 +1524,9 @@ var app = new Vue({
             return Object.keys(object).length === 0;
         },
         fullNames: function fullNames(nameOne, nameTwo, nameThree) {
-            nameOne = nameOne === null ? '' : nameOne.trim();
-            nameTwo = nameTwo === null ? '' : nameTwo.trim();
-            nameThree = nameThree === null ? '' : nameThree.trim();
+            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
+            nameTwo = nameTwo.length === 0 ? '' : nameTwo.trim();
+            nameThree = nameThree.length === 0 ? '' : nameThree.trim();
             return nameOne + ' ' + nameTwo + ' ' + nameThree;
         },
         swapComponent: function swapComponent(component) {
@@ -1553,7 +1553,9 @@ var app = new Vue({
         },
 
         setUserDetails: function setUserDetails() {
-            this.userDetails.fullName = this.currentUserData.First_Name == null ? "" : this.currentUserData.First_Name + ' ' + this.currentUserData.Middle_Name + ' ' + this.currentUserData.Last_Name;
+
+            this.userDetails.fullName = this.fullNames(this.currentUserData.First_Name, this.currentUserData.First_Name, this.currentUserData.Middle_Name);
+            // this.userDetails.fullName = this.currentUserData.First_Name == null ? "": this.currentUserData.First_Name  +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id);
             this.userDetails.id = this.currentUser.id;
         },
@@ -48024,7 +48026,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48371,6 +48373,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 // import Datepicker from 'vuejs-datepicker'
 
@@ -48381,7 +48390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Datepicker: __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default.a
     },
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'fullNames'],
     data: function data() {
         return {
             calculateButtonText: 'Calculate',
@@ -48394,7 +48403,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 no_of_days: '',
                 end_date: '',
                 return_date: '',
-                comment: ''
+                comment: '',
+                handOverTo: '',
+                status: ''
             },
             states: {
                 leave_code: '',
@@ -48402,7 +48413,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 no_of_days: '',
                 end_date: '',
                 return_date: '',
-                comment: ''
+                comment: '',
+                handOverTo: ''
             },
             error: {
                 leave_code: '',
@@ -48411,7 +48423,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 end_date: '',
                 return_date: '',
                 comment: '',
-                submitting: ''
+                submitting: '',
+                handOverTo: ''
             },
             shortcuts: [{
                 text: 'Today',
@@ -48429,9 +48442,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 loading: true
             },
             submitButton: {
-                text: 'Submit Application',
+                text: 'Submit',
                 icon: 'fa fa-send',
                 status: 'btn-primary',
+                loading: true,
+                errorMessage: ''
+            },
+            saveButton: {
+                text: 'Save ',
+                icon: 'fa fa-save',
+                status: 'btn-success',
                 loading: true,
                 errorMessage: ''
             },
@@ -48496,10 +48516,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(error);
             });
         },
+
+        saveLeaveApplication: function saveLeaveApplication(e) {
+            e.preventDefault();
+            if (this.validateLeaveApplication()) {
+                this.formData.status = 'New';
+                this.saveButton.loading = false;
+                this.sendLeaveApplication();
+            }
+        },
         submitLeaveApplication: function submitLeaveApplication(e) {
             e.preventDefault();
+            if (this.validateLeaveApplication()) {
+                this.formData.status = 'Review';
+                this.submitButton.loading = false;
+                this.sendLeaveApplication();
+            }
+        },
+        validateLeaveApplication: function validateLeaveApplication() {
             this.clearFieldsErrors();
-            if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0) {
+            if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0) {
                 if (this.formData.end_date.length === 0) {
                     this.error.end_date = 'End Date is Required';
                 }
@@ -48518,18 +48554,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.states.no_of_days = 'has-warning';
                     this.error.no_of_days = 'Number of days is required';
                 }
+                if (this.formData.handOverTo.length === 0) {
+                    this.states.handOverTo = 'has-warning';
+                    this.error.handOverTo = 'Delagate task to is required';
+                }
             } else {
-                this.sendLeaveApplication();
+
+                return true;
             }
         },
         sendLeaveApplication: function sendLeaveApplication() {
 
-            this.submitButton.loading = false;
             var v = this;
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.submitButton.loading = true;
+                v.saveButton.loading = true;
                 v.getLeaveApplications();
                 // v.loading = true
                 $('#myModal').modal('hide');
@@ -48552,8 +48593,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getDepartmentEmployees: function getDepartmentEmployees() {
             var v = this;
-            axios.get(v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + v.currentUserData.Department == null ? '' : v.currentUserData.Department).then(function (response) {
+            var apiPath = v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + (v.currentUserData.Department == null ? '' : v.currentUserData.Department);
+            axios.get(apiPath).then(function (response) {
                 v.departmentEmployees = response.data.data;
+                console.log('handed over to employees');
                 console.log(v.departmentEmployees);
             }).catch(function (error) {
                 console.log(error);
@@ -48572,6 +48615,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.calculateButton.text = 'Calculate';
             this.calculateButton.icon = 'fa fa-calculator';
             this.calculateButton.errorMessage = '';
+            this.states.handOverTo = '';
+            this.error.handOverTo = '';
         }
     },
     created: function created() {
@@ -48925,46 +48970,35 @@ var render = function() {
                         _vm._v("Return Date")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-sm-8" }, [
-                        _c("div", { staticClass: "input-group" }, [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.formData.return_date,
-                                expression: "formData.return_date"
-                              }
-                            ],
-                            staticClass: "form-control",
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-8" },
+                        [
+                          _c("datepicker", {
                             attrs: {
-                              type: "text",
                               disabled: "",
+                              confirm: "",
+                              format: "yyyy-MM-dd",
+                              lang: "en",
                               name: "return_date",
-                              id: "return_date"
+                              id: "return_date",
+                              "input-class": "form-control"
                             },
-                            domProps: { value: _vm.formData.return_date },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.formData,
-                                  "return_date",
-                                  $event.target.value
-                                )
-                              }
+                            model: {
+                              value: _vm.formData.return_date,
+                              callback: function($$v) {
+                                _vm.$set(_vm.formData, "return_date", $$v)
+                              },
+                              expression: "formData.return_date"
                             }
                           }),
                           _vm._v(" "),
                           _c("span", { staticClass: "help-block" }, [
                             _vm._v(_vm._s(_vm.error.return_date))
                           ])
-                        ])
-                      ])
+                        ],
+                        1
+                      )
                     ]
                   ),
                   _vm._v(" "),
@@ -48973,7 +49007,7 @@ var render = function() {
                     { staticClass: "form-group", class: _vm.states.handOverTo },
                     [
                       _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Leave type")
+                        _vm._v("Delegate to")
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-8" }, [
@@ -48989,7 +49023,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control col-sm-2",
-                            attrs: { name: "leave_code", id: "leave_code" },
+                            attrs: { name: "leave_code", id: "handOverTo" },
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter
@@ -49011,12 +49045,26 @@ var render = function() {
                             }
                           },
                           _vm._l(_vm.departmentEmployees, function(
-                            departmentEmployee
+                            departmentEmployee,
+                            index
                           ) {
                             return _c(
                               "option",
-                              { domProps: { value: departmentEmployee.Code } },
-                              [_vm._v(_vm._s(departmentEmployee.Description))]
+                              { domProps: { value: departmentEmployee.No } },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    index +
+                                      1 +
+                                      ". " +
+                                      departmentEmployee.First_Name +
+                                      " " +
+                                      departmentEmployee.Middle_Name +
+                                      " " +
+                                      departmentEmployee.Last_Name
+                                  )
+                                )
+                              ]
                             )
                           })
                         ),
@@ -49093,12 +49141,39 @@ var render = function() {
                 [_vm._v("Close")]
               ),
               _vm._v(" "),
+              _vm.saveButton.loading
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn ",
+                      class: _vm.saveButton.status,
+                      on: { click: _vm.saveLeaveApplication }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(_vm.saveButton.text) +
+                          " "
+                      ),
+                      _c("i", { class: _vm.saveButton.icon })
+                    ]
+                  )
+                : _c(
+                    "button",
+                    { staticClass: "btn ", class: _vm.saveButton.status },
+                    [
+                      _vm._v("\n                            Sending "),
+                      _c("span", { staticClass: "loading bullet" })
+                    ]
+                  ),
+              _vm._v(" "),
               _vm.submitButton.loading
                 ? _c(
                     "button",
                     {
                       staticClass: "btn ",
                       class: _vm.submitButton.status,
+                      attrs: { type: "submit" },
                       on: { click: _vm.submitLeaveApplication }
                     },
                     [
@@ -49455,16 +49530,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("New application")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticClass: "input-group-addon", attrs: { id: "basic-addon2" } },
-      [_c("i", { staticClass: "glyphicon glyphicon-calendar" })]
-    )
   }
 ]
 render._withStripped = true

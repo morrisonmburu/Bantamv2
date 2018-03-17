@@ -287,18 +287,19 @@
                                 <div class="form-group" :class="states.return_date">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>
-                                            <input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">
-                                            <span class="help-block">{{error.return_date}}</span>
-                                        </div>
+                                        <datepicker disabled confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
+                                        <!--<div class="input-group">-->
+                                            <!--<span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>-->
+                                            <!--<input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">-->
+                                        <!--</div>-->
+                                        <span class="help-block">{{error.return_date}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.handOverTo">
-                                    <label class="col-sm-4 control-label">Leave type</label>
+                                    <label class="col-sm-4 control-label">Delegate to</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.handOverTo">
-                                            <option v-for="departmentEmployee in departmentEmployees" v-bind:value="departmentEmployee.Code">{{departmentEmployee.Description}}</option>
+                                        <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
+                                            <option v-for="(departmentEmployee, index) in departmentEmployees" v-bind:value="departmentEmployee.No">{{(index + 1) + ". "+departmentEmployee.First_Name + " " + departmentEmployee.Middle_Name + " " +departmentEmployee.Last_Name}}</option>
                                         </select>
                                         <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
                                     </div>
@@ -316,7 +317,13 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button v-if="submitButton.loading" @click="submitLeaveApplication" class="btn "  :class="submitButton.status" >
+                            <button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >
+                                {{ saveButton.text }} <i :class="saveButton.icon"></i>
+                            </button>
+                            <button v-else class="btn "  :class="saveButton.status" >
+                                Sending <span class="loading bullet"></span>
+                            </button>
+                            <button type="submit" v-if="submitButton.loading"    @click="submitLeaveApplication"   class="btn "  :class="submitButton.status" >
                                 {{ submitButton.text }} <i :class="submitButton.icon"></i>
                             </button>
                             <button v-else class="btn "  :class="submitButton.status" >
@@ -351,7 +358,8 @@
             'APIENDPOINTS',
             'getApiPath',
             'isEmptyObject',
-            'validateField'
+            'validateField',
+            'fullNames'
         ],
         data : function(){
             return {
@@ -366,6 +374,8 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
+                    handOverTo : '',
+                    status : ''
                 },
                 states : {
                     leave_code : '',
@@ -374,6 +384,7 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
+                    handOverTo : ''
                 },
                 error : {
                     leave_code : '',
@@ -382,7 +393,8 @@
                     end_date : '',
                     return_date : '',
                     comment : '',
-                    submitting : ''
+                    submitting : '',
+                    handOverTo : ''
                 },
                 shortcuts: [
                     {
@@ -402,9 +414,16 @@
                     loading : true
                 },
                 submitButton : {
-                    text    : 'Submit Application',
+                    text    : 'Submit',
                     icon    : 'fa fa-send',
                     status  : 'btn-primary',
+                    loading : true,
+                    errorMessage : ''
+                },
+                saveButton : {
+                    text    : 'Save ',
+                    icon    : 'fa fa-save',
+                    status  : 'btn-success',
                     loading : true,
                     errorMessage : ''
                 },
@@ -479,15 +498,32 @@
 
                     })
             },
+
+            saveLeaveApplication : function (e) {
+                e.preventDefault();
+                if(this.validateLeaveApplication()) {
+                    this.formData.status = 'New'
+                    this.saveButton.loading = false
+                    this.sendLeaveApplication()
+                }
+
+            },
             submitLeaveApplication : function (e) {
                 e.preventDefault();
+                if(this.validateLeaveApplication()) {
+                    this.formData.status = 'Review'
+                    this.submitButton.loading = false
+                    this.sendLeaveApplication()
+                }
+            },
+            validateLeaveApplication : function () {
                 this.clearFieldsErrors()
-                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0){
+                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0){
                     if(this.formData.end_date.length === 0){
                         this.error.end_date = 'End Date is Required'
                     }
                     if(this.formData.return_date.length === 0){
-                         this.error.return_date = 'Return Date are Required'
+                        this.error.return_date = 'Return Date are Required'
                     }
                     if(this.formData.leave_code.length === 0){
                         this.states.leave_code = 'has-warning'
@@ -501,14 +537,18 @@
                         this.states.no_of_days = 'has-warning'
                         this.error.no_of_days = 'Number of days is required'
                     }
+                    if(this.formData.handOverTo.length === 0){
+                        this.states.handOverTo = 'has-warning'
+                        this.error.handOverTo = 'Delagate task to is required'
+                    }
 
                 }else {
-                    this.sendLeaveApplication()
+
+                    return true
                 }
             },
             sendLeaveApplication : function () {
 
-                this.submitButton.loading = false
                 var v = this
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
@@ -519,6 +559,7 @@
                 )
                     .then(function (response) {
                         v.submitButton.loading  = true
+                        v.saveButton.loading  = true
                         v.getLeaveApplications()
                         // v.loading = true
                         $('#myModal').modal('hide')
@@ -545,10 +586,12 @@
                     })
             },
             getDepartmentEmployees : function () {
-                var v = this
-                axios.get(v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + v.currentUserData.Department == null ? '' : v.currentUserData.Department)
+                let v = this
+                var apiPath = v.getApiPath(v.APIENDPOINTS.ALLEMPLOYEES, '') + '?status=' + (v.currentUserData.Department == null ? '' : v.currentUserData.Department)
+                axios.get(apiPath)
                     .then(function (response) {
                         v.departmentEmployees = response.data.data
+                        console.log('handed over to employees')
                         console.log(v.departmentEmployees)
                     })
                     .catch(function (error) {
@@ -568,6 +611,8 @@
                 this.calculateButton.text = 'Calculate'
                 this.calculateButton.icon = 'fa fa-calculator'
                 this.calculateButton.errorMessage = ''
+                this.states.handOverTo = ''
+                this.error.handOverTo = ''
             }
         },
         created() {
