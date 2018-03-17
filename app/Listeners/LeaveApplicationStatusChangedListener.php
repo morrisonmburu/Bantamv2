@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\EmployeeLeaveApplication;
-use App\Events\Event;
-use App\Notification;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
 use App\Notifications\canceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\LeaveApprovalSuccess;
