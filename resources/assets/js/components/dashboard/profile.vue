@@ -158,38 +158,37 @@
 
                         </div>
 
-
                     </div>
                 </div>
             </div>
 
-            <!--Approvers-->
-            <div v-if="approvers.length !== 0" class="row">
-                <div class="col-lg-6" v-for="approver in approvers">
-                    <div class="contact-box center-version">
-                        <a href="profile.html">
-                            <img alt="image" class="img-circle" src="img/a2.jpg">
-                            <h3 class="m-b-xs"><strong>{{}}</strong></h3>
-                            <div class="font-bold">{{approver.Approver_Details.Title}}</div>
-                            <address class="m-t-xs">
-                                {{approver.Approver_Details.Company_E_Mail}}<br>
-                                <abbr title="Phone">P:</abbr>  {{approver.Approver_Details.Phone_No}}
-                            </address>
-                        </a>
-                        <div class="contact-box-footer">
-                            <div class="m-t-xs btn-group">
-                                <a v-bind:href="'tel:' + approver.Approver_Details.Phone_No" class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>
-                                <a v-bind:href="'mailto:' + approver.Approver_Details.Company_E_Mail"  class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-else class="row">
-                <div class="jumbotron text-center">
-                    <h1>no approvers found</h1>
-                </div>
-            </div>
+            <!--&lt;!&ndash;Approvers&ndash;&gt;-->
+            <!--<div v-if="approvers.length !== 0" class="row">-->
+                <!--<div class="col-lg-6" v-for="approver in approvers">-->
+                    <!--<div class="contact-box center-version">-->
+                        <!--<a href="profile.html">-->
+                            <!--<img alt="image" class="img-circle" src="img/a2.jpg">-->
+                            <!--<h3 class="m-b-xs"><strong>{{}}</strong></h3>-->
+                            <!--<div class="font-bold">{{approver.Approver_Details.Title}}</div>-->
+                            <!--<address class="m-t-xs">-->
+                                <!--{{approver.Approver_Details.Company_E_Mail}}<br>-->
+                                <!--<abbr title="Phone">P:</abbr>  {{approver.Approver_Details.Phone_No}}-->
+                            <!--</address>-->
+                        <!--</a>-->
+                        <!--<div class="contact-box-footer">-->
+                            <!--<div class="m-t-xs btn-group">-->
+                                <!--<a v-bind:href="'tel:' + approver.Approver_Details.Phone_No" class="btn btn-xs btn-white"><i class="fa fa-phone"></i> Call </a>-->
+                                <!--<a v-bind:href="'mailto:' + approver.Approver_Details.Company_E_Mail"  class="btn btn-xs btn-white"><i class="fa fa-envelope"></i> Email</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div v-else class="row">-->
+                <!--<div class="jumbotron text-center">-->
+                    <!--<h1>no approvers found</h1>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
 
@@ -198,80 +197,80 @@
 
         </div>
 
-        <div class="col-lg-4 m-b-lg">
-            <div id="vertical-timeline" class="vertical-container light-timeline no-margins">
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon navy-bg">
-                        <i class="fa fa-briefcase"></i>
-                    </div>
+        <!--<div class="col-lg-4 m-b-lg">-->
+            <!--<div id="vertical-timeline" class="vertical-container light-timeline no-margins">-->
+                <!--<div class="vertical-timeline-block">-->
+                    <!--<div class="vertical-timeline-icon navy-bg">-->
+                        <!--<i class="fa fa-briefcase"></i>-->
+                    <!--</div>-->
 
-                    <div class="vertical-timeline-content">
-                        <h2>Meeting</h2>
-                        <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                        </p>
-                        <a href="#" class="btn btn-sm btn-primary"> More info</a>
-                        <span class="vertical-date">
-                            Today <br>
-                            <small>Dec 24</small>
-                        </span>
-                    </div>
-                </div>
+                    <!--<div class="vertical-timeline-content">-->
+                        <!--<h2>Meeting</h2>-->
+                        <!--<p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.-->
+                        <!--</p>-->
+                        <!--<a href="#" class="btn btn-sm btn-primary"> More info</a>-->
+                        <!--<span class="vertical-date">-->
+                            <!--Today <br>-->
+                            <!--<small>Dec 24</small>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon blue-bg">
-                        <i class="fa fa-file-text"></i>
-                    </div>
+                <!--<div class="vertical-timeline-block">-->
+                    <!--<div class="vertical-timeline-icon blue-bg">-->
+                        <!--<i class="fa fa-file-text"></i>-->
+                    <!--</div>-->
 
-                    <div class="vertical-timeline-content">
-                        <h2>Send documents to Mike</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                        <a href="#" class="btn btn-sm btn-success"> Download document </a>
-                        <span class="vertical-date">
-                            Today <br>
-                            <small>Dec 24</small>
-                        </span>
-                    </div>
-                </div>
+                    <!--<div class="vertical-timeline-content">-->
+                        <!--<h2>Send documents to Mike</h2>-->
+                        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>-->
+                        <!--<a href="#" class="btn btn-sm btn-success"> Download document </a>-->
+                        <!--<span class="vertical-date">-->
+                            <!--Today <br>-->
+                            <!--<small>Dec 24</small>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon lazur-bg">
-                        <i class="fa fa-coffee"></i>
-                    </div>
+                <!--<div class="vertical-timeline-block">-->
+                    <!--<div class="vertical-timeline-icon lazur-bg">-->
+                        <!--<i class="fa fa-coffee"></i>-->
+                    <!--</div>-->
 
-                    <div class="vertical-timeline-content">
-                        <h2>Coffee Break</h2>
-                        <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                        <a href="#" class="btn btn-sm btn-info">Read more</a>
-                        <span class="vertical-date"> Yesterday <br><small>Dec 23</small></span>
-                    </div>
-                </div>
+                    <!--<div class="vertical-timeline-content">-->
+                        <!--<h2>Coffee Break</h2>-->
+                        <!--<p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>-->
+                        <!--<a href="#" class="btn btn-sm btn-info">Read more</a>-->
+                        <!--<span class="vertical-date"> Yesterday <br><small>Dec 23</small></span>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon yellow-bg">
-                        <i class="fa fa-phone"></i>
-                    </div>
+                <!--<div class="vertical-timeline-block">-->
+                    <!--<div class="vertical-timeline-icon yellow-bg">-->
+                        <!--<i class="fa fa-phone"></i>-->
+                    <!--</div>-->
 
-                    <div class="vertical-timeline-content">
-                        <h2>Phone with Jeronimo</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                        <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-                    </div>
-                </div>
+                    <!--<div class="vertical-timeline-content">-->
+                        <!--<h2>Phone with Jeronimo</h2>-->
+                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>-->
+                        <!--<span class="vertical-date">Yesterday <br><small>Dec 23</small></span>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="vertical-timeline-block">
-                    <div class="vertical-timeline-icon navy-bg">
-                        <i class="fa fa-comments"></i>
-                    </div>
+                <!--<div class="vertical-timeline-block">-->
+                    <!--<div class="vertical-timeline-icon navy-bg">-->
+                        <!--<i class="fa fa-comments"></i>-->
+                    <!--</div>-->
 
-                    <div class="vertical-timeline-content">
-                        <h2>Chat with Monica and Sandra</h2>
-                        <p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>
-                        <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-                    </div>
-                </div>
-            </div>
+                    <!--<div class="vertical-timeline-content">-->
+                        <!--<h2>Chat with Monica and Sandra</h2>-->
+                        <!--<p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>-->
+                        <!--<span class="vertical-date">Yesterday <br><small>Dec 23</small></span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
     </div>
 </div>
