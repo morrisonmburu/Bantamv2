@@ -48636,7 +48636,7 @@ var render = function() {
                                     click: function($event) {
                                       _vm.submitApplication(
                                         application,
-                                        "Reviewed"
+                                        "Review"
                                       )
                                     }
                                   }

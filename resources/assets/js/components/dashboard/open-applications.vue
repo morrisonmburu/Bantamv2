@@ -49,7 +49,7 @@
                                 <td>{{application.Return_Date}}</td>
                                 <td>{{application.Status}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-success" @click="submitApplication(application,'Reviewed')" >Submit <i class="fa fa-send"></i> </button>
+                                    <button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>
                                     <button class="btn btn-sm btn-danger" @click="submitApplication(application, 'Canceled')" >Cancel <i class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
