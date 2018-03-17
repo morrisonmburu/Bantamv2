@@ -58,7 +58,7 @@ class NavSyncManager{
             }
         }
         catch (\Exception $e){
-            dd($e);
+            print($e);
         }
     }
 

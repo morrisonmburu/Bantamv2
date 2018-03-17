@@ -120,8 +120,9 @@ class LeaveApplicationController extends Controller
         }
     }
 
-    public function status(Request $request, EmployeeLeaveApplication $leave_application)
+    public function status(Request $request,  $leave_application)
     {
+        $leave_application = EmployeeLeaveApplication::find($leave_application);
         $this->authorize('update', $leave_application);
         $validatedData = (object)$request->validate([
            'Status' => 'in:Review,Canceled'
