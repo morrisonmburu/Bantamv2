@@ -52,6 +52,7 @@ Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
     Route::post('requests', 'LeaveApplicationController@requests');
+    Route::post('{leave_applications}/status', 'LeaveApplicationController@status');
 });
 
 

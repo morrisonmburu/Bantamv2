@@ -71,7 +71,7 @@ class EmployeeLeaveApplicationPolicy
      */
     public function delete(User $user, EmployeeLeaveApplication $employeeLeaveApplication)
     {
-        return false;
+        return $user->Employee_Record && $user->Employee_Record->No == $employeeLeaveApplication->employee->No;
     }
 
     public function index(User $user)
