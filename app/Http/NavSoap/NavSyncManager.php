@@ -7,6 +7,7 @@ use App\EmployeeLeaveAllocation;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NTLMStream;
 use App\LeaveType;
+use App\PayPeriod;
 use http\Url;
 use App\Http\NavSoap\NTLMSoapClient;
 
@@ -27,6 +28,7 @@ class NavSyncManager{
             EmployeeLeaveApplication::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_APPS, "search_fields" => ['Application_Code'] ],
             EmployeeApprover::class => ["endpoint" => $this->config->NAV_SOAP_APPROVERS, "search_fields" => ['Approver'] ],
             ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Table_ID'] ],
+            PayPeriod::class => ["endpoint" => $this->config->NAV_PAY_PERIODS, "search_fields" => [] ],
         ];
     }
 
@@ -138,23 +140,27 @@ class NavSyncManager{
 
 
     public function pushTable($model, $endpoint){
-        $records = $model::where(['Nav_Sync' => 0, 'Nav_Sync_TimeStamp' => null])->get();
+        try {
+            $records = $model::where(['Nav_Sync' => 0, 'Nav_Sync_TimeStamp' => null])->get();
 
-        foreach ($records as $record){
-            try{
-                $result = (array)$this->create($endpoint, (object) $record->toArray());
+            foreach ($records as $record) {
+                try {
+                    $result = (array)$this->create($endpoint, (object)$record->toArray());
 
-                $record->fill(reset($result));
-                $record->Nav_Sync = false;
-                $record->Nav_Sync_TimeStamp = date("Y-m-d");
-                $record->save();
+                    $record->fill(reset($result));
+                    $record->Nav_Sync = false;
+                    $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                    $record->save();
 //                print ("success");
-            }
-            catch (\Exception $e){
-                print ($e->getMessage()."\n\n");
+                } catch (\Exception $e) {
+                    print ($e->getMessage() . "\n\n");
 //                print ($e);
-            }
+                }
 
+            }
+        }
+        catch (\Exception $e){
+            print $e->getMessage();
         }
     }
 
@@ -163,26 +169,28 @@ class NavSyncManager{
 
         print ("\n");
         print ("--------------- STARTED UPDATING $endpoint -----------------\n");
-        $records = $model::where('Nav_Sync', 0)->whereNotNull('Nav_Sync_TimeStamp')->get();
-        foreach ($records as $record){
-            try{
 
-                $filter_array = [];
+        try {
+            $records = $model::where('Nav_Sync', 0)->whereNotNull('Nav_Sync_TimeStamp')->get();
+            foreach ($records as $record) {
+                try {
 
-                foreach ($filters as $filter){
-                    $filter_array[$filter] = $record[$filter];
+                    $filter_array = [];
+
+                    foreach ($filters as $filter) {
+                        $filter_array[$filter] = $record[$filter];
+                    }
+                    $this->update($endpoint, $record->toArray(), $filter_array);
+
+                    $record->Nav_Sync = false;
+                    $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                    $record->save();
+                } catch (\Exception $e) {
+                    print ($e->getMessage() . "\n\n");
                 }
-                $this->update($endpoint, $record->toArray(), $filter_array);
-
-                $record->Nav_Sync = false;
-                $record->Nav_Sync_TimeStamp = date("Y-m-d");
-                $record->save();
-            }
-            catch (\Exception $e){
-                print ($e->getMessage()."\n\n");
             }
         }
-
+        catch (\Exception $e){print $e->getMessage();}
 
         print ("--------------- FININSHED UPDATING $endpoint -----------------\n");
         print ("\n");
@@ -192,14 +200,20 @@ class NavSyncManager{
 
         try {
 
-
             print ("\n\n");
             print ("--------------- SNYNCING $endpoint ---------------\n");
 
             if ($model::all()->isEmpty()) {
                 $records = get_object_vars($this->get($endpoint));
+
             } else {
-                $records = get_object_vars($this->get($endpoint, null, ['Web_Sync' => 0]));
+                try{
+                    $records = get_object_vars($this->get($endpoint, null, ['Web_Sync' => 0]));
+                }catch (\Exception $e){
+
+                    $records = get_object_vars($this->get($endpoint, null, []));
+
+                }
             }
 
 
@@ -358,7 +372,7 @@ class NavSyncManager{
                 "leaveEmployee" => $employeeCode,
                 "baseCalendarCode" => $baseCalendarCode,
                 "sDate" => $sDate,
-                "lDays" => 5,
+                "lDays" => 0,
                 "eDate" => $eDate,
                 "rDate" => date("Y-m-d"),
 

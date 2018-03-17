@@ -13,6 +13,7 @@ return (object)array(
     'NAV_PAYSLIP_URL' => 'Codeunit/BlobHandling',
     'NAV_SOAP_APPROVERS' => 'Page/Approvers',
     'NAV_HR_APPROVALS' => 'Page/HRApprovals',
+    'NAV_PAY_PERIODS' => 'Page/PayPeriods',
     'NAV_SOAP_LEAVE_MANAGER_CODES' => [
         2 => "Invalid Calendar",
         3 => "Invalid Leave Type",

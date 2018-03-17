@@ -64,6 +64,7 @@ Route::resource('approvals','ApprovalEntryController');
 Route::resource('leave_applications','LeaveApplicationController');
 Route::resource('leave_allocations','LeaveAllocationController')->only(['index', 'show']);
 Route::resource('leave_types','LeaveTypeController');
+Route::resource('pay_periods','PayPeriodController');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
