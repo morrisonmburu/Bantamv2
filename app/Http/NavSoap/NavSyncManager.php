@@ -102,6 +102,14 @@ class NavSyncManager{
         print ("\n");
 
         print ("\n");
+        print ("--------------- CREATING NAV DATA STARTED -----------------\n");
+        foreach ($this->syncClasses as $model => $props){
+            $this->pushTable($model, $props["endpoint"]);
+        }
+        print ("--------------- CREATING NAV DATA FINISHED -----------------\n");
+        print ("\n");
+
+        print ("\n");
         print ("--------------- UPDATING NAV DATA STARTED -----------------\n");
         foreach ($this->syncClasses as $model => $props){
             $this->updateTable($model, $props["endpoint"], $props["search_fields"]);
@@ -130,12 +138,13 @@ class NavSyncManager{
 
 
     public function pushTable($model, $endpoint){
-        $records = $model::where('Nav_Sync', false)->get();
+        $records = $model::where(['Nav_Sync' => 0, 'Nav_Sync_TimeStamp' => null])->get();
 
         foreach ($records as $record){
             try{
-                $this->create($endpoint, (object) $record->toArray());
+                $result = (array)$this->create($endpoint, (object) $record->toArray());
 
+                $record->fill(reset($result));
                 $record->Nav_Sync = false;
                 $record->Nav_Sync_TimeStamp = date("Y-m-d");
                 $record->save();
@@ -349,7 +358,7 @@ class NavSyncManager{
                 "leaveEmployee" => $employeeCode,
                 "baseCalendarCode" => $baseCalendarCode,
                 "sDate" => $sDate,
-                "lDays" => 0.0,
+                "lDays" => 5,
                 "eDate" => $eDate,
                 "rDate" => date("Y-m-d"),
 
