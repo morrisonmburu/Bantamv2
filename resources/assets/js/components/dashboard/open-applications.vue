@@ -34,12 +34,12 @@
                                 <th>Start Date</th>
                                 <th>Return Date</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Action </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications" @click="showApprovers(application)" data-toggle="tooltip" data-placement="left" title="" data-original-title="Click to view approvers">
-                                <td>{{ index + 1}} </td>
+                            <tr v-for="(application, index) in applications">
+                                <td>{{ meta.from + index}} </td>
                                 <!--<td>{{application.Application_Code}}</td>-->
                                 <td>{{application.Application_Date}}</td>
                                 <td>{{application.Days_Applied}}</td>
@@ -47,11 +47,12 @@
                                 <td>{{application.Leave_Period}}</td>
                                 <td>{{application.Start_Date}}</td>
                                 <td>{{application.Return_Date}}</td>
-                                <td>{{application.Status}}</td>
+                                <td><span class="label  " :class="application.Status === 'New' ? New : application.Status === 'Review' ? Review : Canceled" >{{application.Status}}</span></td>
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-xs btn-default" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button v-if="application.Status === 'Review'" class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-sm btn-default">Cancel<i class="fa fa-close"></i> </button>
+                                    <button @click="applicationDetails(application.id)"  class="btn btn-sm btn-default">Details <i class="fa fa-eye"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -61,195 +62,192 @@
                         </table>
 
                         <div class="row text-right" >
-                            <ul class="pagination" v-show="showPagination">
-                                <li class="paginate_button previous "  :class="paginateButtons.firts">
-                                    <a @click="paginate(paginateLinks.first)" tabindex="0"><< First</a>
-                                </li>
-                                <li class="paginate_button" :class="paginateButtons.previous">
-                                    <a @click="paginate(paginateLinks.prev)" tabindex="0">< Previous</a>
-                                </li>
-                                <li class="paginate_button " :class="paginateButtons.next">
-                                    <a  @click="paginate(paginateLinks.next)" tabindex="0">Next ></a>
-                                </li>
-                                <li  class="paginate_button next" :class="paginateButtons.last">
-                                    <a @click="paginate(paginateLinks.last)" tabindex="0">Last >></a>
-                                </li>
-                            </ul>
+
+                            <div class="btn-group" role="group" aria-label="...">
+                                <!--<button type="button" class="btn btn-default" @click="paginate(paginateLinks.first)" tabindex="0" :disabled="paginateLinks.first  === null"><< First</button>-->
+                                <!--<button type="button" class="btn btn-default" @click="paginate(paginateLinks.prev)" tabindex="0" :disabled="paginateLinks.prev === null">< Previous</button>-->
+
+                                <button v-for="n in meta.last_page" type="button" class="btn btn-default" @click="paginate(meta.path + '?page=' + n)" tabindex="0">{{n}}</button>
+
+
+                                <!--<button type="button" class="btn btn-default" @click="paginate(paginateLinks.next)" tabindex="0" :disabled="paginateLinks.next === null">Next ></button>-->
+                                <!--<button type="button" class="btn btn-default" @click="paginate(paginateLinks.last)" tabindex="0" :disabled="paginateLinks.last === null">Last >></button>-->
+                            </div>
+
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
+<div>
+    <!--<div class="row">-->
+    <!--<div class="col-lg-12">-->
+    <!--<div class="ibox ">-->
+    <!--<div class="ibox-title">-->
+    <!--<h5>Recent Activities</h5>-->
+    <!--</div>-->
+    <!--<div class="ibox-content">-->
+    <!--<div class="activity-stream">-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-pencil"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a5.jpg">-->
+    <!--<span>Karen Miggel</span>-->
+    <!--<span class="date">Today at 01:32:40 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Add new note to the <a href="#">Martex</a>  project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-commenting-o"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a4.jpg">-->
+    <!--<span>John Mikkens</span>-->
+    <!--<span class="date">Yesterday at 10:00:20 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Commented on <a href="#">Ariana</a> profile.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-circle"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a2.jpg">-->
+    <!--<img src="img/a3.jpg">-->
+    <!--<img src="img/a4.jpg">-->
+    <!--<span>Mike Johnson, Monica Smith and Karen Dortmund</span>-->
+    <!--<span class="date">Yesterday at 02:13:20 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Changed status of third stage in the <a href="#">Vertex</a> project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-circle"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a6.jpg">-->
+    <!--<span>Jessica Smith</span>-->
+    <!--<span class="date">Yesterday at 08:14:41 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Add new files to own file sharing place.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-send bg-primary"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a7.jpg">-->
+    <!--<img src="img/a1.jpg">-->
+    <!--<span>Martha Farter and Mike Rodgers</span>-->
+    <!--<span class="date">Yesterday at 04:18:13 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Sent email to all users participating in new project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-tag bg-warning"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a7.jpg">-->
+    <!--<span>Mark Mickens</span>-->
+    <!--<span class="date">Yesterday at 06:00:30 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Has been taged in the latest comments about the new project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-circle"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a8.jpg">-->
+    <!--<span>Mike Johnson</span>-->
+    <!--<span class="date">Yesterday at 02:13:20 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Changed status of second stage in the latest project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-circle"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a1.jpg">-->
+    <!--<span>Jessica Smith</span>-->
+    <!--<span class="date">Yesterday at 08:14:41 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Add new files to own file sharing place.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-circle"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a6.jpg">-->
+    <!--<span>Jessica Smith</span>-->
+    <!--<span class="date">Yesterday at 08:14:41 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Add new files to own file sharing place.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="stream">-->
+    <!--<div class="stream-badge">-->
+    <!--<i class="fa fa-send"></i>-->
+    <!--</div>-->
+    <!--<div class="stream-panel">-->
+    <!--<div class="stream-info">-->
+    <!--<a href="#">-->
+    <!--<img src="img/a7.jpg">-->
+    <!--<span>Martha Farter</span>-->
+    <!--<span class="date">Yesterday at 04:18:13 am</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--Sent email to all users participating in new project.-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>
 
-        <!--<div class="row">-->
-                <!--<div class="col-lg-12">-->
-                    <!--<div class="ibox ">-->
-                        <!--<div class="ibox-title">-->
-                            <!--<h5>Recent Activities</h5>-->
-                        <!--</div>-->
-                        <!--<div class="ibox-content">-->
-                            <!--<div class="activity-stream">-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-pencil"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a5.jpg">-->
-                                                <!--<span>Karen Miggel</span>-->
-                                                <!--<span class="date">Today at 01:32:40 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Add new note to the <a href="#">Martex</a>  project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-commenting-o"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a4.jpg">-->
-                                                <!--<span>John Mikkens</span>-->
-                                                <!--<span class="date">Yesterday at 10:00:20 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Commented on <a href="#">Ariana</a> profile.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-circle"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a2.jpg">-->
-                                                <!--<img src="img/a3.jpg">-->
-                                                <!--<img src="img/a4.jpg">-->
-                                                <!--<span>Mike Johnson, Monica Smith and Karen Dortmund</span>-->
-                                                <!--<span class="date">Yesterday at 02:13:20 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Changed status of third stage in the <a href="#">Vertex</a> project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-circle"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a6.jpg">-->
-                                                <!--<span>Jessica Smith</span>-->
-                                                <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Add new files to own file sharing place.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-send bg-primary"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a7.jpg">-->
-                                                <!--<img src="img/a1.jpg">-->
-                                                <!--<span>Martha Farter and Mike Rodgers</span>-->
-                                                <!--<span class="date">Yesterday at 04:18:13 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Sent email to all users participating in new project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-tag bg-warning"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a7.jpg">-->
-                                                <!--<span>Mark Mickens</span>-->
-                                                <!--<span class="date">Yesterday at 06:00:30 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Has been taged in the latest comments about the new project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-circle"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a8.jpg">-->
-                                                <!--<span>Mike Johnson</span>-->
-                                                <!--<span class="date">Yesterday at 02:13:20 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Changed status of second stage in the latest project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-circle"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a1.jpg">-->
-                                                <!--<span>Jessica Smith</span>-->
-                                                <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Add new files to own file sharing place.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-circle"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a6.jpg">-->
-                                                <!--<span>Jessica Smith</span>-->
-                                                <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Add new files to own file sharing place.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="stream">-->
-                                    <!--<div class="stream-badge">-->
-                                        <!--<i class="fa fa-send"></i>-->
-                                    <!--</div>-->
-                                    <!--<div class="stream-panel">-->
-                                        <!--<div class="stream-info">-->
-                                            <!--<a href="#">-->
-                                                <!--<img src="img/a7.jpg">-->
-                                                <!--<span>Martha Farter</span>-->
-                                                <!--<span class="date">Yesterday at 04:18:13 am</span>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
-                                        <!--Sent email to all users participating in new project.-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
 
         <!-- ==== Modal for new leave application:: Added by Mayaka == -->
             <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" >
@@ -271,7 +269,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.start_date">
-                                    <label class="col-sm-4 control-label" >Start date - End Date</label>
+                                    <label class="col-sm-4 control-label" >Start Date - End Date</label>
                                     <div class="col-sm-8">
                                         <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
@@ -285,20 +283,23 @@
                                         <!--<span class="help-block">{{error.end_date}}</span>-->
                                     <!--</div>-->
                                 <!--</div>-->
-
-                                <div class="form-group text-center">
+                                <div class="form-group text-center" v-if="!calculateButton.loading">
                                     <label  class="col-sm-4 control-label">&nbsp;</label>
                                     <div class="col-sm-8">
                                         <!--<button  class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>-->
-                                        <div v-if="!calculateButton.loading" class="sk-spinner sk-spinner-wave">
+                                        <div  class="sk-spinner sk-spinner-wave">
                                             <div class="sk-rect1"></div>
                                             <div class="sk-rect2"></div>
                                             <div class="sk-rect3"></div>
                                             <div class="sk-rect4"></div>
                                             <div class="sk-rect5"></div>
                                         </div>
-                                        <!--<span id="helpBlokError" class="help-block">{{calculateButton.errorMessage}}</span>-->
-                                        <div v-show="calculateButton.errorMessage.length !== 0" class="alert alert-warning text-centre col-sm-12">
+                                    </div>
+                                </div>
+                                <div class="form-group" v-show="calculateButton.errorMessage.length !== 0">
+                                    <label class="col-sm-4 control-label"></label>
+                                    <div class="col-sm-8">
+                                        <div class="alert alert-danger text-centre col-sm-12">
                                             {{calculateButton.errorMessage}}
                                         </div>
                                     </div>
@@ -336,22 +337,27 @@
                                     <label class="col-sm-4 control-label" >Comments</label>
                                     <div class="col-sm-8">
                                         <textarea class="form-control" rows="2" id="comment" name="comment" v-model="formData.comment"></textarea>
-                                        <div v-show="error.submitting.length !== 0" class="alert alert-warning text-centre">
+
+                                    </div>
+                                </div>
+                                <div class="form-group" v-show="error.submitting.length !== 0">
+                                    <label class="col-sm-4 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <div  class="alert alert-danger text-centre">
                                             {{error.submitting}}
                                         </div>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >
-                                {{ saveButton.text }} <i :class="saveButton.icon"></i>
-                            </button>
-                            <button v-else class="btn "  :class="saveButton.status">
-                                Sending <span class="loading bullet"></span>
-                            </button>
+                            <!--<button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >-->
+                                <!--{{ saveButton.text }} <i :class="saveButton.icon"></i>-->
+                            <!--</button>-->
+                            <!--<button v-else class="btn "  :class="saveButton.status">-->
+                                <!--Sending <span class="loading bullet"></span>-->
+                            <!--</button>-->
                             <button type="submit" v-if="submitButton.loading"    @click="submitLeaveApplication"   class="btn "  :class="submitButton.status" >
                                 {{ submitButton.text }} <i :class="submitButton.icon"></i>
                             </button>
@@ -473,8 +479,8 @@
                     errorMessage : ''
                 },
                 submitButton : {
-                    text    : 'Submit + Close',
-                    icon    : '', /*fa fa-send*/
+                    text    : 'Submit',
+                    icon    : 'fa fa-send', /*fa fa-send*/
                     status  : 'btn-primary',
                     loading : true,
                     errorMessage : ''
@@ -495,16 +501,25 @@
                     next : '',
                     last : '',
                 },
+                meta: '',
+                New : 'label-info',
+                Canceled : 'label-danger',
+                Review : 'label-success',
+                appDetails : {}
             }
         },
         methods : {
             paginate : function (link) {
+
+                // alert(link)
+
                 var v = this
                 v.loading = true
                 if(link !== null){
                     axios.get(link)
                         .then(function (response) {
                             v.applications = response.data.data
+                            v.meta = response.data.meta
                             v.loading = false
                         })
                         .catch(function (error) {
@@ -513,9 +528,17 @@
                         })
                 }
             },
-            showApprovers : function () {
+            applicationDetails : function (application) {
                 // alert('approvers')
                 $('#approveersModal').modal('toggle')
+
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application))
+                    .then(function (response) {
+                        v.appDetails = response.data.data
+                        console.log('application Details')
+                        console.log(v.appDetails)
+                    })
             },
             getFullNames : function (departmentEmployee) {
                 return this.fullNames(departmentEmployee.First_Name , departmentEmployee.Middle_Name, departmentEmployee.Last_Name)
@@ -531,6 +554,9 @@
                 axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id))
                     .then(function (response) {
                         v.applications = response.data.data
+                        v.paginateLinks = response.data.links
+                        v.meta = response.data.meta
+
                         console.log(v.applications)
                         v.loading = false
 
@@ -588,7 +614,7 @@
                         v.calculateButton.status = 'btn btn-warning'
                         v.calculateButton.text = 'please try again '
                         v.calculateButton.icon = 'fa fa-warning'
-                        v.calculateButton.errorMessage = error.message
+                        v.calculateButton.errorMessage = error.response.data.message
                         console.log(error)
 
                     })
@@ -659,7 +685,7 @@
                         v.submitButton.loading  = true
                         v.saveButton.loading  = true
                         v.getLeaveApplications()
-                        // v.loading = true
+
                         if (v.submitAndNew ){
                             $('#myModal').modal('hide')
                             v.clearFieldsErrors()
@@ -672,17 +698,14 @@
                             v.formData = {}
                             v.dateRange = []
                         }
-
                         v.error.submitting = ''
 
                     })
                     .catch(function (error) {
                         v.submitButton.loading  = true
                         v.saveButton.loading  = true
-                        $('#myModal').modal('hide')
-                        v.formData = {}
-                        v.error.submitting = error
-                        console.log(error)
+                        v.error.submitting = error.response.data.message
+                        console.log(error.response)
                     })
             },
             getLeaveTypes : function () {
@@ -752,8 +775,8 @@
             deleteApplication : function (application) {
                 var v = this
                 axios.post(
-                    v.getApiPath(v.APIENDPOINTS.CHANGEAPPLICATIONSTATUS, '') + application.id,
-                    '',
+                    v.getApiPath(v.APIENDPOINTS.CANCELAPPLICATION, application.id),
+                    { "Status": "Canceled" },
                     {headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }}

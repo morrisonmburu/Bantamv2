@@ -72,8 +72,11 @@ const app = new Vue({
             APPROVERS                               : 'api/employees/approvers',
             PAYSLIPCURRENTEMPLOYEE                  : 'api/employees/payslip',
             CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@',
-            PAYPERIODS                              : 'api/pay_periods'
-                    },
+            PAYPERIODS                              : 'api/pay_periods',
+            CANCELAPPLICATION                       : 'api/leave_applications@status',
+            APPLICATIONDETAILS                      : 'api/leave_applications@approvals'
+
+            },
         searchResults : '',
         searchTerm : ''
     },
@@ -130,8 +133,6 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
-                    console.log(v.currentUser)
-
 
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
@@ -154,7 +155,6 @@ const app = new Vue({
                     }else{
                         console.log("There is no such user in the system");
                     }
-
                 })
                 .catch(function (error) {
                     console.log(error)

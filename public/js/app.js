@@ -1517,7 +1517,10 @@ var app = new Vue({
             APPROVERS: 'api/employees/approvers',
             PAYSLIPCURRENTEMPLOYEE: 'api/employees/payslip',
             CHANGEAPPLICATIONSTATUS: 'api/leave_applications@',
-            PAYPERIODS: 'api/pay_periods'
+            PAYPERIODS: 'api/pay_periods',
+            CANCELAPPLICATION: 'api/leave_applications@status',
+            APPLICATIONDETAILS: 'api/leave_applications@approvals'
+
         },
         searchResults: '',
         searchTerm: ''
@@ -1574,7 +1577,6 @@ var app = new Vue({
             var v = this;
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER, '')).then(function (response) {
                 v.currentUser = response.data.data;
-                console.log(v.currentUser);
 
                 if (Object.keys(v.currentUser).length !== 0) {
                     axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE, v.currentUser.id)).then(function (response) {
@@ -47547,7 +47549,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47560,6 +47562,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48021,8 +48029,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 errorMessage: ''
             },
             submitButton: {
-                text: 'Submit + Close',
-                icon: '', /*fa fa-send*/
+                text: 'Submit',
+                icon: 'fa fa-send', /*fa fa-send*/
                 status: 'btn-primary',
                 loading: true,
                 errorMessage: ''
@@ -48042,16 +48050,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 firts: '',
                 next: '',
                 last: ''
-            }
+            },
+            meta: '',
+            New: 'label-info',
+            Canceled: 'label-danger',
+            Review: 'label-success',
+            appDetails: {}
         };
     },
     methods: {
         paginate: function paginate(link) {
+
+            // alert(link)
+
             var v = this;
             v.loading = true;
             if (link !== null) {
                 axios.get(link).then(function (response) {
                     v.applications = response.data.data;
+                    v.meta = response.data.meta;
                     v.loading = false;
                 }).catch(function (error) {
                     v.loading = false;
@@ -48059,9 +48076,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }
         },
-        showApprovers: function showApprovers() {
+        applicationDetails: function applicationDetails(application) {
             // alert('approvers')
             $('#approveersModal').modal('toggle');
+
+            var v = this;
+            axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application)).then(function (response) {
+                v.appDetails = response.data.data;
+                console.log('application Details');
+                console.log(v.appDetails);
+            });
         },
         getFullNames: function getFullNames(departmentEmployee) {
             return this.fullNames(departmentEmployee.First_Name, departmentEmployee.Middle_Name, departmentEmployee.Last_Name);
@@ -48076,6 +48100,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_APPLICATIONS, v.currentUserData.id)).then(function (response) {
                 v.applications = response.data.data;
+                v.paginateLinks = response.data.links;
+                v.meta = response.data.meta;
+
                 console.log(v.applications);
                 v.loading = false;
 
@@ -48124,7 +48151,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.calculateButton.status = 'btn btn-warning';
                 v.calculateButton.text = 'please try again ';
                 v.calculateButton.icon = 'fa fa-warning';
-                v.calculateButton.errorMessage = error.message;
+                v.calculateButton.errorMessage = error.response.data.message;
                 console.log(error);
             });
         },
@@ -48187,7 +48214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.submitButton.loading = true;
                 v.saveButton.loading = true;
                 v.getLeaveApplications();
-                // v.loading = true
+
                 if (v.submitAndNew) {
                     $('#myModal').modal('hide');
                     v.clearFieldsErrors();
@@ -48199,15 +48226,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     v.formData = {};
                     v.dateRange = [];
                 }
-
                 v.error.submitting = '';
             }).catch(function (error) {
                 v.submitButton.loading = true;
                 v.saveButton.loading = true;
-                $('#myModal').modal('hide');
-                v.formData = {};
-                v.error.submitting = error;
-                console.log(error);
+                v.error.submitting = error.response.data.message;
+                console.log(error.response);
             });
         },
         getLeaveTypes: function getLeaveTypes() {
@@ -48264,7 +48288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         deleteApplication: function deleteApplication(application) {
             var v = this;
-            axios.post(v.getApiPath(v.APIENDPOINTS.CHANGEAPPLICATIONSTATUS, '') + application.id, '', { headers: {
+            axios.post(v.getApiPath(v.APIENDPOINTS.CANCELAPPLICATION, application.id), { "Status": "Canceled" }, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.getLeaveApplications();
@@ -48336,7 +48360,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("\n                            Make Appliction "),
+                  _vm._v("\n                                Make Appliction "),
                   _c("i", { staticClass: "fa fa-plus" })
                 ]
               )
@@ -48359,86 +48383,91 @@ var render = function() {
                       "tbody",
                       [
                         _vm._l(_vm.applications, function(application, index) {
-                          return _c(
-                            "tr",
-                            {
-                              attrs: {
-                                "data-toggle": "tooltip",
-                                "data-placement": "left",
-                                title: "",
-                                "data-original-title": "Click to view approvers"
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.showApprovers(application)
-                                }
-                              }
-                            },
-                            [
-                              _c("td", [_vm._v(_vm._s(index + 1) + " ")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Application_Date))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Days_Applied))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Code))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Period))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Start_Date))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Return_Date))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(application.Status))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                application.Status === "Review"
-                                  ? _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-xs btn-danger",
-                                        on: {
-                                          click: function($event) {
-                                            _vm.deleteApplication(application)
-                                          }
+                          return _c("tr", [
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.meta.from + index) + " ")
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(application.Application_Date))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(application.Days_Applied))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(application.Leave_Code))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(_vm._s(application.Leave_Period))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(application.Start_Date))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(application.Return_Date))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "label  ",
+                                  class:
+                                    application.Status === "New"
+                                      ? _vm.New
+                                      : application.Status === "Review"
+                                        ? _vm.Review
+                                        : _vm.Canceled
+                                },
+                                [_vm._v(_vm._s(application.Status))]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              application.Status === "Review"
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-sm btn-danger",
+                                      on: {
+                                        click: function($event) {
+                                          _vm.deleteApplication(application)
                                         }
-                                      },
-                                      [
-                                        _vm._v("Cancel "),
-                                        _c("i", { staticClass: "fa fa-close" })
-                                      ]
-                                    )
-                                  : _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-xs btn-default",
-                                        attrs: { disabled: "" },
-                                        on: {
-                                          click: function($event) {
-                                            _vm.deleteApplication(application)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v("Cancel "),
-                                        _c("i", { staticClass: "fa fa-close" })
-                                      ]
-                                    )
-                              ])
-                            ]
-                          )
+                                      }
+                                    },
+                                    [
+                                      _vm._v("Cancel   "),
+                                      _c("i", { staticClass: "fa fa-close" })
+                                    ]
+                                  )
+                                : _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-sm btn-default",
+                                      attrs: { disabled: "" }
+                                    },
+                                    [
+                                      _vm._v("Cancel"),
+                                      _c("i", { staticClass: "fa fa-close" })
+                                    ]
+                                  ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-default",
+                                  on: {
+                                    click: function($event) {
+                                      _vm.applicationDetails(application.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v("Details "),
+                                  _c("i", { staticClass: "fa fa-eye" })
+                                ]
+                              )
+                            ])
+                          ])
                         }),
                         _vm._v(" "),
                         _vm.isEmptyObject(_vm.applications)
@@ -48452,113 +48481,34 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row text-right" }, [
               _c(
-                "ul",
+                "div",
                 {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.showPagination,
-                      expression: "showPagination"
-                    }
-                  ],
-                  staticClass: "pagination"
+                  staticClass: "btn-group",
+                  attrs: { role: "group", "aria-label": "..." }
                 },
-                [
-                  _c(
-                    "li",
+                _vm._l(_vm.meta.last_page, function(n) {
+                  return _c(
+                    "button",
                     {
-                      staticClass: "paginate_button previous ",
-                      class: _vm.paginateButtons.firts
+                      staticClass: "btn btn-default",
+                      attrs: { type: "button", tabindex: "0" },
+                      on: {
+                        click: function($event) {
+                          _vm.paginate(_vm.meta.path + "?page=" + n)
+                        }
+                      }
                     },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: { tabindex: "0" },
-                          on: {
-                            click: function($event) {
-                              _vm.paginate(_vm.paginateLinks.first)
-                            }
-                          }
-                        },
-                        [_vm._v("<< First")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "paginate_button",
-                      class: _vm.paginateButtons.previous
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: { tabindex: "0" },
-                          on: {
-                            click: function($event) {
-                              _vm.paginate(_vm.paginateLinks.prev)
-                            }
-                          }
-                        },
-                        [_vm._v("< Previous")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "paginate_button ",
-                      class: _vm.paginateButtons.next
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: { tabindex: "0" },
-                          on: {
-                            click: function($event) {
-                              _vm.paginate(_vm.paginateLinks.next)
-                            }
-                          }
-                        },
-                        [_vm._v("Next >")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "paginate_button next",
-                      class: _vm.paginateButtons.last
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          attrs: { tabindex: "0" },
-                          on: {
-                            click: function($event) {
-                              _vm.paginate(_vm.paginateLinks.last)
-                            }
-                          }
-                        },
-                        [_vm._v("Last >>")]
-                      )
-                    ]
+                    [_vm._v(_vm._s(n))]
                   )
-                ]
+                })
               )
             ])
           ])
         ])
       ])
     ]),
+    _vm._v(" "),
+    _c("div"),
     _vm._v(" "),
     _c(
       "div",
@@ -48649,7 +48599,7 @@ var render = function() {
                     { staticClass: "form-group", class: _vm.states.start_date },
                     [
                       _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("Start date - End Date")
+                        _vm._v("Start Date - End Date")
                       ]),
                       _vm._v(" "),
                       _c(
@@ -48690,56 +48640,51 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group text-center" }, [
-                    _c("label", { staticClass: "col-sm-4 control-label" }, [
-                      _vm._v(" ")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-8" }, [
-                      !_vm.calculateButton.loading
-                        ? _c(
-                            "div",
-                            { staticClass: "sk-spinner sk-spinner-wave" },
-                            [
-                              _c("div", { staticClass: "sk-rect1" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect2" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect3" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect4" }),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "sk-rect5" })
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "div",
+                  !_vm.calculateButton.loading
+                    ? _c("div", { staticClass: "form-group text-center" }, [
+                        _c("label", { staticClass: "col-sm-4 control-label" }, [
+                          _vm._v(" ")
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(4)
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value:
-                                _vm.calculateButton.errorMessage.length !== 0,
-                              expression:
-                                "calculateButton.errorMessage.length !== 0"
-                            }
-                          ],
-                          staticClass:
-                            "alert alert-warning text-centre col-sm-12"
-                        },
-                        [
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.calculateButton.errorMessage) +
-                              "\n                                    "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.calculateButton.errorMessage.length !== 0,
+                          expression:
+                            "calculateButton.errorMessage.length !== 0"
+                        }
+                      ],
+                      staticClass: "form-group"
+                    },
+                    [
+                      _c("label", { staticClass: "col-sm-4 control-label" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-8" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "alert alert-danger text-centre col-sm-12"
+                          },
+                          [
+                            _vm._v(
+                              "\n                                            " +
+                                _vm._s(_vm.calculateButton.errorMessage) +
+                                "\n                                        "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("div", { staticClass: "hr-line-dashed" }),
                   _vm._v(" "),
@@ -48949,26 +48894,38 @@ var render = function() {
                               )
                             }
                           }
-                        }),
-                        _vm._v(" "),
+                        })
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.error.submitting.length !== 0,
+                          expression: "error.submitting.length !== 0"
+                        }
+                      ],
+                      staticClass: "form-group"
+                    },
+                    [
+                      _c("label", { staticClass: "col-sm-4 control-label" }, [
+                        _vm._v(" ")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-8" }, [
                         _c(
                           "div",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.error.submitting.length !== 0,
-                                expression: "error.submitting.length !== 0"
-                              }
-                            ],
-                            staticClass: "alert alert-warning text-centre"
-                          },
+                          { staticClass: "alert alert-danger text-centre" },
                           [
                             _vm._v(
-                              "\n                                        " +
+                              "\n                                            " +
                                 _vm._s(_vm.error.submitting) +
-                                "\n                                    "
+                                "\n                                        "
                             )
                           ]
                         )
@@ -48989,32 +48946,6 @@ var render = function() {
                 [_vm._v("Close")]
               ),
               _vm._v(" "),
-              _vm.saveButton.loading
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn ",
-                      class: _vm.saveButton.status,
-                      on: { click: _vm.saveLeaveApplication }
-                    },
-                    [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.saveButton.text) +
-                          " "
-                      ),
-                      _c("i", { class: _vm.saveButton.icon })
-                    ]
-                  )
-                : _c(
-                    "button",
-                    { staticClass: "btn ", class: _vm.saveButton.status },
-                    [
-                      _vm._v("\n                            Sending "),
-                      _c("span", { staticClass: "loading bullet" })
-                    ]
-                  ),
-              _vm._v(" "),
               _vm.submitButton.loading
                 ? _c(
                     "button",
@@ -49026,7 +48957,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            " +
+                        "\n                                " +
                           _vm._s(_vm.submitButton.text) +
                           " "
                       ),
@@ -49037,7 +48968,7 @@ var render = function() {
                     "button",
                     { staticClass: "btn ", class: _vm.submitButton.status },
                     [
-                      _vm._v("\n                            Sending "),
+                      _vm._v("\n                                Sending "),
                       _c("span", { staticClass: "loading bullet" })
                     ]
                   )
@@ -49047,7 +48978,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(4)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -49089,7 +49020,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action")])
+        _c("th", [_vm._v("Action ")])
       ])
     ])
   },
@@ -49119,6 +49050,24 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("New application")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-8" }, [
+      _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
+        _c("div", { staticClass: "sk-rect1" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "sk-rect2" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "sk-rect3" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "sk-rect4" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "sk-rect5" })
+      ])
     ])
   },
   function() {
@@ -49181,7 +49130,7 @@ var staticRenderFns = [
               _c("p", [
                 _c("strong", [_vm._v("Lorem Ipsum is simply dummy")]),
                 _vm._v(
-                  " text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown\n                        printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\n                        remaining essentially unchanged."
+                  " text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown\n                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\n                            remaining essentially unchanged."
                 )
               ])
             ]),
