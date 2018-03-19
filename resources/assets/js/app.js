@@ -53,7 +53,7 @@ const app = new Vue({
             ALLEMPLOYEES                            : 'api/employees',
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees/leave_applications?status[]=New&status[]=Review',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
-            CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
+            CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees/leave_types',           // current employee leave types
             SEARCH                                  : 'https://yesno.wtf/api',
             CALCULATE                               : 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES                              : 'api/leave_types',

@@ -50,8 +50,8 @@
                                 <td>{{application.Status}}</td>
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-default" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-xs btn-default" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -244,11 +244,8 @@
                                 <div class="form-group" :class="states.leave_code">
                                     <label class="col-sm-4 control-label">Leave type</label>
                                     <div class="col-sm-8">
-                                        <select v-if="currentUserData.Gender == 'Female'" class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.leave_code">
-                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code" v-if="leave.Gender === 'both' || (leave.Gender === 'Female')">{{leave.Description}}</option>
-                                        </select>
-                                        <select v-else class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="formData.leave_code">
-                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code" v-if="leave.Gender === 'Male' || (leave.Gender === 'both')">{{leave.Description}}</option>
+                                        <select  class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="formData.leave_code">
+                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
                                         </select>
                                         <span id="helpBlockLeaveCode" class="help-block">{{error.leave_code}}</span>
                                     </div>
@@ -653,11 +650,9 @@
             },
             getLeaveTypes : function () {
                 var v = this
-                axios.get('api/leave_types')
+                axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_TYPES, ''))
                     .then(function (response) {
                         v.leaveTypes = response.data.data
-                        console.log('leave types')
-                        console.log(v.leaveTypes)
 
                     })
                     .catch(function (error) {

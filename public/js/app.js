@@ -1498,7 +1498,7 @@ var app = new Vue({
             ALLEMPLOYEES: 'api/employees',
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS: 'api/employees/leave_applications?status[]=New&status[]=Review', // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS: 'api/employees@leave_allocations', // current employee leave allocations
-            CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees@leave_types', // current employee leave types
+            CURRENT_EMPLOYEE_LEAVE_TYPES: 'api/employees/leave_types', // current employee leave types
             SEARCH: 'https://yesno.wtf/api',
             CALCULATE: 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES: 'api/leave_types',
@@ -47546,7 +47546,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47559,9 +47559,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
-//
-//
-//
 //
 //
 //
@@ -48177,10 +48174,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getLeaveTypes: function getLeaveTypes() {
             var v = this;
-            axios.get('api/leave_types').then(function (response) {
+            axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_TYPES, '')).then(function (response) {
                 v.leaveTypes = response.data.data;
-                console.log('leave types');
-                console.log(v.leaveTypes);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -48372,7 +48367,7 @@ var render = function() {
                                   ? _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-xs btn-default",
+                                        staticClass: "btn btn-xs btn-danger",
                                         on: {
                                           click: function($event) {
                                             _vm.deleteApplication(application)
@@ -48387,7 +48382,7 @@ var render = function() {
                                   : _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-xs btn-danger",
+                                        staticClass: "btn btn-xs btn-default",
                                         attrs: { disabled: "" },
                                         on: {
                                           click: function($event) {
@@ -48448,100 +48443,47 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-sm-8" }, [
-                        _vm.currentUserData.Gender == "Female"
-                          ? _c(
-                              "select",
+                        _c(
+                          "select",
+                          {
+                            directives: [
                               {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.formData.leave_code,
-                                    expression: "formData.leave_code"
-                                  }
-                                ],
-                                staticClass: "form-control col-sm-2",
-                                attrs: { name: "leave_code", id: "leave_code" },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.formData,
-                                      "leave_code",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.leaveTypes, function(leave) {
-                                return leave.Gender === "both" ||
-                                  leave.Gender === "Female"
-                                  ? _c(
-                                      "option",
-                                      { domProps: { value: leave.Code } },
-                                      [_vm._v(_vm._s(leave.Description))]
-                                    )
-                                  : _vm._e()
-                              })
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.formData.leave_code,
+                                expression: "formData.leave_code"
+                              }
+                            ],
+                            staticClass: "form-control col-sm-2",
+                            attrs: { name: "leave_code", id: "leave_code2" },
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.formData,
+                                  "leave_code",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          _vm._l(_vm.leaveTypes, function(leave) {
+                            return _c(
+                              "option",
+                              { domProps: { value: leave.Code } },
+                              [_vm._v(_vm._s(leave.Description))]
                             )
-                          : _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.formData.leave_code,
-                                    expression: "formData.leave_code"
-                                  }
-                                ],
-                                staticClass: "form-control col-sm-2",
-                                attrs: {
-                                  name: "leave_code",
-                                  id: "leave_code2"
-                                },
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.$set(
-                                      _vm.formData,
-                                      "leave_code",
-                                      $event.target.multiple
-                                        ? $$selectedVal
-                                        : $$selectedVal[0]
-                                    )
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.leaveTypes, function(leave) {
-                                return leave.Gender === "Male" ||
-                                  leave.Gender === "both"
-                                  ? _c(
-                                      "option",
-                                      { domProps: { value: leave.Code } },
-                                      [_vm._v(_vm._s(leave.Description))]
-                                    )
-                                  : _vm._e()
-                              })
-                            ),
+                          })
+                        ),
                         _vm._v(" "),
                         _c(
                           "span",
@@ -52386,7 +52328,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52399,6 +52341,89 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52482,6 +52507,122 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "ibox float-e-margins" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "ibox-content" }, [
+            _vm.loading
+              ? _c("div", { staticClass: "spiner-example" }, [_vm._m(1)])
+              : _c(
+                  "table",
+                  {
+                    staticClass:
+                      "table table-hover table-condensed animated fadeIn"
+                  },
+                  [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c(
+                      "tbody",
+                      [
+                        _vm._l(_vm.applications, function(application, index) {
+                          return _c(
+                            "tr",
+                            {
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "left",
+                                title: "",
+                                "data-original-title": "Click to view approvers"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.showApprovers(application)
+                                }
+                              }
+                            },
+                            [
+                              _c("td", [_vm._v(_vm._s(index + 1) + " ")]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Application_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Days_Applied))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Code))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Period))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Start_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Return_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [_vm._v(_vm._s(application.Status))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                application.Status === "Review"
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-xs btn-danger",
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteApplication(application)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v("Cancel "),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                                  : _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-xs btn-default",
+                                        attrs: { disabled: "" },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteApplication(application)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v("Cancel "),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                              ])
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _vm.isEmptyObject(_vm.applications)
+                          ? _c("tr", [_vm._m(3)])
+                          : _vm._e()
+                      ],
+                      2
+                    )
+                  ]
+                )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "ibox-content p-xl" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -52521,7 +52662,68 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "ibox-title" }, [
+      _c("h5", [_vm._v("Pay Periods")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ibox-tools" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
+      _c("div", { staticClass: "sk-rect1" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect2" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect3" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect4" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sk-rect5" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Application Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Days Applied")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Leave Code")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Leave Period")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Start Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Return Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center", attrs: { colspan: "8" } }, [
+      _c("i", { staticClass: "text-muted" }, [_vm._v("no applications found")])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

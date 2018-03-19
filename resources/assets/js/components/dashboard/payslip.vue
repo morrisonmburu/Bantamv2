@@ -1,5 +1,88 @@
 <template>
     <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Pay Periods</h5>
+                        <div class="ibox-tools">
+
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div v-if="loading" class="spiner-example">
+                            <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </div>
+                        </div>
+
+                        <table v-else class="table table-hover table-condensed animated fadeIn">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <!--<th>Application Code</th>-->
+                                <th>Application Date</th>
+                                <th>Days Applied</th>
+                                <th>Leave Code</th>
+                                <th>Leave Period</th>
+                                <th>Start Date</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(application, index) in applications" @click="showApprovers(application)" data-toggle="tooltip" data-placement="left" title="" data-original-title="Click to view approvers">
+                                <td>{{ index + 1}} </td>
+                                <!--<td>{{application.Application_Code}}</td>-->
+                                <td>{{application.Application_Date}}</td>
+                                <td>{{application.Days_Applied}}</td>
+                                <td>{{application.Leave_Code}}</td>
+                                <td>{{application.Leave_Period}}</td>
+                                <td>{{application.Start_Date}}</td>
+                                <td>{{application.Return_Date}}</td>
+                                <td>{{application.Status}}</td>
+                                <td>
+                                    <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
+                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-xs btn-default" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                </td>
+                            </tr>
+                            <tr v-if="isEmptyObject(applications)">
+                                <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="ibox-content p-xl">
 
             <div class="row">
