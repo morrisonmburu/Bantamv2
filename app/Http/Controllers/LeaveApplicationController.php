@@ -103,14 +103,14 @@ class LeaveApplicationController extends Controller
             try{
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
                 $this->authorize('update',$employeeLeaveApplication);
-                $employeeLeaveApplication->Nav_Sync = 0;
+                $employeeLeaveApplication->Web_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
                     Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";
-                        $entry->Nav_Sync = 0;
+                        $entry->Web_Sync = 0;
                         $entry->save();
                         Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
 //                        SendApprovalEntriesToNav::dispatch($entry);
@@ -132,7 +132,7 @@ class LeaveApplicationController extends Controller
            'status' => 'in:Review,Canceled'
         ]);
 
-        $leave_application->Nav_Sync = 0;
+        $leave_application->Web_Sync = 0;
 
         switch ($validatedData->status){
             case 'Canceled':
@@ -218,11 +218,23 @@ class LeaveApplicationController extends Controller
     public function calculateLeaveDates(Request $request)
     {
 
+
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'leave_code' => 'required'
         ]);
+
+        if(EmployeeLeaveApplication::where(function ($q) use($validatedData) {
+            $q->where('Start_Date', '<=', $validatedData['start_date']);
+            $q->where('End_Date', '>=', $validatedData['start_date']);
+        })->orWhere(function ($q) use($validatedData) {
+            $q->where('Start_Date', '<=', $validatedData['end_date']);
+            $q->where('End_Date', '>=', $validatedData['end_date']);
+        })->count())
+        {
+            abort(400, "Leave application overlaps with another.");
+        }
 
         $manager = new NavSyncManager();
 
