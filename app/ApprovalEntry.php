@@ -7,12 +7,17 @@ use Illuminate\Support\Facades\Event;
 
 class ApprovalEntry extends Model
 {
+    use DateTimeFormatting;
     protected $guarded = [];
     protected $table = "approval_entries";
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
 
+    protected $dates = [
+        'Date_Time_Sent_for_Approval',
+        'Web_Sync_TimeStamp',
+    ];
     public static function boot()
     {
         parent::boot();
