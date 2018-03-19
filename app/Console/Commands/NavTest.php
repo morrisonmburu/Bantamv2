@@ -56,7 +56,7 @@ class NavTest extends Command
         try{
 //            $entry = Employee::find(1);
             $manager = new NavSyncManager();
-            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(1));
+            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(6));
 //            dd(EmployeeLeaveApplication::find(3)->Application_Date);
 //            $res = $manager->sendLeaveApplication(EmployeeLeaveApplication::find(3));
 //            dd(EmployeeLeaveApplication::find(1)->toArray());

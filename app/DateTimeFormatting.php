@@ -26,8 +26,10 @@ trait DateTimeFormatting
         foreach ($arr as $key => $value){
 
             if ( in_array( $key, $this->dates ) ) {
-
-                $arr[$key] =  Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                try {
+                    $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                }
+                catch (\Exception $e){}
             }
         }
         return $arr;

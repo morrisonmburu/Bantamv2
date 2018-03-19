@@ -8,6 +8,7 @@ use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NTLMStream;
 use App\LeaveType;
 use App\PayPeriod;
+use Carbon\Carbon;
 use http\Url;
 use App\Http\NavSoap\NTLMSoapClient;
 
@@ -54,6 +55,8 @@ class NavSyncManager{
                 $new_application = (array)($result->LeaveApps);
                 unset($new_application["Application_Code"]);
                 $application->fill((array)$new_application);
+                $application->Web_Sync = 0;
+                $application->Web_Sync_TimeStamp = Carbon::now();
                 $application->save();
                 return $result;
             }
@@ -81,8 +84,11 @@ class NavSyncManager{
                         (object)$approvalEntry->toArray(), $filters);
                 }
                 $new_approval = (array)($result->HRApprovals);
+                $id = $new_approval["Table_ID"];
                 unset($new_approval["Table_ID"]);
-                $approvalEntry->fill((array)$new_approval);
+                $approvalEntry = ApprovalEntry::where("Table_ID", $id)->first()->fill((array)$new_approval);
+                $approvalEntry->Web_Sync = 0;
+                $approvalEntry->Web_Sync_TimeStamp = Carbon::now();
                 $approvalEntry->save();
             }
             return $result;
@@ -181,8 +187,8 @@ class NavSyncManager{
                     }
                     $this->update($endpoint, $record->toArray(), $filter_array);
 
-                    $record->Nav_Sync = false;
-                    $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                    $record->Web_Sync = false;
+                    $record->Web_Sync_TimeStamp = date("Y-m-d");
                     $record->save();
                 } catch (\Exception $e) {
                     print ($e->getMessage() . "\n\n");
