@@ -12,26 +12,34 @@ trait DateTimeFormatting
 
     public function getAttribute($key)
     {
+        try{
+            if ( in_array( $key, $this->dates ) ) {
 
-        if ( in_array( $key, $this->dates ) ) {
-
-            return  Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                return  Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+            }
         }
+        catch (\Exception $e){}
         return parent::getAttribute($key);
     }
 
     public function toArray(){
 
         $arr =  parent::toArray();
-        foreach ($arr as $key => $value){
 
-            if ( in_array( $key, $this->dates ) ) {
-                try {
-                    $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+        try {
+
+
+            foreach ($arr as $key => $value) {
+
+                if (in_array($key, $this->dates)) {
+                    try {
+                        $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                    } catch (\Exception $e) {
+                    }
                 }
-                catch (\Exception $e){}
             }
         }
+        catch (\Exception $e){}
         return $arr;
     }
 }
