@@ -4,8 +4,8 @@
 
             <div class="row">
                 <div class="form-group" >
-                    <!--<datepicker format="yyyy-MM-dd" :minimumView="'month'" :maximumView="'year'" :initialView="'month'" v-model="formData.period" name="period" id="period"  input-class="form-control"></datepicker>-->
-                    <DatePicker  v-model="testdate"  type="date" format="yyyy-MM-dd" range lang="en"></DatePicker>
+                    <datepicker format="yyyy-MM-dd" :minimumView="'month'" :maximumView="'year'" :initialView="'month'" v-model="formData.period" name="period" id="period"  input-class="form-control"></datepicker>
+                    <!--<DatePicker  v-model="testdate"  type="date" format="yyyy-MM-dd"  lang="en"></DatePicker>-->
 
 
 
@@ -20,9 +20,9 @@
 </template>
 
 <script>
-   // import Datepicker from 'vuejs-datepicker';
+   import DatePicker from 'vuejs-datepicker';
 
-   import DatePicker from 'vue2-datepicker';
+   // import DatePicker from 'vue2-datepicker';
 
 
 

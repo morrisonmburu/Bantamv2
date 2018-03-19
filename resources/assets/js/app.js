@@ -83,7 +83,7 @@ const app = new Vue({
             nameOne     = nameOne === null ? '' : nameOne.trim()
             // nameTwo     = nameTwo === null? '' : nameTwo.trim()
             nameThree   = nameThree === null ? '' : nameThree.trim()
-            return nameOne + ' ' + nameTwo + ' ' + nameThree
+            return nameOne + /*' ' + nameTwo +*/ ' ' + nameThree
         },
         swapComponent: function (component) {
             if (Vue.options.components[component]) {
@@ -121,10 +121,15 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
+                    console.log(v.currentUser)
+
+
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
+
+                                console.log(v.currentUserData)
 
                                 v.setUserDetails()
 
