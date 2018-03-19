@@ -7,7 +7,7 @@
         {{--Breadcrumb--}}
         <ol class="breadcrumb">
             <li>
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
             </li>
             <li class="active">
                 <strong>@{{ currentComponent }}</strong>
@@ -23,6 +23,9 @@
                 <button type="button" class="btn btn-default btn-sm">Dependants</button>
                 <button type="button" class="btn btn-default btn-sm">Next of Kin</button>
             </div>
+
+            <button type="button"  class="btn btn-primary btn-sm"  @click="swapComponent('new-leave')">Leave Application</button>
+            <button type="button"  class="btn btn-primary btn-sm"  @click="swapComponent('payslip')">Payslips</button>
         </div>
     </div>
 </div>

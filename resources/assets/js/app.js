@@ -35,6 +35,7 @@ Vue.component('notification', require('./components/dashboard/utilities/notifica
 const app = new Vue({
     el: '#app',
     data: {
+        openModal : false,
         currentComponent: 'dashboard',
         profPic : '',
         currentUser                         : {},
@@ -86,10 +87,17 @@ const app = new Vue({
             return nameOne + /*' ' + nameTwo +*/ ' ' + nameThree
         },
         swapComponent: function (component) {
-            if (Vue.options.components[component]) {
-                this.currentComponent = component
-            } else {
-                alert(component + ' component not found');
+
+            if (component === 'new-leave'){
+                this.openModal = true
+                this.currentComponent = 'open-applications'
+            }else {
+                this.openModal = false
+                if (Vue.options.components[component]) {
+                    this.currentComponent = component
+                } else {
+                    alert(component + ' component not found');
+                }
             }
         },
         validateField : function (field) {
