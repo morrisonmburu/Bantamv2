@@ -1525,9 +1525,9 @@ var app = new Vue({
             return Object.keys(object).length === 0;
         },
         fullNames: function fullNames(nameOne, nameTwo, nameThree) {
-            nameOne = nameOne.length === 0 ? '' : nameOne.trim();
-            nameTwo = nameTwo.length === 0 ? '' : nameTwo.trim();
-            nameThree = nameThree.length === 0 ? '' : nameThree.trim();
+            nameOne = nameOne === null ? '' : nameOne.trim();
+            // nameTwo     = nameTwo === null? '' : nameTwo.trim()
+            nameThree = nameThree === null ? '' : nameThree.trim();
             return nameOne + ' ' + nameTwo + ' ' + nameThree;
         },
         swapComponent: function swapComponent(component) {
@@ -1555,7 +1555,7 @@ var app = new Vue({
 
         setUserDetails: function setUserDetails() {
 
-            this.userDetails.fullName = this.fullNames(this.currentUserData.First_Name, this.currentUserData.First_Name, this.currentUserData.Middle_Name);
+            this.userDetails.fullName = this.fullNames(this.currentUserData.First_Name, this.currentUserData.Middle_Name, this.currentUserData.Last_Name);
             // this.userDetails.fullName = this.currentUserData.First_Name == null ? "": this.currentUserData.First_Name  +' '+ this.currentUserData.Middle_Name +' '+ this.currentUserData.Last_Name
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id);
             this.userDetails.id = this.currentUser.id;
@@ -48617,10 +48617,6 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(index + 1))]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm._v(_vm._s(application.Application_Code))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
                               _vm._v(_vm._s(application.Application_Date))
                             ]),
                             _vm._v(" "),
@@ -48781,7 +48777,7 @@ var render = function() {
                     { staticClass: "form-group", class: _vm.states.start_date },
                     [
                       _c("label", { staticClass: "col-sm-4 control-label" }, [
-                        _vm._v("From date to date")
+                        _vm._v("Start date - End Date")
                       ]),
                       _vm._v(" "),
                       _c(
@@ -49204,8 +49200,6 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Application Code")]),
         _vm._v(" "),
         _c("th", [_vm._v("Application Date")]),
         _vm._v(" "),
@@ -50487,8 +50481,6 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(request.Document_No))]),
-                              _vm._v(" "),
                               _c("td", [
                                 _vm._v(_vm._s(request.Document_Owner))
                               ]),
@@ -50961,13 +50953,7 @@ var render = function() {
                       attrs: { type: "button" }
                     },
                     [_c("span", { staticClass: "loading bullet" })]
-                  ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn  btn-warning", attrs: { type: "button" } },
-                [_vm._v("Escalate")]
-              )
+                  )
             ])
           ])
         ])
@@ -51111,8 +51097,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Approver")]),
         _vm._v(" "),
         _c("th", [_vm._v("Date Sent")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Document No")]),
         _vm._v(" "),
         _c("th", [_vm._v("Document Owner")]),
         _vm._v(" "),

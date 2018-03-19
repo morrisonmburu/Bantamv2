@@ -26,7 +26,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Application Code</th>
+                                <!--<th>Application Code</th>-->
                                 <th>Application Date</th>
                                 <th>Days Applied</th>
                                 <th>Leave Code</th>
@@ -40,7 +40,7 @@
                             <tbody>
                             <tr v-for="(application, index) in applications">
                                 <td>{{ index + 1}}</td>
-                                <td>{{application.Application_Code}}</td>
+                                <!--<td>{{application.Application_Code}}</td>-->
                                 <td>{{application.Application_Date}}</td>
                                 <td>{{application.Days_Applied}}</td>
                                 <td>{{application.Leave_Code}}</td>
@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.start_date">
-                                    <label class="col-sm-4 control-label" >From date to date</label>
+                                    <label class="col-sm-4 control-label" >Start date - End Date</label>
                                     <div class="col-sm-8">
                                         <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
