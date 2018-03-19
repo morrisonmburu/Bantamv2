@@ -6,6 +6,7 @@ use App\ApprovalEntry;
 use App\Notifications\canceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\LeaveCanceled;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
@@ -68,6 +69,8 @@ class LeaveApplicationController extends Controller
             "Status" => $validatedData->status,
             "End_Date" => $validatedData->end_date,
             "Return_Date" => $validatedData->return_date,
+            "Comments" => $validatedData->comments,
+            "Application_Date" => Carbon::now(),
             "Application_Code" => uniqid()
         ];
         $LeaveApplication->fill($data);

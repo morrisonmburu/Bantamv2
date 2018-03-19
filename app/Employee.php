@@ -99,6 +99,20 @@ class Employee extends Model
 
         );
     }
+
+
+    public function leave_types(){
+        return $this->hasManyThrough(
+            LeaveType::class,
+            EmployeeLeaveAllocation::class,
+            'Leave_Code',
+            'Code',
+            'No',
+            'Employee_No'
+
+        );
+    }
+
     public function saveProfilePic($encodedImage){
         try{
             $decodedImage = base64_decode($encodedImage);

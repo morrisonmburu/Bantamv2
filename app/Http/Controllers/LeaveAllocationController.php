@@ -95,4 +95,15 @@ class LeaveAllocationController extends Controller
             return new LeaveAllocationResource($employee->Employee_leave_allocations()->paginate());
         }
     }
+
+
+        //Get current employee's leave types
+
+        public function current_employee_leave_types( Request $request){
+            $employee = $request->user()->Employee_Record;
+            $this->authorize('employee', [EmployeeLeaveAllocation::class, $employee]);
+            if ($request->is('api*')) {
+                return $employee->leave_types()->paginate();
+            }
+        }
 }
