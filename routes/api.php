@@ -37,6 +37,7 @@ Route::prefix('employees')->group(function () {
     Route::get('/approvals', 'ApprovalEntryController@current_employee_approvals');
     Route::get('/approvers', 'EmployeeApproverController@approvers');
     Route::get('/payslip', 'EmployeeController@payslip');
+    Route::get('/leave_types', 'LeaveAllocationController@current_employee_leave_types');
 
     Route::get('{employee}/user', 'EmployeeController@user');
     Route::get('{employee}/picture', 'EmployeeController@picture');
@@ -53,6 +54,7 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('calculate_leave_dates', 'LeaveApplicationController@calculateLeaveDates');
     Route::post('requests', 'LeaveApplicationController@requests');
     Route::post('{leave_applications}/status', 'LeaveApplicationController@status');
+    Route::get('{leave_application}/approvals', 'ApprovalEntryController@application_approvals');
 });
 
 

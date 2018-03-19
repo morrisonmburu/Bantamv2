@@ -99,6 +99,20 @@ class Employee extends Model
 
         );
     }
+
+
+    public function leave_types(){
+        return $this->hasManyThrough(
+            LeaveType::class,
+            EmployeeLeaveAllocation::class,
+            'Employee_No',
+            'Code',
+            'No',
+            'Leave_Code'
+
+        );
+    }
+
     public function saveProfilePic($encodedImage){
         try{
             $decodedImage = base64_decode($encodedImage);
@@ -129,9 +143,5 @@ class Employee extends Model
             print($e);
             return false;
         }
-    }
-    // Get all leave types for the employee
-    public function LeaveTypes(){
-        return LeaveType::all();
     }
 }

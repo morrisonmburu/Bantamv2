@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
 use App\Employee;
+use App\EmployeeLeaveApplication;
 use App\Http\Resources\ApprovalEntryCollection;
 use App\Http\Resources\ApprovalEntryResource;
 use Illuminate\Http\Request;
@@ -53,6 +54,10 @@ class ApprovalEntryController extends Controller
 
     public function current_employee_approvals(Request $request){
         return $this->getEmployeeApprovalEntries($request,  Auth::user()->Employee_Record);
+    }
+
+    public function application_approvals( EmployeeLeaveApplication $leave_application, Request $request ){
+        return ApprovalEntryResource::collection($leave_application->approval_entries);
     }
 
     private function getEmployeeApprovalEntries(Request $request, Employee $employee){
