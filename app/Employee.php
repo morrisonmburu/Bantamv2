@@ -105,10 +105,10 @@ class Employee extends Model
         return $this->hasManyThrough(
             LeaveType::class,
             EmployeeLeaveAllocation::class,
-            'Leave_Code',
+            'Employee_No',
             'Code',
             'No',
-            'Employee_No'
+            'Leave_Code'
 
         );
     }
@@ -143,9 +143,5 @@ class Employee extends Model
             print($e);
             return false;
         }
-    }
-    // Get all leave types for the employee
-    public function LeaveTypes(){
-        return LeaveType::all();
     }
 }
