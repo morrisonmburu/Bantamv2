@@ -24,12 +24,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Current</th>
+                                <th>Status</th>
                                 <th>Starting_Date</th>
-                                <th>Date_Locked</th>
-                                <th>Close_Date</th>
                                 <th>Closed</th>
-                                <th>Closed_By</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -37,15 +34,12 @@
                             <tr v-for="(period, index) in periods">
                                 <td>{{ index + 1}} </td>
                                 <td>{{period.Name}}</td>
+                                <td><span class="label label-info" v-if="period.Current">Current</span> <span v-else></span></td>
                                 <td>{{period.Starting_Date}}</td>
-                                <td>{{period.Current}}</td>
                                 <td>{{period.Closed}}</td>
-                                <td>{{period.Close_Date}}</td>
-                                <td>{{period.Closed_By}}</td>
-                                <td>{{period.Date_Locked}}</td>
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button @click="getPayslip"  class="btn btn-xs btn-default" >View Payslip <i class="fa fa-eye"></i> </button>
+                                    <button @click="getPayslip(period.Starting_Date)"  class="btn btn-xs btn-success" >View Payslip <i class="fa fa-eye"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(periods)">
@@ -87,22 +81,9 @@
             }
         },
         methods : {
-            getPayslip : function () {
-
-                // console.log(this.testdate[0])
-                this.testdate[0] = this.testdate[0].toISOString().slice(0,10)
-                this.testdate[1] = this.testdate[1].toISOString().slice(0,10)
-
-                console.log(this.testdate[0])
-                console.log(this.testdate[1])
-
-                // if (this.formData.period.length !== 0){
-                //     this.formData.period = (this.formData.period).toISOString().slice(0,10)
-                //     this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' +  this.formData.period
-                //     window.open(this.formData.link, '_blank');
-                // }else {
-                //     alert('select period')
-                // }
+            getPayslip : function (period) {
+                this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' +  period
+                window.open(this.formData.link, '_blank');
             },
             getPeriods : function () {
                 var v = this

@@ -47547,7 +47547,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48013,7 +48013,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 errorMessage: ''
             },
             timer: '',
-            departmentEmployees: {}
+            departmentEmployees: {},
+            openAppModal: false
         };
     },
     methods: {
@@ -48037,8 +48038,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log(v.applications);
                 v.loading = false;
 
-                if (v.openModal) {
-                    setTimeout($('#myModal').modal('toggle'), 50000);
+                if (v.openAppModal) {
+                    setTimeout($('#myModal').modal('toggle'), 5000);
+                    v.openAppModal = false;
                 }
             }).catch(function (errro) {
                 console.log(errro);
@@ -48099,6 +48101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.validateLeaveApplication()) {
                 this.formData.status = 'Review';
                 this.submitButton.loading = false;
+                this.submitAndNew = false;
                 this.sendLeaveApplication();
             }
         },
@@ -48137,8 +48140,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             //for testing only
             // v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
-            //
-
             axios.post(this.APIENDPOINTS.LEAVEAPPLICATION, this.formData, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
@@ -48146,7 +48147,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 v.saveButton.loading = true;
                 v.getLeaveApplications();
                 // v.loading = true
-                if (submitAndNew) {
+                if (v.submitAndNew) {
                     $('#myModal').modal('hide');
                     v.clearFieldsErrors();
                     v.formData = {};
@@ -48162,14 +48163,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 v.submitButton.loading = true;
                 v.saveButton.loading = true;
-                // v.submitButton.text = 'Error Submitting Application'
-                // v.submitButton.status = 'btn btn-warning'
-                // if (formData.status === 'save'){
-                //     $('#myModal').modal('hide')
-                //     v.clearFieldsErrors()
-                //     $('#myModal').modal('show')
-                // }
-                v.error.submitting = error.response.message;
+                $('#myModal').modal('hide');
+                v.formData = {};
+                v.error.submitting = error;
                 console.log(error);
             });
         },
@@ -48246,13 +48242,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.timer = setInterval(this.getLeaveApplications, 300000);
     },
 
-
     watch: {
         dateRange: function dateRange(newVal, OldVal) {
             this.setDates();
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        if (this.openModal) {
+            this.openAppModal = true;
+        }
+    }
 });
 
 /***/ }),
@@ -52329,7 +52328,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -52340,12 +52339,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -52418,22 +52411,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     methods: {
-        getPayslip: function getPayslip() {
-
-            // console.log(this.testdate[0])
-            this.testdate[0] = this.testdate[0].toISOString().slice(0, 10);
-            this.testdate[1] = this.testdate[1].toISOString().slice(0, 10);
-
-            console.log(this.testdate[0]);
-            console.log(this.testdate[1]);
-
-            // if (this.formData.period.length !== 0){
-            //     this.formData.period = (this.formData.period).toISOString().slice(0,10)
-            //     this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' +  this.formData.period
-            //     window.open(this.formData.link, '_blank');
-            // }else {
-            //     alert('select period')
-            // }
+        getPayslip: function getPayslip(period) {
+            this.formData.link = this.APIENDPOINTS.PAYSLIPCURRENTEMPLOYEE + '?period=' + period;
+            window.open(this.formData.link, '_blank');
         },
         getPeriods: function getPeriods() {
             var v = this;
@@ -52488,24 +52468,30 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(period.Name))]),
                           _vm._v(" "),
+                          _c("td", [
+                            period.Current
+                              ? _c(
+                                  "span",
+                                  { staticClass: "label label-info" },
+                                  [_vm._v("Current")]
+                                )
+                              : _c("span")
+                          ]),
+                          _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(period.Starting_Date))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(period.Current))]),
-                          _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(period.Closed))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(period.Close_Date))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(period.Closed_By))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(period.Date_Locked))]),
                           _vm._v(" "),
                           _c("td", [
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-xs btn-default",
-                                on: { click: _vm.getPayslip }
+                                staticClass: "btn btn-xs btn-success",
+                                on: {
+                                  click: function($event) {
+                                    _vm.getPayslip(period.Starting_Date)
+                                  }
+                                }
                               },
                               [
                                 _vm._v("View Payslip "),
@@ -52566,17 +52552,11 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Name")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Current")]),
+        _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Starting_Date")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Date_Locked")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Close_Date")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Closed")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Closed_By")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])

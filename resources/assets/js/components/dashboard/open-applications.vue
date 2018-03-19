@@ -465,7 +465,8 @@
                     errorMessage : ''
                 },
                 timer   : '',
-                departmentEmployees : {}
+                departmentEmployees : {},
+                openAppModal : false
             }
         },
         methods : {
@@ -490,10 +491,10 @@
                         console.log(v.applications)
                         v.loading = false
 
-                        if(v.openModal){
-                            setTimeout($('#myModal').modal('toggle'), 50000)
+                        if(v.openAppModal){
+                            setTimeout($('#myModal').modal('toggle'), 5000)
+                            v.openAppModal = false
                         }
-
 
                     })
                     .catch(function (errro) {
@@ -564,6 +565,7 @@
                 if(this.validateLeaveApplication()) {
                     this.formData.status = 'Review'
                     this.submitButton.loading = false
+                    this.submitAndNew = false
                     this.sendLeaveApplication()
                 }
             },
@@ -603,8 +605,6 @@
                 let v = this
                 //for testing only
                 // v.formData.return_date = v.formData.return_date.toISOString().slice(0,10)
-                //
-
                 axios.post(
                     this.APIENDPOINTS.LEAVEAPPLICATION,
                     this.formData,
@@ -617,7 +617,7 @@
                         v.saveButton.loading  = true
                         v.getLeaveApplications()
                         // v.loading = true
-                        if (submitAndNew ){
+                        if (v.submitAndNew ){
                             $('#myModal').modal('hide')
                             v.clearFieldsErrors()
                             v.formData = {}
@@ -636,16 +636,10 @@
                     .catch(function (error) {
                         v.submitButton.loading  = true
                         v.saveButton.loading  = true
-                        // v.submitButton.text = 'Error Submitting Application'
-                        // v.submitButton.status = 'btn btn-warning'
-                        // if (formData.status === 'save'){
-                        //     $('#myModal').modal('hide')
-                        //     v.clearFieldsErrors()
-                        //     $('#myModal').modal('show')
-                        // }
-                        v.error.submitting = error.response.message
+                        $('#myModal').modal('hide')
+                        v.formData = {}
+                        v.error.submitting = error
                         console.log(error)
-
                     })
             },
             getLeaveTypes : function () {
@@ -739,17 +733,17 @@
             this.timer = setInterval(this.getLeaveApplications, 300000)
 
         },
-
         watch : {
             dateRange : function (newVal, OldVal) {
                 this.setDates()
             }
         },
         mounted(){
-
+            if(this.openModal){
+                this.openAppModal = true
+            }
         },
     }
-
 </script>
 
 <style scoped>
