@@ -59,6 +59,26 @@
                             </tr>
                             </tbody>
                         </table>
+
+                        <div class="row text-right" >
+                            <ul class="pagination" v-show="showPagination">
+                                <li class="paginate_button previous "  :class="paginateButtons.firts">
+                                    <a @click="paginate(paginateLinks.first)" tabindex="0"><< First</a>
+                                </li>
+                                <li class="paginate_button" :class="paginateButtons.previous">
+                                    <a @click="paginate(paginateLinks.prev)" tabindex="0">< Previous</a>
+                                </li>
+                                <li class="paginate_button " :class="paginateButtons.next">
+                                    <a  @click="paginate(paginateLinks.next)" tabindex="0">Next ></a>
+                                </li>
+                                <li  class="paginate_button next" :class="paginateButtons.last">
+                                    <a @click="paginate(paginateLinks.last)" tabindex="0">Last >></a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -398,11 +418,13 @@
         ],
         data : function(){
             return {
+                showPagination : true,
                 calculateButtonText : 'Calculate',
                 submittButtonText   : 'Submit Application',
                 spinner : true,
                 dateRange : [],
                 submitAndNew : false,
+                paginateLinks : {},
                 formData: {
                     leave_code : '',
                     start_date : '',
@@ -466,10 +488,31 @@
                 },
                 timer   : '',
                 departmentEmployees : {},
-                openAppModal : false
+                openAppModal : false,
+                paginateButtons : {
+                    previous : '',
+                    firts : '',
+                    next : '',
+                    last : '',
+                },
             }
         },
         methods : {
+            paginate : function (link) {
+                var v = this
+                v.loading = true
+                if(link !== null){
+                    axios.get(link)
+                        .then(function (response) {
+                            v.applications = response.data.data
+                            v.loading = false
+                        })
+                        .catch(function (error) {
+                            v.loading = false
+                            console.log(error)
+                        })
+                }
+            },
             showApprovers : function () {
                 // alert('approvers')
                 $('#approveersModal').modal('toggle')
