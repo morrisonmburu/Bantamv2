@@ -1,5 +1,4 @@
 <template>
-    <div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -24,36 +23,33 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <!--<th>Application Code</th>-->
-                                <th>Application Date</th>
-                                <th>Days Applied</th>
-                                <th>Leave Code</th>
-                                <th>Leave Period</th>
-                                <th>Start Date</th>
-                                <th>Return Date</th>
-                                <th>Status</th>
+                                <th>Name</th>
+                                <th>Current</th>
+                                <th>Starting_Date</th>
+                                <th>Date_Locked</th>
+                                <th>Close_Date</th>
+                                <th>Closed</th>
+                                <th>Closed_By</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications" @click="showApprovers(application)" data-toggle="tooltip" data-placement="left" title="" data-original-title="Click to view approvers">
+                            <tr v-for="(period, index) in periods">
                                 <td>{{ index + 1}} </td>
-                                <!--<td>{{application.Application_Code}}</td>-->
-                                <td>{{application.Application_Date}}</td>
-                                <td>{{application.Days_Applied}}</td>
-                                <td>{{application.Leave_Code}}</td>
-                                <td>{{application.Leave_Period}}</td>
-                                <td>{{application.Start_Date}}</td>
-                                <td>{{application.Return_Date}}</td>
-                                <td>{{application.Status}}</td>
+                                <td>{{period.Name}}</td>
+                                <td>{{period.Starting_Date}}</td>
+                                <td>{{period.Current}}</td>
+                                <td>{{period.Closed}}</td>
+                                <td>{{period.Close_Date}}</td>
+                                <td>{{period.Closed_By}}</td>
+                                <td>{{period.Date_Locked}}</td>
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-xs btn-default" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button @click="getPayslip"  class="btn btn-xs btn-default" >View Payslip <i class="fa fa-eye"></i> </button>
                                 </td>
                             </tr>
-                            <tr v-if="isEmptyObject(applications)">
-                                <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
+                            <tr v-if="isEmptyObject(periods)">
+                                <td colspan="8" class="text-center"><i class="text-muted">no periods found</i></td>
                             </tr>
                             </tbody>
                         </table>
@@ -61,56 +57,14 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="ibox-content p-xl">
-
-            <div class="row">
-                <div class="form-group">
-                    <DatePicker format="yyyy-MM-dd" :minimumView="'month'" :maximumView="'year'" :initialView="'month'" v-model="formData.period" name="period" id="period"  input-class="form-control"></DatePicker>
-                    <!--<DatePicker  v-model="testdate"  type="date" format="yyyy-MM-dd"  lang="en"></DatePicker>-->
-                </div>
-                <div class="form-group" >
-                    <button type="submit" @click="getPayslip">Generate payslip</button>
-                </div>
-                </div>
-            </div>
-
-        </div>
 </template>
 
 <script>
-   import DatePicker from 'vuejs-datepicker';
-
-   // import DatePicker from 'vue2-datepicker';
 
 
 
     export default {
         name: "payslip",
-        components: {
-            DatePicker
-        },
         props : [
             'currentUser',
             'currentUserData',
@@ -123,21 +77,13 @@
         ],
         data : function () {
             return{
+                loading : true,
+                periods : {},
                formData : {
                    period : '',
                    link : '',
 
                },
-                testdate : '',
-                time1: '',
-                time2: '',
-                shortcuts: [
-                    {
-                        text: 'Today',
-                        start: new Date(),
-                        end: new Date()
-                    }
-                ]
             }
         },
         methods : {
@@ -157,7 +103,24 @@
                 // }else {
                 //     alert('select period')
                 // }
+            },
+            getPeriods : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.PAYPERIODS, ''))
+                    .then(function (response) {
+                        v.periods = response.data.data
+                        v.loading = false
+                        console.log('periods')
+                        console.log(v.periods)
+                    })
+                    .catch(function(error){
+                        v.loading = false
+                        console.log(error)
+                    })
             }
+        },
+        created(){
+            this.getPeriods()
         }
     }
 </script>
