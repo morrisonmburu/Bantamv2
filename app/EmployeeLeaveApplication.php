@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Event;
 
 class EmployeeLeaveApplication extends Model
 {
+    use DateFormatting;
     protected $guarded = [];
     protected $table = "employee_leave_applications";
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
 
+    protected $dates = [
+        'Application_Date'
+    ];
     public  static function boot()
     {
         parent::boot();
@@ -43,7 +47,6 @@ class EmployeeLeaveApplication extends Model
         return $this->belongsTo(Employee::class, "Employee_No", "No");
     }
 
-    public function getapplicationdateAttribute($value){
-        return null;
-    }
+
+
 }

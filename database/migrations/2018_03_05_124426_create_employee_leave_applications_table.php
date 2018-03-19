@@ -25,7 +25,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->date('Start_Date');
             $table->date('End_Date')->nullable();
             $table->date('Return_Date')->nullable();
-            $table->dateTime('Application_Date')->nullable();
+            $table->date('Application_Date')->nullable();
             $table->string("Next_Approver", 50)->nullable();
             $table->string("Comments", 255)->nullable();
             $table->decimal("Approved_Days", 5, 2)->nullable();

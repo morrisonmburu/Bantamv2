@@ -15,7 +15,7 @@ class PayPeriodController extends Controller
      */
     public function index()
     {
-        return PayPeriodResource::collection(PayPeriod::all());
+        return PayPeriodResource::collection(PayPeriod::where('Closed', 1)->paginate());
     }
 
     /**

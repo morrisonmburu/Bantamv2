@@ -33,10 +33,10 @@ class NavSyncManager{
     }
 
     public function sendLeaveApplication(EmployeeLeaveApplication $application){
-        try {
+
             $application = EmployeeLeaveApplication::find($application->id);
 
-            if ($application->Nav_Sync == 0) {
+            if ($application->Web_Sync == 1) {
 
                 $result = null;
                 if (true) {
@@ -55,11 +55,8 @@ class NavSyncManager{
                 unset($new_application["Application_Code"]);
                 $application->fill((array)$new_application);
                 $application->save();
+                return $result;
             }
-        }
-        catch (\Exception $e){
-            print($e);
-        }
     }
 
 
