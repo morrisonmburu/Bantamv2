@@ -54,29 +54,10 @@ class NavTest extends Command
     public function handle()
     {
         try{
-            $entry = Employee::find(1);
+//            $entry = Employee::find(1);
             $manager = new NavSyncManager();
-            $res = $manager->calculateLeaveDates("ANNUAL",
-                $entry->No,
-                $entry->_x003C_Base_Calendar_cODE_x003E_,
-                date("Y-m-d"),
-                date("Y-m-d")
-            );
+            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(1));
             dd($res);
-//            $start_date = "2018-03-07";
-//            $end_date = '2018-03-07';
-//            if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
-//                $q->where('Start_Date', '<=', $start_date);
-//                $q->where('End_Date', '>=', $start_date);
-//            })->orWhere(function ($q) use($end_date) {
-//                $q->where('Start_Date', '<=', $end_date);
-//                $q->where('End_Date', '>=', $end_date);
-//            })->count())
-//            {
-//                dd( "Leave application overlaps with another.");
-//            }else{
-//                dd("no overlaps");
-//            }
         }
         catch (\Exception $e){
             print ($e);

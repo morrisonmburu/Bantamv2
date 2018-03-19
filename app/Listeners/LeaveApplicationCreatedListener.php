@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\ApprovalEntry;
 use App\EmployeeApprover;
 use App\EmployeeLeaveApplication;
+use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\NotifyApprover;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -61,7 +62,7 @@ class LeaveApplicationCreatedListener
             $i++;
 
         }
-
+        Notification::send($application->employee->user, new LeaveApprovalRequestSent());
         SendLeaveApplicationToNav::dispatch($application);
 
     }
