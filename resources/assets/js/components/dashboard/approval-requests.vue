@@ -61,7 +61,7 @@
                                     <th>#</th>
                                     <th>Approver</th>
                                     <th>Date Sent</th>
-                                    <th>Document No</th>
+                                    <!--<th>Document No</th>-->
                                     <th>Document Owner</th>
                                     <th>Document Type</th>
                                     <th>Status</th>
@@ -74,7 +74,7 @@
                                     <td>{{index + 1}}</td>
                                     <td>{{request.Approval_Details}}</td>
                                     <td>{{request.Date_Time_Sent_for_Approval}}</td>
-                                    <td>{{request.Document_No}}</td>
+                                    <!--<td>{{request.Document_No}}</td>-->
                                     <td>{{request.Document_Owner}}</td>
                                     <td>{{request.Document_Type}}</td>
                                     <td>{{request.Status}}</td>
@@ -195,7 +195,7 @@
                         <button v-else type="button" class="btn  btn-success"><span class="loading bullet"></span></button>
                         <button v-if="rejectButton.loading" type="button" class="btn  btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
                         <button v-else type="button" class="btn  btn-danger"  ><span class="loading bullet"></span></button>
-                        <button type="button" class="btn  btn-warning">Escalate</button>
+                        <!--<button type="button" class="btn  btn-warning">Escalate</button>-->
                     </div>
                 </div>
             </div>

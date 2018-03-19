@@ -26,7 +26,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Application Code</th>
+                                <!--<th>Application Code</th>-->
                                 <th>Application Date</th>
                                 <th>Days Applied</th>
                                 <th>Leave Code</th>
@@ -34,13 +34,13 @@
                                 <th>Start Date</th>
                                 <th>Return Date</th>
                                 <th>Status</th>
-                                <!--<th>Action</th>-->
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr v-for="(application, index) in applications">
                                 <td>{{ index + 1}}</td>
-                                <td>{{application.Application_Code}}</td>
+                                <!--<td>{{application.Application_Code}}</td>-->
                                 <td>{{application.Application_Date}}</td>
                                 <td>{{application.Days_Applied}}</td>
                                 <td>{{application.Leave_Code}}</td>
@@ -49,8 +49,9 @@
                                 <td>{{application.Return_Date}}</td>
                                 <td>{{application.Status}}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>
-                                    <button class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Delete <i class="fa fa-close"></i> </button>
+                                    <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
+                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-xs btn-danger" @click="deleteApplication(application)" >Cancel <i class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -243,14 +244,17 @@
                                 <div class="form-group" :class="states.leave_code">
                                     <label class="col-sm-4 control-label">Leave type</label>
                                     <div class="col-sm-8">
-                                        <select class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.leave_code">
-                                            <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
+                                        <select v-if="currentUserData.Gender == 'Female'" class="form-control col-sm-2" name="leave_code" id="leave_code" v-model="formData.leave_code">
+                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code" v-if="leave.Gender === 'both' || (leave.Gender === 'Female')">{{leave.Description}}</option>
+                                        </select>
+                                        <select v-else class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="formData.leave_code">
+                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code" v-if="leave.Gender === 'Male' || (leave.Gender === 'both')">{{leave.Description}}</option>
                                         </select>
                                         <span id="helpBlockLeaveCode" class="help-block">{{error.leave_code}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.start_date">
-                                    <label class="col-sm-4 control-label" >From date to date</label>
+                                    <label class="col-sm-4 control-label" >Start date - End Date</label>
                                     <div class="col-sm-8">
                                         <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
@@ -287,14 +291,14 @@
                                 <div class="form-group" :class="states.no_of_days">
                                     <label  class="col-sm-4 control-label">Number of days</label>
                                     <div class="col-sm-8">
-                                        <input type="number"  placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
+                                        <input type="number"  disabled placeholder="Number of days" v-model="formData.no_of_days" class="form-control" name="no_of_days" id="no_of_days">
                                         <span id="helpBlocNoOfDays" class="help-block">{{error.no_of_days}}</span>
                                     </div>
                                 </div>
                                 <div class="form-group" :class="states.return_date">
                                     <label class="col-sm-4 control-label">Return Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker  confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
+                                        <datepicker  disabled confirm format="yyyy-MM-dd"  v-model="formData.return_date" lang="en"  name="return_date" id="return_date"  input-class="form-control"></datepicker>
                                         <!--<div class="input-group">-->
                                             <!--<span class="input-group-addon" id="basic-addon2"><i class="glyphicon glyphicon-calendar"></i></span>-->
                                             <!--<input type="text" disabled class="form-control"   name="return_date" v-model="formData.return_date" id="return_date">-->
@@ -306,7 +310,7 @@
                                     <label class="col-sm-4 control-label">Hand over to</label>
                                     <div class="col-sm-8">
                                         <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
-                                            <option v-for="(departmentEmployee, index) in departmentEmployees" v-bind:value="departmentEmployee.No">{{(index + 1) + ". "+departmentEmployee.First_Name + " " + departmentEmployee.Middle_Name + " " +departmentEmployee.Last_Name}}</option>
+                                            <option v-for="(departmentEmployee, index) in departmentEmployees" v-if="departmentEmployee.id !== currentUserData.id" v-bind:value="departmentEmployee.No">{{getFullNames(departmentEmployee)}}</option>
                                         </select>
                                         <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
                                     </div>
@@ -375,6 +379,7 @@
                 submittButtonText   : 'Submit Application',
                 spinner : true,
                 dateRange : [],
+                submitAndNew : false,
                 formData: {
                     leave_code : '',
                     start_date : '',
@@ -423,15 +428,15 @@
                     errorMessage : ''
                 },
                 submitButton : {
-                    text    : 'Submit',
-                    icon    : 'fa fa-send',
+                    text    : 'Submit + Close',
+                    icon    : '', /*fa fa-send*/
                     status  : 'btn-primary',
                     loading : true,
                     errorMessage : ''
                 },
                 saveButton : {
-                    text    : 'Save and new ',
-                    icon    : 'fa fa-save',
+                    text    : 'Submit + New',
+                    icon    : '', /*fa fa-save*/
                     status  : 'btn-success',
                     loading : true,
                     errorMessage : ''
@@ -441,6 +446,9 @@
             }
         },
         methods : {
+            getFullNames : function (departmentEmployee) {
+                return this.fullNames(departmentEmployee.First_Name , departmentEmployee.Middle_Name, departmentEmployee.Last_Name)
+            },
             setDates : function () {
                 console.log(this.dateRange)
                 this.formData.start_date   =  (this.dateRange[0]).toISOString().slice(0,10)
@@ -511,8 +519,9 @@
             saveLeaveApplication : function (e) {
                 e.preventDefault();
                 if(this.validateLeaveApplication()) {
-                    this.formData.status = 'New'
+                    this.formData.status = 'Review'
                     this.saveButton.loading = false
+                    this.submitAndNew = true
                     this.sendLeaveApplication()
                 }
 
@@ -575,7 +584,7 @@
                         v.saveButton.loading  = true
                         v.getLeaveApplications()
                         // v.loading = true
-                        if (v.formData.status === 'New'){
+                        if (submitAndNew ){
                             $('#myModal').modal('hide')
                             v.clearFieldsErrors()
                             v.formData = {}
@@ -611,6 +620,9 @@
                 axios.get('api/leave_types')
                     .then(function (response) {
                         v.leaveTypes = response.data.data
+                        console.log('leave types')
+                        console.log(v.leaveTypes)
+
                     })
                     .catch(function (error) {
                         console.log(error)

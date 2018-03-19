@@ -67,7 +67,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12 ">
             <div class="row m-b-lg">
                 <div class="col-lg-12">
                     <div class="tabs-container">
