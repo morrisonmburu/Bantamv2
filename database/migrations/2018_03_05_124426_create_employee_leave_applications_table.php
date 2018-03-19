@@ -36,7 +36,7 @@ class CreateEmployeeLeaveApplicationsTable extends Migration
             $table->boolean('Taken')->default(false);
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
-            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
+            $table->dateTime("Nav_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');
             $table->foreign("Next_Approver")->references("No")->on("employees")->onDelete('cascade');

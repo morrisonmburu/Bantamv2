@@ -29,8 +29,8 @@ class CreateLeaveTypesTable extends Migration
             $table->boolean('Off_Holidays_Days_Leave');
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
-            $table->dateTime("Nav_Sync_TimeStamp")->nullable();
-            $table->dateTime("Web_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Nav_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->timestamps();
         });
     }

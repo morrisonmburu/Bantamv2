@@ -21,8 +21,8 @@ class CreateApprovalTemplatesTable extends Migration
             $table->decimal('due_days');
             $table->boolean("nav_synced")->default(false);
             $table->boolean("web_synced")->default(true);
-            $table->dateTime("last_nav_synced")->nullable();
-            $table->dateTime("last_web_synced")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Nav_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->timestamps();
         });
     }

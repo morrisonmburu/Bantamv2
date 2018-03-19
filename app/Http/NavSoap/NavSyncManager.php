@@ -61,13 +61,14 @@ class NavSyncManager{
 
 
     public function sendLeaveApprovals(ApprovalEntry $approvalEntry){
-            if ($approvalEntry->Nav_Sync == 0) {
+        $result = null;
+            if ($approvalEntry->Web_Sync == 1) {
                 $result = null;
-                if (!$approvalEntry->Nav_Sync_TimeStamp) {
+                if (!$approvalEntry->Web_Sync_TimeStamp || true) {
 
                     $approvalEntry = $approvalEntry->toArray();
-                    unset($approvalEntry["Sender_ID"]);
-                    unset($approvalEntry["Document_Owner"]);
+//                    unset($approvalEntry["Sender_ID"]);
+//                    unset($approvalEntry["Document_Owner"]);
 
                     $result = $this->create($this->syncClasses[ApprovalEntry::class]["endpoint"], (object)$approvalEntry);
                 } else {
@@ -84,6 +85,7 @@ class NavSyncManager{
                 $approvalEntry->fill((array)$new_approval);
                 $approvalEntry->save();
             }
+            return $result;
     }
     public function sync(){
         print ("\n");
@@ -345,7 +347,7 @@ class NavSyncManager{
         $params = [
             "returnString" => null,
             "employee_Code" => $employee->No,
-            "payrol_Period" => $period
+            "payroll_Period" => $period
         ];
         $res =  $client->ProcessBlobs($params)->returnString;
         $this->restoreWrapper();
