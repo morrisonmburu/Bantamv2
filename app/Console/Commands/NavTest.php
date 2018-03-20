@@ -64,9 +64,18 @@ class NavTest extends Command
 //            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(1907));
 //            dd(EmployeeLeaveApplication::find(3)->Application_Date);
 //            dd(EmployeeLeaveApplication::find(1907)->toArray());
-            $res = $manager->sendLeaveApplication(EmployeeLeaveApplication::find(6));
+            $application  = new EmployeeLeaveApplication();
+
+            $application->Employee_No = "AH";
+            $application->Application_Code = uniqid();
+            $application->Leave_Code = "ANNUAL";
+            $application->Days_Applied = 2;
+            $application->Start_Date = '2018-02-02';
+            $application->Web_Sync = true;
+            $application->Status = "Review";
+            $application->save();
 //            dd(EmployeeLeaveApplication::find(2176)->toArray());
-            dd($res);
+//            dd($res);
         }
         catch (\Exception $e){
             print ($e);

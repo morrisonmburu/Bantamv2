@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Event;
 
 class ApprovalEntry extends Model
 {
-    use DateTimeFormatting;
     protected $guarded = [];
     protected $table = "approval_entries";
     protected $primaryKey = "id";
@@ -36,5 +35,30 @@ class ApprovalEntry extends Model
 
     public function leave_application(){
         return $this->belongsTo(EmployeeLeaveApplication::class, "Document_No", "Application_Code");
+    }
+
+    public function setWebSyncTimeStampAttribute($value){
+        $name = "Web_Sync_TimeStamp";
+        try{
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
+        }
+        catch (\Exception $e){
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $value)->format('Y-m-d H:i:s');
+        }
+
+    }
+
+    public function toArray(){
+        $arr =  parent::toArray();
+        foreach ($arr as $key => $value){
+            if ( isset($this->dates) && in_array( $key, $this->dates ) ) {
+                try {
+                    $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                }
+                catch (\Exception $e){
+                }
+            }
+        }
+        return $arr;
     }
 }

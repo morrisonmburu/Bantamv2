@@ -54,12 +54,13 @@ class LeaveApplicationController extends Controller
             "Leave_Code" => $validatedData->leave_code,
             "Start_Date" => $validatedData->start_date,
             "Days_Applied" => $validatedData->no_of_days,
-            "Status" => $validatedData->status,
+            "Status" => "Review",
             "End_Date" => $validatedData->end_date,
             "Return_Date" => $validatedData->return_date,
             "Comments" => $validatedData->comment,
             "Application_Date" => Carbon::now(),
-            "Application_Code" => uniqid()
+            "Application_Code" => uniqid(),
+            "Web_Sync" => true
         ];
         $LeaveApplication->fill($data);
         $LeaveApplication->save();
