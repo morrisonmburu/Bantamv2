@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications">
+                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable">
                                 <td>{{ meta.from + index}} </td>
                                 <!--<td>{{application.Application_Code}}</td>-->
                                 <td>{{application.Application_Date}}</td>
@@ -52,7 +52,6 @@
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
                                     <button v-if="application.Status === 'Review'" class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
                                     <button v-else disabled class="btn btn-sm btn-default">Cancel<i class="fa fa-close"></i> </button>
-                                    <button @click="applicationDetails(application.id)"  class="btn btn-sm btn-default">Details <i class="fa fa-eye"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -376,22 +375,58 @@
         <div class="modal inmodal" id="approveersModal" tabindex="-1" role="dialog" aria-hidden="true" >
             <div class="modal-dialog modal-sm">
                 <div class="modal-content animated fadeInDown">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">New application</h4>
-                    </div>
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                        <!--<h4 class="modal-title">Approval Details</h4>-->
+                    <!--</div>-->
                     <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+
+                        <div v-if="loadingDetails" class="sk-spinner sk-spinner-pulse"></div>
+                        <table v-else class="table table-hover table-xs animated fadeIn">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Approver</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="appDetail in appDetails">
+                                <td>{{appDetail.Sequence_No}}</td>
+                                <td>{{appDetail.Approval_Details}}</td>
+                                <td >
+                                        <i
+                                            :class="
+                                              appDetail.Status === 'Approved' ? 'fa fa-check'
+                                            : appDetail.Status === 'Created'  ? 'fa fa-circle'
+                                            : appDetail.Status === 'Rejected' ? 'fa fa-circle'
+                                            : appDetail.Status === 'Open'     ? 'fa fa-circle'
+                                            : 'Unknown'"
+
+                                            :title="
+                                              appDetail.Status === 'Approved' ? 'Approved'
+                                            : appDetail.Status === 'Created'  ? 'Pending'
+                                            : appDetail.Status === 'Rejected' ? 'Rejected'
+                                            : appDetail.Status === 'Open'     ? 'Open'
+                                            : 'Unknown'"
+
+                                            :style="
+                                              appDetail.Status === 'Approved' ? 'color: #2ecc71'
+                                            : appDetail.Status === 'Created'  ? 'color: #bdc3c7'
+                                            : appDetail.Status === 'Rejected' ? 'color: #e74c3c'
+                                            : appDetail.Status === 'Open'     ? 'color: #3498db'
+                                            : 'color: #ecf0f1'">
+                                        </i>
+                                </td>
+                            </tr>
+                            <tr v-if="isEmptyObject(appDetails)">
+                                <td colspan="8" class="text-center"><i class="text-muted">no processing details</i></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
             </div>
@@ -426,6 +461,7 @@
         ],
         data : function(){
             return {
+                loadingDetails : true,
                 showPagination : true,
                 leave_code : '',
                 calculateButtonText : 'Calculate',
@@ -470,6 +506,7 @@
                         end: new Date()
                     }
                 ],
+
                 disabledDates : {},
                 dateArray : [],
                 leaveTypes      : {},
@@ -510,7 +547,8 @@
                 New : 'label-info',
                 Canceled : 'label-danger',
                 Review : 'label-success',
-                appDetails : {}
+                appDetails : { }
+
             }
         },
         methods : {
@@ -564,13 +602,14 @@
                 }
             },
             applicationDetails : function (application) {
-                // alert('approvers')
-                $('#approveersModal').modal('toggle')
-
                 var v = this
+                v.loadingDetails = true
+                v.appDetails = {}
+                $('#approveersModal').modal('toggle')
                 axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application))
                     .then(function (response) {
                         v.appDetails = response.data.data
+                        v.loadingDetails = false
                         console.log('application Details')
                         console.log(v.appDetails)
                     })

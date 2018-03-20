@@ -47550,7 +47550,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47970,6 +47970,41 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 // import Datepicker from 'vuejs-datepicker'
 
@@ -47983,6 +48018,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'fullNames', 'openModal'],
     data: function data() {
         return {
+            loadingDetails: true,
             showPagination: true,
             leave_code: '',
             calculateButtonText: 'Calculate',
@@ -48025,6 +48061,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
                 start: new Date(),
                 end: new Date()
             }],
+
             disabledDates: {},
             dateArray: [],
             leaveTypes: {},
@@ -48066,6 +48103,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
             Canceled: 'label-danger',
             Review: 'label-success',
             appDetails: {}
+
         };
     },
     methods: {
@@ -48115,12 +48153,13 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
             }
         },
         applicationDetails: function applicationDetails(application) {
-            // alert('approvers')
-            $('#approveersModal').modal('toggle');
-
             var v = this;
+            v.loadingDetails = true;
+            v.appDetails = {};
+            $('#approveersModal').modal('toggle');
             axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application)).then(function (response) {
                 v.appDetails = response.data.data;
+                v.loadingDetails = false;
                 console.log('application Details');
                 console.log(v.appDetails);
             });
@@ -48438,91 +48477,92 @@ var render = function() {
                       "tbody",
                       [
                         _vm._l(_vm.applications, function(application, index) {
-                          return _c("tr", [
-                            _c("td", [
-                              _vm._v(_vm._s(_vm.meta.from + index) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Application_Date))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Days_Applied))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Leave_Code))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Leave_Period))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Start_Date))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Return_Date))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "label  ",
-                                  class:
-                                    application.Status === "New"
-                                      ? _vm.New
-                                      : application.Status === "Review"
-                                        ? _vm.Review
-                                        : _vm.Canceled
-                                },
-                                [_vm._v(_vm._s(application.Status))]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              application.Status === "Review"
-                                ? _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          _vm.deleteApplication(application)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v("Cancel   "),
-                                      _c("i", { staticClass: "fa fa-close" })
-                                    ]
-                                  )
-                                : _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-default",
-                                      attrs: { disabled: "" }
-                                    },
-                                    [
-                                      _vm._v("Cancel"),
-                                      _c("i", { staticClass: "fa fa-close" })
-                                    ]
-                                  ),
+                          return _c(
+                            "tr",
+                            {
+                              staticClass: "hovertable",
+                              on: {
+                                dblclick: function($event) {
+                                  _vm.applicationDetails(application.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("td", [
+                                _vm._v(_vm._s(_vm.meta.from + index) + " ")
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-sm btn-default",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.applicationDetails(application.id)
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v("Details "),
-                                  _c("i", { staticClass: "fa fa-eye" })
-                                ]
-                              )
-                            ])
-                          ])
+                              _c("td", [
+                                _vm._v(_vm._s(application.Application_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Days_Applied))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Code))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Period))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Start_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Return_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "label  ",
+                                    class:
+                                      application.Status === "New"
+                                        ? _vm.New
+                                        : application.Status === "Review"
+                                          ? _vm.Review
+                                          : _vm.Canceled
+                                  },
+                                  [_vm._v(_vm._s(application.Status))]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                application.Status === "Review"
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-sm btn-danger",
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteApplication(application)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v("Cancel   "),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                                  : _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-sm btn-default",
+                                        attrs: { disabled: "" }
+                                      },
+                                      [
+                                        _vm._v("Cancel"),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                              ])
+                            ]
+                          )
                         }),
                         _vm._v(" "),
                         _vm.isEmptyObject(_vm.applications)
@@ -49052,7 +49092,94 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(5)
+    _c(
+      "div",
+      {
+        staticClass: "modal inmodal",
+        attrs: {
+          id: "approveersModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-sm" }, [
+          _c("div", { staticClass: "modal-content animated fadeInDown" }, [
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.loadingDetails
+                ? _c("div", { staticClass: "sk-spinner sk-spinner-pulse" })
+                : _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover table-xs animated fadeIn"
+                    },
+                    [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        [
+                          _vm._l(_vm.appDetails, function(appDetail) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(appDetail.Sequence_No))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(appDetail.Approval_Details))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("i", {
+                                  class:
+                                    appDetail.Status === "Approved"
+                                      ? "fa fa-check"
+                                      : appDetail.Status === "Created"
+                                        ? "fa fa-circle"
+                                        : appDetail.Status === "Rejected"
+                                          ? "fa fa-circle"
+                                          : appDetail.Status === "Open"
+                                            ? "fa fa-circle"
+                                            : "Unknown",
+                                  style:
+                                    appDetail.Status === "Approved"
+                                      ? "color: #2ecc71"
+                                      : appDetail.Status === "Created"
+                                        ? "color: #bdc3c7"
+                                        : appDetail.Status === "Rejected"
+                                          ? "color: #e74c3c"
+                                          : appDetail.Status === "Open"
+                                            ? "color: #3498db"
+                                            : "color: #ecf0f1",
+                                  attrs: {
+                                    title:
+                                      appDetail.Status === "Approved"
+                                        ? "Approved"
+                                        : appDetail.Status === "Created"
+                                          ? "Pending"
+                                          : appDetail.Status === "Rejected"
+                                            ? "Rejected"
+                                            : appDetail.Status === "Open"
+                                              ? "Open"
+                                              : "Unknown"
+                                  }
+                                })
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _vm.isEmptyObject(_vm.appDetails)
+                            ? _c("tr", [_vm._m(6)])
+                            : _vm._e()
+                        ],
+                        2
+                      )
+                    ]
+                  )
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -49148,87 +49275,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal inmodal",
-        attrs: {
-          id: "approveersModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-sm" }, [
-          _c("div", { staticClass: "modal-content animated fadeInDown" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ]),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
-                _vm._v("New application")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ]),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [_vm._v("Modal title")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("p", [
-                _c("strong", [_vm._v("Lorem Ipsum is simply dummy")]),
-                _vm._v(
-                  " text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown\n                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\n                            remaining essentially unchanged."
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-white",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                [_vm._v("Save changes")]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("No.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Approver")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center", attrs: { colspan: "8" } }, [
+      _c("i", { staticClass: "text-muted" }, [_vm._v("no processing details")])
+    ])
   }
 ]
 render._withStripped = true
