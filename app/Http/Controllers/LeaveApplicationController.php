@@ -94,7 +94,6 @@ class LeaveApplicationController extends Controller
                 $employeeLeaveApplication->Web_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
-                    Notification::send(Auth::User(),new employeeCanceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";

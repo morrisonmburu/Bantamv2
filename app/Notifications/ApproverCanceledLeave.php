@@ -13,7 +13,10 @@ class ApproverCanceledLeave extends Notification implements  ShouldQueue
 {
     use Queueable;
     protected $approver;
-    protected $entry;
+    protected $data;
+
+    private $message;
+    private $title;
 
     /**
      * Create a new notification instance.
@@ -23,7 +26,10 @@ class ApproverCanceledLeave extends Notification implements  ShouldQueue
     public function __construct(User $approver,ApprovalEntry $leaveRec)
     {
         $this->approver=$approver;
-        $this->entry=$leaveRec;
+        $this->data = $leaveRec;
+
+        $this->message = $this->data->employee->First_Name."'s application (Ref: $leaveRec->Document_No) has been canceled.";
+        $this->title = "Canceled leave application";
     }
 
     /**
@@ -46,10 +52,9 @@ class ApproverCanceledLeave extends Notification implements  ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->greeting('Hello?')
-            ->subject('Leave Canceled')
-            ->line('This is to notify you that leave code '.$this->entry->Document_No." has been canceled")
-            ->line('Thank you.');
+            ->greeting("Dear ".$this->approver->name)
+            ->subject($this->title)
+            ->line($this->message);
     }
 
     /**
@@ -61,8 +66,11 @@ class ApproverCanceledLeave extends Notification implements  ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave code ".$this->entry->Document_No." canceled.",
-            "type" =>"danger"
+            "title" => $this->title,
+            "message"=> $this->message,
+            "type" =>"info",
+            "details" => $this->data->toArray(),
+            "model" => ApprovalEntry::class,
         ];
     }
 }

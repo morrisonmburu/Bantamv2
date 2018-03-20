@@ -55,15 +55,17 @@ class LeaveApplicationCreatedListener
             ];
             $approvalEntry->fill($approvalEntryData);
             $approvalEntry->save();
-//                    SendApprovalEntriesToNav::dispatch($approvalEntry);
+            SendApprovalEntriesToNav::dispatch($approvalEntry);
             if ($i == 1) {
-                Notification::send($approver->approver->user, new NotifyApprover());
+                Notification::send($approver->approver->user, new NotifyApprover($approver->approver->user,
+                    $approvalEntry));
                 $application->save();
             }
             $i++;
 
         }
-        Notification::send($application->employee->user, new LeaveApprovalRequestSent());
+        Notification::send($application->employee->user,
+            new LeaveApprovalRequestSent($application->employee->user, $application));
         SendLeaveApplicationToNav::dispatch($application);
 
     }

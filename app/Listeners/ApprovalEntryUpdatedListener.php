@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\ApprovalEntry;
+use App\Notifications\LeaveApplicationRejected;
 use \Illuminate\Support\Facades\Notification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,7 +32,6 @@ class ApprovalEntryUpdatedListener
         if($entry->getOriginal()["Status"] == $entry->Status) return;
         switch ($entry->Status){
             case "Approved":
-//                dd($entry->toArray());
                 $nextEntry = ApprovalEntry::where('Document_No', $entry->Document_No)
                     ->where('Sequence_No', '>', $entry->Sequence_No)
                     ->orderBy('Sequence_No')->first();
@@ -40,7 +40,8 @@ class ApprovalEntryUpdatedListener
                     $nextEntry->Status = "Open";
                     $nextEntry->Nav_Sync = 0;
                     $nextEntry->save();
-                    Notification::send($nextEntry->approver->user, new \App\Notifications\NotifyApprover());
+                    Notification::send($nextEntry->approver->user, new \App\Notifications\NotifyApprover($nextEntry->approver->user,
+                        $nextEntry));
                     $leave_application = $entry->leave_application;
                     $leave_application->Next_Approver = $nextEntry->Approver_ID;
                     $leave_application->Web_Sync = 0;
@@ -71,7 +72,8 @@ class ApprovalEntryUpdatedListener
                     $leave_application->Web_Sync = 0;
                     $leave_application->save();
 
-                    Notification::send($leave_application->employee->user, new \App\Notifications\LeaveApprovalFail());
+                    Notification::send($leave_application->employee->user,
+                        new LeaveApplicationRejected($leave_application->employee->user, $leave_application));
                 }
                 break;
             case "Canceled":
