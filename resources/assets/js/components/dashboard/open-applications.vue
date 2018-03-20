@@ -271,7 +271,7 @@
                                 <div class="form-group" :class="states.start_date">
                                     <label class="col-sm-4 control-label" >Start Date - End Date</label>
                                     <div class="col-sm-8">
-                                        <datepicker confirm placeholder="Select start date and end date" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                        <datepicker confirm placeholder="Select start date and end date" :disabled-days="dateArray" format="yyyy-MM-dd"  v-model="dateRange" lang="en" range name="start_date" id="start_date"  input-class="form-control"></datepicker>
                                         <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                     </div>
                                 </div>
@@ -574,9 +574,9 @@
                 var v = this
                 axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS,''))
                     .then(function (response) {
-                        v.disabledDates = response.data
+                       v.dateArray = response.data
+                        console.log('disabled days')
                         console.log(v.dateArray)
-                        console.log(v.disabledDates)
                     })
                     .catch(function (error) {
                         console.log(error)
@@ -658,7 +658,7 @@
 
                     if(this.formData.start_date.length === 0){
                        // this.states.start_date = 'has-warning'
-                      //  this.error.start_date = 'date is required'
+                       // this.error.start_date = 'date is required'
                     }
 
                 }else {
@@ -879,7 +879,7 @@
             this.getLeaveApplications()
             this.getLeaveTypes()
             this.getDepartmentEmployees()
-            // this.getDisabledDays()
+            this.getDisabledDays()
 
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
@@ -891,7 +891,7 @@
             },
             leave_code : function (newVal, OldVa) {
                 this.formData.leave_code = this.leave_code
-                this.calculate()
+                this.calculate();
         ``}
 
         },

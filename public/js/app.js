@@ -47563,10 +47563,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
-var _templateObject = _taggedTemplateLiteral([''], ['']);
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 //
 //
 //
@@ -48128,9 +48124,9 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         getDisabledDays: function getDisabledDays() {
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS, '')).then(function (response) {
-                v.disabledDates = response.data;
+                v.dateArray = response.data;
+                console.log('disabled days');
                 console.log(v.dateArray);
-                console.log(v.disabledDates);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -48205,7 +48201,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
                 if (this.formData.start_date.length === 0) {
                     // this.states.start_date = 'has-warning'
-                    //  this.error.start_date = 'date is required'
+                    // this.error.start_date = 'date is required'
                 }
             } else {
 
@@ -48390,7 +48386,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         this.getLeaveApplications();
         this.getLeaveTypes();
         this.getDepartmentEmployees();
-        // this.getDisabledDays()
+        this.getDisabledDays();
 
         //check for applications after every five minutes
         this.timer = setInterval(this.getLeaveApplications, 300000);
@@ -48402,7 +48398,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         },
         leave_code: function leave_code(newVal, OldVa) {
             this.formData.leave_code = this.leave_code;
-            this.calculate()(_templateObject);
+            this.calculate();
+            '';
         }
 
     },
@@ -48768,6 +48765,7 @@ var render = function() {
                             attrs: {
                               confirm: "",
                               placeholder: "Select start date and end date",
+                              "disabled-days": _vm.dateArray,
                               format: "yyyy-MM-dd",
                               lang: "en",
                               range: "",
