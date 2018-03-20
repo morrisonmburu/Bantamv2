@@ -49,7 +49,6 @@ class LeaveApplicationController extends Controller
         $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
         $this->checkDatesOverlap($validatedData->start_date, $validatedData->end_date);
-
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
             "Leave_Code" => $validatedData->leave_code,

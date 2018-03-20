@@ -35,15 +35,12 @@ class SendLeaveApplicationToNav implements ShouldQueue
      */
     public function handle()
     {
-//        if ($this->attempts() > 2) { // For stopping continuous looping of the job in the event of failure
-//            return;
-//        }
         $NavSyncManager = new NavSyncManager();
         $NavSyncManager->sendLeaveApplication($this->leaveApplication);
     }
 
     public function failed(Exception $exception)
     {
-        Notification::send(Auth::user(), new LeaveApplicationFailed());
+//        Notification::send(Auth::user(), new LeaveApplicationFailed());
     }
 }
