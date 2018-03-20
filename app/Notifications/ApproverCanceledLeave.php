@@ -1,5 +1,6 @@
 <?php
 namespace App\Notifications;
+use App\ApprovalEntry;
 use App\EmployeeApprover;
 use App\EmployeeLeaveApplication;
 use App\User;
@@ -8,21 +9,21 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LeaveCanceled extends Notification implements  ShouldQueue
+class ApproverCanceledLeave extends Notification implements  ShouldQueue
 {
     use Queueable;
     protected $approver;
-    protected $leaveRec;
+    protected $entry;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $approver,EmployeeLeaveApplication $leaveRec)
+    public function __construct(User $approver,ApprovalEntry $leaveRec)
     {
         $this->approver=$approver;
-        $this->leaveRec=$leaveRec;
+        $this->entry=$leaveRec;
     }
 
     /**
@@ -47,7 +48,7 @@ class LeaveCanceled extends Notification implements  ShouldQueue
         return (new MailMessage)
             ->greeting('Hello?')
             ->subject('Leave Canceled')
-            ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been canceled")
+            ->line('This is to notify you that leave code '.$this->entry->Document_No." has been canceled")
             ->line('Thank you.');
     }
 
@@ -60,7 +61,7 @@ class LeaveCanceled extends Notification implements  ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave code ".$this->leaveRec->Application_Code." canceled.",
+            "message"=>"Leave code ".$this->entry->Document_No." canceled.",
             "type" =>"danger"
         ];
     }

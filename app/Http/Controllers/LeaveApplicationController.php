@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
-use App\Notifications\canceledLeave;
+use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
-use App\Notifications\LeaveCanceled;
+use App\Notifications\ApproverCanceledLeave;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
@@ -94,13 +94,13 @@ class LeaveApplicationController extends Controller
                 $employeeLeaveApplication->Web_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
-                    Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
+                    Notification::send(Auth::User(),new employeeCanceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";
                         $entry->Web_Sync = 0;
                         $entry->save();
-                        Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
+                        Notification::send($entry->employee->user,new ApproverCanceledLeave($entry->employee->user,$employeeLeaveApplication));
 //                        SendApprovalEntriesToNav::dispatch($entry);
                     }
                 }
