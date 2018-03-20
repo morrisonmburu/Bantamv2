@@ -262,8 +262,9 @@
                                 <div class="form-group" :class="states.leave_code">
                                     <label class="col-sm-4 control-label">Leave type</label>
                                     <div class="col-sm-8">
-                                        <select  class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="formData.leave_code">
-                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
+                                        <select  class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="leave_code">
+                                            <option value="" disabled selected >Leave type</option>
+                                            <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
                                         </select>
                                         <span id="helpBlockLeaveCode" class="help-block">{{error.leave_code}}</span>
                                     </div>
@@ -328,6 +329,7 @@
                                     <label class="col-sm-4 control-label">Hand over to</label>
                                     <div class="col-sm-8">
                                         <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
+                                            <option value="" disabled selected >Employee name</option>
                                             <option v-for="(departmentEmployee, index) in departmentEmployees" v-if="departmentEmployee.id !== currentUserData.id" v-bind:value="departmentEmployee.No">{{getFullNames(departmentEmployee)}}</option>
                                         </select>
                                         <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
@@ -351,7 +353,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-white" @click="closeApplicationModal" >Close</button>
                             <!--<button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >-->
                                 <!--{{ saveButton.text }} <i :class="saveButton.icon"></i>-->
                             <!--</button>-->
@@ -425,6 +427,7 @@
         data : function(){
             return {
                 showPagination : true,
+                leave_code : '',
                 calculateButtonText : 'Calculate',
                 submittButtonText   : 'Submit Application',
                 spinner : true,
@@ -581,9 +584,10 @@
                         this.states.leave_code = 'has-warning'
                         this.error.leave_code = 'Leave Code is required'
                     }
+
                     if(this.formData.start_date.length === 0){
-                        this.states.start_date = 'has-warning'
-                        this.error.start_date = 'start date is required'
+                       // this.states.start_date = 'has-warning'
+                      //  this.error.start_date = 'date is required'
                     }
 
                 }else {
@@ -593,6 +597,11 @@
                     this.getCalculatedDates()
                 }
 
+            },
+            closeApplicationModal : function () {
+                $('#myModal').modal('hide')
+                this.formData = {}
+                this.dateRange = []
             },
             getCalculatedDates : function () {
                 this.calculateButton.loading = false
@@ -645,7 +654,7 @@
                         this.error.end_date = 'End Date is Required'
                     }
                     if(this.formData.return_date.length === 0){
-                        this.error.return_date = 'Return Date are Required'
+                        this.error.return_date = 'Return Date is Required'
                         this.states.return_date = 'has-warning'
                     }
                     if(this.formData.leave_code.length === 0){
@@ -662,7 +671,7 @@
                     }
                     if(this.formData.handOverTo.length === 0){
                         this.states.handOverTo = 'has-warning'
-                        this.error.handOverTo = 'Delagate task to is required'
+                        this.error.handOverTo = 'Employee name is required'
                     }
 
                 }else {
@@ -802,7 +811,11 @@
         watch : {
             dateRange : function (newVal, OldVal) {
                 this.setDates()
-            }
+            },
+            leave_code : function (newVal, OldVa) {
+                this.formData.leave_code = this.leave_code
+                this.calculate()
+        ``}
         },
         mounted(){
             if(this.openModal){

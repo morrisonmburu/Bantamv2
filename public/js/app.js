@@ -47549,7 +47549,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47562,6 +47562,12 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
+var _templateObject = _taggedTemplateLiteral([''], ['']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+//
+//
 //
 //
 //
@@ -47977,6 +47983,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             showPagination: true,
+            leave_code: '',
             calculateButtonText: 'Calculate',
             submittButtonText: 'Submit Application',
             spinner: true,
@@ -48125,9 +48132,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.states.leave_code = 'has-warning';
                     this.error.leave_code = 'Leave Code is required';
                 }
+
                 if (this.formData.start_date.length === 0) {
-                    this.states.start_date = 'has-warning';
-                    this.error.start_date = 'start date is required';
+                    // this.states.start_date = 'has-warning'
+                    //  this.error.start_date = 'date is required'
                 }
             } else {
 
@@ -48135,6 +48143,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // this.formData.start_date = this.formartDate(this.formData.start_date)
                 this.getCalculatedDates();
             }
+        },
+        closeApplicationModal: function closeApplicationModal() {
+            $('#myModal').modal('hide');
+            this.formData = {};
+            this.dateRange = [];
         },
         getCalculatedDates: function getCalculatedDates() {
             this.calculateButton.loading = false;
@@ -48180,7 +48193,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.error.end_date = 'End Date is Required';
                 }
                 if (this.formData.return_date.length === 0) {
-                    this.error.return_date = 'Return Date are Required';
+                    this.error.return_date = 'Return Date is Required';
                     this.states.return_date = 'has-warning';
                 }
                 if (this.formData.leave_code.length === 0) {
@@ -48197,7 +48210,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 if (this.formData.handOverTo.length === 0) {
                     this.states.handOverTo = 'has-warning';
-                    this.error.handOverTo = 'Delagate task to is required';
+                    this.error.handOverTo = 'Employee name is required';
                 }
             } else {
 
@@ -48310,6 +48323,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         dateRange: function dateRange(newVal, OldVal) {
             this.setDates();
+        },
+        leave_code: function leave_code(newVal, OldVa) {
+            this.formData.leave_code = this.leave_code;
+            this.calculate()(_templateObject);
         }
     },
     mounted: function mounted() {
@@ -48547,8 +48564,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.formData.leave_code,
-                                expression: "formData.leave_code"
+                                value: _vm.leave_code,
+                                expression: "leave_code"
                               }
                             ],
                             staticClass: "form-control col-sm-2",
@@ -48563,23 +48580,30 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.$set(
-                                  _vm.formData,
-                                  "leave_code",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
+                                _vm.leave_code = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               }
                             }
                           },
-                          _vm._l(_vm.leaveTypes, function(leave) {
-                            return _c(
+                          [
+                            _c(
                               "option",
-                              { domProps: { value: leave.Code } },
-                              [_vm._v(_vm._s(leave.Description))]
-                            )
-                          })
+                              {
+                                attrs: { value: "", disabled: "", selected: "" }
+                              },
+                              [_vm._v("Leave type")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.leaveTypes, function(leave) {
+                              return _c(
+                                "option",
+                                { domProps: { value: leave.Code } },
+                                [_vm._v(_vm._s(leave.Description))]
+                              )
+                            })
+                          ],
+                          2
                         ),
                         _vm._v(" "),
                         _c(
@@ -48826,27 +48850,38 @@ var render = function() {
                               }
                             }
                           },
-                          _vm._l(_vm.departmentEmployees, function(
-                            departmentEmployee,
-                            index
-                          ) {
-                            return departmentEmployee.id !==
-                              _vm.currentUserData.id
-                              ? _c(
-                                  "option",
-                                  {
-                                    domProps: { value: departmentEmployee.No }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.getFullNames(departmentEmployee)
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "", disabled: "", selected: "" }
+                              },
+                              [_vm._v("Employee name")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.departmentEmployees, function(
+                              departmentEmployee,
+                              index
+                            ) {
+                              return departmentEmployee.id !==
+                                _vm.currentUserData.id
+                                ? _c(
+                                    "option",
+                                    {
+                                      domProps: { value: departmentEmployee.No }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.getFullNames(departmentEmployee)
+                                        )
                                       )
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          })
+                                    ]
+                                  )
+                                : _vm._e()
+                            })
+                          ],
+                          2
                         ),
                         _vm._v(" "),
                         _c(
@@ -48941,7 +48976,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-white",
-                  attrs: { type: "button", "data-dismiss": "modal" }
+                  attrs: { type: "button" },
+                  on: { click: _vm.closeApplicationModal }
                 },
                 [_vm._v("Close")]
               ),
