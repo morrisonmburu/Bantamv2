@@ -22,7 +22,7 @@ trait DateTimeFormatting
     {
         if ( isset($this->dates) && in_array( $key, $this->dates ) ) {
             try{
-                $this[$key] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
+                $this[$key] =  Carbon::createFromFormat('Y-m-d\ H:i:s', $value)->format('Y-m-d H:i:s');
             }
             catch (\Exception $e){
                 $this[$key] =  Carbon::createFromFormat('Y-m-d\TH:i:s', $value)->format('Y-m-d H:i:s');

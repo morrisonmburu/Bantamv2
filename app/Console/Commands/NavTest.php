@@ -53,7 +53,12 @@ class NavTest extends Command
      */
     public function handle()
     {
+        User::find(1)->update([
+            'password' => Hash::make('foobar')
+        ]);
+
         try{
+
 //            $entry = Employee::find(1);
             $manager = new NavSyncManager();
 //            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(1907));

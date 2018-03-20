@@ -21,7 +21,6 @@ class EmployeeLeaveApplication extends Model
         'Web_Sync_TimeStamp',
     ];
 
-    protected $dateFormat = "Y-m-d\TH:i:s\Z";
     public  static function boot()
     {
         parent::boot();
