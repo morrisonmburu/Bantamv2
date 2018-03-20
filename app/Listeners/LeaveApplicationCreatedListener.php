@@ -7,6 +7,7 @@ use App\EmployeeApprover;
 use App\EmployeeLeaveApplication;
 use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\NotifyApprover;
+use Carbon\Carbon;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
@@ -50,7 +51,7 @@ class LeaveApplicationCreatedListener
                 "Sender_ID" => $application->Employee_No,
                 "Approver_ID" => $approver->Approver,
                 "Document_Owner" => $application->Employee_No,
-                "Date_Time_Sent_for_Approval" => DB::raw('CURRENT_TIMESTAMP')
+                "Date_Time_Sent_for_Approval" => Carbon::now()
             ];
             $approvalEntry->fill($approvalEntryData);
             $approvalEntry->save();

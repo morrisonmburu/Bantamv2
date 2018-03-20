@@ -48,19 +48,7 @@ class LeaveApplicationController extends Controller
         ]);
         $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
-
-        $start_date = $validatedData->start_date;
-        $end_date = $validatedData->end_date;
-        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
-            $q->where('Start_Date', '<=', $start_date);
-            $q->where('End_Date', '>=', $start_date);
-        })->orWhere(function ($q) use($end_date) {
-            $q->where('Start_Date', '<=', $end_date);
-            $q->where('End_Date', '>=', $end_date);
-        })->count())
-        {
-            abort(400, "Leave application overlaps with another.");
-        }
+        $this->checkDatesOverlap($validatedData->start_date, $validatedData->end_date);
 
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
@@ -103,14 +91,14 @@ class LeaveApplicationController extends Controller
             try{
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
                 $this->authorize('update',$employeeLeaveApplication);
-                $employeeLeaveApplication->Nav_Sync = 0;
+                $employeeLeaveApplication->Web_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
                     Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";
-                        $entry->Nav_Sync = 0;
+                        $entry->Web_Sync = 0;
                         $entry->save();
                         Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
 //                        SendApprovalEntriesToNav::dispatch($entry);
@@ -218,12 +206,14 @@ class LeaveApplicationController extends Controller
     public function calculateLeaveDates(Request $request)
     {
 
+
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'leave_code' => 'required'
         ]);
 
+        $this->checkDatesOverlap($validatedData['start_date'], $validatedData['end_date']);
         $manager = new NavSyncManager();
 
         try {
@@ -244,5 +234,23 @@ class LeaveApplicationController extends Controller
 
         return json_encode((array)$result);
 
+    }
+
+    public function disabled_days(Request $request){
+        return $request->user()->Employee_Record->Employee_leave_applications()
+            ->select('start_date', 'end_date')->get();
+    }
+
+    private function checkDatesOverlap($start_date, $end_date ){
+        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+            $q->where('Start_Date', '<=', $start_date);
+            $q->where('End_Date', '>=', $start_date);
+        })->orWhere(function ($q) use($end_date) {
+            $q->where('Start_Date', '<=', $end_date);
+            $q->where('End_Date', '>=', $end_date);
+        })->count())
+        {
+            abort(400, "Leave application overlaps with another.");
+        }
     }
 }

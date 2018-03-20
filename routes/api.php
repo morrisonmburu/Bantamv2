@@ -55,6 +55,7 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('requests', 'LeaveApplicationController@requests');
     Route::post('{leave_applications}/status', 'LeaveApplicationController@status');
     Route::get('{leave_application}/approvals', 'ApprovalEntryController@application_approvals');
+    Route::get('disabled_days', 'LeaveApplicationController@disabled_days');
 });
 
 

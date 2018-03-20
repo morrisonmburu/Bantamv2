@@ -43,7 +43,7 @@ class ApprovalEntryController extends Controller
         ]);
 
         $entry->Status = $validatedData['status'];
-        $entry->Nav_Sync = 0;
+        $entry->Web_Sync = 1;
         $entry->save();
         return new ApprovalEntryResource($entry);
     }
