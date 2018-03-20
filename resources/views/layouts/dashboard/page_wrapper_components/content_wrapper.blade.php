@@ -1,5 +1,5 @@
 <div class="wrapper wrapper-content">
-    <keep-alive>
+    <keep-alive exclude="open-applications">
             <component :is="currentComponent"
                        class="animated fadeInRight"
                        :current-user="currentUser"
@@ -13,6 +13,7 @@
                        :is-empty-object="isEmptyObject"
                        :validate-field="'validateField'"
                        :full-names="fullNames"
+                       :open-modal="openModal"
             ></component>
     </keep-alive>
 </div>

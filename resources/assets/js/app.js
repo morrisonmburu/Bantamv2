@@ -35,6 +35,7 @@ Vue.component('notification', require('./components/dashboard/utilities/notifica
 const app = new Vue({
     el: '#app',
     data: {
+        openModal : false,
         currentComponent: 'dashboard',
         profPic : '',
         currentUser                         : {},
@@ -52,7 +53,7 @@ const app = new Vue({
             ALLEMPLOYEES                            : 'api/employees',
             CURRENT_EMPLOYEE_LEAVE_APPLICATIONS     : 'api/employees/leave_applications?status[]=New&status[]=Review',    // current employee leave applications
             CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS      : 'api/employees@leave_allocations',     // current employee leave allocations
-            CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees@leave_types',           // current employee leave types
+            CURRENT_EMPLOYEE_LEAVE_TYPES            : 'api/employees/leave_types',           // current employee leave types
             SEARCH                                  : 'https://yesno.wtf/api',
             CALCULATE                               : 'api/leave_applications/calculate_leave_dates',
             LEAVETYPES                              : 'api/leave_types',
@@ -70,8 +71,12 @@ const app = new Vue({
             REJECTENTRY                             : 'api/approvals@status',
             APPROVERS                               : 'api/employees/approvers',
             PAYSLIPCURRENTEMPLOYEE                  : 'api/employees/payslip',
-            CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@'
-                    },
+            CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@',
+            PAYPERIODS                              : 'api/pay_periods',
+            CANCELAPPLICATION                       : 'api/leave_applications@status',
+            APPLICATIONDETAILS                      : 'api/leave_applications@approvals'
+
+            },
         searchResults : '',
         searchTerm : ''
     },
@@ -86,10 +91,17 @@ const app = new Vue({
             return nameOne + /*' ' + nameTwo +*/ ' ' + nameThree
         },
         swapComponent: function (component) {
-            if (Vue.options.components[component]) {
-                this.currentComponent = component
-            } else {
-                alert(component + ' component not found');
+
+            if (component === 'new-leave'){
+                this.openModal = true
+                this.currentComponent = 'open-applications'
+            }else {
+                this.openModal = false
+                if (Vue.options.components[component]) {
+                    this.currentComponent = component
+                } else {
+                    alert(component + ' component not found');
+                }
             }
         },
         validateField : function (field) {
@@ -121,8 +133,6 @@ const app = new Vue({
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
                 .then(function (response) {
                     v.currentUser = response.data.data
-                    console.log(v.currentUser)
-
 
                     if (Object.keys(v.currentUser).length !== 0 ){
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
@@ -145,7 +155,6 @@ const app = new Vue({
                     }else{
                         console.log("There is no such user in the system");
                     }
-
                 })
                 .catch(function (error) {
                     console.log(error)

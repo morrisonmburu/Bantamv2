@@ -51,10 +51,8 @@
     </style>
 
 </head>
-<body class="gray-bg">
+<body class="gray-bg" style="background-color: #8b0304">
 <div id="app">
-
-
     <main class="py-4" v-cloak>
         @yield('content')
     </main>
@@ -79,9 +77,10 @@
 <!--  End of ladda -->
 
 
-{{--<!-- Highcharts imports -->--}}
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<!-- Highcharts imports -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.7/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.7/modules/exporting.js"></script>
 <!-- End of high chart imports -->
 <script>
     var leaveAllocations = {};

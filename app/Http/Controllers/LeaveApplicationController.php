@@ -116,14 +116,14 @@ class LeaveApplicationController extends Controller
 //        $this->authorize('update', $leave_application);
         $leave_application = EmployeeLeaveApplication::find($leave_application);
         $validatedData = (object)$request->validate([
-           'status' => 'in:Review,Canceled'
+           'Status' => 'in:Review,Canceled'
         ]);
 
         $leave_application->Web_Sync = 0;
 
-        switch ($validatedData->status){
+        switch ($validatedData->Status){
             case 'Canceled':
-                if (!$leave_application->Status != "Review")
+                if ($leave_application->Status != "Review")
                     abort(400, "Cannot Cancel an application which is not in review");
                 break;
             case 'Review':
@@ -131,7 +131,7 @@ class LeaveApplicationController extends Controller
                     abort(400, "Cannot send application");
                 break;
         }
-        $leave_application->Status = $validatedData->status;
+        $leave_application->Status = $validatedData->Status;
         $leave_application->save();
 
         if ($request->is('api*')) {

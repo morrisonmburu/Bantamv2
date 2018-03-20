@@ -1,93 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <script>
+        // rename myToken as you like
+        window.myToken =  <?php echo json_encode([
+            'csrfToken' => csrf_token(),
+        ]); ?>
+    </script>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+    <title>{{ config('app.name', 'Bantam') }}</title>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- for the inspinia theme -->
+    <link href="{{ asset('font-awesome/css/font-awesome.css') }}"  rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
 
-            .position-ref {
-                position: relative;
-            }
+</head>
+<body class="gray-bg">
+<div id="app">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
 
-            .content {
-                text-align: center;
-            }
+    <main class="py-4" v-cloak>
+        @yield('content')
+    </main>
+</div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<!-- Data picker -->
+{{--<script src="{{ asset('js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>--}}
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 
-            .title {
-                font-size: 84px;
-            }
+<!-- Custom and plugin javascript -->
+<script src="{{ asset('js/inspinia.js') }}"></script>
+<script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        {{--<a href="{{ route('register') }}">Register</a>--}}
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    THE NAIROBI HOSPITAL
-                </div>
-
-                <div class="links">
-                    <a href="#">Documentation</a>
-                    <a href="#">News</a>
-                    <a href="#">GitLab</a>
-                </div>
-            </div>
-        </div>
-    </body>
+</body>
 </html>

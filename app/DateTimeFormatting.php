@@ -32,19 +32,18 @@ trait DateTimeFormatting
     }
 
 
-    public function toArray(){
+    public function toArray()
+    {
 
-        $arr =  parent::toArray();
-
-        foreach ($arr as $key => $value){
-            if ( isset($this->dates) && in_array( $key, $this->dates ) ) {
+        $arr = parent::toArray();
+        foreach ($arr as $key => $value) {
+            if (isset($this->dates) && in_array($key, $this->dates)) {
                 try {
                     $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
-                }
-                catch (\Exception $e){
+                } catch (\Exception $e) {
                 }
             }
+            return $arr;
         }
-        return $arr;
     }
 }
