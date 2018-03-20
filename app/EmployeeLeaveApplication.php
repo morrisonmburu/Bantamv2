@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Event;
 
 class EmployeeLeaveApplication extends Model
 {
+    use NavDateTimeFormatter;
     protected $guarded = [];
     protected $table = "employee_leave_applications";
     protected $primaryKey = "id";
@@ -50,26 +51,13 @@ class EmployeeLeaveApplication extends Model
     }
 
     public function setNavSyncTimeStampAttribute($value){
-        $name = "Nav_Sync_TimeStamp";
-        try{
-            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
-        }
-        catch (\Exception $e){
-            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $value)->format('Y-m-d H:i:s');
-        }
-
+        $this->setNavTime($value,"Nav_Sync_TimeStamp");
     }
 
     public function setWebSyncTimeStampAttribute($value){
-        $name = "Web_Sync_TimeStamp";
-        try{
-            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
-        }
-        catch (\Exception $e){
-            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $value)->format('Y-m-d H:i:s');
-        }
-
+        $this->setNavTime($value ,"Web_Sync_TimeStamp");
     }
+
 
     public function toArray(){
         $arr =  parent::toArray();

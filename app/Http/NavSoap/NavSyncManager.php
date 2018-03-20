@@ -70,12 +70,8 @@ class NavSyncManager{
         $result = null;
             if ($approvalEntry->Web_Sync == 1) {
                 $result = null;
-                if (!$approvalEntry->Web_Sync_TimeStamp || true) {
-
+                if (!$approvalEntry->Web_Sync_TimeStamp ) {
                     $approvalEntry = $approvalEntry->toArray();
-//                    unset($approvalEntry["Sender_ID"]);
-//                    unset($approvalEntry["Document_Owner"]);
-
                     $result = $this->create($this->syncClasses[ApprovalEntry::class]["endpoint"], (object)$approvalEntry);
                 } else {
                     $search_fields = $this->syncClasses[ApprovalEntry::class]["search_fields"];

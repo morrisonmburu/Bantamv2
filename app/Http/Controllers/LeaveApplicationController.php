@@ -236,8 +236,28 @@ class LeaveApplicationController extends Controller
     }
 
     public function disabled_days(Request $request){
-        return $request->user()->Employee_Record->Employee_leave_applications()
+        $all_dates = [];
+        $start_end_dates =  $request->user()->Employee_Record->Employee_leave_applications()
             ->select('start_date', 'end_date')->get();
+
+        foreach ($start_end_dates as $start_end_date){
+            $dates = $this->generateDateRange(Carbon::createFromFormat('Y-m-d', $start_end_date['start_date']),
+                Carbon::createFromFormat('Y-m-d', $start_end_date['end_date']));
+            $all_dates = array_merge ( $all_dates, $dates );
+        }
+
+        return json_encode($all_dates);
+    }
+
+    private function generateDateRange(Carbon $start_date, Carbon $end_date)
+    {
+        $dates = [];
+
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date->format('Y-m-d');
+        }
+
+        return $dates;
     }
 
     private function checkDatesOverlap($start_date, $end_date ){

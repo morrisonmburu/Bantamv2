@@ -30,7 +30,7 @@ class CreateEmployeeLeaveAllocationsTable extends Migration
 
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
-            $table->dateTime("Nav_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
 
             $table->foreign("Employee_No")->references("No")->on("employees")->onDelete('cascade');

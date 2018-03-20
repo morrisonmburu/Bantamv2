@@ -53,29 +53,15 @@ class NavTest extends Command
      */
     public function handle()
     {
-        User::find(1)->update([
-            'password' => Hash::make('foobar')
-        ]);
+        foreach (User::all() as $user){
+            $user->update([
+                'password' => Hash::make('foobar')
+            ]);
+        }
+
 
         try{
 
-//            $entry = Employee::find(1);
-            $manager = new NavSyncManager();
-//            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(1907));
-//            dd(EmployeeLeaveApplication::find(3)->Application_Date);
-//            dd(EmployeeLeaveApplication::find(1907)->toArray());
-            $application  = new EmployeeLeaveApplication();
-
-            $application->Employee_No = "AH";
-            $application->Application_Code = uniqid();
-            $application->Leave_Code = "ANNUAL";
-            $application->Days_Applied = 2;
-            $application->Start_Date = '2018-02-02';
-            $application->Web_Sync = true;
-            $application->Status = "Review";
-            $application->save();
-//            dd(EmployeeLeaveApplication::find(2176)->toArray());
-//            dd($res);
         }
         catch (\Exception $e){
             print ($e);
