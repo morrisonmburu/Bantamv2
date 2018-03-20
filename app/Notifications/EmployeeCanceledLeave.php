@@ -13,7 +13,10 @@ class EmployeeCanceledLeave extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $user;
-    protected $leaveRec;
+    protected $data;
+
+    private $message;
+    private $title;
 
     /**
      * Create a new notification instance.
@@ -23,7 +26,11 @@ class EmployeeCanceledLeave extends Notification implements ShouldQueue
     public function __construct(User $user, EmployeeLeaveApplication $leaveRec)
     {
         $this->user= $user;
-        $this->leaveRec= $leaveRec;
+        $this->data= $leaveRec;
+
+
+        $this->message = "You application (Ref: ".$leaveRec->Application_Code.") has been canceled.";
+        $this->title = "Leave Application Successfully Canceled";
     }
 
     /**
@@ -46,10 +53,9 @@ class EmployeeCanceledLeave extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello?')
-                    ->subject('Leave Canceled')
-                    ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been canceled")
-                    ->line('Thank you.');
+            ->greeting("Dear ".$this->user->name)
+            ->subject($this->title)
+            ->line($this->message);
     }
 
     /**
@@ -61,8 +67,11 @@ class EmployeeCanceledLeave extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave code ".$this->leaveRec->Application_Code." canceled.",
-            "type" =>"success"
+            "title" => $this->title,
+            "message"=> $this->message,
+            "type" =>"success",
+            "details" => $this->data->toArray(),
+            "model" => EmployeeLeaveApplication::class,
         ];
     }
 }

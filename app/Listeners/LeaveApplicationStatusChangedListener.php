@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
-use App\Notifications\LeaveApprovalSuccess;
+use App\Notifications\LeaveApplicationApproved;
 use App\Notifications\ApproverCanceledLeave;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -50,11 +50,13 @@ class LeaveApplicationStatusChangedListener
                 }
                 break;
             case "Review":
-                Notification::send($application->employee->user, new LeaveApprovalRequestSent());
+                Notification::send($application->employee->user, new LeaveApprovalRequestSent(
+                    $application->employee->user, $application
+                ));
                 Event::fire('employee_leave_application.created', $application);
                 break;
             case "Approved":
-                Notification::send($application->employee->user, new LeaveApprovalSuccess());
+                Notification::send($application->employee->user, new LeaveApplicationApproved($application->employee->user, $application));
                 break;
             default:
                 break;
