@@ -6,7 +6,7 @@
                     <div class="ibox-title">
                         <h5>Open Applications</h5>
                         <div class="ibox-tools">
-                            <button v-show="!loading" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button v-show="!loading" type="button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
                                 Make Appliction <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -470,6 +470,8 @@
                         end: new Date()
                     }
                 ],
+                disabledDates : {},
+                dateArray : [],
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
@@ -512,6 +514,36 @@
             }
         },
         methods : {
+            setDisabledDates : function () {
+                for (var i = 0; i <= this.disabledDates.length; i++)(
+                    v.getDateRange(i.start_date, i.end_date)
+                )
+            },
+            addDays : function(days) {
+            var dat = new Date(this.valueOf())
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        },
+            getDateRange : function (startDate, stopDate) {
+                var currentDate = startDate
+
+                while(currentDate <= stopDate){
+                    this.dateArray.push(currentDate)
+                    currentDate = currentDate.addDays(1)
+                }
+            },
+            getDisabledDays : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS,''))
+                    .then(function (response) {
+                        v.disabledDates = response.data
+                        console.log(v.dateArray)
+                        console.log(v.disabledDates)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
             paginate : function (link) {
 
                 // alert(link)
@@ -808,6 +840,7 @@
             this.getLeaveApplications()
             this.getLeaveTypes()
             this.getDepartmentEmployees()
+            // this.getDisabledDays()
 
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
@@ -821,6 +854,7 @@
                 this.formData.leave_code = this.leave_code
                 this.calculate()
         ``}
+
         },
         mounted(){
             if(this.openModal){
