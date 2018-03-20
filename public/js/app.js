@@ -48466,10 +48466,7 @@ var render = function() {
               ? _c("div", { staticClass: "spiner-example" }, [_vm._m(0)])
               : _c(
                   "table",
-                  {
-                    staticClass:
-                      "table table-hover table-condensed animated fadeIn"
-                  },
+                  { staticClass: "table table-hover animated fadeIn" },
                   [
                     _vm._m(1),
                     _vm._v(" "),
@@ -48481,6 +48478,7 @@ var render = function() {
                             "tr",
                             {
                               staticClass: "hovertable",
+                              staticStyle: { cursor: "pointer" },
                               on: {
                                 dblclick: function($event) {
                                   _vm.applicationDetails(application.id)
@@ -48488,33 +48486,89 @@ var render = function() {
                               }
                             },
                             [
-                              _c("td", [
-                                _vm._v(_vm._s(_vm.meta.from + index) + " ")
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.meta.from + index) + " ")]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Application_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Application_Date))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Days_Applied))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Days_Applied))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Code))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Leave_Code))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Period))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Leave_Period))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Start_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Start_Date))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Return_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Return_Date))]
+                              ),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
@@ -48537,7 +48591,8 @@ var render = function() {
                                   ? _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-sm btn-danger",
+                                        staticClass:
+                                          "btn btn-xs btn-danger cancelButton",
                                         on: {
                                           click: function($event) {
                                             _vm.deleteApplication(application)
@@ -48552,11 +48607,12 @@ var render = function() {
                                   : _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-sm btn-default",
+                                        staticClass:
+                                          "btn btn-xs btn-default cancelButton",
                                         attrs: { disabled: "" }
                                       },
                                       [
-                                        _vm._v("Cancel"),
+                                        _vm._v("Cancel  "),
                                         _c("i", { staticClass: "fa fa-close" })
                                       ]
                                     )
@@ -49221,7 +49277,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action ")])
+        _c("th")
       ])
     ])
   },

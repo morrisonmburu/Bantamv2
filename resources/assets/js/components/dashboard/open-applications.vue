@@ -22,7 +22,7 @@
                             </div>
                         </div>
 
-                        <table v-else class="table table-hover table-condensed animated fadeIn">
+                        <table v-else class="table table-hover animated fadeIn">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -34,24 +34,24 @@
                                 <th>Start Date</th>
                                 <th>Return Date</th>
                                 <th>Status</th>
-                                <th>Action </th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable">
-                                <td>{{ meta.from + index}} </td>
+                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable"  style="cursor: pointer">
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{ meta.from + index}} </td>
                                 <!--<td>{{application.Application_Code}}</td>-->
-                                <td>{{application.Application_Date}}</td>
-                                <td>{{application.Days_Applied}}</td>
-                                <td>{{application.Leave_Code}}</td>
-                                <td>{{application.Leave_Period}}</td>
-                                <td>{{application.Start_Date}}</td>
-                                <td>{{application.Return_Date}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Application_Date}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Days_Applied}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Code}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Period}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Start_Date}}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Return_Date}}</td>
                                 <td><span class="label  " :class="application.Status === 'New' ? New : application.Status === 'Review' ? Review : Canceled" >{{application.Status}}</span></td>
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button v-if="application.Status === 'Review'" class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-sm btn-default">Cancel<i class="fa fa-close"></i> </button>
+                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger cancelButton" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-xs btn-default cancelButton">Cancel &nbsp;<i class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
