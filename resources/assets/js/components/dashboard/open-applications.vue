@@ -649,7 +649,12 @@
             },
             validateLeaveApplication : function () {
                 this.clearFieldsErrors()
-                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0){
+                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0 || this.dateRange.length === 0){
+
+                    if(this.dateRange.length === 0){
+                        this.states.start_date = 'has-warning'
+                        this.error.start_date = 'date is required'
+                    }
                     if(this.formData.end_date.length === 0){
                         this.error.end_date = 'End Date is Required'
                     }
