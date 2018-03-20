@@ -53,7 +53,10 @@ class NavSyncManager{
                 }
 
                 $new_application = (array)($result->LeaveApps);
+                print_r($new_application);
                 unset($new_application["Application_Code"]);
+                unset($new_application["Web_Sync_TimeStamp"]);
+                unset($new_application["Web_Sync"]);
                 $application->fill((array)$new_application);
                 $application->Web_Sync = 0;
                 $application->Web_Sync_TimeStamp = Carbon::now();
@@ -86,6 +89,9 @@ class NavSyncManager{
                 $new_approval = (array)($result->HRApprovals);
                 $id = $new_approval["Table_ID"];
                 unset($new_approval["Table_ID"]);
+                unset($new_approval["Web_Sync_TimeStamp"]);
+                unset($new_approval["Web_Sync"]);
+
                 $approvalEntry = ApprovalEntry::where("Table_ID", $id)->first()->fill((array)$new_approval);
                 $approvalEntry->Web_Sync = 0;
                 $approvalEntry->Web_Sync_TimeStamp = Carbon::now();
