@@ -237,6 +237,7 @@ class LeaveApplicationController extends Controller
     public function disabled_days(Request $request){
         $all_dates = [];
         $start_end_dates =  $request->user()->Employee_Record->Employee_leave_applications()
+            ->where('Status', '!=' , 'Canceled')
             ->select('start_date', 'end_date')->get();
 
         foreach ($start_end_dates as $start_end_date){
@@ -260,7 +261,7 @@ class LeaveApplicationController extends Controller
     }
 
     private function checkDatesOverlap($start_date, $end_date ){
-        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+        if(EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')->where(function ($q) use($start_date) {
             $q->where('Start_Date', '<=', $start_date);
             $q->where('End_Date', '>=', $start_date);
         })->orWhere(function ($q) use($end_date) {
