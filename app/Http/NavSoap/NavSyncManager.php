@@ -146,15 +146,15 @@ class NavSyncManager{
 
     public function pushTable($model, $endpoint){
         try {
-            $records = $model::where(['Nav_Sync' => 0, 'Nav_Sync_TimeStamp' => null])->get();
+            $records = $model::where(['Web_Sync' => 1, 'Web_Sync_TimeStamp' => null])->get();
 
             foreach ($records as $record) {
                 try {
                     $result = (array)$this->create($endpoint, (object)$record->toArray());
 
                     $record->fill(reset($result));
-                    $record->Nav_Sync = false;
-                    $record->Nav_Sync_TimeStamp = date("Y-m-d");
+                    $record->Web_Sync = false;
+                    $record->Web_Sync_TimeStamp = date("Y-m-d");
                     $record->save();
 //                print ("success");
                 } catch (\Exception $e) {
@@ -176,7 +176,7 @@ class NavSyncManager{
         print ("--------------- STARTED UPDATING $endpoint -----------------\n");
 
         try {
-            $records = $model::where('Nav_Sync', 0)->whereNotNull('Nav_Sync_TimeStamp')->get();
+            $records = $model::where('Web_Sync', 1)->whereNotNull('Web_Sync_TimeStamp')->get();
             foreach ($records as $record) {
                 try {
 
@@ -213,7 +213,7 @@ class NavSyncManager{
 
             } else {
                 try{
-                    $records = get_object_vars($this->get($endpoint, null, ['Web_Sync' => 0]));
+                    $records = get_object_vars($this->get($endpoint, null, ['Nav_Sync' => 1]));
                 }catch (\Exception $e){
 
                     $records = get_object_vars($this->get($endpoint, null, []));
@@ -235,8 +235,8 @@ class NavSyncManager{
 
                     };
                     $instance->fill($data);
-                    $instance->Nav_Sync = True;
-                    $instance->Web_Sync = True;
+                    $instance->Nav_Sync = 0;
+                    $instance->Web_Sync = 0;
                     $instance->save();
 
                     // Set NAV Synced to True NAV

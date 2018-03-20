@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Event;
 
 class EmployeeLeaveApplication extends Model
 {
-    use DateFormatting;
     protected $guarded = [];
     protected $table = "employee_leave_applications";
     protected $primaryKey = "id";
@@ -17,8 +17,10 @@ class EmployeeLeaveApplication extends Model
     public $timestamps = true;
 
     protected $dates = [
-        'Application_Date'
+        'Nav_Sync_TimeStamp',
+        'Web_Sync_TimeStamp',
     ];
+
     public  static function boot()
     {
         parent::boot();
@@ -47,6 +49,43 @@ class EmployeeLeaveApplication extends Model
         return $this->belongsTo(Employee::class, "Employee_No", "No");
     }
 
+    public function getNavSyncTimeStampAttribute(){
+        return "hello";
+    }
 
+    public function setNavSyncTimeStampAttribute($value){
+        $name = "Nav_Sync_TimeStamp";
+        try{
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
+        }
+        catch (\Exception $e){
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $value)->format('Y-m-d H:i:s');
+        }
 
+    }
+
+    public function setWebSyncTimeStampAttribute($value){
+        $name = "Web_Sync_TimeStamp";
+        try{
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d H:i:s');
+        }
+        catch (\Exception $e){
+            $this->attributes[$name] =  Carbon::createFromFormat('Y-m-d\TH:i:s\Z', $value)->format('Y-m-d H:i:s');
+        }
+
+    }
+
+    public function toArray(){
+        $arr =  parent::toArray();
+        foreach ($arr as $key => $value){
+            if ( isset($this->dates) && in_array( $key, $this->dates ) ) {
+                try {
+                    $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                }
+                catch (\Exception $e){
+                }
+            }
+        }
+        return $arr;
+    }
 }
