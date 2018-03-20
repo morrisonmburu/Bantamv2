@@ -155,9 +155,8 @@ class LeaveApplicationController extends Controller
     {
 
         $this->authorize('employee', [EmployeeLeaveApplication::class, $employee]);
-
         if ($request->is('api*')) {
-            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications()->paginate());
+            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications()->orderBy('created_at', 'DESC')->paginate());
         }
     }
 
@@ -191,7 +190,7 @@ class LeaveApplicationController extends Controller
             else{
                 $applications = $applications->where("Status", $status);
             }
-            $applications = $applications->paginate();
+            $applications = $applications->orderBy('created_at', 'DESC')->paginate();
         }
         else{
             $applications = Auth::user()->Employee_Record->Employee_leave_applications()->paginate();
