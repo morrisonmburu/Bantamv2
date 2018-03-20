@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
-use App\Notifications\canceledLeave;
+use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
-use App\Notifications\LeaveCanceled;
+use App\Notifications\ApproverCanceledLeave;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
@@ -94,13 +94,13 @@ class LeaveApplicationController extends Controller
                 $employeeLeaveApplication->Web_Sync = 0;
                 $employeeLeaveApplication->status="Canceled";
                 if($employeeLeaveApplication->save()){
-                    Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
+                    Notification::send(Auth::User(),new employeeCanceledLeave(Auth::user(),$employeeLeaveApplication));
                     $appEntry=$employeeLeaveApplication->approval_entries;
                     foreach ($appEntry as $entry){
                         $entry->Status="Canceled";
                         $entry->Web_Sync = 0;
                         $entry->save();
-                        Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
+                        Notification::send($entry->employee->user,new ApproverCanceledLeave($entry->employee->user,$employeeLeaveApplication));
 //                        SendApprovalEntriesToNav::dispatch($entry);
                     }
                 }
@@ -236,8 +236,28 @@ class LeaveApplicationController extends Controller
     }
 
     public function disabled_days(Request $request){
-        return $request->user()->Employee_Record->Employee_leave_applications()
+        $all_dates = [];
+        $start_end_dates =  $request->user()->Employee_Record->Employee_leave_applications()
             ->select('start_date', 'end_date')->get();
+
+        foreach ($start_end_dates as $start_end_date){
+            $dates = $this->generateDateRange(Carbon::createFromFormat('Y-m-d', $start_end_date['start_date']),
+                Carbon::createFromFormat('Y-m-d', $start_end_date['end_date']));
+            $all_dates = array_merge ( $all_dates, $dates );
+        }
+
+        return json_encode($all_dates);
+    }
+
+    private function generateDateRange(Carbon $start_date, Carbon $end_date)
+    {
+        $dates = [];
+
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date->format('Y-m-d');
+        }
+
+        return $dates;
     }
 
     private function checkDatesOverlap($start_date, $end_date ){

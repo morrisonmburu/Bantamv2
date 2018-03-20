@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class canceledLeave extends Notification implements ShouldQueue
+class EmployeeCanceledLeave extends Notification implements ShouldQueue
 {
     use Queueable;
     protected $user;
