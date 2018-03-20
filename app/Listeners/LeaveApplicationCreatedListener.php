@@ -35,8 +35,8 @@ class LeaveApplicationCreatedListener
      */
     public function handle(EmployeeLeaveApplication $application)
     {
-        if($application->Status != "Review" || $application->Nav_Sync != 0 || $application->Nav_Sync_TimeStamp) return;
-
+        if(!($application->Status == "Review" && $application->Web_Sync && !$application->Web_Sync_TimeStamp))
+            return;
         $i = 1;
         $approvers = $application->employee->approvers;
         foreach ($approvers as $approver) {

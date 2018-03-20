@@ -35,7 +35,6 @@ class CreateApprovalEntriesTable extends Migration
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->foreign("Approver_ID")->references("no")->on("employees")->onDelete('cascade');
             $table->foreign("Sender_ID")->references("No")->on("employees")->onDelete('cascade');
-            $table->foreign("Document_No")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
             $table->timestamps();
         });
     }

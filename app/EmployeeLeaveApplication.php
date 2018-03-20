@@ -49,10 +49,6 @@ class EmployeeLeaveApplication extends Model
         return $this->belongsTo(Employee::class, "Employee_No", "No");
     }
 
-    public function getNavSyncTimeStampAttribute(){
-        return "hello";
-    }
-
     public function setNavSyncTimeStampAttribute($value){
         $name = "Nav_Sync_TimeStamp";
         try{
