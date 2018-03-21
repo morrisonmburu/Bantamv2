@@ -54063,7 +54063,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54169,6 +54169,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
             axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, '')).then(function (response) {
                 v.getNotifications();
             }).catch(function (error) {});
+        },
+        notificationClick: function notificationClick(details, model) {
+            console.log(data);
         }
     },
     created: function created() {},
@@ -54410,58 +54413,68 @@ var render = function() {
         staticClass: "dropdown-menu dropdown-messages"
       },
       _vm._l(_vm.notification, function(notice, index) {
-        return _c("li", { on: { "click()": function($event) {} } }, [
-          _c("div", { staticClass: "dropdown-messages-box " }, [
-            _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
-              _c("i", {
-                class:
-                  notice.data.model === "App\\ApprovalEntry"
-                    ? "fa fa-tasks"
-                    : notice.data.model === "App\\EmployeeLeaveApplication"
-                      ? "fa fa-file-alt"
-                      : "fa fa-file",
-                style:
-                  notice.data.type === "success"
-                    ? "color : #2ecc71"
-                    : notice.data.model === "danger"
-                      ? "color : #e74c3c"
-                      : notice.data.model === "info"
-                        ? "color : #bdc3c7"
-                        : "color : #ecf0f1"
-              })
+        return _c(
+          "li",
+          {
+            on: {
+              click: function($event) {
+                _vm.notificationClick(notice.data.details, notice.data.model)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "dropdown-messages-box " }, [
+              _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
+                _c("i", {
+                  class:
+                    notice.data.model === "ApprovalEntry"
+                      ? "fa fa-tasks"
+                      : notice.data.model === "EmployeeLeaveApplication"
+                        ? "fa fa-file-alt"
+                        : "fa fa-file",
+                  style:
+                    notice.data.type === "success"
+                      ? "color : #2ecc71"
+                      : notice.data.model === "danger"
+                        ? "color : #e74c3c"
+                        : notice.data.model === "info"
+                          ? "color : #bdc3c7"
+                          : "color : #ecf0f1"
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "media-body" }, [
+                _c(
+                  "small",
+                  { staticClass: "pull-right" },
+                  [_c("timeago", { attrs: { since: notice.created_at } })],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(notice.data.message) +
+                    "\n                    "
+                )
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "media-body" }, [
-              _c(
-                "small",
-                { staticClass: "pull-right" },
-                [_c("timeago", { attrs: { since: notice.created_at } })],
-                1
-              ),
-              _vm._v(" "),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(notice.data.message) +
-                  "\n                    "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value:
-                  _vm.notification.length !== 1 &&
-                  _vm.notification.length === index + 1,
-                expression:
-                  "notification.length !== 1 && notification.length === (index + 1)"
-              }
-            ],
-            staticClass: "divider"
-          })
-        ])
+            _c("div", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value:
+                    _vm.notification.length !== 1 &&
+                    _vm.notification.length === index + 1,
+                  expression:
+                    "notification.length !== 1 && notification.length === (index + 1)"
+                }
+              ],
+              staticClass: "divider"
+            })
+          ]
+        )
       })
     )
   ])

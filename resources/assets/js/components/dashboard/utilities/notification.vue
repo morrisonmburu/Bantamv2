@@ -4,12 +4,12 @@
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
         <ul class="dropdown-menu dropdown-messages" v-show="notification.length !== 0">
-            <li v-for="(notice, index) in notification" @click()>
+            <li v-for="(notice, index) in notification" @click="notificationClick(notice.data.details, notice.data.model)">
                 <div class="dropdown-messages-box ">
                     <a href="" class="pull-left">
                         <i
-                         :class="notice.data.model === 'App\\ApprovalEntry' ? 'fa fa-tasks'
-                         :notice.data.model === 'App\\EmployeeLeaveApplication' ? 'fa fa-file-alt'
+                         :class="notice.data.model === 'ApprovalEntry' ? 'fa fa-tasks'
+                         :notice.data.model === 'EmployeeLeaveApplication' ? 'fa fa-file-alt'
                          :'fa fa-file'"
 
                          :style="notice.data.type === 'success' ? 'color : #2ecc71'
@@ -106,6 +106,9 @@
                     .catch(function (error) {
 
                     })
+            },
+            notificationClick : function (details, model) {
+                console.log(data)
             }
         },
         created() {
