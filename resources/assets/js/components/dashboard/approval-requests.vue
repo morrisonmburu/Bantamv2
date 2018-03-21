@@ -364,10 +364,18 @@
                             console.log(error)
                         })
                 }
+            },
+
+            fromNotification : function(){
+                alert('from notification')
             }
+
         },
         created () {
             this.getOpenRequests()
+
+            bus.$on('approval-notice', this.fromNotification);
+
         }
 
     }

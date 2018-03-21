@@ -8,8 +8,8 @@
                 <div class="dropdown-messages-box ">
                     <a href="" class="pull-left">
                         <i
-                         :class="notice.data.model === 'ApprovalEntry' ? 'fa fa-tasks'
-                         :notice.data.model === 'EmployeeLeaveApplication' ? 'fa fa-file-alt'
+                         :class="notice.data.model === 'App\ApprovalEntry' ? 'fa fa-tasks'
+                         :notice.data.model === 'App\EmployeeLeaveApplication' ? 'fa fa-file-alt'
                          :'fa fa-file'"
 
                          :style="notice.data.type === 'success' ? 'color : #2ecc71'
@@ -55,7 +55,7 @@
             // you will need json-loader in webpack 1
             'en-US': require('vue-timeago/locales/en-US.json')
         }
-    })
+    });
     export default {
         name: "notification",
         props : [
@@ -108,7 +108,14 @@
                     })
             },
             notificationClick : function (details, model) {
-                console.log(data)
+
+                if (model === 'App\\EmployeeLeaveApplication') {
+                    this.swapComponent('')
+
+                    bus.$emit('approval-notice')
+                }
+
+
             }
         },
         created() {

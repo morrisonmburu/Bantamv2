@@ -31,10 +31,11 @@ Vue.component('faq', require('./components/dashboard/faq'));
 Vue.component('wave-loader', require('./components/dashboard/utilities/wave-loader'));
 Vue.component('notification', require('./components/dashboard/utilities/notification'));
 
-
+var bus = new Vue()
 const app = new Vue({
     el: '#app',
     data: {
+        fromNotification : '',
         openModal : false,
         currentComponent: 'dashboard',
         profPic : '',
@@ -96,6 +97,8 @@ const app = new Vue({
             if (component === 'new-leave'){
                 this.openModal = true
                 this.currentComponent = 'open-applications'
+            }else if(component === 'approval-notice'){
+
             }else {
                 this.openModal = false
                 if (Vue.options.components[component]) {
