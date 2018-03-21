@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\EmployeeLeaveApplication;
 use App\Jobs\SendApprovalEntriesToNav;
+use App\Jobs\SendLeaveApplicationToNav;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\employeeCanceledLeave;
@@ -35,6 +36,7 @@ class LeaveApplicationStatusChangedListener
     public function handle(EmployeeLeaveApplication $application)
     {
         if($application->getOriginal()["Status"] == $application->Status) return;
+        SendLeaveApplicationToNav::dispatch($application);
         switch ($application->Status){
             case "Canceled":
                 Notification::send($application->employee->user,new EmployeeCanceledLeave($application->employee->user,$application));
@@ -42,7 +44,7 @@ class LeaveApplicationStatusChangedListener
                 foreach ($entries as $entry){
                     $status = $entry->Status;
                     $entry->Status="Canceled";
-                    $entry->Web_Sync = 0;
+                    $entry->Web_Sync = 1;
                     $entry->save();
                     if($status == "Open")
                         Notification::send($entry->approver->user,new ApproverCanceledLeave($entry->approver->user, $entry));

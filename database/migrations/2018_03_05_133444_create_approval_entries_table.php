@@ -35,7 +35,7 @@ class CreateApprovalEntriesTable extends Migration
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->foreign("Approver_ID")->references("no")->on("employees")->onDelete('cascade');
             $table->foreign("Sender_ID")->references("No")->on("employees")->onDelete('cascade');
-            $table->unique(['Approver_ID', 'Document_No', 'Document_Type']);
+            $table->unique(['Approver_ID', 'Sequence_No', 'Document_No', 'Document_Type'], 'approval_entries_composite_key');
             $table->timestamps();
         });
     }

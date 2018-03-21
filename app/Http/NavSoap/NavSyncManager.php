@@ -28,7 +28,7 @@ class NavSyncManager{
             EmployeeLeaveAllocation::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_ALLOC, "search_fields" => ['Employee_No', 'Leave_Period'] ],
             EmployeeLeaveApplication::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_APPS, "search_fields" => ['Application_Code'] ],
             EmployeeApprover::class => ["endpoint" => $this->config->NAV_SOAP_APPROVERS, "search_fields" => ['Approver'] ],
-            ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Document_No', 'Approver_ID', 'Document_Type'] ],
+            ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Document_No', 'Approver_ID', 'Document_Type', 'Sequence_No'] ],
             PayPeriod::class => ["endpoint" => $this->config->NAV_PAY_PERIODS, "search_fields" => [] ],
         ];
     }
@@ -40,13 +40,13 @@ class NavSyncManager{
             if ($application->Web_Sync == 1) {
 
                 $result = null;
-                if (true) {
+                if (!$application->Web_Sync_TimeStamp) {
                     $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], $application->toArray());
                 } else {
                     $search_fields = $this->syncClasses[EmployeeLeaveApplication::class]["search_fields"];
                     $filters = [];
                     foreach ($search_fields as $search_field) {
-                        array_push($filters, $application[$search_field]);
+                        $filters[$search_field] =  $application[$search_field];
                     }
                     $result = $this->update($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"],
                         $application->toArray(), $filters);
@@ -76,7 +76,7 @@ class NavSyncManager{
                     $search_fields = $this->syncClasses[ApprovalEntry::class]["search_fields"];
                     $filters = [];
                     foreach ($search_fields as $search_field) {
-                        array_push($filters, $approvalEntry[$search_field]);
+                        $filters[$search_field] =  $approvalEntry[$search_field];
                     }
                     $result = $this->update($this->syncClasses[ApprovalEntry::class]["endpoint"],
                         $approvalEntry->toArray(), $filters);
