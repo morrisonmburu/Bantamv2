@@ -4,25 +4,27 @@
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
         <ul class="dropdown-menu dropdown-messages" v-show="notification.length !== 0">
-            <li v-for="(notice, index) in notification">
+            <li v-for="(notice, index) in notification" @click()>
                 <div class="dropdown-messages-box ">
                     <a href="" class="pull-left">
                         <i
-                         :class="notice.data.model === 'App\\ApprovalEntry' ? 'fa fa-envelope'
-                         :notice.data.model === 'App\\ApprovalEntry' ? ''
-                         :notice.data.model === 'App\\ApprovalEntry' ? ''
-                         :notice.data.model === 'App\\ApprovalEntry' ? ''
-                         :notice.data.model === 'App\\ApprovalEntry' ? ''
-                         :notice.data.model === 'App\\ApprovalEntry' ? ''
-                         :''
+                         :class="notice.data.model === 'App\\ApprovalEntry' ? 'fa fa-tasks'
+                         :notice.data.model === 'App\\EmployeeLeaveApplication' ? 'fa fa-file-alt'
+                         :'fa fa-file'"
 
-                        "></i>
+                         :style="notice.data.type === 'success' ? 'color : #2ecc71'
+                        :notice.data.model === 'danger' ? 'color : #e74c3c'
+                        :notice.data.model === 'info' ? 'color : #bdc3c7'
+                        :'color : #ecf0f1'"
+                        >
+
+                        </i>
                     </a>
                     <div class="media-body" >
                         <small class="pull-right"><timeago :since="notice.created_at"></timeago></small>
-                        <strong>{{notice.data.title}}</strong><br>
+                        <!--<strong v-if="notice.data.title">{{notice.data.title}}<br></strong>-->
                         {{notice.data.message}}
-                        <small class="text-muted"></small>
+                        <!--<small class="text-muted"></small>-->
                     </div>
                 </div>
                 <div class="divider" v-show="notification.length !== 1 && notification.length === (index + 1)"></div>

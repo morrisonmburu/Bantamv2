@@ -54063,7 +54063,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54076,6 +54076,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_timeago__);
+//
+//
 //
 //
 //
@@ -54408,24 +54410,24 @@ var render = function() {
         staticClass: "dropdown-menu dropdown-messages"
       },
       _vm._l(_vm.notification, function(notice, index) {
-        return _c("li", [
+        return _c("li", { on: { "click()": function($event) {} } }, [
           _c("div", { staticClass: "dropdown-messages-box " }, [
             _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
               _c("i", {
                 class:
                   notice.data.model === "App\\ApprovalEntry"
-                    ? "fa fa-envelope"
-                    : notice.data.model === "App\\ApprovalEntry"
-                      ? ""
-                      : notice.data.model === "App\\ApprovalEntry"
-                        ? ""
-                        : notice.data.model === "App\\ApprovalEntry"
-                          ? ""
-                          : notice.data.model === "App\\ApprovalEntry"
-                            ? ""
-                            : notice.data.model === "App\\ApprovalEntry"
-                              ? ""
-                              : ""
+                    ? "fa fa-tasks"
+                    : notice.data.model === "App\\EmployeeLeaveApplication"
+                      ? "fa fa-file-alt"
+                      : "fa fa-file",
+                style:
+                  notice.data.type === "success"
+                    ? "color : #2ecc71"
+                    : notice.data.model === "danger"
+                      ? "color : #e74c3c"
+                      : notice.data.model === "info"
+                        ? "color : #bdc3c7"
+                        : "color : #ecf0f1"
               })
             ]),
             _vm._v(" "),
@@ -54437,14 +54439,11 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("strong", [_vm._v(_vm._s(notice.data.title))]),
-              _c("br"),
               _vm._v(
                 "\n                    " +
                   _vm._s(notice.data.message) +
                   "\n                    "
-              ),
-              _c("small", { staticClass: "text-muted" })
+              )
             ])
           ]),
           _vm._v(" "),
