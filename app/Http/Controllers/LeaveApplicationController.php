@@ -37,6 +37,7 @@ class LeaveApplicationController extends Controller
 
     public function store(LeaveRequest $request)
     {
+        $this->authorize('create', EmployeeLeaveApplication::class);
         $validatedData = (object) $request->validate([
             'end_date' => 'required|date',
             'start_date' => 'required|date',
@@ -48,7 +49,20 @@ class LeaveApplicationController extends Controller
             'comment' => 'sometimes',
         ]);
         $LeaveApplication = new EmployeeLeaveApplication();
-        $this->authorize('create', EmployeeLeaveApplication::class);
+
+        $manager = new NavSyncManager();
+        $result = $manager->calculateLeaveDates(
+            $validatedData->leave_code,
+            Auth::user()->Employee_Record->No,
+            Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
+            $validatedData->start_date,
+            $validatedData->end_date
+        );
+
+        if($result->lDays < 1){
+            abort(400, "Cannot have 0 number of leave days");
+        }
+
         $this->checkDatesOverlap($validatedData->start_date, $validatedData->end_date);
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
@@ -260,8 +274,10 @@ class LeaveApplicationController extends Controller
     }
 
     private function checkDatesOverlap($start_date, $end_date ){
-        DB::enableQueryLog();
-        $res = EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')->where(function ($query) use($start_date, $end_date){
+//        DB::enableQueryLog();
+        $res = EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')
+            ->where('Employee_No', Auth::user()->Employee_Record->No)
+            ->where(function ($query) use($start_date, $end_date){
             $query->where(function ($q) use($start_date) {
                 $q->where('Start_Date', '<=', $start_date);
                 $q->where('End_Date', '>=', $start_date);
