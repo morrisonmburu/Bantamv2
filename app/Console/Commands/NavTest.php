@@ -6,6 +6,7 @@ use App\ApprovalEntry;
 use App\EmployeeLeaveAllocation;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
+use App\PayPeriod;
 use App\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -58,7 +59,6 @@ class NavTest extends Command
                 'password' => Hash::make('bantam')
             ]);
         }
-
 
         try{
 
