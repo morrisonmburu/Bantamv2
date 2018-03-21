@@ -87,18 +87,25 @@ class LeaveApplicationController extends Controller
     }
     public function update(Request $request,$appCode)
     {
+        $application =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
+        $this->authorize('update',$application);
+
+        if($request->user()->id = $application->employee->user->id){
+            $application->Status="Canceled";
+        }
+        else if($application->employee->employee_approvers->contains($request->user()->Employee_Record)){
+            $validatedData = $request->validate([
+                'Approved_Start_Date' => 'required|date',
+                'Approved_End_Date' => 'required|date',
+            ]);
+            $application->fill($validatedData);
+            $application->Approval_Date = Carbon::now()->format('Y-m-d');
+        }
+        $application->Web_Sync = 0;
+        $application->save();
 
         if ($request->is('api*')) {
-            try{
-                $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
-                $this->authorize('update',$employeeLeaveApplication);
-                $employeeLeaveApplication->Web_Sync = 0;
-                $employeeLeaveApplication->Status="Canceled";
-                $employeeLeaveApplication->save();
-                return  new LeaveApplicationResource($employeeLeaveApplication);
-            }catch(Exception $e){
-                return $e->getMessage();
-            }
+            return  new LeaveApplicationResource($application);
         }
     }
 

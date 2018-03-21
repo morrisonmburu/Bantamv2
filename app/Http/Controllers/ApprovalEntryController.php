@@ -39,12 +39,25 @@ class ApprovalEntryController extends Controller
         }
 
         $validatedData = $request->validate([
-            'status' => "required|in:Rejected,Approved"
+            'status' => "required|in:Rejected,Approved",
+            'Approved_Start_Date' => 'sometimes|date',
+            'Approved_End_Date' => 'sometimes|date',
         ]);
 
         $entry->Status = $validatedData['status'];
         $entry->Web_Sync = 1;
         $entry->save();
+
+        $application = $entry->leave_application;
+        $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ?
+            isset($validatedData['Approved_Start_Date']) : null;
+        $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ?
+            isset($validatedData['Approved_End_Date']) : null;
+
+        $application->Approval_Date = Carbon::now()->format('Y-m-d');
+        $application->Web_Sync = 1;
+        $application->save();
+
         return new ApprovalEntryResource($entry);
     }
 
