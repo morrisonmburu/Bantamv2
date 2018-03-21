@@ -70,7 +70,7 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
             "message"=> $this->title,
             "type" =>"success",
             "details" => $this->data->toArray(),
-            "model" => EmployeeLeaveApplication::class
+            "model" => (new \ReflectionClass(EmployeeLeaveApplication::class))->getShortName(),
         ];
     }
 }
