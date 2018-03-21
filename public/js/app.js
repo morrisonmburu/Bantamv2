@@ -1519,7 +1519,8 @@ var app = new Vue({
             CHANGEAPPLICATIONSTATUS: 'api/leave_applications@',
             PAYPERIODS: 'api/pay_periods',
             CANCELAPPLICATION: 'api/leave_applications@status',
-            APPLICATIONDETAILS: 'api/leave_applications@approvals'
+            APPLICATIONDETAILS: 'api/leave_applications@approvals',
+            DISABLEDDAYS: 'api/leave_applications/disabled_days'
 
         },
         searchResults: '',
@@ -47549,7 +47550,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47562,6 +47563,47 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
+var _templateObject = _taggedTemplateLiteral([''], ['']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -47976,7 +48018,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'fullNames', 'openModal'],
     data: function data() {
         return {
+            loadingDetails: true,
             showPagination: true,
+            leave_code: '',
             calculateButtonText: 'Calculate',
             submittButtonText: 'Submit Application',
             spinner: true,
@@ -48017,6 +48061,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 start: new Date(),
                 end: new Date()
             }],
+
+            disabledDates: {},
+            dateArray: [],
             leaveTypes: {},
             applications: {},
             loading: true,
@@ -48056,9 +48103,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Canceled: 'label-danger',
             Review: 'label-success',
             appDetails: {}
+
         };
     },
     methods: {
+        setDisabledDates: function setDisabledDates() {
+            for (var i = 0; i <= this.disabledDates.length; i++) {
+                v.getDateRange(i.start_date, i.end_date);
+            }
+        },
+        addDays: function addDays(days) {
+            var dat = new Date(this.valueOf());
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        },
+        getDateRange: function getDateRange(startDate, stopDate) {
+            var currentDate = startDate;
+
+            while (currentDate <= stopDate) {
+                this.dateArray.push(currentDate);
+                currentDate = currentDate.addDays(1);
+            }
+        },
+        getDisabledDays: function getDisabledDays() {
+            var v = this;
+            axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS, '')).then(function (response) {
+                v.disabledDates = response.data;
+                console.log(v.dateArray);
+                console.log(v.disabledDates);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         paginate: function paginate(link) {
 
             // alert(link)
@@ -48077,12 +48153,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         applicationDetails: function applicationDetails(application) {
-            // alert('approvers')
-            $('#approveersModal').modal('toggle');
-
             var v = this;
+            v.loadingDetails = true;
+            v.appDetails = {};
+            $('#approveersModal').modal('toggle');
             axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application)).then(function (response) {
                 v.appDetails = response.data.data;
+                v.loadingDetails = false;
                 console.log('application Details');
                 console.log(v.appDetails);
             });
@@ -48125,9 +48202,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.states.leave_code = 'has-warning';
                     this.error.leave_code = 'Leave Code is required';
                 }
+
                 if (this.formData.start_date.length === 0) {
-                    this.states.start_date = 'has-warning';
-                    this.error.start_date = 'start date is required';
+                    // this.states.start_date = 'has-warning'
+                    //  this.error.start_date = 'date is required'
                 }
             } else {
 
@@ -48135,6 +48213,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // this.formData.start_date = this.formartDate(this.formData.start_date)
                 this.getCalculatedDates();
             }
+        },
+        closeApplicationModal: function closeApplicationModal() {
+            $('#myModal').modal('hide');
+            this.formData = {};
+            this.dateRange = [];
         },
         getCalculatedDates: function getCalculatedDates() {
             this.calculateButton.loading = false;
@@ -48175,12 +48258,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         validateLeaveApplication: function validateLeaveApplication() {
             this.clearFieldsErrors();
-            if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0) {
+            if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0 || this.dateRange.length === 0) {
+
+                if (this.dateRange.length === 0) {
+                    this.states.start_date = 'has-warning';
+                    this.error.start_date = 'date is required';
+                }
                 if (this.formData.end_date.length === 0) {
                     this.error.end_date = 'End Date is Required';
                 }
                 if (this.formData.return_date.length === 0) {
-                    this.error.return_date = 'Return Date are Required';
+                    this.error.return_date = 'Return Date is Required';
                     this.states.return_date = 'has-warning';
                 }
                 if (this.formData.leave_code.length === 0) {
@@ -48197,7 +48285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 if (this.formData.handOverTo.length === 0) {
                     this.states.handOverTo = 'has-warning';
-                    this.error.handOverTo = 'Delagate task to is required';
+                    this.error.handOverTo = 'Employee name is required';
                 }
             } else {
 
@@ -48302,6 +48390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.getLeaveApplications();
         this.getLeaveTypes();
         this.getDepartmentEmployees();
+        // this.getDisabledDays()
 
         //check for applications after every five minutes
         this.timer = setInterval(this.getLeaveApplications, 300000);
@@ -48310,7 +48399,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     watch: {
         dateRange: function dateRange(newVal, OldVal) {
             this.setDates();
+        },
+        leave_code: function leave_code(newVal, OldVa) {
+            this.formData.leave_code = this.leave_code;
+            this.calculate()(_templateObject);
         }
+
     },
     mounted: function mounted() {
         if (this.openModal) {
@@ -48383,91 +48477,92 @@ var render = function() {
                       "tbody",
                       [
                         _vm._l(_vm.applications, function(application, index) {
-                          return _c("tr", [
-                            _c("td", [
-                              _vm._v(_vm._s(_vm.meta.from + index) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Application_Date))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Days_Applied))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Leave_Code))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(_vm._s(application.Leave_Period))
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Start_Date))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(application.Return_Date))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _c(
-                                "span",
-                                {
-                                  staticClass: "label  ",
-                                  class:
-                                    application.Status === "New"
-                                      ? _vm.New
-                                      : application.Status === "Review"
-                                        ? _vm.Review
-                                        : _vm.Canceled
-                                },
-                                [_vm._v(_vm._s(application.Status))]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              application.Status === "Review"
-                                ? _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          _vm.deleteApplication(application)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v("Cancel   "),
-                                      _c("i", { staticClass: "fa fa-close" })
-                                    ]
-                                  )
-                                : _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-default",
-                                      attrs: { disabled: "" }
-                                    },
-                                    [
-                                      _vm._v("Cancel"),
-                                      _c("i", { staticClass: "fa fa-close" })
-                                    ]
-                                  ),
+                          return _c(
+                            "tr",
+                            {
+                              staticClass: "hovertable",
+                              on: {
+                                dblclick: function($event) {
+                                  _vm.applicationDetails(application.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("td", [
+                                _vm._v(_vm._s(_vm.meta.from + index) + " ")
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-sm btn-default",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.applicationDetails(application.id)
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v("Details "),
-                                  _c("i", { staticClass: "fa fa-eye" })
-                                ]
-                              )
-                            ])
-                          ])
+                              _c("td", [
+                                _vm._v(_vm._s(application.Application_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Days_Applied))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Code))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Leave_Period))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Start_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(application.Return_Date))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "label  ",
+                                    class:
+                                      application.Status === "New"
+                                        ? _vm.New
+                                        : application.Status === "Review"
+                                          ? _vm.Review
+                                          : _vm.Canceled
+                                  },
+                                  [_vm._v(_vm._s(application.Status))]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                application.Status === "Review"
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-sm btn-danger",
+                                        on: {
+                                          click: function($event) {
+                                            _vm.deleteApplication(application)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v("Cancel   "),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                                  : _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-sm btn-default",
+                                        attrs: { disabled: "" }
+                                      },
+                                      [
+                                        _vm._v("Cancel"),
+                                        _c("i", { staticClass: "fa fa-close" })
+                                      ]
+                                    )
+                              ])
+                            ]
+                          )
                         }),
                         _vm._v(" "),
                         _vm.isEmptyObject(_vm.applications)
@@ -48547,8 +48642,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.formData.leave_code,
-                                expression: "formData.leave_code"
+                                value: _vm.leave_code,
+                                expression: "leave_code"
                               }
                             ],
                             staticClass: "form-control col-sm-2",
@@ -48563,23 +48658,30 @@ var render = function() {
                                     var val = "_value" in o ? o._value : o.value
                                     return val
                                   })
-                                _vm.$set(
-                                  _vm.formData,
-                                  "leave_code",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
+                                _vm.leave_code = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
                               }
                             }
                           },
-                          _vm._l(_vm.leaveTypes, function(leave) {
-                            return _c(
+                          [
+                            _c(
                               "option",
-                              { domProps: { value: leave.Code } },
-                              [_vm._v(_vm._s(leave.Description))]
-                            )
-                          })
+                              {
+                                attrs: { value: "", disabled: "", selected: "" }
+                              },
+                              [_vm._v("Leave type")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.leaveTypes, function(leave) {
+                              return _c(
+                                "option",
+                                { domProps: { value: leave.Code } },
+                                [_vm._v(_vm._s(leave.Description))]
+                              )
+                            })
+                          ],
+                          2
                         ),
                         _vm._v(" "),
                         _c(
@@ -48826,27 +48928,38 @@ var render = function() {
                               }
                             }
                           },
-                          _vm._l(_vm.departmentEmployees, function(
-                            departmentEmployee,
-                            index
-                          ) {
-                            return departmentEmployee.id !==
-                              _vm.currentUserData.id
-                              ? _c(
-                                  "option",
-                                  {
-                                    domProps: { value: departmentEmployee.No }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.getFullNames(departmentEmployee)
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: { value: "", disabled: "", selected: "" }
+                              },
+                              [_vm._v("Employee name")]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.departmentEmployees, function(
+                              departmentEmployee,
+                              index
+                            ) {
+                              return departmentEmployee.id !==
+                                _vm.currentUserData.id
+                                ? _c(
+                                    "option",
+                                    {
+                                      domProps: { value: departmentEmployee.No }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.getFullNames(departmentEmployee)
+                                        )
                                       )
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          })
+                                    ]
+                                  )
+                                : _vm._e()
+                            })
+                          ],
+                          2
                         ),
                         _vm._v(" "),
                         _c(
@@ -48941,7 +49054,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-white",
-                  attrs: { type: "button", "data-dismiss": "modal" }
+                  attrs: { type: "button" },
+                  on: { click: _vm.closeApplicationModal }
                 },
                 [_vm._v("Close")]
               ),
@@ -48978,7 +49092,94 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(5)
+    _c(
+      "div",
+      {
+        staticClass: "modal inmodal",
+        attrs: {
+          id: "approveersModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-sm" }, [
+          _c("div", { staticClass: "modal-content animated fadeInDown" }, [
+            _c("div", { staticClass: "modal-body" }, [
+              _vm.loadingDetails
+                ? _c("div", { staticClass: "sk-spinner sk-spinner-pulse" })
+                : _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover table-xs animated fadeIn"
+                    },
+                    [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        [
+                          _vm._l(_vm.appDetails, function(appDetail) {
+                            return _c("tr", [
+                              _c("td", [_vm._v(_vm._s(appDetail.Sequence_No))]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _vm._v(_vm._s(appDetail.Approval_Details))
+                              ]),
+                              _vm._v(" "),
+                              _c("td", [
+                                _c("i", {
+                                  class:
+                                    appDetail.Status === "Approved"
+                                      ? "fa fa-check"
+                                      : appDetail.Status === "Created"
+                                        ? "fa fa-circle"
+                                        : appDetail.Status === "Rejected"
+                                          ? "fa fa-circle"
+                                          : appDetail.Status === "Open"
+                                            ? "fa fa-circle"
+                                            : "Unknown",
+                                  style:
+                                    appDetail.Status === "Approved"
+                                      ? "color: #2ecc71"
+                                      : appDetail.Status === "Created"
+                                        ? "color: #bdc3c7"
+                                        : appDetail.Status === "Rejected"
+                                          ? "color: #e74c3c"
+                                          : appDetail.Status === "Open"
+                                            ? "color: #3498db"
+                                            : "color: #ecf0f1",
+                                  attrs: {
+                                    title:
+                                      appDetail.Status === "Approved"
+                                        ? "Approved"
+                                        : appDetail.Status === "Created"
+                                          ? "Pending"
+                                          : appDetail.Status === "Rejected"
+                                            ? "Rejected"
+                                            : appDetail.Status === "Open"
+                                              ? "Open"
+                                              : "Unknown"
+                                  }
+                                })
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _vm.isEmptyObject(_vm.appDetails)
+                            ? _c("tr", [_vm._m(6)])
+                            : _vm._e()
+                        ],
+                        2
+                      )
+                    ]
+                  )
+            ])
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -49074,87 +49275,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal inmodal",
-        attrs: {
-          id: "approveersModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-sm" }, [
-          _c("div", { staticClass: "modal-content animated fadeInDown" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ]),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
-                _vm._v("New application")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [
-                  _c("span", { attrs: { "aria-hidden": "true" } }, [
-                    _vm._v("×")
-                  ]),
-                  _c("span", { staticClass: "sr-only" }, [_vm._v("Close")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [_vm._v("Modal title")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("p", [
-                _c("strong", [_vm._v("Lorem Ipsum is simply dummy")]),
-                _vm._v(
-                  " text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown\n                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,\n                            remaining essentially unchanged."
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-white",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("Close")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                [_vm._v("Save changes")]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("No.")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Approver")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center", attrs: { colspan: "8" } }, [
+      _c("i", { staticClass: "text-muted" }, [_vm._v("no processing details")])
+    ])
   }
 ]
 render._withStripped = true

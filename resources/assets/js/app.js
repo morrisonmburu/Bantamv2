@@ -74,7 +74,8 @@ const app = new Vue({
             CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@',
             PAYPERIODS                              : 'api/pay_periods',
             CANCELAPPLICATION                       : 'api/leave_applications@status',
-            APPLICATIONDETAILS                      : 'api/leave_applications@approvals'
+            APPLICATIONDETAILS                      : 'api/leave_applications@approvals',
+            DISABLEDDAYS                            : 'api/leave_applications/disabled_days'
 
             },
         searchResults : '',

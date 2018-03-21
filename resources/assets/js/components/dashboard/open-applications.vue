@@ -6,7 +6,7 @@
                     <div class="ibox-title">
                         <h5>Open Applications</h5>
                         <div class="ibox-tools">
-                            <button v-show="!loading" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
+                            <button v-show="!loading" type="button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
                                 Make Appliction <i class="fa fa-plus"></i>
                             </button>
                         </div>
@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications">
+                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable">
                                 <td>{{ meta.from + index}} </td>
                                 <!--<td>{{application.Application_Code}}</td>-->
                                 <td>{{application.Application_Date}}</td>
@@ -52,7 +52,6 @@
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
                                     <button v-if="application.Status === 'Review'" class="btn btn-sm btn-danger" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
                                     <button v-else disabled class="btn btn-sm btn-default">Cancel<i class="fa fa-close"></i> </button>
-                                    <button @click="applicationDetails(application.id)"  class="btn btn-sm btn-default">Details <i class="fa fa-eye"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -262,8 +261,9 @@
                                 <div class="form-group" :class="states.leave_code">
                                     <label class="col-sm-4 control-label">Leave type</label>
                                     <div class="col-sm-8">
-                                        <select  class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="formData.leave_code">
-                                               <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
+                                        <select  class="form-control col-sm-2" name="leave_code" id="leave_code2" v-model="leave_code">
+                                            <option value="" disabled selected >Leave type</option>
+                                            <option v-for="leave in leaveTypes" v-bind:value="leave.Code">{{leave.Description}}</option>
                                         </select>
                                         <span id="helpBlockLeaveCode" class="help-block">{{error.leave_code}}</span>
                                     </div>
@@ -328,6 +328,7 @@
                                     <label class="col-sm-4 control-label">Hand over to</label>
                                     <div class="col-sm-8">
                                         <select class="form-control col-sm-2" name="leave_code" id="handOverTo" v-model="formData.handOverTo">
+                                            <option value="" disabled selected >Employee name</option>
                                             <option v-for="(departmentEmployee, index) in departmentEmployees" v-if="departmentEmployee.id !== currentUserData.id" v-bind:value="departmentEmployee.No">{{getFullNames(departmentEmployee)}}</option>
                                         </select>
                                         <span id="helpBlockhandOverTo" class="help-block">{{error.handOverTo}}</span>
@@ -351,7 +352,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-white" @click="closeApplicationModal" >Close</button>
                             <!--<button v-if="saveButton.loading" @click="saveLeaveApplication"  class="btn "  :class="saveButton.status" >-->
                                 <!--{{ saveButton.text }} <i :class="saveButton.icon"></i>-->
                             <!--</button>-->
@@ -374,22 +375,58 @@
         <div class="modal inmodal" id="approveersModal" tabindex="-1" role="dialog" aria-hidden="true" >
             <div class="modal-dialog modal-sm">
                 <div class="modal-content animated fadeInDown">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">New application</h4>
-                    </div>
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+                        <!--<h4 class="modal-title">Approval Details</h4>-->
+                    <!--</div>-->
                     <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                            remaining essentially unchanged.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+
+                        <div v-if="loadingDetails" class="sk-spinner sk-spinner-pulse"></div>
+                        <table v-else class="table table-hover table-xs animated fadeIn">
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Approver</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="appDetail in appDetails">
+                                <td>{{appDetail.Sequence_No}}</td>
+                                <td>{{appDetail.Approval_Details}}</td>
+                                <td >
+                                        <i
+                                            :class="
+                                              appDetail.Status === 'Approved' ? 'fa fa-check'
+                                            : appDetail.Status === 'Created'  ? 'fa fa-circle'
+                                            : appDetail.Status === 'Rejected' ? 'fa fa-circle'
+                                            : appDetail.Status === 'Open'     ? 'fa fa-circle'
+                                            : 'Unknown'"
+
+                                            :title="
+                                              appDetail.Status === 'Approved' ? 'Approved'
+                                            : appDetail.Status === 'Created'  ? 'Pending'
+                                            : appDetail.Status === 'Rejected' ? 'Rejected'
+                                            : appDetail.Status === 'Open'     ? 'Open'
+                                            : 'Unknown'"
+
+                                            :style="
+                                              appDetail.Status === 'Approved' ? 'color: #2ecc71'
+                                            : appDetail.Status === 'Created'  ? 'color: #bdc3c7'
+                                            : appDetail.Status === 'Rejected' ? 'color: #e74c3c'
+                                            : appDetail.Status === 'Open'     ? 'color: #3498db'
+                                            : 'color: #ecf0f1'">
+                                        </i>
+                                </td>
+                            </tr>
+                            <tr v-if="isEmptyObject(appDetails)">
+                                <td colspan="8" class="text-center"><i class="text-muted">no processing details</i></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
             </div>
@@ -424,7 +461,9 @@
         ],
         data : function(){
             return {
+                loadingDetails : true,
                 showPagination : true,
+                leave_code : '',
                 calculateButtonText : 'Calculate',
                 submittButtonText   : 'Submit Application',
                 spinner : true,
@@ -467,6 +506,9 @@
                         end: new Date()
                     }
                 ],
+
+                disabledDates : {},
+                dateArray : [],
                 leaveTypes      : {},
                 applications    : {},
                 loading         : true,
@@ -505,10 +547,41 @@
                 New : 'label-info',
                 Canceled : 'label-danger',
                 Review : 'label-success',
-                appDetails : {}
+                appDetails : { }
+
             }
         },
         methods : {
+            setDisabledDates : function () {
+                for (var i = 0; i <= this.disabledDates.length; i++)(
+                    v.getDateRange(i.start_date, i.end_date)
+                )
+            },
+            addDays : function(days) {
+            var dat = new Date(this.valueOf())
+            dat.setDate(dat.getDate() + days);
+            return dat;
+        },
+            getDateRange : function (startDate, stopDate) {
+                var currentDate = startDate
+
+                while(currentDate <= stopDate){
+                    this.dateArray.push(currentDate)
+                    currentDate = currentDate.addDays(1)
+                }
+            },
+            getDisabledDays : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS,''))
+                    .then(function (response) {
+                        v.disabledDates = response.data
+                        console.log(v.dateArray)
+                        console.log(v.disabledDates)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
             paginate : function (link) {
 
                 // alert(link)
@@ -529,13 +602,14 @@
                 }
             },
             applicationDetails : function (application) {
-                // alert('approvers')
-                $('#approveersModal').modal('toggle')
-
                 var v = this
+                v.loadingDetails = true
+                v.appDetails = {}
+                $('#approveersModal').modal('toggle')
                 axios.get(v.getApiPath(v.APIENDPOINTS.APPLICATIONDETAILS, application))
                     .then(function (response) {
                         v.appDetails = response.data.data
+                        v.loadingDetails = false
                         console.log('application Details')
                         console.log(v.appDetails)
                     })
@@ -581,9 +655,10 @@
                         this.states.leave_code = 'has-warning'
                         this.error.leave_code = 'Leave Code is required'
                     }
+
                     if(this.formData.start_date.length === 0){
-                        this.states.start_date = 'has-warning'
-                        this.error.start_date = 'start date is required'
+                       // this.states.start_date = 'has-warning'
+                      //  this.error.start_date = 'date is required'
                     }
 
                 }else {
@@ -593,6 +668,11 @@
                     this.getCalculatedDates()
                 }
 
+            },
+            closeApplicationModal : function () {
+                $('#myModal').modal('hide')
+                this.formData = {}
+                this.dateRange = []
             },
             getCalculatedDates : function () {
                 this.calculateButton.loading = false
@@ -640,12 +720,17 @@
             },
             validateLeaveApplication : function () {
                 this.clearFieldsErrors()
-                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0){
+                if (this.formData.end_date.length === 0 || this.formData.return_date.length === 0 || this.formData.leave_code.length === 0 || this.formData.start_date.length === 0 || this.formData.no_of_days.length === 0 || this.formData.handOverTo.length === 0 || this.dateRange.length === 0){
+
+                    if(this.dateRange.length === 0){
+                        this.states.start_date = 'has-warning'
+                        this.error.start_date = 'date is required'
+                    }
                     if(this.formData.end_date.length === 0){
                         this.error.end_date = 'End Date is Required'
                     }
                     if(this.formData.return_date.length === 0){
-                        this.error.return_date = 'Return Date are Required'
+                        this.error.return_date = 'Return Date is Required'
                         this.states.return_date = 'has-warning'
                     }
                     if(this.formData.leave_code.length === 0){
@@ -662,7 +747,7 @@
                     }
                     if(this.formData.handOverTo.length === 0){
                         this.states.handOverTo = 'has-warning'
-                        this.error.handOverTo = 'Delagate task to is required'
+                        this.error.handOverTo = 'Employee name is required'
                     }
 
                 }else {
@@ -794,6 +879,7 @@
             this.getLeaveApplications()
             this.getLeaveTypes()
             this.getDepartmentEmployees()
+            // this.getDisabledDays()
 
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
@@ -802,7 +888,12 @@
         watch : {
             dateRange : function (newVal, OldVal) {
                 this.setDates()
-            }
+            },
+            leave_code : function (newVal, OldVa) {
+                this.formData.leave_code = this.leave_code
+                this.calculate()
+        ``}
+
         },
         mounted(){
             if(this.openModal){
