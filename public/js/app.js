@@ -54063,7 +54063,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54076,6 +54076,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_timeago__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54399,8 +54409,25 @@ var render = function() {
       },
       _vm._l(_vm.notification, function(notice, index) {
         return _c("li", [
-          _c("div", { staticClass: "dropdown-messages-box" }, [
-            _vm._m(0, true),
+          _c("div", { staticClass: "dropdown-messages-box " }, [
+            _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
+              _c("i", {
+                class:
+                  notice.data.model === "App\\ApprovalEntry"
+                    ? "fa fa-envelope"
+                    : notice.data.model === "App\\ApprovalEntry"
+                      ? ""
+                      : notice.data.model === "App\\ApprovalEntry"
+                        ? ""
+                        : notice.data.model === "App\\ApprovalEntry"
+                          ? ""
+                          : notice.data.model === "App\\ApprovalEntry"
+                            ? ""
+                            : notice.data.model === "App\\ApprovalEntry"
+                              ? ""
+                              : ""
+              })
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "media-body" }, [
               _c(
@@ -54440,16 +54467,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
-      _c("i", { staticClass: "fa fa-envelope fa-fw " })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

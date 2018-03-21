@@ -5,11 +5,20 @@
         </a>
         <ul class="dropdown-menu dropdown-messages" v-show="notification.length !== 0">
             <li v-for="(notice, index) in notification">
-                <div class="dropdown-messages-box">
+                <div class="dropdown-messages-box ">
                     <a href="" class="pull-left">
-                        <i class="fa fa-envelope fa-fw "></i>
+                        <i
+                         :class="notice.data.model === 'App\\ApprovalEntry' ? 'fa fa-envelope'
+                         :notice.data.model === 'App\\ApprovalEntry' ? ''
+                         :notice.data.model === 'App\\ApprovalEntry' ? ''
+                         :notice.data.model === 'App\\ApprovalEntry' ? ''
+                         :notice.data.model === 'App\\ApprovalEntry' ? ''
+                         :notice.data.model === 'App\\ApprovalEntry' ? ''
+                         :''
+
+                        "></i>
                     </a>
-                    <div class="media-body">
+                    <div class="media-body" >
                         <small class="pull-right"><timeago :since="notice.created_at"></timeago></small>
                         <strong>{{notice.data.title}}</strong><br>
                         {{notice.data.message}}
@@ -20,6 +29,7 @@
             </li>
         </ul>
     </li>
+
 
 
 
