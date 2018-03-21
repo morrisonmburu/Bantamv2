@@ -131,6 +131,7 @@ class LeaveApplicationController extends Controller
                     abort(400, "Cannot send application");
                 break;
         }
+        $leave_application->Web_Sync = true;
         $leave_application->Status = $validatedData->Status;
         $leave_application->save();
 
