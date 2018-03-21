@@ -92,19 +92,9 @@ class LeaveApplicationController extends Controller
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
                 $this->authorize('update',$employeeLeaveApplication);
                 $employeeLeaveApplication->Web_Sync = 0;
-                $employeeLeaveApplication->status="Canceled";
-                if($employeeLeaveApplication->save()){
-                    $appEntry=$employeeLeaveApplication->approval_entries;
-                    foreach ($appEntry as $entry){
-                        $entry->Status="Canceled";
-                        $entry->Web_Sync = 0;
-                        $entry->save();
-                        Notification::send($entry->employee->user,new ApproverCanceledLeave($entry->employee->user,$employeeLeaveApplication));
-//                        SendApprovalEntriesToNav::dispatch($entry);
-                    }
-                }
-
-                return  "Success";
+                $employeeLeaveApplication->Status="Canceled";
+                $employeeLeaveApplication->save();
+                return  new LeaveApplicationResource($employeeLeaveApplication);
             }catch(Exception $e){
                 return $e->getMessage();
             }

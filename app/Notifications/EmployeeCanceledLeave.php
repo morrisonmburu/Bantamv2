@@ -71,7 +71,7 @@ class EmployeeCanceledLeave extends Notification implements ShouldQueue
             "message"=> $this->message,
             "type" =>"success",
             "details" => $this->data->toArray(),
-            "model" => EmployeeLeaveApplication::class,
+            "model" => (new \ReflectionClass(EmployeeLeaveApplication::class))->getShortName(),
         ];
     }
 }

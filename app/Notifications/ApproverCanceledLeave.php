@@ -70,7 +70,7 @@ class ApproverCanceledLeave extends Notification implements  ShouldQueue
             "message"=> $this->message,
             "type" =>"info",
             "details" => $this->data->toArray(),
-            "model" => ApprovalEntry::class,
+            "model" => (new \ReflectionClass(ApprovalEntry::class))->getShortName(),
         ];
     }
 }
