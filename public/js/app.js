@@ -1442,8 +1442,9 @@ module.exports = __webpack_require__(112);
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1477,7 +1478,6 @@ Vue.component('faq', __webpack_require__(12));
 Vue.component('wave-loader', __webpack_require__(100));
 Vue.component('notification', __webpack_require__(105));
 
-var bus = new Vue();
 var app = new Vue({
     el: '#app',
     data: {
@@ -1526,7 +1526,8 @@ var app = new Vue({
 
         },
         searchResults: '',
-        searchTerm: ''
+        searchTerm: '',
+        notificationsData: {}
     },
     methods: {
         isEmptyObject: function isEmptyObject(object) {
@@ -1612,8 +1613,17 @@ var app = new Vue({
             }).catch(function (error) {
                 v.searchResults = 'Nothing Found';
             });
-        }, 500)
+        }, 500),
 
+        notificationEvents: function notificationEvents(data) {
+            // expects an object
+            // data {
+            //     component : '',
+            //     id of entry : ''
+            // }
+            this.notificationsData = data;
+            this.swapComponent(data.component);
+        }
     },
     created: function created() {
         this.getData();
@@ -50186,7 +50196,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50197,6 +50207,67 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50407,9 +50478,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "approval-requests",
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'notificationsData', 'notificationEvents'],
     data: function data() {
-        return {
+        var _ref;
+
+        return _ref = {
             formData: {
                 status: ''
             },
@@ -50449,13 +50522,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     title: '',
                     department: ''
                 }
-            }
-
-        };
+            },
+            selected: '',
+            calculateError: ''
+        }, _defineProperty(_ref, 'loading', false), _defineProperty(_ref, 'calculateButton', {
+            text: 'Calculate',
+            icon: 'fa fa-calculator',
+            status: 'btn-primary',
+            loading: true,
+            errorMessage: ''
+        }), _ref;
     },
     methods: {
         runModal: function runModal(data) {
             // this.modalData = data
+            console.log(data);
             this.modalData.id = data.id;
             this.modalData.application.start_date = data.Application_Details.Start_Date;
             this.modalData.application.no_of_days = data.Application_Details.Days_Applied;
@@ -50471,15 +50552,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' ';
             this.modalData.applicant.title = data.Employee_Details.Title;
             this.modalData.applicant.department = data.Employee_Details.Department;
-            // $('#approveRequest').modal('show')
+
+            $('#approveRequest').modal('show');
         },
         approveEntry: function approveEntry(id) {
             var v = this;
             v.approveButton.loading = false;
             v.formData.status = 'Approved';
-            axios.post(v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id), v.formData, { headers: {
+            axios.post(v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id), v.formData, {
+                headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                } }).then(function (response) {
+                }
+            }).then(function (response) {
                 v.getOpenRequests();
                 v.approveButton.loading = true;
                 $('#approveRequest').modal('hide');
@@ -50493,9 +50577,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             v.rejectButton.loading = false;
             v.formData.status = 'Rejected';
-            axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formData, { headers: {
+            axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formData, {
+                headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                } }).then(function (response) {
+                }
+            }).then(function (response) {
                 v.getOpenRequests();
                 v.rejectButton.loading = true;
                 $('#approveRequest').modal('hide');
@@ -50538,16 +50624,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }
         },
-
-        fromNotification: function fromNotification() {
-            alert('from notification');
-        }
-
+        calculate: function calculate() {}
     },
     created: function created() {
         this.getOpenRequests();
-
-        bus.$on('approval-notice', this.fromNotification);
+    },
+    mounted: function mounted() {
+        if (this.notificationsData.component === 'approval-request') {
+            this.selected = this.notificationsData.data;
+        }
     }
 });
 
@@ -50572,60 +50657,76 @@ var render = function() {
                   _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "table-responsive" }, [
-                    _c("table", { staticClass: "table table-striped" }, [
+                    _c("table", { staticClass: "table table-hover" }, [
                       _vm._m(3),
                       _vm._v(" "),
                       _c(
                         "tbody",
                         [
                           _vm._l(_vm.requests, function(request, index) {
-                            return _c("tr", [
-                              _c("td", [_vm._v(_vm._s(index + 1))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(request.Approval_Details))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(
-                                  _vm._s(request.Date_Time_Sent_for_Approval)
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(request.Document_Owner))
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(request.Document_Type))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(request.Status))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(request.Due_Date))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    attrs: {
-                                      "data-toggle": "modal",
-                                      "data-target": "#approveRequest"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.runModal(request)
+                            return _c(
+                              "tr",
+                              {
+                                class:
+                                  request.id === _vm.selected ? "active" : ""
+                              },
+                              [
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(index + 1) +
+                                      " " +
+                                      _vm._s(
+                                        request.id === _vm.selected
+                                          ? _vm.runModal(request)
+                                          : ""
+                                      )
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(request.Approval_Details))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(request.Date_Time_Sent_for_Approval)
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(request.Document_Owner))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _vm._v(_vm._s(request.Document_Type))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(request.Status))]),
+                                _vm._v(" "),
+                                _c("td", [_vm._v(_vm._s(request.Due_Date))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-success",
+                                      on: {
+                                        click: function($event) {
+                                          _vm.runModal(request)
+                                        }
                                       }
-                                    }
-                                  },
-                                  [
-                                    _vm._v("Process "),
-                                    _c("i", {
-                                      staticClass: "fa fa-external-link-square"
-                                    })
-                                  ]
-                                )
-                              ])
-                            ])
+                                    },
+                                    [
+                                      _vm._v("Process "),
+                                      _c("i", {
+                                        staticClass:
+                                          "fa fa-external-link-square"
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
                           }),
                           _vm._v(" "),
                           _vm.requests.length === 0
@@ -50760,254 +50861,329 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+        _c("div", { staticClass: "modal-dialog modal-md" }, [
           _c("div", { staticClass: "modal-content animated fadeInDown" }, [
             _vm._m(5),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "ibox-content inspinia-timeline" }, [
-                _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
                   _c(
-                    "div",
-                    { staticClass: "col-xs-12 content no-top-border" },
+                    "table",
+                    { staticClass: "table table-hover table-condensed" },
                     [
-                      _c("div", { staticClass: "col-xs-6" }, [
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Name:")]),
-                          _vm._v(
-                            " " + _vm._s(_vm.modalData.applicant.EmployeeName)
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Title:")]),
-                          _vm._v(" " + _vm._s(_vm.modalData.applicant.title))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Department:")]),
-                          _vm._v(
-                            " " + _vm._s(_vm.modalData.applicant.department)
-                          )
-                        ])
-                      ]),
+                      _vm._m(6),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-xs-6" }, [
-                        _vm._m(7),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Type:")]),
-                          _vm._v(" " + _vm._s(_vm.modalData.leave.type))
+                      _c("tbody", [
+                        _c("tr", [
+                          _vm._m(7),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.modalData.applicant.EmployeeName))
+                          ])
                         ]),
                         _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Start Date:")]),
-                          _vm._v(" " + _vm._s(_vm.modalData.leave.start_date))
+                        _c("tr", [
+                          _vm._m(8),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.modalData.applicant.EmployeeName))
+                          ])
                         ]),
                         _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Days:")]),
-                          _vm._v(_vm._s(_vm.modalData.leave.days))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("End Date:")]),
-                          _vm._v(_vm._s(_vm.modalData.leave.end_date))
-                        ]),
-                        _vm._v(" "),
-                        _c("p", [
-                          _c("strong", [_vm._v("Return Date:")]),
-                          _vm._v(" " + _vm._s(_vm.modalData.leave.return_date))
+                        _c("tr", [
+                          _vm._m(9),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.modalData.applicant.department))
+                          ])
                         ])
                       ])
                     ]
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-xs-12 content" }, [
-                    _vm._m(8),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("table", { staticClass: "table table-hover" }, [
+                    _vm._m(10),
                     _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-xs-6" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Start Date")]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "input-group date",
-                              attrs: { "data-provide": "datepicker" }
-                            },
-                            [
-                              _vm._m(9),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.modalData.application.start_date,
-                                    expression:
-                                      "modalData.application.start_date"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { readonly: "", type: "text" },
-                                domProps: {
-                                  value: _vm.modalData.application.start_date
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.modalData.application,
-                                      "start_date",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        ]),
+                    _c("tbody", [
+                      _c("tr", [
+                        _vm._m(11),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Number of days")]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.modalData.application.no_of_days,
-                                expression: "modalData.application.no_of_days"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "number",
-                              placeholder: "Number of days",
-                              readonly: ""
-                            },
-                            domProps: {
-                              value: _vm.modalData.application.no_of_days
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.modalData.application,
-                                  "no_of_days",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
+                        _c("td", [_vm._v(_vm._s(_vm.modalData.leave.type))])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _vm._m(12),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.modalData.leave.start_date) + " ")
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-xs-6" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("End Date")]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "input-group date",
-                              attrs: { "data-provide": "datepicker" }
-                            },
-                            [
-                              _vm._m(10),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.modalData.application.end_date,
-                                    expression: "modalData.application.end_date"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { readonly: "", type: "text" },
-                                domProps: {
-                                  value: _vm.modalData.application.end_date
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.modalData.application,
-                                      "end_date",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        ]),
+                      _c("tr", [
+                        _vm._m(13),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Return Date")]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "input-group date",
-                              attrs: { "data-provide": "datepicker" }
-                            },
-                            [
-                              _vm._m(11),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value:
-                                      _vm.modalData.application.return_date,
-                                    expression:
-                                      "modalData.application.return_date"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: { type: "text", readonly: "" },
-                                domProps: {
-                                  value: _vm.modalData.application.return_date
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.modalData.application,
-                                      "return_date",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]
-                          )
-                        ])
+                        _c("td", [_vm._v(_vm._s(_vm.modalData.leave.days))])
                       ]),
                       _vm._v(" "),
-                      _vm._m(12)
+                      _c("tr", [
+                        _vm._m(14),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(_vm.modalData.leave.end_date))])
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _vm._m(15),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.modalData.leave.return_date))
+                        ])
+                      ])
                     ])
                   ])
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "hr-line-dashed" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-xs-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Start Date")]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(16),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.modalData.application.start_date,
+                            expression: "modalData.application.start_date"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: {
+                          value: _vm.modalData.application.start_date
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.modalData.application,
+                              "start_date",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xs-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("End Date")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "input-group date",
+                        attrs: { "data-provide": "datepicker" }
+                      },
+                      [
+                        _vm._m(17),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modalData.application.end_date,
+                              expression: "modalData.application.end_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text" },
+                          domProps: {
+                            value: _vm.modalData.application.end_date
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.modalData.application,
+                                "end_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "form-group text-center" }, [
+                  _vm.loading
+                    ? _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
+                        _c("div", { staticClass: "sk-rect1" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "sk-rect2" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "sk-rect3" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "sk-rect4" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "sk-rect5" })
+                      ])
+                    : _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-block",
+                          class: _vm.calculateButton.status,
+                          attrs: { "data-style": "expand-right" },
+                          on: { click: _vm.calculate }
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(_vm._s(_vm.calculateButton.text) + " "),
+                            _c("i", { class: _vm.calculateButton.icon })
+                          ])
+                        ]
+                      )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.calculateError.length !== 0,
+                        expression: "calculateError.length !== 0"
+                      }
+                    ],
+                    staticClass: "form-group"
+                  },
+                  [
+                    _c("label", { staticClass: "col-sm-4 control-label" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-8" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "alert alert-danger text-centre col-sm-12"
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.calculateError) +
+                              "\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-xs-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Number of days")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.modalData.application.no_of_days,
+                          expression: "modalData.application.no_of_days"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "number",
+                        placeholder: "Number of days",
+                        readonly: ""
+                      },
+                      domProps: { value: _vm.modalData.application.no_of_days },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.modalData.application,
+                            "no_of_days",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-xs-6" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", [_vm._v("Return Date")]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "input-group date",
+                        attrs: { "data-provide": "datepicker" }
+                      },
+                      [
+                        _vm._m(18),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.modalData.application.return_date,
+                              expression: "modalData.application.return_date"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", readonly: "" },
+                          domProps: {
+                            value: _vm.modalData.application.return_date
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.modalData.application,
+                                "return_date",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(19)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer" }, [
@@ -51255,23 +51431,69 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "m-b-xs" }, [
-      _c("strong", [_vm._v("Employee Details")])
+    return _c("thead", [
+      _c("th", [_c("h3", [_vm._v("Employee Details")])]),
+      _vm._v(" "),
+      _c("th")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", { staticClass: "m-b-xs" }, [
-      _c("strong", [_vm._v("Leave Details")])
+    return _c("td", [_c("strong", [_vm._v("Name:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Title:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Department:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_c("h3", [_vm._v("Leave Details")])]),
+      _vm._v(" "),
+      _c("th")
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", {}, [_c("strong", [_vm._v("Processing")])])
+    return _c("td", [_c("strong", [_vm._v("Type:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Start Date:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Days:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("End Date:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [_c("strong", [_vm._v("Return Date:")])])
   },
   function() {
     var _vm = this
@@ -51301,14 +51523,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Comments")]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { diabled: "", rows: "2", id: "comment" }
-        })
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-12" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Comments")]),
+          _vm._v(" "),
+          _c("textarea", {
+            staticClass: "form-control",
+            attrs: { diabled: "", rows: "2", id: "comment" }
+          })
+        ])
       ])
     ])
   }
@@ -54072,7 +54296,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54083,8 +54307,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_timeago__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventBus_js__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timeago__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_timeago__);
 //
 //
 //
@@ -54135,7 +54360,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
+
+
+
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_timeago___default.a, {
     name: 'timeago', // component name, `timeago` by default
     locale: 'en-US',
     locales: {
@@ -54145,7 +54373,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "notification",
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'userDetails', 'validateField'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'userDetails', 'validateField', 'notificationEvents'],
     data: function data() {
         return {
             notification: {},
@@ -54153,6 +54381,10 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
             notify: false,
             noticeIcons: {
                 ApprovalRequest: ''
+            },
+            noticeData: {
+                component: '',
+                data: {}
             }
 
         };
@@ -54173,6 +54405,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
         },
 
         ReadNotifications: function ReadNotifications() {
+
             var v = this;
             v.notify = false;
             axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, '')).then(function (response) {
@@ -54181,11 +54414,14 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_timeago___default.a, {
         },
         notificationClick: function notificationClick(details, model) {
 
-            if (model === 'App\\EmployeeLeaveApplication') {
-                this.swapComponent('');
-
-                bus.$emit('approval-notice');
+            if (model === 'ApprovalEntry') {
+                this.noticeData.component = 'approval-request';
+                this.noticeData.data = details.id;
+            } else if (model === 'EmployeeLeaveApplication') {
+                this.noticeData.component = 'open-applications';
+                this.noticeData.data = details.id;
             }
+            this.notificationEvents(this.noticeData);
         }
     },
     created: function created() {},
@@ -54389,8 +54625,7 @@ var render = function() {
       "a",
       {
         staticClass: "dropdown-toggle count-info",
-        attrs: { "data-toggle": "dropdown", href: "#" },
-        on: { click: _vm.ReadNotifications }
+        attrs: { "data-toggle": "dropdown", href: "#" }
       },
       [
         _c("i", { staticClass: "fa fa-bell" }),
@@ -54438,7 +54673,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "dropdown-messages-box " }, [
-              _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
+              _c("a", { staticClass: "pull-left", attrs: { href: "#" } }, [
                 _c("i", {
                   class:
                     notice.data.model === "AppApprovalEntry"
@@ -54508,6 +54743,33 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+// The most basic event bus
+
+// Imprt vue.js
+
+
+// Create empty vue.js instance to use as event bus
+var Bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({});
+
+// Export event bus instance
+/* unused harmony default export */ var _unused_webpack_default_export = (Bus);
 
 /***/ })
 /******/ ]);

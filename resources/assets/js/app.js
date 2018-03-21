@@ -31,7 +31,7 @@ Vue.component('faq', require('./components/dashboard/faq'));
 Vue.component('wave-loader', require('./components/dashboard/utilities/wave-loader'));
 Vue.component('notification', require('./components/dashboard/utilities/notification'));
 
-var bus = new Vue()
+
 const app = new Vue({
     el: '#app',
     data: {
@@ -80,7 +80,8 @@ const app = new Vue({
 
             },
         searchResults : '',
-        searchTerm : ''
+        searchTerm : '',
+        notificationsData : {}
     },
     methods : {
         isEmptyObject : function (object) {
@@ -178,8 +179,17 @@ const app = new Vue({
                     })
             },
             500
-        )
+        ),
 
+        notificationEvents : function (data) {
+            // expects an object
+            // data {
+            //     component : '',
+            //     id of entry : ''
+            // }
+            this.notificationsData = data
+            this.swapComponent(data.component)
+        },
     },
     created : function () {
         this.getData()

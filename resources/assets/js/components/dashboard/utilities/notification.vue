@@ -1,12 +1,12 @@
 <template>
     <li class="dropdown">
-        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" @click="ReadNotifications">
+        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" ><!--@click="ReadNotifications"-->
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
         <ul class="dropdown-menu dropdown-messages" v-show="notification.length !== 0">
             <li v-for="(notice, index) in notification" @click="notificationClick(notice.data.details, notice.data.model)">
                 <div class="dropdown-messages-box ">
-                    <a href="" class="pull-left">
+                    <a href="#" class="pull-left">
                         <i
                          :class="notice.data.model === 'App\ApprovalEntry' ? 'fa fa-tasks'
                          :notice.data.model === 'App\EmployeeLeaveApplication' ? 'fa fa-file-alt'
@@ -47,7 +47,12 @@
 </template>
 
 <script>
-    import VueTimeago from 'vue-timeago'
+
+    import  Bus from '../../eventBus.js';
+    import VueTimeago from 'vue-timeago';
+
+
+
     Vue.use(VueTimeago, {
         name: 'timeago', // component name, `timeago` by default
         locale: 'en-US',
@@ -66,7 +71,8 @@
             'getApiPath',
             'isEmptyObject',
             'userDetails',
-            'validateField'
+            'validateField',
+            'notificationEvents'
         ],
         data : function () {
             return{
@@ -75,7 +81,11 @@
                 notify : false,
                 noticeIcons : {
                     ApprovalRequest : '',
-            }
+                 },
+                noticeData : {
+                    component : '',
+                    data      : {}
+                }
 
             }
         },
@@ -97,6 +107,7 @@
             },
 
             ReadNotifications : function () {
+
                 var v = this
                 v.notify = false
                 axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
@@ -109,12 +120,14 @@
             },
             notificationClick : function (details, model) {
 
-                if (model === 'App\\EmployeeLeaveApplication') {
-                    this.swapComponent('')
-
-                    bus.$emit('approval-notice')
+                if(model === 'ApprovalEntry'){
+                    this.noticeData.component = 'approval-request'
+                    this.noticeData.data      = details.id
+                }else if (model === 'EmployeeLeaveApplication'){
+                    this.noticeData.component = 'open-applications'
+                    this.noticeData.data      = details.id
                 }
-
+                this.notificationEvents(this.noticeData)
 
             }
         },

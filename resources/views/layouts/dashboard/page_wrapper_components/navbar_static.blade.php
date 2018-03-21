@@ -84,6 +84,7 @@
                     :get-api-path="getApiPath"
                     :is-empty-object="isEmptyObject"
                     :validate-field="validateField"
+                    :notification-events="notificationEvents"
             ></notification>
 
             {{--Log out link--}}
