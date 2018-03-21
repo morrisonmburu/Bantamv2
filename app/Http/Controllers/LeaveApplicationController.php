@@ -7,6 +7,7 @@ use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\ApproverCanceledLeave;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
@@ -36,6 +37,7 @@ class LeaveApplicationController extends Controller
 
     public function store(LeaveRequest $request)
     {
+        $this->authorize('create', EmployeeLeaveApplication::class);
         $validatedData = (object) $request->validate([
             'end_date' => 'required|date',
             'start_date' => 'required|date',
@@ -47,7 +49,20 @@ class LeaveApplicationController extends Controller
             'comment' => 'sometimes',
         ]);
         $LeaveApplication = new EmployeeLeaveApplication();
-        $this->authorize('create', EmployeeLeaveApplication::class);
+
+        $manager = new NavSyncManager();
+        $result = $manager->calculateLeaveDates(
+            $validatedData->leave_code,
+            Auth::user()->Employee_Record->No,
+            Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
+            $validatedData->start_date,
+            $validatedData->end_date
+        );
+
+        if($result->lDays < 1){
+            abort(400, "Cannot have 0 number of leave days");
+        }
+
         $this->checkDatesOverlap($validatedData->start_date, $validatedData->end_date);
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
@@ -57,7 +72,7 @@ class LeaveApplicationController extends Controller
             "Status" => "Review",
             "End_Date" => $validatedData->end_date,
             "Return_Date" => $validatedData->return_date,
-            "Comments" => $validatedData->comment,
+            "Comments" => array_key_exists('comment', get_object_vars($validatedData))? $validatedData->comment : null,
             "Application_Date" => Carbon::now(),
             "Application_Code" => uniqid(),
             "Web_Sync" => true
@@ -86,18 +101,25 @@ class LeaveApplicationController extends Controller
     }
     public function update(Request $request,$appCode)
     {
+        $application =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
+        $this->authorize('update',$application);
+
+        if($request->user()->id = $application->employee->user->id){
+            $application->Status="Canceled";
+        }
+        else if($application->employee->employee_approvers->contains($request->user()->Employee_Record)){
+            $validatedData = $request->validate([
+                'Approved_Start_Date' => 'required|date',
+                'Approved_End_Date' => 'required|date',
+            ]);
+            $application->fill($validatedData);
+            $application->Approval_Date = Carbon::now()->format('Y-m-d');
+        }
+        $application->Web_Sync = 0;
+        $application->save();
 
         if ($request->is('api*')) {
-            try{
-                $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
-                $this->authorize('update',$employeeLeaveApplication);
-                $employeeLeaveApplication->Web_Sync = 0;
-                $employeeLeaveApplication->Status="Canceled";
-                $employeeLeaveApplication->save();
-                return  new LeaveApplicationResource($employeeLeaveApplication);
-            }catch(Exception $e){
-                return $e->getMessage();
-            }
+            return  new LeaveApplicationResource($application);
         }
     }
 
@@ -252,13 +274,28 @@ class LeaveApplicationController extends Controller
     }
 
     private function checkDatesOverlap($start_date, $end_date ){
-        if(EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')->where(function ($q) use($start_date) {
-            $q->where('Start_Date', '<=', $start_date);
-            $q->where('End_Date', '>=', $start_date);
-        })->orWhere(function ($q) use($end_date) {
-            $q->where('Start_Date', '<=', $end_date);
-            $q->where('End_Date', '>=', $end_date);
-        })->count())
+//        DB::enableQueryLog();
+        $res = EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')
+            ->where('Employee_No', Auth::user()->Employee_Record->No)
+            ->where(function ($query) use($start_date, $end_date){
+            $query->where(function ($q) use($start_date) {
+                $q->where('Start_Date', '<=', $start_date);
+                $q->where('End_Date', '>=', $start_date);
+            })->orWhere(function ($q) use($end_date) {
+                $q->where('Start_Date', '<=', $end_date);
+                $q->where('End_Date', '>=', $end_date);
+            })->orWhere(function ($q) use($start_date, $end_date) {
+                $q->where('Start_Date', '<=', $start_date);
+                $q->where('End_Date', '>=', $end_date);
+            })->orWhere(function ($q) use($start_date, $end_date) {
+                $q->where('Start_Date', '>=', $start_date);
+                $q->where('End_Date', '<=', $end_date);
+            });
+        })->get();
+
+//        dd(DB::getQueryLog());
+
+        if($res->count())
         {
             abort(400, "Leave application overlaps with another.");
         }

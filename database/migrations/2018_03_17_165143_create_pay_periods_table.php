@@ -15,7 +15,7 @@ class CreatePayPeriodsTable extends Migration
     {
         Schema::create('pay_periods', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('Starting_Date')->nullable();
+            $table->date('Starting_Date')->unique();
             $table->string('Name', 50)->nullable();
             $table->boolean("New_Fiscal_Year")->nullable();
             $table->boolean("Closed")->nullable();

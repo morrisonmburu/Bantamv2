@@ -54,7 +54,6 @@ class EmployeeLeaveApplicationPolicy
         if($user->Employee_Record && $user->Employee_Record->No == $employeeLeaveApplication->employee->No){
             return true;
         }
-
         if($employeeLeaveApplication->employee->employee_approvers->contains($user->Employee_Record)){
             return true;
         }
