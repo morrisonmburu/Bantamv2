@@ -13,6 +13,6 @@
    </side-nav-header>
 
    <div class="logo-element">
-      IN+
+      TNH
    </div>
 </li>

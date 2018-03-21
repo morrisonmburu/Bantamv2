@@ -56,7 +56,7 @@ class NavTest extends Command
     {
         foreach (User::all() as $user){
             $user->update([
-                'password' => Hash::make('foobar')
+                'password' => Hash::make('bantam')
             ]);
         }
 

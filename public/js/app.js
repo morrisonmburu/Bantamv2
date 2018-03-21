@@ -47563,10 +47563,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
-var _templateObject = _taggedTemplateLiteral([''], ['']);
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 //
 //
 //
@@ -48128,9 +48124,9 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         getDisabledDays: function getDisabledDays() {
             var v = this;
             axios.get(v.getApiPath(v.APIENDPOINTS.DISABLEDDAYS, '')).then(function (response) {
-                v.disabledDates = response.data;
+                v.dateArray = response.data;
+                console.log('disabled days');
                 console.log(v.dateArray);
-                console.log(v.disabledDates);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -48205,7 +48201,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
                 if (this.formData.start_date.length === 0) {
                     // this.states.start_date = 'has-warning'
-                    //  this.error.start_date = 'date is required'
+                    // this.error.start_date = 'date is required'
                 }
             } else {
 
@@ -48390,7 +48386,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         this.getLeaveApplications();
         this.getLeaveTypes();
         this.getDepartmentEmployees();
-        // this.getDisabledDays()
+        this.getDisabledDays();
 
         //check for applications after every five minutes
         this.timer = setInterval(this.getLeaveApplications, 300000);
@@ -48402,7 +48398,8 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
         },
         leave_code: function leave_code(newVal, OldVa) {
             this.formData.leave_code = this.leave_code;
-            this.calculate()(_templateObject);
+            this.calculate();
+            '';
         }
 
     },
@@ -48466,10 +48463,7 @@ var render = function() {
               ? _c("div", { staticClass: "spiner-example" }, [_vm._m(0)])
               : _c(
                   "table",
-                  {
-                    staticClass:
-                      "table table-hover table-condensed animated fadeIn"
-                  },
+                  { staticClass: "table table-hover animated fadeIn" },
                   [
                     _vm._m(1),
                     _vm._v(" "),
@@ -48481,6 +48475,7 @@ var render = function() {
                             "tr",
                             {
                               staticClass: "hovertable",
+                              staticStyle: { cursor: "pointer" },
                               on: {
                                 dblclick: function($event) {
                                   _vm.applicationDetails(application.id)
@@ -48488,33 +48483,89 @@ var render = function() {
                               }
                             },
                             [
-                              _c("td", [
-                                _vm._v(_vm._s(_vm.meta.from + index) + " ")
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(_vm.meta.from + index) + " ")]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Application_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Application_Date))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Days_Applied))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Days_Applied))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Code))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Leave_Code))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Leave_Period))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Leave_Period))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Start_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Start_Date))]
+                              ),
                               _vm._v(" "),
-                              _c("td", [
-                                _vm._v(_vm._s(application.Return_Date))
-                              ]),
+                              _c(
+                                "td",
+                                {
+                                  attrs: {
+                                    "data-toggle": "tooltip",
+                                    "data-placement": "top",
+                                    title: "double click to view details"
+                                  }
+                                },
+                                [_vm._v(_vm._s(application.Return_Date))]
+                              ),
                               _vm._v(" "),
                               _c("td", [
                                 _c(
@@ -48537,7 +48588,8 @@ var render = function() {
                                   ? _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-sm btn-danger",
+                                        staticClass:
+                                          "btn btn-xs btn-danger cancelButton",
                                         on: {
                                           click: function($event) {
                                             _vm.deleteApplication(application)
@@ -48552,11 +48604,12 @@ var render = function() {
                                   : _c(
                                       "button",
                                       {
-                                        staticClass: "btn btn-sm btn-default",
+                                        staticClass:
+                                          "btn btn-xs btn-default cancelButton",
                                         attrs: { disabled: "" }
                                       },
                                       [
-                                        _vm._v("Cancel"),
+                                        _vm._v("Cancel  "),
                                         _c("i", { staticClass: "fa fa-close" })
                                       ]
                                     )
@@ -48712,6 +48765,7 @@ var render = function() {
                             attrs: {
                               confirm: "",
                               placeholder: "Select start date and end date",
+                              "disabled-days": _vm.dateArray,
                               format: "yyyy-MM-dd",
                               lang: "en",
                               range: "",
@@ -49221,7 +49275,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action ")])
+        _c("th")
       ])
     ])
   },
@@ -54009,7 +54063,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54022,6 +54076,33 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_timeago__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54326,21 +54407,42 @@ var render = function() {
             expression: "notification.length !== 0"
           }
         ],
-        staticClass: "dropdown-menu dropdown-alerts"
+        staticClass: "dropdown-menu dropdown-messages"
       },
       _vm._l(_vm.notification, function(notice, index) {
-        return _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("div", [
-              _c("i", { staticClass: "fa fa-envelope fa-fw" }),
-              _vm._v(
-                " " + _vm._s(notice.data.message) + "\n                    "
-              ),
+        return _c("li", { on: { "click()": function($event) {} } }, [
+          _c("div", { staticClass: "dropdown-messages-box " }, [
+            _c("a", { staticClass: "pull-left", attrs: { href: "" } }, [
+              _c("i", {
+                class:
+                  notice.data.model === "App\\ApprovalEntry"
+                    ? "fa fa-tasks"
+                    : notice.data.model === "App\\EmployeeLeaveApplication"
+                      ? "fa fa-file-alt"
+                      : "fa fa-file",
+                style:
+                  notice.data.type === "success"
+                    ? "color : #2ecc71"
+                    : notice.data.model === "danger"
+                      ? "color : #e74c3c"
+                      : notice.data.model === "info"
+                        ? "color : #bdc3c7"
+                        : "color : #ecf0f1"
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "media-body" }, [
               _c(
-                "span",
-                { staticClass: "pull-right text-muted small" },
+                "small",
+                { staticClass: "pull-right" },
                 [_c("timeago", { attrs: { since: notice.created_at } })],
                 1
+              ),
+              _vm._v(" "),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(notice.data.message) +
+                  "\n                    "
               )
             ])
           ]),
