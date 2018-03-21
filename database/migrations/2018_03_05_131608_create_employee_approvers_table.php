@@ -18,16 +18,16 @@ class CreateEmployeeApproversTable extends Migration
             $table->increments('id');
             $table->string('Employee',50);
             $table->integer('Approval_Level');
-            $table->string('Approver',50)->unique();
+            $table->string('Approver',50);
             $table->string("NamesApprvr");
             $table->string("Comments", 50)->nullable();
             $table->foreign('Employee')->references('No')->on('employees');
             $table->foreign('Approver')->references('No')->on('employees');
-            $table->unique(['Employee', 'Approver', 'Approval_Level']);
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
             $table->dateTime("Nav_Sync_TimeStamp")->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
+            $table->unique(['Employee',  'Approver', 'Approval_Level']);
             $table->timestamps();
         });
     }
