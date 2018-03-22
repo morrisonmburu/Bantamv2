@@ -22,6 +22,7 @@ use App\Jobs\SendApprovalEntriesToNav;
 
 class LeaveApplicationController extends Controller
 {
+    use Filterable;
     public function index(Request $request)
     {
         $this->authorize('index', EmployeeLeaveApplication::class);
@@ -182,33 +183,8 @@ class LeaveApplicationController extends Controller
     }
 
     public function leave_applications(Request $request){
-        $status = $request->query('status');
-
-        $applications = null;
-
-        if($status){
-            $applications = EmployeeLeaveApplication::where("Employee_No", Auth::user()->Employee_Record->No );
-            if(is_array($status)){
-                $count = 0;
-                foreach ($status as $s){
-                    if($count == 0){
-                        $applications = $applications->where("Status", $s);
-                    }
-                    else{
-                        $applications->orWhere("Status", $s);
-                    }
-                    $count++;
-                }
-            }
-            else{
-                $applications = $applications->where("Status", $status);
-            }
-            $applications = $applications->orderBy('created_at', 'DESC')->paginate();
-        }
-        else{
-            $applications = Auth::user()->Employee_Record->Employee_leave_applications()->paginate();
-        }
-//        dd($applications);
+        $applications = $this->filter($request->all(), EmployeeLeaveApplication::class)
+            ->where("Employee_No", Auth::user()->Employee_Record->No )->paginate();
         if($request->is('api*')){
             return new EmployeeLeaveApplicationCollection($applications);
         }

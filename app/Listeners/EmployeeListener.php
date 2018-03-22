@@ -46,6 +46,7 @@ class EmployeeListener
         switch ($response) {
             case Password::RESET_LINK_SENT:
                 $user->activation_link_sent = true;
+                $user->save();
                 return true;
             default:
                 return false;
