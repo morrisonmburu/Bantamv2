@@ -47562,7 +47562,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48111,7 +48111,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Canceled: 'label-danger',
             Review: 'label-success',
             appDetails: {},
-            selected: ''
+            selected: '',
+            sending: false
 
         };
     },
@@ -48384,11 +48385,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         deleteApplication: function deleteApplication(application) {
+
             var v = this;
+            v.sending = true;
             axios.post(v.getApiPath(v.APIENDPOINTS.CANCELAPPLICATION, application.id), { "Status": "Canceled" }, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.getLeaveApplications();
+                v.sending = false;
             }).catch(function (error) {
                 v.getLeaveApplications();
                 console.log(error.response.message);
@@ -48467,7 +48471,7 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v("\n                                Make Appliction "),
+                  _vm._v("\n                                Make Application "),
                   _c("i", { staticClass: "fa fa-plus" })
                 ]
               )
@@ -48629,8 +48633,14 @@ var render = function() {
                                         attrs: { disabled: "" }
                                       },
                                       [
-                                        _vm._v("Cancel  "),
-                                        _c("i", { staticClass: "fa fa-close" })
+                                        _vm._v("Cancel "),
+                                        _vm.sending
+                                          ? _c("span", {
+                                              staticClass: "loading bullet"
+                                            })
+                                          : _c("i", {
+                                              staticClass: "fa fa-close"
+                                            })
                                       ]
                                     )
                               ])
@@ -50204,7 +50214,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50215,286 +50225,274 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_datepicker__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "approval-requests",
+    components: {
+        Datepicker: __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default.a
+    },
     props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'notificationsData', 'notificationEvents'],
     data: function data() {
-        var _ref;
-
-        return _ref = {
-            formData: {
-                status: ''
-            },
+        return {
             requests: {},
+            backup: {},
             paginateLinks: {},
             loading: true,
             approveButton: {
@@ -50513,6 +50511,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             modalData: {
                 id: '',
                 application: {
+                    leave_code: '',
                     start_date: '',
                     no_of_days: '',
                     end_date: '',
@@ -50532,18 +50531,53 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 }
             },
             selected: '',
-            calculateError: ''
-        }, _defineProperty(_ref, 'loading', false), _defineProperty(_ref, 'calculateButton', {
-            text: 'Calculate',
-            icon: 'fa fa-calculator',
-            status: 'btn-primary',
-            loading: true,
-            errorMessage: ''
-        }), _ref;
+            calculateError: '',
+            calculateButton: {
+                text: 'Calculate',
+                icon: 'fa fa-calculator',
+                status: 'btn-primary',
+                loading: false,
+                errorMessage: ''
+            },
+            reset: {
+                text: 'Reset',
+                icon: 'fa fa-refresh',
+                status: '',
+                loading: false,
+                errorMessage: ''
+            },
+            states: {
+                leave_code: '',
+                start_date: '',
+                no_of_days: '',
+                end_date: '',
+                return_date: '',
+                comment: '',
+                handOverTo: ''
+            },
+            error: {
+                leave_code: '',
+                start_date: '',
+                no_of_days: '',
+                end_date: '',
+                return_date: '',
+                comment: '',
+                submitting: '',
+                handOverTo: ''
+            },
+            shortcuts: [{
+                text: 'Today',
+                start: new Date(),
+                end: new Date()
+            }]
+
+        };
     },
     methods: {
         runModal: function runModal(data) {
-            // this.modalData = data
+            // store the data incase you need to reset when calculating
+            this.backup = data;
+
             console.log(data);
             this.modalData.id = data.id;
             this.modalData.application.start_date = data.Application_Details.Start_Date;
@@ -50632,7 +50666,66 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 });
             }
         },
-        calculate: function calculate() {}
+        resetApplication: function resetApplication() {
+            this.modalData.application.start_date = this.backup.Application_Details.Start_Date;
+            this.modalData.application.no_of_days = this.backup.Application_Details.Days_Applied;
+            this.modalData.application.end_date = this.backup.Application_Details.End_Date;
+            this.modalData.application.return_date = this.backup.Application_Details.Return_Date;
+        },
+        calculate: function calculate() {
+
+            this.clearFieldsErrors();
+            if (this.modalData.application.start_date.length === 0 || this.modalData.application.end_date.length === 0) {
+
+                if (this.modalData.application.start_date.length === 0) {
+                    this.states.start_date = 'has-warning';
+                    this.error.start_date = 'start date is required';
+                }
+                if (this.modalData.application.end_date.length === 0) {
+                    this.states.end_date = 'has-warning';
+                    this.error.end_date = 'end date is required';
+                }
+            } else {
+                //calculator requires leave code
+                this.modalData.application.leave_code = this.modalData.leave.type;
+                this.getCalculatedDates();
+            }
+        },
+        getCalculatedDates: function getCalculatedDates() {
+            this.calculateButton.loading = true;
+            var v = this;
+            axios.post(this.APIENDPOINTS.CALCULATE, this.modalData.application, { headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } }).then(function (response) {
+                v.formData.no_of_days = response.data.lDays;
+                v.formData.return_date = response.data.rDate;
+                v.calculateButton.loading = false;
+            }).catch(function (error) {
+                v.calculateButton.loading = true;
+                v.calculateButton.status = 'btn btn-warning';
+                v.calculateButton.text = 'please try again ';
+                v.calculateButton.icon = 'fa fa-warning';
+                v.calculateButton.errorMessage = error.response.data.message;
+            });
+        },
+        clearFieldsErrors: function clearFieldsErrors() {
+            this.error.submitting = '';
+            this.error.return_date = '';
+            this.states.return_date = '';
+            this.error.end_date = '';
+            this.states.leave_code = '';
+            this.error.leave_code = '';
+            this.states.start_date = '';
+            this.error.start_date = '';
+            this.states.no_of_days = '';
+            this.error.no_of_days = '';
+            this.calculateButton.status = 'btn btn-primary';
+            this.calculateButton.text = 'Calculate';
+            this.calculateButton.icon = 'fa fa-calculator';
+            this.calculateButton.errorMessage = '';
+            this.states.handOverTo = '';
+            this.error.handOverTo = '';
+        }
     },
     created: function created() {
         this.getOpenRequests();
@@ -50640,6 +50733,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     mounted: function mounted() {
         if (this.notificationsData.component === 'approval-request') {
             this.selected = this.notificationsData.data;
+        }
+    },
+
+    watch: {
+        'modalData.application.start_date': function modalDataApplicationStart_date(newVal, oldVal) {
+            if (newVal.length !== 0 && newVal.length !== 10) {
+                this.modalData.application.start_date = this.modalData.application.start_date.toISOString().slice(0, 10);
+            }
+        },
+        'modalData.application.end_date': function modalDataApplicationEnd_date(newVal, oldVal) {
+            if (newVal.length !== 0 && newVal.length !== 10) {
+                this.modalData.application.end_date = this.modalData.application.end_date.toISOString().slice(0, 10);
+            }
         }
     }
 });
@@ -50954,158 +51060,110 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12 text-right " }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "m-xs btn btn-white btn-xs",
+                      class: _vm.reset.status,
+                      attrs: { href: "#" },
+                      on: { click: _vm.resetApplication }
+                    },
+                    [
+                      _c("strong", [
+                        _vm._v(_vm._s(_vm.reset.text) + " "),
+                        _c("i", { class: _vm.reset.icon })
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "hr-line-dashed" }),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-xs-6" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Start Date")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "input-group date" }, [
-                      _vm._m(16),
+                  _c(
+                    "div",
+                    { staticClass: "form-group", class: _vm.states.start_date },
+                    [
+                      _c("label", [_vm._v("Start Date")]),
                       _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.modalData.application.start_date,
-                            expression: "modalData.application.start_date"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "text" },
-                        domProps: {
-                          value: _vm.modalData.application.start_date
+                      _c("datepicker", {
+                        attrs: {
+                          confirm: "",
+                          placeholder: "Select start date ",
+                          format: "yyyy-MM-dd",
+                          lang: "en",
+                          name: "start_date",
+                          id: "start_date",
+                          "input-class": "form-control"
                         },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
+                        model: {
+                          value: _vm.modalData.application.start_date,
+                          callback: function($$v) {
                             _vm.$set(
                               _vm.modalData.application,
                               "start_date",
-                              $event.target.value
+                              $$v
                             )
-                          }
+                          },
+                          expression: "modalData.application.start_date"
                         }
-                      })
-                    ])
-                  ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "help-block",
+                          attrs: { id: "helpBlockdate" }
+                        },
+                        [_vm._v(_vm._s(_vm.error.start_date))]
+                      )
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-xs-6" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("End Date")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "input-group date",
-                        attrs: { "data-provide": "datepicker" }
-                      },
-                      [
-                        _vm._m(17),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.modalData.application.end_date,
-                              expression: "modalData.application.end_date"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: {
-                            value: _vm.modalData.application.end_date
+                  _c(
+                    "div",
+                    { staticClass: "form-group", class: _vm.states.end_date },
+                    [
+                      _c("label", [_vm._v("End Date")]),
+                      _vm._v(" "),
+                      _c("datepicker", {
+                        attrs: {
+                          confirm: "",
+                          placeholder: "Select start date ",
+                          format: "yyyy-MM-dd",
+                          lang: "en",
+                          name: "start_date",
+                          id: "start_date",
+                          "input-class": "form-control"
+                        },
+                        model: {
+                          value: _vm.modalData.application.end_date,
+                          callback: function($$v) {
+                            _vm.$set(_vm.modalData.application, "end_date", $$v)
                           },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.modalData.application,
-                                "end_date",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "form-group text-center" }, [
-                  _vm.loading
-                    ? _c("div", { staticClass: "sk-spinner sk-spinner-wave" }, [
-                        _c("div", { staticClass: "sk-rect1" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "sk-rect2" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "sk-rect3" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "sk-rect4" }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "sk-rect5" })
-                      ])
-                    : _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-block",
-                          class: _vm.calculateButton.status,
-                          attrs: { "data-style": "expand-right" },
-                          on: { click: _vm.calculate }
-                        },
-                        [
-                          _c("strong", [
-                            _vm._v(_vm._s(_vm.calculateButton.text) + " "),
-                            _c("i", { class: _vm.calculateButton.icon })
-                          ])
-                        ]
-                      )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.calculateError.length !== 0,
-                        expression: "calculateError.length !== 0"
-                      }
-                    ],
-                    staticClass: "form-group"
-                  },
-                  [
-                    _c("label", { staticClass: "col-sm-4 control-label" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-8" }, [
+                          expression: "modalData.application.end_date"
+                        }
+                      }),
+                      _vm._v(" "),
                       _c(
-                        "div",
+                        "span",
                         {
-                          staticClass:
-                            "alert alert-danger text-centre col-sm-12"
+                          staticClass: "help-block",
+                          attrs: { id: "helpBlockdate2" }
                         },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(_vm.calculateError) +
-                              "\n                                "
-                          )
-                        ]
+                        [_vm._v(_vm._s(_vm.error.end_date))]
                       )
-                    ])
-                  ]
-                )
+                    ],
+                    1
+                  )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
@@ -51146,52 +51204,110 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-xs-6" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Return Date")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "input-group date",
-                        attrs: { "data-provide": "datepicker" }
-                      },
-                      [
-                        _vm._m(18),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.modalData.application.return_date,
-                              expression: "modalData.application.return_date"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: { type: "text", readonly: "" },
-                          domProps: {
-                            value: _vm.modalData.application.return_date
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c("label", [_vm._v("Return Date")]),
+                      _vm._v(" "),
+                      _c("datepicker", {
+                        attrs: {
+                          confirm: "",
+                          disabled: "",
+                          placeholder: "Select start date ",
+                          format: "yyyy-MM-dd",
+                          lang: "en",
+                          name: "retun_date",
+                          id: "retun_date",
+                          "input-class": "form-control"
+                        },
+                        model: {
+                          value: _vm.modalData.application.return_date,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.modalData.application,
+                              "return_date",
+                              $$v
+                            )
                           },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.modalData.application,
-                                "return_date",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  ])
+                          expression: "modalData.application.return_date"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass: "help-block",
+                          attrs: { id: "helpBlockdate3" }
+                        },
+                        [_vm._v(_vm._s(_vm.error.return_date))]
+                      )
+                    ],
+                    1
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(19)
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-12 text-right " }, [
+                  _vm.calculateButton.loading
+                    ? _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { href: "#" }
+                        },
+                        [_c("span", { staticClass: "loading bullet" })]
+                      )
+                    : _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-primary ",
+                          class: _vm.calculateButton.status,
+                          attrs: { href: "#" },
+                          on: { click: _vm.calculate }
+                        },
+                        [
+                          _c("strong", [
+                            _vm._v(_vm._s(_vm.calculateButton.text) + " "),
+                            _c("i", { class: _vm.calculateButton.icon })
+                          ])
+                        ]
+                      )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.calculateError.length !== 0,
+                        expression: "calculateError.length !== 0"
+                      }
+                    ],
+                    staticClass: "form-group"
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "alert alert-danger text-centre col-sm-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(_vm.calculateError) +
+                            "\n                            "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(16)
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer" }, [
@@ -51502,30 +51618,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("strong", [_vm._v("Return Date:")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-addon" }, [
-      _c("i", { staticClass: "fa fa-calendar" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-addon" }, [
-      _c("i", { staticClass: "fa fa-calendar" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-addon" }, [
-      _c("i", { staticClass: "fa fa-calendar" })
-    ])
   },
   function() {
     var _vm = this

@@ -7,7 +7,7 @@
                         <h5>Open Applications</h5>
                         <div class="ibox-tools">
                             <button v-show="!loading" type="button"  class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                Make Appliction <i class="fa fa-plus"></i>
+                                Make Application <i class="fa fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 <td>
                                     <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
                                     <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger cancelButton" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-xs btn-default cancelButton">Cancel &nbsp;<i class="fa fa-close"></i> </button>
+                                    <button v-else disabled class="btn btn-xs btn-default cancelButton">Cancel <span v-if="sending" class="loading bullet"></span> <i v-else class="fa fa-close"></i> </button>
                                 </td>
                             </tr>
                             <tr v-if="isEmptyObject(applications)">
@@ -550,7 +550,8 @@
                 Canceled : 'label-danger',
                 Review : 'label-success',
                 appDetails : { },
-                selected : ''
+                selected : '',
+                sending : false,
 
             }
         },
@@ -861,7 +862,9 @@
                     })
             },
             deleteApplication : function (application) {
+
                 var v = this
+                v.sending = true
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.CANCELAPPLICATION, application.id),
                     { "Status": "Canceled" },
@@ -871,6 +874,7 @@
                 )
                     .then(function (response) {
                         v.getLeaveApplications()
+                        v.sending = false
                     })
                     .catch(function (error) {
                         v.getLeaveApplications()

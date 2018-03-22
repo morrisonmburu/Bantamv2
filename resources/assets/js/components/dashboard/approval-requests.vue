@@ -178,48 +178,27 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right ">
+                               <a href="#" class="m-xs btn btn-white btn-xs"  @click="resetApplication" v-bind:class="reset.status"> <strong>{{ reset.text }} <i :class="reset.icon"></i> </strong></a>
+                            </div>
+
+                        </div>
                         <div class="hr-line-dashed"></div>
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="form-group">
+                                <div class="form-group" :class="states.start_date">
                                     <label>Start Date</label>
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input  type="text" class="form-control" v-model="modalData.application.start_date">
-                                    </div>
+                                    <datepicker confirm placeholder="Select start date " format="yyyy-MM-dd"  v-model="modalData.application.start_date" lang="en"  name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                    <span id="helpBlockdate" class="help-block">{{error.start_date}}</span>
                                 </div>
                             </div>
 
                             <div class="col-xs-6">
-                                <div class="form-group"><label>End Date</label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input  type="text" class="form-control" v-model="modalData.application.end_date">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group text-center">
-                                <div v-if="loading"  class="sk-spinner sk-spinner-wave">
-                                    <div class="sk-rect1"></div>
-                                    <div class="sk-rect2"></div>
-                                    <div class="sk-rect3"></div>
-                                    <div class="sk-rect4"></div>
-                                    <div class="sk-rect5"></div>
-                                </div>
-                                <button v-else class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>
-                            </div>
-                            <div class="form-group" v-show="calculateError.length !== 0">
-                                <label class="col-sm-4 control-label"></label>
-                                <div class="col-sm-8">
-                                    <div class="alert alert-danger text-centre col-sm-12">
-                                        {{calculateError}}
-                                    </div>
+                                <div class="form-group" :class="states.end_date">
+                                    <label>End Date</label>
+                                    <datepicker confirm placeholder="Select start date " format="yyyy-MM-dd"  v-model="modalData.application.end_date" lang="en"  name="start_date" id="start_date"  input-class="form-control"></datepicker>
+                                    <span id="helpBlockdate2" class="help-block">{{error.end_date}}</span>
                                 </div>
                             </div>
                         </div>
@@ -231,13 +210,21 @@
                                 </div>
                             </div>
                             <div class="col-xs-6">
-                                <div class="form-group"><label>Return Date</label>
-                                    <div class="input-group date" data-provide="datepicker">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input v-model="modalData.application.return_date" type="text" class="form-control" readonly>
-                                    </div>
+                                <div class="form-group">
+                                    <label>Return Date</label>
+                                    <datepicker confirm disabled placeholder="Select start date " format="yyyy-MM-dd"  v-model="modalData.application.return_date" lang="en"  name="retun_date" id="retun_date"  input-class="form-control"></datepicker>
+                                    <span id="helpBlockdate3" class="help-block">{{error.return_date}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right ">
+                                <a href="#" v-if="calculateButton.loading" class="btn btn-primary" > <span class="loading bullet"></span></a>
+                                <a href="#" v-else class="btn btn-primary "  @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></a>
+                            </div>
+                            <div class="form-group" v-show="calculateError.length !== 0">
+                                <div class="alert alert-danger text-centre col-sm-12">
+                                    {{calculateError}}
                                 </div>
                             </div>
                         </div>
@@ -265,8 +252,13 @@
 
 <script>
 
+    import Datepicker from 'vue2-datepicker';
+
     export default {
         name: "approval-requests",
+        components: {
+            Datepicker
+        },
         props : [
             'currentUser',
             'currentUserData',
@@ -281,10 +273,8 @@
         ],
         data : function () {
             return{
-                formData : {
-                    status : ''
-                },
                 requests : {},
+                backup : {},
                 paginateLinks : {},
                 loading : true,
                 approveButton : {
@@ -303,6 +293,7 @@
                 modalData : {
                     id : '',
                     application : {
+                        leave_code : '',
                         start_date : '',
                         no_of_days : '',
                         end_date : '',
@@ -323,20 +314,54 @@
                 },
                 selected : '',
                 calculateError : '',
-                loading : false,
                 calculateButton   : {
                     text    : 'Calculate',
                     icon    : 'fa fa-calculator',
                     status  : 'btn-primary',
-                    loading : true,
+                    loading : false,
                     errorMessage : ''
                 },
+                reset   : {
+                    text    : 'Reset',
+                    icon    : 'fa fa-refresh',
+                    status  : '',
+                    loading : false,
+                    errorMessage : ''
+                },
+                states : {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : '',
+                    handOverTo : ''
+                },
+                error : {
+                    leave_code : '',
+                    start_date : '',
+                    no_of_days : '',
+                    end_date : '',
+                    return_date : '',
+                    comment : '',
+                    submitting : '',
+                    handOverTo : ''
+                },
+                shortcuts: [
+                    {
+                        text: 'Today',
+                        start: new Date(),
+                        end: new Date()
+                    }
+                ],
 
             }
         },
         methods : {
             runModal: function (data) {
-                // this.modalData = data
+                // store the data incase you need to reset when calculating
+                this.backup = data
+
                 console.log(data)
                 this.modalData.id = data.id
                 this.modalData.application.start_date = data.Application_Details.Start_Date
@@ -442,9 +467,71 @@
                         })
                 }
             },
+            resetApplication : function () {
+                this.modalData.application.start_date           = this.backup.Application_Details.Start_Date
+                this.modalData.application.no_of_days           = this.backup.Application_Details.Days_Applied
+                this.modalData.application.end_date             = this.backup.Application_Details.End_Date
+                this.modalData.application.return_date          = this.backup.Application_Details.Return_Date
+            },
             calculate : function () {
 
-            }
+                this.clearFieldsErrors()
+                if (this.modalData.application.start_date.length === 0 || this.modalData.application.end_date.length === 0){
+
+                    if(this.modalData.application.start_date.length === 0){
+                        this.states.start_date = 'has-warning'
+                        this.error.start_date = 'start date is required'
+                    }
+                    if(this.modalData.application.end_date.length === 0){
+                        this.states.end_date = 'has-warning'
+                        this.error.end_date = 'end date is required'
+                    }
+                }else {
+                    //calculator requires leave code
+                    this.modalData.application.leave_code = this.modalData.leave.type
+                    this.getCalculatedDates()
+                }
+            },
+            getCalculatedDates : function () {
+                this.calculateButton.loading = true
+                var v = this
+                axios.post(
+                    this.APIENDPOINTS.CALCULATE,
+                    this.modalData.application,
+                    {headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }})
+                    .then(function (response) {
+                        v.formData.no_of_days = response.data.lDays
+                        v.formData.return_date = response.data.rDate
+                        v.calculateButton.loading  = false
+                    })
+                    .catch(function (error) {
+                        v.calculateButton.loading = true
+                        v.calculateButton.status = 'btn btn-warning'
+                        v.calculateButton.text = 'please try again '
+                        v.calculateButton.icon = 'fa fa-warning'
+                        v.calculateButton.errorMessage = error.response.data.message
+                    })
+            },
+            clearFieldsErrors : function () {
+                this.error.submitting = ''
+                this.error.return_date = ''
+                this.states.return_date = ''
+                this.error.end_date = ''
+                this.states.leave_code = ''
+                this.error.leave_code = ''
+                this.states.start_date = ''
+                this.error.start_date = ''
+                this.states.no_of_days = ''
+                this.error.no_of_days = ''
+                this.calculateButton.status = 'btn btn-primary'
+                this.calculateButton.text = 'Calculate'
+                this.calculateButton.icon = 'fa fa-calculator'
+                this.calculateButton.errorMessage = ''
+                this.states.handOverTo = ''
+                this.error.handOverTo = ''
+            },
         },
         created () {
             this.getOpenRequests()
@@ -452,6 +539,18 @@
         mounted(){
             if (this.notificationsData.component === 'approval-request'){
                this.selected = this.notificationsData.data
+            }
+        },
+        watch : {
+            'modalData.application.start_date' : function (newVal, oldVal) {
+                if(newVal.length !== 0 && newVal.length !== 10){
+                    this.modalData.application.start_date = this.modalData.application.start_date.toISOString().slice(0,10)
+                }
+            },
+            'modalData.application.end_date' : function (newVal, oldVal) {
+                if(newVal.length !== 0 && newVal.length !== 10){
+                    this.modalData.application.end_date = this.modalData.application.end_date.toISOString().slice(0,10)
+                }
             }
         }
     }
