@@ -76,12 +76,16 @@ trait Filterable{
 
         foreach($original_filters as $key => $value){
             if($this->in_arrayi( $key, array_keys($specials))){
-                if (is_array($value)){
-                    foreach ($value as $item){
-                        $query = $specials[$key]($query, $item);
+                try{
+                    if (is_array($value)){
+                        foreach ($value as $item){
+                            $query = $specials[$key]($query, $item);
+                        }
                     }
+                    else $query = $specials[$key]($query, $value);
+                } catch (\Exception $e){
                 }
-                else $query = $specials[$key]($query, $value);
+
             }
 
         }
