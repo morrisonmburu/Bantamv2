@@ -8,14 +8,15 @@ use Illuminate\Http\Request;
 
 class PayPeriodController extends Controller
 {
+    use Filterable;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return PayPeriodResource::collection(PayPeriod::where('Closed', 1)->paginate());
+        return PayPeriodResource::collection($this->filter($request->all(), PayPeriod::class)->paginate());
     }
 
     /**

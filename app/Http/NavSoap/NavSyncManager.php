@@ -221,6 +221,7 @@ class NavSyncManager{
 
             $records = reset($records);
             if (!$records) return;
+            $records = is_array($records) ? $records : [$records];
             foreach ($records as $record) {
 
                 try {
@@ -232,10 +233,27 @@ class NavSyncManager{
 
                     };
                     $instance->fill($data);
+
+                    try{
+                        $instance->save();
+                    }catch (\Exception $e){
+                        if($e->getCode() == "23000"){
+                            $filter_array = [];
+                            $filters = $this->syncClasses[$model]['search_fields'];
+                            foreach ($filters as $filter) {
+                                $filter_array[$filter] = $data[$filter];
+                            }
+                            $instance = $model::where($filter_array)->first();
+                            $instance->fill($data);
+                            $instance->save();
+                        }
+                    }
+
                     $instance->Web_Sync = false;
                     $instance->Nav_Sync = false;
                     $instance->Web_Sync_TimeStamp = Carbon::now();
                     $instance->save();
+
 
                     // Set NAV Synced to True NAV
                     $filters = array_flip($search_fields);
@@ -394,7 +412,6 @@ class NavSyncManager{
     public function restoreWrapper(){
         stream_wrapper_restore('http');
     }
-
 }
 
 class NavHttpException extends \Exception {
