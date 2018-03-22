@@ -37,7 +37,6 @@ trait NavDateTimeFormatter
                         $arr[$key] = $formatted;
                     }
                     catch (\Exception $e){
-                        print ($e);
                     }
                 }
             }
