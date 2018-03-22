@@ -38,7 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable"  style="cursor: pointer">
+                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable"  style="cursor: pointer" :class="application.id === selected ? 'success' : ''">
                                 <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{ meta.from + index}} </td>
                                 <!--<td>{{application.Application_Code}}</td>-->
                                 <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Application_Date}}</td>
@@ -457,7 +457,9 @@
             'isEmptyObject',
             'validateField',
             'fullNames',
-            'openModal'
+            'openModal',
+            'notificationsData',
+            'notificationEvents'
         ],
         data : function(){
             return {
@@ -547,7 +549,8 @@
                 New : 'label-info',
                 Canceled : 'label-danger',
                 Review : 'label-success',
-                appDetails : { }
+                appDetails : { },
+                selected : ''
 
             }
         },
@@ -898,6 +901,9 @@
         mounted(){
             if(this.openModal){
                 this.openAppModal = true
+            }
+            if (this.notificationsData.component === 'open-applications'){
+                this.selected = this.notificationsData.data
             }
         },
     }

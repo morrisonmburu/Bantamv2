@@ -47562,7 +47562,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48023,7 +48023,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Datepicker: __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default.a
     },
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'fullNames', 'openModal'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'fullNames', 'openModal', 'notificationsData', 'notificationEvents'],
     data: function data() {
         return {
             loadingDetails: true,
@@ -48110,7 +48110,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             New: 'label-info',
             Canceled: 'label-danger',
             Review: 'label-success',
-            appDetails: {}
+            appDetails: {},
+            selected: ''
 
         };
     },
@@ -48419,6 +48420,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         if (this.openModal) {
             this.openAppModal = true;
         }
+        if (this.notificationsData.component === 'open-applications') {
+            this.selected = this.notificationsData.data;
+        }
     }
 });
 
@@ -48487,6 +48491,10 @@ var render = function() {
                             "tr",
                             {
                               staticClass: "hovertable",
+                              class:
+                                application.id === _vm.selected
+                                  ? "success"
+                                  : "",
                               staticStyle: { cursor: "pointer" },
                               on: {
                                 dblclick: function($event) {
@@ -54296,7 +54304,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -54310,6 +54318,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__eventBus_js__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timeago__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_timeago___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_timeago__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -54625,7 +54646,8 @@ var render = function() {
       "a",
       {
         staticClass: "dropdown-toggle count-info",
-        attrs: { "data-toggle": "dropdown", href: "#" }
+        attrs: { "data-toggle": "dropdown", href: "#" },
+        on: { click: _vm.ReadNotifications }
       },
       [
         _c("i", { staticClass: "fa fa-bell" }),
@@ -54649,82 +54671,74 @@ var render = function() {
     ),
     _vm._v(" "),
     _c(
-      "ul",
+      "div",
       {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.notification.length !== 0,
-            expression: "notification.length !== 0"
-          }
-        ],
-        staticClass: "dropdown-menu dropdown-messages"
+        staticClass: "project-list  dropdown-menu",
+        staticStyle: { "min-width": "360px" }
       },
-      _vm._l(_vm.notification, function(notice, index) {
-        return _c(
-          "li",
-          {
-            on: {
-              click: function($event) {
-                _vm.notificationClick(notice.data.details, notice.data.model)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "dropdown-messages-box " }, [
-              _c("a", { staticClass: "pull-left", attrs: { href: "#" } }, [
-                _c("i", {
-                  class:
-                    notice.data.model === "AppApprovalEntry"
-                      ? "fa fa-tasks"
-                      : notice.data.model === "AppEmployeeLeaveApplication"
-                        ? "fa fa-file-alt"
-                        : "fa fa-file",
-                  style:
-                    notice.data.type === "success"
-                      ? "color : #2ecc71"
-                      : notice.data.model === "danger"
-                        ? "color : #e74c3c"
-                        : notice.data.model === "info"
-                          ? "color : #bdc3c7"
-                          : "color : #ecf0f1"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "media-body" }, [
-                _c(
-                  "small",
-                  { staticClass: "pull-right" },
-                  [_c("timeago", { attrs: { since: notice.created_at } })],
-                  1
-                ),
-                _vm._v(" "),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(notice.data.message) +
-                    "\n                    "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", {
-              directives: [
+      [
+        _c("table", { staticClass: "table table-hover table-borderless" }, [
+          _c(
+            "tbody",
+            _vm._l(_vm.notification, function(notice, index) {
+              return _c(
+                "tr",
                 {
-                  name: "show",
-                  rawName: "v-show",
-                  value:
-                    _vm.notification.length !== 1 &&
-                    _vm.notification.length === index + 1,
-                  expression:
-                    "notification.length !== 1 && notification.length === (index + 1)"
-                }
-              ],
-              staticClass: "divider"
+                  staticStyle: { cursor: "pointer" },
+                  on: {
+                    click: function($event) {
+                      _vm.notificationClick(
+                        notice.data.details,
+                        notice.data.model
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("td", { staticClass: "project-status" }, [
+                    _c("i", {
+                      staticClass: "m-l-md",
+                      class:
+                        notice.data.type === "success"
+                          ? "fa fa-check-circle"
+                          : notice.data.type === "danger"
+                            ? "fa fa-exclamation-circle"
+                            : notice.data.type === "info"
+                              ? "fa fa-info-circle"
+                              : "fa fa-question-circle",
+                      staticStyle: { "font-size": "24px" },
+                      style:
+                        notice.data.type === "success"
+                          ? "color : #2ecc71"
+                          : notice.data.type === "danger"
+                            ? "color : #e74c3c"
+                            : notice.data.type === "info"
+                              ? "color : #bdc3c7"
+                              : "color : #ecf0f1"
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "project-title" }, [
+                    notice.data.title
+                      ? _c("h5", [_vm._v(_vm._s(notice.data.title))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("small", [_vm._v(_vm._s(notice.data.message))])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "project-completion" }, [
+                    _c(
+                      "small",
+                      [_c("timeago", { attrs: { since: notice.created_at } })],
+                      1
+                    )
+                  ])
+                ]
+              )
             })
-          ]
-        )
-      })
+          )
+        ])
+      ]
     )
   ])
 }

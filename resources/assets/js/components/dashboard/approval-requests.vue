@@ -443,7 +443,7 @@
                 }
             },
             calculate : function () {
-                
+
             }
         },
         created () {
