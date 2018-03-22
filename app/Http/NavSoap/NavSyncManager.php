@@ -28,7 +28,7 @@ class NavSyncManager{
             EmployeeLeaveAllocation::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_ALLOC, "search_fields" => ['Employee_No', 'Leave_Period'] ],
             EmployeeLeaveApplication::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_APPS, "search_fields" => ['Application_Code'] ],
             EmployeeApprover::class => ["endpoint" => $this->config->NAV_SOAP_APPROVERS, "search_fields" => ['Approver'] ],
-            ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Table_ID'] ],
+            ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Document_No', 'Approver_ID', 'Document_Type'] ],
             PayPeriod::class => ["endpoint" => $this->config->NAV_PAY_PERIODS, "search_fields" => [] ],
         ];
     }
@@ -41,7 +41,7 @@ class NavSyncManager{
 
                 $result = null;
                 if (true) {
-                    $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], (object)$application->toArray());
+                    $result = $this->create($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"], $application->toArray());
                 } else {
                     $search_fields = $this->syncClasses[EmployeeLeaveApplication::class]["search_fields"];
                     $filters = [];
@@ -49,11 +49,14 @@ class NavSyncManager{
                         array_push($filters, $application[$search_field]);
                     }
                     $result = $this->update($this->syncClasses[EmployeeLeaveApplication::class]["endpoint"],
-                        (object)$application->toArray(), $filters);
+                        $application->toArray(), $filters);
                 }
 
                 $new_application = (array)($result->LeaveApps);
+                print_r($new_application);
                 unset($new_application["Application_Code"]);
+                unset($new_application["Web_Sync_TimeStamp"]);
+                unset($new_application["Web_Sync"]);
                 $application->fill((array)$new_application);
                 $application->Web_Sync = 0;
                 $application->Web_Sync_TimeStamp = Carbon::now();
@@ -67,13 +70,8 @@ class NavSyncManager{
         $result = null;
             if ($approvalEntry->Web_Sync == 1) {
                 $result = null;
-                if (!$approvalEntry->Web_Sync_TimeStamp || true) {
-
-                    $approvalEntry = $approvalEntry->toArray();
-//                    unset($approvalEntry["Sender_ID"]);
-//                    unset($approvalEntry["Document_Owner"]);
-
-                    $result = $this->create($this->syncClasses[ApprovalEntry::class]["endpoint"], (object)$approvalEntry);
+                if (!$approvalEntry->Web_Sync_TimeStamp ) {
+                    $result = $this->create($this->syncClasses[ApprovalEntry::class]["endpoint"], $approvalEntry->toArray());
                 } else {
                     $search_fields = $this->syncClasses[ApprovalEntry::class]["search_fields"];
                     $filters = [];
@@ -81,12 +79,11 @@ class NavSyncManager{
                         array_push($filters, $approvalEntry[$search_field]);
                     }
                     $result = $this->update($this->syncClasses[ApprovalEntry::class]["endpoint"],
-                        (object)$approvalEntry->toArray(), $filters);
+                        $approvalEntry->toArray(), $filters);
                 }
                 $new_approval = (array)($result->HRApprovals);
-                $id = $new_approval["Table_ID"];
-                unset($new_approval["Table_ID"]);
-                $approvalEntry = ApprovalEntry::where("Table_ID", $id)->first()->fill((array)$new_approval);
+                unset($new_approval["Web_Sync_TimeStamp"]);
+                unset($new_approval["Web_Sync"]);
                 $approvalEntry->Web_Sync = 0;
                 $approvalEntry->Web_Sync_TimeStamp = Carbon::now();
                 $approvalEntry->save();
@@ -152,14 +149,13 @@ class NavSyncManager{
                 try {
                     $result = (array)$this->create($endpoint, (object)$record->toArray());
 
-                    $record->fill(reset($result));
+                    $record->fill((array)reset($result));
                     $record->Web_Sync = false;
-                    $record->Web_Sync_TimeStamp = date("Y-m-d");
+                    $record->Web_Sync_TimeStamp = Carbon::now();
                     $record->save();
-//                print ("success");
+                    print ("Successfully created ".$model." in NAV\n");
                 } catch (\Exception $e) {
                     print ($e->getMessage() . "\n\n");
-//                print ($e);
                 }
 
             }
@@ -189,6 +185,7 @@ class NavSyncManager{
 
                     $record->Web_Sync = false;
                     $record->Web_Sync_TimeStamp = date("Y-m-d");
+                    print ("Successfully updated ".$model." in NAV\n");
                     $record->save();
                 } catch (\Exception $e) {
                     print ($e->getMessage() . "\n\n");
@@ -213,7 +210,7 @@ class NavSyncManager{
 
             } else {
                 try{
-                    $records = get_object_vars($this->get($endpoint, null, ['Nav_Sync' => 1]));
+                    $records = get_object_vars($this->get($endpoint, null, ['Nav_Sync' => true]));
                 }catch (\Exception $e){
 
                     $records = get_object_vars($this->get($endpoint, null, []));
@@ -235,8 +232,9 @@ class NavSyncManager{
 
                     };
                     $instance->fill($data);
-                    $instance->Nav_Sync = 0;
-                    $instance->Web_Sync = 0;
+                    $instance->Web_Sync = false;
+                    $instance->Nav_Sync = false;
+                    $instance->Web_Sync_TimeStamp = Carbon::now();
                     $instance->save();
 
                     // Set NAV Synced to True NAV
@@ -244,7 +242,7 @@ class NavSyncManager{
                     array_walk($filters, function (&$var, $key) use ($instance) {
                         $var = $instance[$key];
                     });
-                    $this->update($endpoint, $instance, $filters);
+                    $this->update($endpoint, $instance->toArray(), $filters);
 
 
                 } catch (\Exception $e) {
@@ -287,7 +285,10 @@ class NavSyncManager{
         $client = new NTLMSoapClient($url, ['trace' => 1]);
         $resource_name = explode("/", $endpoint);
         $resource_name = end($resource_name);
+        $data = (array) $data;
+        unset($data["Web_Sync_TimeStamp"]);
         $update = [$resource_name => (object)$data];
+
         $result =  $client->Create((object)$update);
         $this->restoreWrapper();
         return $result;
@@ -306,17 +307,13 @@ class NavSyncManager{
         $url = $this->config->NAV_BASE_URL."/$endpoint";
         $record = (array)$this->get($endpoint, null, $filters);
         $record = (array)reset( $record);
-
-        array_walk($record, function (&$var, $key) use($data, $record){
+        array_walk($data, function (&$var, $key) use($data, &$record){
             try{
-                if($data[$key]){
-                    $var = $data[$key];
-                }
+                $record[$key] = $var;
             } catch (\Exception $e){
                 print ($e->getMessage());
             }
         });
-
         $this->prepareWrapper();
         $client = new NTLMSoapClient($url, ['trace' => 1]);
         $resource_name = explode("/", $endpoint);

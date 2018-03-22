@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
-use App\Notifications\canceledLeave;
+use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
-use App\Notifications\LeaveCanceled;
+use App\Notifications\ApproverCanceledLeave;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use App\EmployeeLeaveApplication;
@@ -49,18 +49,18 @@ class LeaveApplicationController extends Controller
         $LeaveApplication = new EmployeeLeaveApplication();
         $this->authorize('create', EmployeeLeaveApplication::class);
         $this->checkDatesOverlap($validatedData->start_date, $validatedData->end_date);
-
         $data = [
             "Employee_No" => Auth::user()->Employee_Record->No,
             "Leave_Code" => $validatedData->leave_code,
             "Start_Date" => $validatedData->start_date,
             "Days_Applied" => $validatedData->no_of_days,
-            "Status" => $validatedData->status,
+            "Status" => "Review",
             "End_Date" => $validatedData->end_date,
             "Return_Date" => $validatedData->return_date,
             "Comments" => $validatedData->comment,
             "Application_Date" => Carbon::now(),
-            "Application_Code" => uniqid()
+            "Application_Code" => uniqid(),
+            "Web_Sync" => true
         ];
         $LeaveApplication->fill($data);
         $LeaveApplication->save();
@@ -92,20 +92,9 @@ class LeaveApplicationController extends Controller
                 $employeeLeaveApplication =EmployeeLeaveApplication::where(['Application_Code'=>$appCode])->first();
                 $this->authorize('update',$employeeLeaveApplication);
                 $employeeLeaveApplication->Web_Sync = 0;
-                $employeeLeaveApplication->status="Canceled";
-                if($employeeLeaveApplication->save()){
-                    Notification::send(Auth::User(),new canceledLeave(Auth::user(),$employeeLeaveApplication));
-                    $appEntry=$employeeLeaveApplication->approval_entries;
-                    foreach ($appEntry as $entry){
-                        $entry->Status="Canceled";
-                        $entry->Web_Sync = 0;
-                        $entry->save();
-                        Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$employeeLeaveApplication));
-//                        SendApprovalEntriesToNav::dispatch($entry);
-                    }
-                }
-
-                return  "Success";
+                $employeeLeaveApplication->Status="Canceled";
+                $employeeLeaveApplication->save();
+                return  new LeaveApplicationResource($employeeLeaveApplication);
             }catch(Exception $e){
                 return $e->getMessage();
             }
@@ -132,6 +121,7 @@ class LeaveApplicationController extends Controller
                     abort(400, "Cannot send application");
                 break;
         }
+        $leave_application->Web_Sync = true;
         $leave_application->Status = $validatedData->Status;
         $leave_application->save();
 
@@ -156,9 +146,8 @@ class LeaveApplicationController extends Controller
     {
 
         $this->authorize('employee', [EmployeeLeaveApplication::class, $employee]);
-
         if ($request->is('api*')) {
-            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications()->paginate());
+            return new EmployeeLeaveApplicationCollection($employee->Employee_leave_applications()->orderBy('created_at', 'DESC')->paginate());
         }
     }
 
@@ -192,7 +181,7 @@ class LeaveApplicationController extends Controller
             else{
                 $applications = $applications->where("Status", $status);
             }
-            $applications = $applications->paginate();
+            $applications = $applications->orderBy('created_at', 'DESC')->paginate();
         }
         else{
             $applications = Auth::user()->Employee_Record->Employee_leave_applications()->paginate();
@@ -237,12 +226,33 @@ class LeaveApplicationController extends Controller
     }
 
     public function disabled_days(Request $request){
-        return $request->user()->Employee_Record->Employee_leave_applications()
+        $all_dates = [];
+        $start_end_dates =  $request->user()->Employee_Record->Employee_leave_applications()
+            ->where('Status', '!=' , 'Canceled')
             ->select('start_date', 'end_date')->get();
+
+        foreach ($start_end_dates as $start_end_date){
+            $dates = $this->generateDateRange(Carbon::createFromFormat('Y-m-d', $start_end_date['start_date']),
+                Carbon::createFromFormat('Y-m-d', $start_end_date['end_date']));
+            $all_dates = array_merge ( $all_dates, $dates );
+        }
+
+        return json_encode($all_dates);
+    }
+
+    private function generateDateRange(Carbon $start_date, Carbon $end_date)
+    {
+        $dates = [];
+
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date->format('Y-m-d');
+        }
+
+        return $dates;
     }
 
     private function checkDatesOverlap($start_date, $end_date ){
-        if(EmployeeLeaveApplication::where(function ($q) use($start_date) {
+        if(EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')->where(function ($q) use($start_date) {
             $q->where('Start_Date', '<=', $start_date);
             $q->where('End_Date', '>=', $start_date);
         })->orWhere(function ($q) use($end_date) {

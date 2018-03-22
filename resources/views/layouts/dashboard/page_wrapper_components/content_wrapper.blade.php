@@ -14,6 +14,8 @@
                        :validate-field="'validateField'"
                        :full-names="fullNames"
                        :open-modal="openModal"
+                       :notifications-data="notificationsData"
+                       :notification-events="notificationEvents"
             ></component>
     </keep-alive>
 </div>

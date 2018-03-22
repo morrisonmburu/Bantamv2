@@ -25,6 +25,8 @@ class CreatePayPeriodsTable extends Migration
             $table->boolean("Current")->nullable();
             $table->boolean("Nav_Sync")->nullable();
             $table->boolean("Web_Sync")->nullable();
+            $table->boolean("Nav_Sync_TimeStamp")->nullable();
+            $table->string("Web_Sync_TimeStamp")->nullable();
             $table->timestamps();
         });
     }

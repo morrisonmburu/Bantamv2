@@ -3,12 +3,13 @@
 namespace App\Listeners;
 
 use App\EmployeeLeaveApplication;
+use App\Jobs\SendApprovalEntriesToNav;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
-use App\Notifications\canceledLeave;
+use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
-use App\Notifications\LeaveApprovalSuccess;
-use App\Notifications\LeaveCanceled;
+use App\Notifications\LeaveApplicationApproved;
+use App\Notifications\ApproverCanceledLeave;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Auth;
@@ -36,22 +37,26 @@ class LeaveApplicationStatusChangedListener
         if($application->getOriginal()["Status"] == $application->Status) return;
         switch ($application->Status){
             case "Canceled":
-                Notification::send($application->employee->user,new canceledLeave($application->employee->user,$application));
+                Notification::send($application->employee->user,new EmployeeCanceledLeave($application->employee->user,$application));
                 $entries = $application->approval_entries;
                 foreach ($entries as $entry){
+                    $status = $entry->Status;
                     $entry->Status="Canceled";
-                    $entry->Nav_Sync = 0;
+                    $entry->Web_Sync = 0;
                     $entry->save();
-                    Notification::send($entry->employee->user,new LeaveCanceled($entry->employee->user,$application));
-//                        SendApprovalEntriesToNav::dispatch($entry);
+                    if($status == "Open")
+                        Notification::send($entry->approver->user,new ApproverCanceledLeave($entry->approver->user, $entry));
+                    SendApprovalEntriesToNav::dispatch($entry);
                 }
                 break;
             case "Review":
-                Notification::send($application->employee->user, new LeaveApprovalRequestSent());
+                Notification::send($application->employee->user, new LeaveApprovalRequestSent(
+                    $application->employee->user, $application
+                ));
                 Event::fire('employee_leave_application.created', $application);
                 break;
             case "Approved":
-                Notification::send($application->employee->user, new LeaveApprovalSuccess());
+                Notification::send($application->employee->user, new LeaveApplicationApproved($application->employee->user, $application));
                 break;
             default:
                 break;

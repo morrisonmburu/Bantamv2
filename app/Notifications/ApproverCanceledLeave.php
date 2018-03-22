@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Notifications;
-
+use App\ApprovalEntry;
+use App\EmployeeApprover;
 use App\EmployeeLeaveApplication;
 use App\User;
 use Illuminate\Bus\Queueable;
@@ -9,21 +9,27 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class canceledLeave extends Notification implements ShouldQueue
+class ApproverCanceledLeave extends Notification implements  ShouldQueue
 {
     use Queueable;
-    protected $user;
-    protected $leaveRec;
+    protected $approver;
+    protected $data;
+
+    private $message;
+    private $title;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(User $user, EmployeeLeaveApplication $leaveRec)
+    public function __construct(User $approver,ApprovalEntry $leaveRec)
     {
-        $this->user= $user;
-        $this->leaveRec= $leaveRec;
+        $this->approver=$approver;
+        $this->data = $leaveRec;
+
+        $this->message = $this->data->employee->First_Name."'s application (Ref: $leaveRec->Document_No) has been canceled.";
+        $this->title = "Canceled leave application";
     }
 
     /**
@@ -46,10 +52,9 @@ class canceledLeave extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello?')
-                    ->subject('Leave Canceled')
-                    ->line('This is to notify you that leave code '.$this->leaveRec->Application_Code." has been canceled")
-                    ->line('Thank you.');
+            ->greeting("Dear ".$this->approver->name)
+            ->subject($this->title)
+            ->line($this->message);
     }
 
     /**
@@ -61,8 +66,11 @@ class canceledLeave extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave code ".$this->leaveRec->Application_Code." canceled.",
-            "type" =>"success"
+            "title" => $this->title,
+            "message"=> $this->message,
+            "type" =>"info",
+            "details" => $this->data->toArray(),
+            "model" => (new \ReflectionClass(ApprovalEntry::class))->getShortName(),
         ];
     }
 }

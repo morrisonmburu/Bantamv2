@@ -15,13 +15,13 @@ class CreateApprovalEntriesTable extends Migration
     {
         Schema::create('approval_entries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Table_ID', 50)->unique();
+            $table->string('Table_ID', 50)->nullable();
             $table->enum('Document_Type', ['Leave', 'Training', 'Appraisal', 'Succession', 'Payroll', 'Recruitment']);
             $table->string('Document_No',50);
             $table->integer('Sequence_No');
             $table->enum('Status',['Created', 'Open', 'Canceled', 'Rejected', 'Approved']);
             $table->string('Approval_Details',255)->nullable();
-            $table->string('Sender_ID',50);
+            $table->string('Sender_ID',50)->nullable();
             $table->string('Approver_ID', 50);
             $table->string('Document_Owner', 50)->nullable();
             $table->dateTime('Date_Time_Sent_for_Approval')->nullable();
@@ -31,11 +31,11 @@ class CreateApprovalEntriesTable extends Migration
             $table->date("Due_Date")->nullable();
             $table->boolean("Nav_Sync")->default(false);
             $table->boolean("Web_Sync")->default(true);
-            $table->dateTime("Nav_Sync_TimeStamp")->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime("Nav_Sync_TimeStamp")->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime("Web_Sync_TimeStamp")->nullable();
             $table->foreign("Approver_ID")->references("no")->on("employees")->onDelete('cascade');
             $table->foreign("Sender_ID")->references("No")->on("employees")->onDelete('cascade');
-            $table->foreign("Document_No")->references("Application_Code")->on("employee_leave_applications")->onDelete('cascade');
+            $table->unique(['Approver_ID', 'Document_No', 'Document_Type']);
             $table->timestamps();
         });
     }

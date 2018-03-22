@@ -2,23 +2,36 @@
 
 namespace App\Notifications;
 
+use App\Employee;
+use App\EmployeeLeaveApplication;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class LeaveApprovalFail extends Notification implements ShouldQueue
+class LeaveApplicationRejected extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    private $user;
+    private $data;
+
+    private $message;
+    private $title;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, EmployeeLeaveApplication $data)
     {
-        //
+        $this->user = $user;
+        $this->data = $data;
+        $this->message = "Unfortunately, your leave application (Ref:".$data->Application_Code.") was rejected.";
+        $this->title = "Leave Application Rejected";
+
     }
 
     /**
@@ -41,12 +54,10 @@ class LeaveApprovalFail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello?')
-                    ->subject('Leave Approval Fail.')
-                    ->error()
-                    ->line('This is to notify you that your leave application request did not succeed.')
-                    ->action('Login to view details', url('/'))
-                    ->line('Thank you.');
+            ->greeting("Dear ".$this->user->name)
+            ->subject($this->title)
+            ->error()
+            ->line($this->message);
     }
 
     /**
@@ -58,8 +69,10 @@ class LeaveApprovalFail extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Approval request failed.",
-            "type" =>"danger"
+            "message"=> $this->title,
+            "type" =>"danger",
+            "details" => $this->data->$this->toArray(),
+            "model" => (new \ReflectionClass(EmployeeLeaveApplication::class))->getShortName(),
         ];
     }
 }

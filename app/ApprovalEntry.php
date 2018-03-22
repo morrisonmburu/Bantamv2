@@ -2,21 +2,32 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 
 class ApprovalEntry extends Model
 {
-    use DateTimeFormatting;
-    protected $guarded = [];
+    use NavDateTimeFormatter;
+
+    protected $fillable = [];
     protected $table = "approval_entries";
     protected $primaryKey = "id";
     public $incrementing = true;
     public $timestamps = true;
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->fillable = DB::getSchemaBuilder()->getColumnListing($this->table);
+    }
+
     protected $dates = [
         'Date_Time_Sent_for_Approval',
+        'Last_Date_Time_Modified',
         'Web_Sync_TimeStamp',
+        'Nav_Sync_TimeStamp',
     ];
     public static function boot()
     {
@@ -36,5 +47,20 @@ class ApprovalEntry extends Model
 
     public function leave_application(){
         return $this->belongsTo(EmployeeLeaveApplication::class, "Document_No", "Application_Code");
+    }
+
+    public function setWebSyncTimeStampAttribute($value){
+        $this->setNavTime($value, "Web_Sync_TimeStamp");
+    }
+
+    public function setNavSyncTimeStampAttribute($value){
+        $this->setNavTime($value, "Nav_Sync_TimeStamp");
+    }
+
+    public function setDateTimeSentForApprovalAttribute($value){
+        $this->setNavTime($value, "Date_Time_Sent_for_Approval");
+    }
+    public function setLastDateTimeModifiedAttribute($value){
+        $this->setNavTime($value, "Last_Date_Time_Modified");
     }
 }

@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -70,8 +70,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(request, index) in requests">
-                                    <td>{{index + 1}}</td>
+                                <tr v-for="(request, index) in requests" :class="request.id === selected ? 'active' : ''">
+                                    <td>{{index + 1}} {{request.id === selected ? runModal(request): ''}}</td>
                                     <td>{{request.Approval_Details}}</td>
                                     <td>{{request.Date_Time_Sent_for_Approval}}</td>
                                     <!--<td>{{request.Document_No}}</td>-->
@@ -79,8 +79,8 @@
                                     <td>{{request.Document_Type}}</td>
                                     <td>{{request.Status}}</td>
                                     <td>{{request.Due_Date}}</td>
-                                    <td>
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#approveRequest" @click="runModal(request)">Process <i class="fa fa-external-link-square" ></i></button>
+                                    <td> <!--data-toggle="modal" data-target="#approveRequest"-->
+                                        <button class="btn btn-success"  @click="runModal(request)">Process <i class="fa fa-external-link-square" ></i></button>
                                     </td>
                                 </tr>
                                 <tr v-if="requests.length === 0">
@@ -115,76 +115,136 @@
         <!--approval modal here -->
         <!-- ==== Modal for leave application approval:: Added by Mayaka == -->
         <div class="modal inmodal" id="approveRequest" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-md">
                 <div class="modal-content animated fadeInDown">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h5 class="modal-title">Approval processing</h5>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <table class="table table-hover table-condensed">
+                                    <thead>
+                                    <th><h3>Employee Details</h3></th>
+                                    <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Name:</strong></td>
+                                            <td>{{modalData.applicant.EmployeeName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Title:</strong></td>
+                                            <td>{{modalData.applicant.EmployeeName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Department:</strong></td>
+                                            <td>{{modalData.applicant.department}}</td>
+                                        </tr>
+                                    </tbody>
 
-                        <div class="ibox-content inspinia-timeline">
-                            <div class="row">
-                                <div class="col-xs-12 content no-top-border">
-                                    <div class="col-xs-6">
-                                        <h3 class="m-b-xs"><strong>Employee Details</strong></h3>
-                                        <p><strong>Name:</strong> {{modalData.applicant.EmployeeName}}</p>
-                                        <p><strong>Title:</strong> {{modalData.applicant.title}}</p>
-                                        <p><strong>Department:</strong> {{modalData.applicant.department}}</p>
-                                    </div>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <th><h3>Leave Details</h3></th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><strong>Type:</strong></td>
+                                        <td>{{modalData.leave.type}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Start Date:</strong></td>
+                                        <td>{{modalData.leave.start_date}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Days:</strong></td>
+                                        <td>{{modalData.leave.days}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>End Date:</strong></td>
+                                        <td>{{modalData.leave.end_date}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Return Date:</strong></td>
+                                        <td>{{modalData.leave.return_date}}</td>
+                                    </tr>
+                                    </tbody>
 
-                                    <div class="col-xs-6">
-                                        <h3 class="m-b-xs"><strong>Leave Details</strong></h3>
-                                        <p><strong>Type:</strong> {{modalData.leave.type}}</p>
-                                        <p><strong>Start Date:</strong> {{modalData.leave.start_date}}</p>
-                                        <p><strong>Days:</strong>{{modalData.leave.days}}</p>
-                                        <p><strong>End Date:</strong>{{modalData.leave.end_date}}</p>
-                                        <p><strong>Return Date:</strong> {{modalData.leave.return_date}}</p>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input  type="text" class="form-control" v-model="modalData.application.start_date">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-xs-12 content">
-                                    <p class=""><strong>Processing</strong></p>
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <div class="form-group"><label>Start Date</label>
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input readonly type="text" class="form-control" v-model="modalData.application.start_date">
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label>Number of days</label>
-                                                <input type="number" placeholder="Number of days" readonly class="form-control" v-model="modalData.application.no_of_days">
-                                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group"><label>End Date</label>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <div class="form-group"><label>End Date</label>
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input readonly type="text" class="form-control" v-model="modalData.application.end_date">
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label>Return Date</label>
-                                                <div class="input-group date" data-provide="datepicker">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <input v-model="modalData.application.return_date" type="text" class="form-control" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <div class="form-group"><label>Comments</label>
-                                                <textarea diabled class="form-control" rows="2" id="comment" ></textarea>
-                                            </div>
-                                        </div>
+                                        <input  type="text" class="form-control" v-model="modalData.application.end_date">
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group text-center">
+                                <div v-if="loading"  class="sk-spinner sk-spinner-wave">
+                                    <div class="sk-rect1"></div>
+                                    <div class="sk-rect2"></div>
+                                    <div class="sk-rect3"></div>
+                                    <div class="sk-rect4"></div>
+                                    <div class="sk-rect5"></div>
+                                </div>
+                                <button v-else class="btn btn-block" data-style="expand-right" @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></button>
+                            </div>
+                            <div class="form-group" v-show="calculateError.length !== 0">
+                                <label class="col-sm-4 control-label"></label>
+                                <div class="col-sm-8">
+                                    <div class="alert alert-danger text-centre col-sm-12">
+                                        {{calculateError}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label>Number of days</label>
+                                    <input type="number" placeholder="Number of days" readonly class="form-control" v-model="modalData.application.no_of_days">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group"><label>Return Date</label>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input v-model="modalData.application.return_date" type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group"><label>Comments</label>
+                                    <textarea diabled class="form-control" rows="2" id="comment" ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +255,6 @@
                         <button v-else type="button" class="btn  btn-success"><span class="loading bullet"></span></button>
                         <button v-if="rejectButton.loading" type="button" class="btn  btn-danger" @click="rejectEntry(modalData.id)" >Reject</button>
                         <button v-else type="button" class="btn  btn-danger"  ><span class="loading bullet"></span></button>
-                        <!--<button type="button" class="btn  btn-warning">Escalate</button>-->
                     </div>
                 </div>
             </div>
@@ -216,7 +275,9 @@
             'APIENDPOINTS',
             'getApiPath',
             'isEmptyObject',
-            'validateField'
+            'validateField',
+            'notificationsData',
+            'notificationEvents'
         ],
         data : function () {
             return{
@@ -260,39 +321,53 @@
                         department : ''
                     }
                 },
+                selected : '',
+                calculateError : '',
+                loading : false,
+                calculateButton   : {
+                    text    : 'Calculate',
+                    icon    : 'fa fa-calculator',
+                    status  : 'btn-primary',
+                    loading : true,
+                    errorMessage : ''
+                },
 
             }
         },
         methods : {
-            runModal : function (data) {
+            runModal: function (data) {
                 // this.modalData = data
+                console.log(data)
                 this.modalData.id = data.id
-                this.modalData.application.start_date  = data.Application_Details.Start_Date
-                this.modalData.application.no_of_days  = data.Application_Details.Days_Applied
-                this.modalData.application.end_date  = data.Application_Details.End_Date
-                this.modalData.application.return_date  = data.Application_Details.Return_Date
+                this.modalData.application.start_date = data.Application_Details.Start_Date
+                this.modalData.application.no_of_days = data.Application_Details.Days_Applied
+                this.modalData.application.end_date = data.Application_Details.End_Date
+                this.modalData.application.return_date = data.Application_Details.Return_Date
 
-                this.modalData.leave.type  = data.Application_Details.Leave_Code
-                this.modalData.leave.start_date  = data.Application_Details.Start_Date
-                this.modalData.leave.days  = data.Application_Details.Days_Applied
-                this.modalData.leave.end_date  = data.Application_Details.End_Date
+                this.modalData.leave.type = data.Application_Details.Leave_Code
+                this.modalData.leave.start_date = data.Application_Details.Start_Date
+                this.modalData.leave.days = data.Application_Details.Days_Applied
+                this.modalData.leave.end_date = data.Application_Details.End_Date
                 this.modalData.leave.return_date = data.Application_Details.Return_Date
 
-                this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' +data.Employee_Details.Last_Name + ' '
-                this.modalData.applicant.title  = data.Employee_Details.Title
+                this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' '
+                this.modalData.applicant.title = data.Employee_Details.Title
                 this.modalData.applicant.department = data.Employee_Details.Department
-                // $('#approveRequest').modal('show')
+
+                $('#approveRequest').modal('show')
             },
-            approveEntry : function (id) {
+            approveEntry: function (id) {
                 var v = this
                 v.approveButton.loading = false
                 v.formData.status = 'Approved'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id),
                     v.formData,
-                    {headers: {
+                    {
+                        headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }}
+                        }
+                    }
                 )
                     .then(function (response) {
                         v.getOpenRequests()
@@ -306,16 +381,18 @@
                         console.log(error)
                     })
             },
-            rejectEntry : function (id) {
+            rejectEntry: function (id) {
                 var v = this
                 v.rejectButton.loading = false
                 v.formData.status = 'Rejected'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id),
                     v.formData,
-                    {headers: {
+                    {
+                        headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }}
+                        }
+                    }
                 )
                     .then(function (response) {
                         v.getOpenRequests()
@@ -328,7 +405,7 @@
                         console.log(error)
                     })
             },
-            getOpenRequests : function() {
+            getOpenRequests: function () {
                 let v = this
 
                 axios.get(v.getApiPath(v.APIENDPOINTS.OPENAPPROVALREQUESTS, ''))
@@ -336,9 +413,9 @@
                         v.requests = response.data.data
                         v.paginateLinks = response.data.links
 
-                        if(v.paginateLinks.prev === null && v.paginateLinks.next === null){
-                           v.showPagination = false
-                        }else {
+                        if (v.paginateLinks.prev === null && v.paginateLinks.next === null) {
+                            v.showPagination = false
+                        } else {
                             v.showPagination = true
                         }
 
@@ -350,10 +427,10 @@
                         console.log(error)
                     })
             },
-            paginate : function (link) {
+            paginate: function (link) {
                 var v = this
                 v.loading = true
-                if(link !== null){
+                if (link !== null) {
                     axios.get(link)
                         .then(function (response) {
                             v.requests = response.data.data
@@ -364,12 +441,19 @@
                             console.log(error)
                         })
                 }
+            },
+            calculate : function () {
+                
             }
         },
         created () {
             this.getOpenRequests()
+        },
+        mounted(){
+            if (this.notificationsData.component === 'approval-request'){
+               this.selected = this.notificationsData.data
+            }
         }
-
     }
 </script>
 

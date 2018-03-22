@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\EmployeeLeaveApplication;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -11,14 +13,24 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    private $user;
+    private $data;
+
+    private $message;
+    private $title;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user, EmployeeLeaveApplication $data)
     {
-        //
+        $this->user = $user;
+        $this->data = $data;
+
+        $this->message = "Your leave (Ref: ".$data->Application_Code.")application has been sent.";
+        $this->title = "Leave Application Sent";
     }
 
     /**
@@ -41,10 +53,9 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello?')
-                    ->subject('Approval Request Sent')
-                    ->line('Your leave application has been sent.')
-                    ->line('Thank you.');
+            ->greeting("Dear ".$this->user->name)
+            ->subject($this->title)
+            ->line($this->message);
     }
 
     /**
@@ -56,8 +67,10 @@ class LeaveApprovalRequestSent extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            "message"=>"Leave application sent",
-            "type" =>"success"
+            "message"=> $this->title,
+            "type" =>"success",
+            "details" => $this->data->toArray(),
+            "model" => (new \ReflectionClass(EmployeeLeaveApplication::class))->getShortName(),
         ];
     }
 }

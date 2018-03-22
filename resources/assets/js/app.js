@@ -35,6 +35,7 @@ Vue.component('notification', require('./components/dashboard/utilities/notifica
 const app = new Vue({
     el: '#app',
     data: {
+        fromNotification : '',
         openModal : false,
         currentComponent: 'dashboard',
         profPic : '',
@@ -74,11 +75,13 @@ const app = new Vue({
             CHANGEAPPLICATIONSTATUS                 : 'api/leave_applications@',
             PAYPERIODS                              : 'api/pay_periods',
             CANCELAPPLICATION                       : 'api/leave_applications@status',
-            APPLICATIONDETAILS                      : 'api/leave_applications@approvals'
+            APPLICATIONDETAILS                      : 'api/leave_applications@approvals',
+            DISABLEDDAYS                            : 'api/leave_applications/disabled_days'
 
             },
         searchResults : '',
-        searchTerm : ''
+        searchTerm : '',
+        notificationsData : {}
     },
     methods : {
         isEmptyObject : function (object) {
@@ -95,6 +98,8 @@ const app = new Vue({
             if (component === 'new-leave'){
                 this.openModal = true
                 this.currentComponent = 'open-applications'
+            }else if(component === 'approval-notice'){
+
             }else {
                 this.openModal = false
                 if (Vue.options.components[component]) {
@@ -174,8 +179,17 @@ const app = new Vue({
                     })
             },
             500
-        )
+        ),
 
+        notificationEvents : function (data) {
+            // expects an object
+            // data {
+            //     component : '',
+            //     id of entry : ''
+            // }
+            this.notificationsData = data
+            this.swapComponent(data.component)
+        },
     },
     created : function () {
         this.getData()

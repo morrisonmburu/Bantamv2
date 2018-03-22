@@ -6,6 +6,7 @@ use App\ApprovalEntry;
 use App\EmployeeLeaveAllocation;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
+use App\PayPeriod;
 use App\User;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -53,14 +54,14 @@ class NavTest extends Command
      */
     public function handle()
     {
+        foreach (User::all() as $user){
+            $user->update([
+                'password' => Hash::make('bantam')
+            ]);
+        }
+
         try{
-//            $entry = Employee::find(1);
-            $manager = new NavSyncManager();
-            $res = $manager->sendLeaveApprovals(ApprovalEntry::find(6));
-//            dd(EmployeeLeaveApplication::find(3)->Application_Date);
-//            $res = $manager->sendLeaveApplication(EmployeeLeaveApplication::find(3));
-//            dd(EmployeeLeaveApplication::find(1)->toArray());
-            dd($res);
+
         }
         catch (\Exception $e){
             print ($e);
