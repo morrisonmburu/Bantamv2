@@ -28,9 +28,17 @@ trait NavDateTimeFormatter
         foreach ($arr as $key => $value){
             if ( isset($this->dates) && in_array( $key, $this->dates ) ) {
                 try {
-                    $arr[$key] = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                    $formatted = Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                    $arr[$key] = $formatted;
                 }
                 catch (\Exception $e){
+                    try{
+                        $formatted = Carbon::createFromFormat('Y-m-d', $this->attributes[$key])->format('Y-m-d\TH:i:s');
+                        $arr[$key] = $formatted;
+                    }
+                    catch (\Exception $e){
+                        print ($e);
+                    }
                 }
             }
         }
