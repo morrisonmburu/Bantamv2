@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
+
+    use CalculateDates;
     /**
      * Display a listing of the resource.
      *
@@ -127,6 +129,17 @@ class EmployeeController extends Controller
 
     public function employee_payslip(Request $request, Employee $employee){
         return $this->getEmployeePayslip($employee, $request);
+    }
+
+    public function calculate_dates(Request $request, Employee $employee){
+        $validatedData = $request->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'leave_code' => 'required'
+        ]);
+
+
+        return json_encode((array)$this->calculateEmployeeLeaveDates($validatedData, $employee));
     }
 
     private function getEmployeePayslip(Employee $employee, $request){
