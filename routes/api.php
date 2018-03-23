@@ -46,7 +46,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
     Route::post('{employee}/payslip', 'EmployeeController@employee_payslip');
     Route::get('{employee}/approvers', 'EmployeeApproverController@employee_approvers');
-    Route::get('{employee}/calculate_dates', 'EmployeeController@calculate_dates');
+    Route::post('{employee}/calculate_dates', 'EmployeeController@calculate_dates');
 });
 Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 
