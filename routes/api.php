@@ -44,7 +44,7 @@ Route::prefix('employees')->group(function () {
     Route::get('{employee}/leave_allocations', 'LeaveAllocationController@EmployeeLeaveAllocations');
     Route::get('{employee}/leave_applications', 'LeaveApplicationController@EmployeeLeaveApplications');
     Route::get('{employee}/leave_types', 'LeaveTypeController@LeaveTypes');
-    Route::get('{employee}/payslip', 'EmployeeController@employee_payslip');
+    Route::post('{employee}/payslip', 'EmployeeController@employee_payslip');
     Route::get('{employee}/approvers', 'EmployeeApproverController@employee_approvers');
     Route::get('{employee}/calculate_dates', 'EmployeeController@calculate_dates');
 });

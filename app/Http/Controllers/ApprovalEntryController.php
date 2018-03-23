@@ -14,6 +14,7 @@ use function Symfony\Component\VarDumper\Dumper\esc;
 
 class ApprovalEntryController extends Controller
 {
+    use CalculateDates;
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +47,11 @@ class ApprovalEntryController extends Controller
             'comment' => 'sometimes',
         ]);
 
+        $res = $this->calculateEmployeeLeaveDates([
+            'start_date'=> $validatedData['Approved_Start_Date'],
+            'end_date'=> $validatedData['Approved_End_Date'],
+            'leave_code'=> $entry->leave_application->Leave_Code
+        ], $entry->employee);
         $entry->Status = $validatedData['status'];
         $entry->Web_Sync = 1;
         if(isset($validatedData['comment'])) $entry->comment = $validatedData['comment'];
@@ -54,7 +60,7 @@ class ApprovalEntryController extends Controller
         $application = $entry->leave_application;
         $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ? $validatedData['Approved_Start_Date'] : null;
         $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ? $validatedData['Approved_End_Date']: null;
-
+        $application->Approved_Return_Date = $res->rDate;
         $application->Approval_Date = Carbon::now()->format('Y-m-d');
         $application->Web_Sync = 1;
         $application->save();
