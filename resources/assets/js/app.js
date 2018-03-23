@@ -35,6 +35,7 @@ Vue.component('notification', require('./components/dashboard/utilities/notifica
 const app = new Vue({
     el: '#app',
     data: {
+        fromNotification : '',
         openModal : false,
         currentComponent: 'dashboard',
         profPic : '',
@@ -75,11 +76,13 @@ const app = new Vue({
             PAYPERIODS                              : 'api/pay_periods',
             CANCELAPPLICATION                       : 'api/leave_applications@status',
             APPLICATIONDETAILS                      : 'api/leave_applications@approvals',
-            DISABLEDDAYS                            : 'api/leave_applications/disabled_days'
+            DISABLEDDAYS                            : 'api/leave_applications/disabled_days',
+            APPROVERLEAVECALCULATION                : 'api/employees@calculate_dates'
 
             },
         searchResults : '',
-        searchTerm : ''
+        searchTerm : '',
+        notificationsData : {}
     },
     methods : {
         isEmptyObject : function (object) {
@@ -96,6 +99,8 @@ const app = new Vue({
             if (component === 'new-leave'){
                 this.openModal = true
                 this.currentComponent = 'open-applications'
+            }else if(component === 'approval-notice'){
+
             }else {
                 this.openModal = false
                 if (Vue.options.components[component]) {
@@ -108,19 +113,16 @@ const app = new Vue({
         validateField : function (field) {
           return field.length !== 0
         },
-
         sanitizeHeaders: function (heading) {
             return heading.replace('-', ' ');
         },
-
         getApiPath: function (rawPath, data) {
-            if (data.length == 0) {
+            if (data.length === 0) {
                 return rawPath.replace('@', '/')
             } else {
                 return rawPath.replace('@', '/' + data + '/');
             }
         },
-
         setUserDetails : function () {
 
             this.userDetails.fullName =  this.fullNames(this.currentUserData.First_Name, this.currentUserData.Middle_Name, this.currentUserData.Last_Name)
@@ -128,7 +130,6 @@ const app = new Vue({
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
             this.userDetails.id = this.currentUser.id
         },
-
         getData : function () {
             var v = this
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
@@ -161,7 +162,6 @@ const app = new Vue({
                     console.log(error)
                 })
         },
-        
         search : _.debounce(
             function () {
                 this.searchResults = 'Searching...'
@@ -175,8 +175,17 @@ const app = new Vue({
                     })
             },
             500
-        )
+        ),
 
+        notificationEvents : function (data) {
+            // expects an object
+            // data {
+            //     component : '',
+            //     id of entry : ''
+            // }
+            this.notificationsData = data
+            this.swapComponent(data.component)
+        },
     },
     created : function () {
         this.getData()

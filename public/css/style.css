@@ -57,6 +57,11 @@ h5 {
 
 }
 
+.table-borderless td,
+.table-borderless th {
+    border: 0 !important;
+}
+
 .nav > li > a {
   color: #F2DFDF;
   font-weight: 600;

@@ -3,34 +3,47 @@
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" @click="ReadNotifications">
             <i class="fa fa-bell"></i> <span class="label label-primary"  v-show="notify">{{notification.length}}</span>
         </a>
-        <ul class="dropdown-menu dropdown-messages" v-show="notification.length !== 0">
-            <li v-for="(notice, index) in notification" @click()>
-                <div class="dropdown-messages-box ">
-                    <a href="" class="pull-left">
-                        <i
-                         :class="notice.data.model === 'App\\ApprovalEntry' ? 'fa fa-tasks'
-                         :notice.data.model === 'App\\EmployeeLeaveApplication' ? 'fa fa-file-alt'
-                         :'fa fa-file'"
 
-                         :style="notice.data.type === 'success' ? 'color : #2ecc71'
-                        :notice.data.model === 'danger' ? 'color : #e74c3c'
-                        :notice.data.model === 'info' ? 'color : #bdc3c7'
-                        :'color : #ecf0f1'"
-                        >
+        <div class="project-list  dropdown-menu" style="min-width: 360px">
+            <table class="table table-hover table-borderless">
+                <tbody>
+                <tr v-for="(notice, index) in notification" style="cursor: pointer" @click="notificationClick(notice.data.details, notice.data.model)">
+                    <td class="project-status">
+                          <i class="m-l-md" style="font-size : 24px"
+                            :class="notice.data.type === 'success' ? 'fa fa-check-circle'
+                            :notice.data.type === 'danger' ? 'fa fa-exclamation-circle'
+                            :notice.data.type === 'info' ? 'fa fa-info-circle'
+                            :'fa fa-question-circle'"
 
-                        </i>
-                    </a>
-                    <div class="media-body" >
-                        <small class="pull-right"><timeago :since="notice.created_at"></timeago></small>
-                        <!--<strong v-if="notice.data.title">{{notice.data.title}}<br></strong>-->
-                        {{notice.data.message}}
-                        <!--<small class="text-muted"></small>-->
-                    </div>
-                </div>
-                <div class="divider" v-show="notification.length !== 1 && notification.length === (index + 1)"></div>
-            </li>
-        </ul>
+                            :style="notice.data.type === 'success' ? 'color : #2ecc71'
+                            :notice.data.type === 'danger' ? 'color : #e74c3c'
+                            :notice.data.type === 'info' ? 'color : #bdc3c7'
+                            :'color : #ecf0f1'"
+                            >
+                            </i>
+                    </td>
+                    <td class="project-title">
+                        <h5 v-if="notice.data.title">{{notice.data.title}}</h5>
+                        <small>{{notice.data.message}}</small>
+                    </td>
+                    <td class="project-completion">
+                        <small><timeago :since="notice.created_at"></timeago></small>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </li>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -47,7 +60,12 @@
 </template>
 
 <script>
-    import VueTimeago from 'vue-timeago'
+
+    import  Bus from '../../eventBus.js';
+    import VueTimeago from 'vue-timeago';
+
+
+
     Vue.use(VueTimeago, {
         name: 'timeago', // component name, `timeago` by default
         locale: 'en-US',
@@ -55,7 +73,7 @@
             // you will need json-loader in webpack 1
             'en-US': require('vue-timeago/locales/en-US.json')
         }
-    })
+    });
     export default {
         name: "notification",
         props : [
@@ -66,7 +84,8 @@
             'getApiPath',
             'isEmptyObject',
             'userDetails',
-            'validateField'
+            'validateField',
+            'notificationEvents'
         ],
         data : function () {
             return{
@@ -75,7 +94,11 @@
                 notify : false,
                 noticeIcons : {
                     ApprovalRequest : '',
-            }
+                 },
+                noticeData : {
+                    component : '',
+                    data      : {}
+                }
 
             }
         },
@@ -97,6 +120,7 @@
             },
 
             ReadNotifications : function () {
+
                 var v = this
                 v.notify = false
                 axios.get(v.getApiPath(v.APIENDPOINTS.READNOTIFICATIONS, ''))
@@ -106,6 +130,18 @@
                     .catch(function (error) {
 
                     })
+            },
+            notificationClick : function (details, model) {
+
+                if(model === 'ApprovalEntry'){
+                    this.noticeData.component = 'approval-request'
+                    this.noticeData.data      = details.id
+                }else if (model === 'EmployeeLeaveApplication'){
+                    this.noticeData.component = 'open-applications'
+                    this.noticeData.data      = details.id
+                }
+                this.notificationEvents(this.noticeData)
+
             }
         },
         created() {
