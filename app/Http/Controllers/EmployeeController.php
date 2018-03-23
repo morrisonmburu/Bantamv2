@@ -143,7 +143,7 @@ class EmployeeController extends Controller
         $application = null;
 
         $application = isset($validatedData['Document_No']) ? EmployeeLeaveApplication::where('Application_Code',
-            $validatedData['Document_No']) : null;
+            $validatedData['Document_No'])->first() : null;
         return json_encode((array)$this->calculateEmployeeLeaveDates($validatedData, $employee, $application));
     }
 
