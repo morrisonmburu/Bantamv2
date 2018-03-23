@@ -112,11 +112,9 @@ const app = new Vue({
         validateField : function (field) {
           return field.length !== 0
         },
-
         sanitizeHeaders: function (heading) {
             return heading.replace('-', ' ');
         },
-
         getApiPath: function (rawPath, data) {
             if (data.length == 0) {
                 return rawPath.replace('@', '/')
@@ -124,7 +122,6 @@ const app = new Vue({
                 return rawPath.replace('@', '/' + data + '/');
             }
         },
-
         setUserDetails : function () {
 
             this.userDetails.fullName =  this.fullNames(this.currentUserData.First_Name, this.currentUserData.Middle_Name, this.currentUserData.Last_Name)
@@ -132,7 +129,6 @@ const app = new Vue({
             this.userDetails.profilePicture = this.getApiPath(this.APIENDPOINTS.PROFILEPICTURE, this.currentUserData.id)
             this.userDetails.id = this.currentUser.id
         },
-
         getData : function () {
             var v = this
             axios.get(this.getApiPath(v.APIENDPOINTS.CURRENTUSER,''))
@@ -165,7 +161,6 @@ const app = new Vue({
                     console.log(error)
                 })
         },
-        
         search : _.debounce(
             function () {
                 this.searchResults = 'Searching...'

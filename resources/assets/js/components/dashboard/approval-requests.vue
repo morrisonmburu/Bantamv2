@@ -231,7 +231,12 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group"><label>Comments</label>
-                                    <textarea diabled class="form-control" rows="2" id="comment" ></textarea>
+                                    <textarea diabled class="form-control" rows="2" id="comment" v-model="modalData.application.comment"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group" v-show="approvalError.length !== 0">
+                                <div class="alert alert-danger text-centre col-sm-12">
+                                    {{approvalError}}
                                 </div>
                             </div>
                         </div>
@@ -298,6 +303,7 @@
                         no_of_days : '',
                         end_date : '',
                         return_date : '',
+                        comment : ''
                      },
                     leave : {
                          type : '',
@@ -314,6 +320,7 @@
                 },
                 selected : '',
                 calculateError : '',
+                approvalError : '',
                 calculateButton   : {
                     text    : 'Calculate',
                     icon    : 'fa fa-calculator',
@@ -354,6 +361,12 @@
                         end: new Date()
                     }
                 ],
+                formSubmit: {
+                    Approved_Start_Date : '',
+                    Approved_End_Date : '',
+                    comment : '',
+                    status : ''
+                },
 
             }
         },
@@ -381,13 +394,20 @@
 
                 $('#approveRequest').modal('show')
             },
+            setEntryData : function (status) {
+                this.formSubmit.Approved_Start_Date     = this.modalData.application.start_date
+                this.formSubmit.Approved_End_Date       = this.modalData.application.end_date
+                this.formSubmit.comment                 = this.modalData.application.comment
+                this.formSubmit.status                  = status
+            },
             approveEntry: function (id) {
+                this.clearFieldsErrors()
                 var v = this
+                v.setEntryData('Approved')
                 v.approveButton.loading = false
-                v.formData.status = 'Approved'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.APPROVEENTRY, id),
-                    v.formData,
+                    v.formSubmit,
                     {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -401,15 +421,16 @@
 
                     })
                     .catch(function (error) {
+                        v.getOpenRequests()
                         v.approveButton.loading = true
-                        $('#approveRequest').modal('hide')
-                        console.log(error)
+                        v.approvalError = error.response.data.message
                     })
             },
             rejectEntry: function (id) {
+                this.clearFieldsErrors()
                 var v = this
+                v.setEntryData('Rejected')
                 v.rejectButton.loading = false
-                v.formData.status = 'Rejected'
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id),
                     v.formData,
@@ -425,9 +446,9 @@
                         $('#approveRequest').modal('hide')
                     })
                     .catch(function (error) {
+                        v.getOpenRequests()
                         v.rejectButton.loading = true
-                        $('#approveRequest').modal('hide')
-                        console.log(error)
+                        v.approvalError = error.response.data.message
                     })
             },
             getOpenRequests: function () {
@@ -502,12 +523,12 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }})
                     .then(function (response) {
-                        v.formData.no_of_days = response.data.lDays
-                        v.formData.return_date = response.data.rDate
+                        v.modalData.application.no_of_days = response.data.lDays
+                        v.modalData.application.return_date = response.data.rDate
                         v.calculateButton.loading  = false
                     })
                     .catch(function (error) {
-                        v.calculateButton.loading = true
+                        v.calculateButton.loading = false
                         v.calculateButton.status = 'btn btn-warning'
                         v.calculateButton.text = 'please try again '
                         v.calculateButton.icon = 'fa fa-warning'
@@ -515,6 +536,8 @@
                     })
             },
             clearFieldsErrors : function () {
+                this.calculateError = ''
+                this.approvalError = ''
                 this.error.submitting = ''
                 this.error.return_date = ''
                 this.states.return_date = ''
