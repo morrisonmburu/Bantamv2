@@ -35,23 +35,12 @@
                         </div>
                     <div v-else>
                         <div class="row" >
-                            <div class="col-sm-5 m-b-xs"><select class="input-sm form-control input-s-sm inline">
-                                <option value="0">All</option>
-                                <option value="1">Date</option>
-                                <option value="2">Department</option>
-                                <option value="3">Employee</option>
-                            </select>
-                            </div>
-                            <div class="col-sm-4 m-b-xs">
-                                <div data-toggle="buttons" class="btn-group">
-                                    <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Today </label>
-                                    <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> This Week </label>
-                                    <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> This Month </label>
+                            <div class="col-sm-4 col-sm-push-8">
+                                <div class="input-group"><input type="text" placeholder="Applicant Name" v-model="searchTerm" class="input-sm form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> <i class="fa fa-search"></i></button>
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -70,7 +59,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="(request, index) in requests" :class="request.id === selected ? 'active' : ''">
+                                <tr v-for="(request, index) in filteredItems" :class="request.id === selected ? 'active' : ''">
                                     <td>{{index + 1}} {{request.id === selected ? runModal(request): ''}}</td>
                                     <td>{{fullNames(request.Employee_Details.First_Name, request.Employee_Details.Middle_Name, request.Employee_Details.Last_Name)}}</td>
                                     <td>{{request.Date_Time_Sent_for_Approval}}</td>
@@ -136,7 +125,7 @@
                                         </tr>
                                         <tr>
                                             <td><strong>Title:</strong></td>
-                                            <td>{{modalData.applicant.EmployeeName}}</td>
+                                            <td>{{modalData.applicant.Title}}</td>
                                         </tr>
                                         <tr>
                                             <td><strong>Department:</strong></td>
@@ -279,6 +268,7 @@
         ],
         data : function () {
             return{
+                searchTerm : '',
                 requests : {},
                 backup : {},
                 paginateLinks : {},
@@ -566,6 +556,18 @@
                 this.states.handOverTo = ''
                 this.error.handOverTo = ''
             },
+            search : function (requests) {
+                return requests.filter( function(request){
+                    return request === this.searchTerm
+                })
+            }
+        },
+        computed : {
+            filteredItems () {
+                return this.requests.filter(request =>{
+                    return this.fullNames(request.Employee_Details.First_Name, request.Employee_Details.Middle_Name, request.Employee_Details.Last_Name).toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1
+                })
+            }
         },
         created () {
             this.getOpenRequests()
@@ -585,7 +587,10 @@
                 if(newVal.length !== 0 && newVal.length !== 10){
                     this.modalData.application.end_date = this.modalData.application.end_date.toISOString().slice(0,10)
                 }
-            }
+            },
+            // searchTerm : function (newVal, oldVal) {
+            //    this.requests =  this.search(this.requests)
+            // }
         }
     }
 </script>

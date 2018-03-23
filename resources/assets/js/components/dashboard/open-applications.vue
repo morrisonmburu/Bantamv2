@@ -11,7 +11,17 @@
                             </button>
                         </div>
                     </div>
+
                     <div class="ibox-content">
+                        <!--<div class="row" >-->
+                            <!--<div class="col-sm-4 col-sm-push-8">-->
+                                <!--<div class="input-group"><input type="text" placeholder="Applicant Name" v-model="searchTerm" class="input-sm form-control">-->
+                                    <!--<span class="input-group-btn">-->
+                                        <!--<button type="button" class="btn btn-sm btn-primary"> <i class="fa fa-search"></i></button>-->
+                                    <!--</span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div v-if="loading" class="spiner-example">
                             <div class="sk-spinner sk-spinner-wave">
                                 <div class="sk-rect1"></div>
@@ -21,44 +31,46 @@
                                 <div class="sk-rect5"></div>
                             </div>
                         </div>
+                        <div v-else  class="table-responsive">
+                            <table class="table table-hover animated fadeIn">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <!--<th>Application Code</th>-->
+                                    <th>Application Date</th>
+                                    <th>Days Applied</th>
+                                    <th>Leave Code</th>
+                                    <th>Leave Period</th>
+                                    <th>Start Date</th>
+                                    <th>Return Date</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable"  style="cursor: pointer" :class="application.id === selected ? 'success' : ''">
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{ meta.from + index}} </td>
+                                    <!--<td>{{application.Application_Code}}</td>-->
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Application_Date}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Days_Applied}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Code}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Period}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Start_Date}}</td>
+                                    <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Return_Date}}</td>
+                                    <td><span class="label  " :class="application.Status === 'New' ? New : application.Status === 'Review' ? Review : Canceled" >{{application.Status}}</span></td>
+                                    <td>
+                                        <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
+                                        <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger cancelButton" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
+                                        <button v-else disabled class="btn btn-xs btn-default cancelButton">Cancel <span v-if="sending" class="loading bullet"></span> <i v-else class="fa fa-close"></i> </button>
+                                    </td>
+                                </tr>
+                                <tr v-if="isEmptyObject(applications)">
+                                    <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
+                                </tr>
+                                </tbody>
+                            </table>
 
-                        <table v-else class="table table-hover animated fadeIn">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <!--<th>Application Code</th>-->
-                                <th>Application Date</th>
-                                <th>Days Applied</th>
-                                <th>Leave Code</th>
-                                <th>Leave Period</th>
-                                <th>Start Date</th>
-                                <th>Return Date</th>
-                                <th>Status</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="(application, index) in applications" @dblclick="applicationDetails(application.id)" class="hovertable"  style="cursor: pointer" :class="application.id === selected ? 'success' : ''">
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{ meta.from + index}} </td>
-                                <!--<td>{{application.Application_Code}}</td>-->
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Application_Date}}</td>
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Days_Applied}}</td>
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Code}}</td>
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Leave_Period}}</td>
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Start_Date}}</td>
-                                <td data-toggle="tooltip" data-placement="top" title="double click to view details">{{application.Return_Date}}</td>
-                                <td><span class="label  " :class="application.Status === 'New' ? New : application.Status === 'Review' ? Review : Canceled" >{{application.Status}}</span></td>
-                                <td>
-                                    <!--<button class="btn btn-sm btn-success" @click="submitApplication(application,'Review')" >Submit <i class="fa fa-send"></i> </button>-->
-                                    <button v-if="application.Status === 'Review'" class="btn btn-xs btn-danger cancelButton" @click="deleteApplication(application)" >Cancel &nbsp <i class="fa fa-close"></i> </button>
-                                    <button v-else disabled class="btn btn-xs btn-default cancelButton">Cancel <span v-if="sending" class="loading bullet"></span> <i v-else class="fa fa-close"></i> </button>
-                                </td>
-                            </tr>
-                            <tr v-if="isEmptyObject(applications)">
-                                <td colspan="8" class="text-center"><i class="text-muted">no applications found</i></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        </div>
 
                         <div class="row text-right" >
 
@@ -463,6 +475,7 @@
         ],
         data : function(){
             return {
+                searchTerm : '',
                 loadingDetails : true,
                 showPagination : true,
                 leave_code : '',
@@ -891,6 +904,13 @@
             //check for applications after every five minutes
             this.timer = setInterval(this.getLeaveApplications, 300000)
 
+        },
+        computed : {
+            filteredItems () {
+                return this.requests.filter(request =>{
+                    return this.fullNames(request.Employee_Details.First_Name, request.Employee_Details.Middle_Name, request.Employee_Details.Last_Name).toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1
+                })
+            }
         },
         watch : {
             dateRange : function (newVal, OldVal) {
