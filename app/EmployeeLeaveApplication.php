@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Event;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class EmployeeLeaveApplication extends Model
+class EmployeeLeaveApplication extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use NavDateTimeFormatter;
     protected $guarded = [];
     protected $table = "employee_leave_applications";
