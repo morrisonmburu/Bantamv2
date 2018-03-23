@@ -43,17 +43,17 @@ class ApprovalEntryController extends Controller
             'status' => "required|in:Rejected,Approved",
             'Approved_Start_Date' => 'sometimes|date',
             'Approved_End_Date' => 'sometimes|date',
+            'comment' => 'sometimes',
         ]);
 
         $entry->Status = $validatedData['status'];
         $entry->Web_Sync = 1;
+        if(isset($validatedData['comment'])) $entry->comment = $validatedData['comment'];
         $entry->save();
 
         $application = $entry->leave_application;
-        $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ?
-            isset($validatedData['Approved_Start_Date']) : null;
-        $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ?
-            isset($validatedData['Approved_End_Date']) : null;
+        $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ? $validatedData['Approved_Start_Date'] : null;
+        $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ? $validatedData['Approved_End_Date']: null;
 
         $application->Approval_Date = Carbon::now()->format('Y-m-d');
         $application->Web_Sync = 1;

@@ -21,8 +21,9 @@ class CreateLeaveTypesTable extends Migration
             $table->decimal('Days',5,2);
             $table->boolean('InActive');
             $table->boolean('Accrue_Days');
+            $table->boolean('Allow_Application', false);
             $table->boolean('Unlimited_Days');
-            $table->enum('Gender',['Male','Female','both']);
+            $table->enum('Gender',['Male','Female','Both']);
             $table->string('Balance', 30);
             $table->boolean('Inclusive_of_Holidays');
             $table->decimal('Max_Carry_Forward_Days',5,2);

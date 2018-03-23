@@ -23,6 +23,7 @@ use App\Jobs\SendApprovalEntriesToNav;
 class LeaveApplicationController extends Controller
 {
     use Filterable;
+    use CalculateDates;
     public function index(Request $request)
     {
         $this->authorize('index', EmployeeLeaveApplication::class);
@@ -192,34 +193,13 @@ class LeaveApplicationController extends Controller
 
     public function calculateLeaveDates(Request $request)
     {
-
-
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'leave_code' => 'required'
         ]);
 
-        $this->checkDatesOverlap($validatedData['start_date'], $validatedData['end_date']);
-        $manager = new NavSyncManager();
-
-        try {
-            $result = $manager->calculateLeaveDates(
-                $validatedData['leave_code'],
-                Auth::user()->Employee_Record->No,
-                Auth::user()->Employee_Record->_x003C_Base_Calendar_cODE_x003E_,
-                $validatedData['start_date'],
-                $validatedData['end_date']
-            );
-        } catch (\Exception $e) {
-            if ($e->getCode() == NavSyncManager::$NAV_HTTP_ERROR_CODE)
-                abort(400, $e->getMessage());
-            else {
-                throw $e;
-            }
-        }
-
-        return json_encode((array)$result);
+        return json_encode((array)$this->calculateEmployeeLeaveDates($validatedData));
 
     }
 
@@ -247,33 +227,5 @@ class LeaveApplicationController extends Controller
         }
 
         return $dates;
-    }
-
-    private function checkDatesOverlap($start_date, $end_date ){
-//        DB::enableQueryLog();
-        $res = EmployeeLeaveApplication::where('Status', '!=' , 'Canceled')
-            ->where('Employee_No', Auth::user()->Employee_Record->No)
-            ->where(function ($query) use($start_date, $end_date){
-            $query->where(function ($q) use($start_date) {
-                $q->where('Start_Date', '<=', $start_date);
-                $q->where('End_Date', '>=', $start_date);
-            })->orWhere(function ($q) use($end_date) {
-                $q->where('Start_Date', '<=', $end_date);
-                $q->where('End_Date', '>=', $end_date);
-            })->orWhere(function ($q) use($start_date, $end_date) {
-                $q->where('Start_Date', '<=', $start_date);
-                $q->where('End_Date', '>=', $end_date);
-            })->orWhere(function ($q) use($start_date, $end_date) {
-                $q->where('Start_Date', '>=', $start_date);
-                $q->where('End_Date', '<=', $end_date);
-            });
-        })->get();
-
-//        dd(DB::getQueryLog());
-
-        if($res->count())
-        {
-            abort(400, "Leave application overlaps with another.");
-        }
     }
 }

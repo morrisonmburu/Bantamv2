@@ -81,6 +81,12 @@ class LeaveTypeController extends Controller
     }
 
     public function LeaveTypes(Employee $employee){
-        return new LeaveTypeResource($employee->LeaveTypes);
+//        return new LeaveTypeResource($employee->LeaveTypes);
+        return new LeaveTypeResource(
+            LeaveType::where(function ($query) use($employee){
+                $query->where('Gender', $employee->Gender);
+                $query->orWhere('Gender', 'Both');
+            })->get()
+        );
     }
 }

@@ -22,7 +22,7 @@ return (object)array(
         6 => "Invalid Employee",
         7 => "Date Before Today",
         8 => "Employee does not Exist",
-        9 => "Employe Not Active",
+        9 => "Employee Not Active",
         10 => "Leave Type Deactivated",
         11 => "Non Working Start Date",
     ]

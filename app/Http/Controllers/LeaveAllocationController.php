@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\EmployeeLeaveAllocation;
 use App\Http\Resources\EmployeeLeaveAllocationCollection;
 use App\Http\Resources\LeaveAllocationResource;
+use App\Http\Resources\LeaveTypeResource;
+use App\LeaveType;
 use Illuminate\Http\Request;
 use App\Employee;
 
@@ -101,9 +103,16 @@ class LeaveAllocationController extends Controller
 
         public function current_employee_leave_types( Request $request){
             $employee = $request->user()->Employee_Record;
-            $this->authorize('employee', [EmployeeLeaveAllocation::class, $employee]);
-            if ($request->is('api*')) {
-                return $employee->leave_types()->paginate();
-            }
+//            $this->authorize('employee', [EmployeeLeaveAllocation::class, $employee]);
+//            if ($request->is('api*')) {
+//                return $employee->leave_types()->paginate();
+//            }
+
+            return new LeaveTypeResource(
+                LeaveType::where(function ($query) use($employee){
+                    $query->where('Gender', $employee->Gender);
+                    $query->orWhere('Gender', 'Both');
+                })->get()
+            );
         }
 }

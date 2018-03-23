@@ -28,6 +28,7 @@ class CreatePayPeriodsTable extends Migration
             $table->boolean("Nav_Sync_TimeStamp")->nullable();
             $table->string("Web_Sync_TimeStamp")->nullable();
             $table->timestamps();
+            $table->unique(['Name', 'Starting_Date']);
         });
     }
 
