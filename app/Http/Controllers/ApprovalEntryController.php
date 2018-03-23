@@ -51,7 +51,7 @@ class ApprovalEntryController extends Controller
             'start_date'=> $validatedData['Approved_Start_Date'],
             'end_date'=> $validatedData['Approved_End_Date'],
             'leave_code'=> $entry->leave_application->Leave_Code
-        ], $entry->employee);
+        ], $entry->employee, $entry->leave_application);
         $entry->Status = $validatedData['status'];
         $entry->Web_Sync = 1;
         if(isset($validatedData['comment'])) $entry->comment = $validatedData['comment'];
