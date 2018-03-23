@@ -304,8 +304,10 @@
                         no_of_days : '',
                         end_date : '',
                         return_date : '',
-                        comment : ''
-                     },
+                        comment : '',
+                        Document_No : ''
+
+                    },
                     leave : {
                          type : '',
                          start_date : '',
@@ -317,7 +319,7 @@
                         EmployeeName : '',
                         title : '',
                         department : '',
-                        id : ''
+                        id : '',
                     }
                 },
                 selected : '',
@@ -377,7 +379,8 @@
                 // store the data incase you need to reset when calculating
                 this.backup = data
 
-                console.log(data)
+                console.log('modal data')
+                console.log(data.Document_No)
                 this.modalData.id = data.id
                 this.modalData.application.start_date = data.Application_Details.Start_Date
                 this.modalData.application.no_of_days = data.Application_Details.Days_Applied
@@ -394,6 +397,7 @@
                 this.modalData.applicant.title = data.Employee_Details.Title
                 this.modalData.applicant.department = data.Employee_Details.Department
                 this.modalData.applicant.id = data.Employee_Details.id
+                this.modalData.application.Document_No = data.Document_No
 
                 $('#approveRequest').modal('show')
             },
@@ -522,7 +526,6 @@
             getCalculatedDates : function (id) {
                 this.calculateButton.loading = true
                 var v = this
-                alert(id)
                 v.url = v.getApiPath(v.APIENDPOINTS.APPROVERLEAVECALCULATION, id )
                 axios.post(
                     v.url,
