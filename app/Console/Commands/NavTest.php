@@ -60,7 +60,6 @@ class NavTest extends Command
             ]);
         }
 
-        print_r(ApprovalEntry::find(1)->toArray());
 
         try{
 
