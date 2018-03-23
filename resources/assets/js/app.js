@@ -76,7 +76,8 @@ const app = new Vue({
             PAYPERIODS                              : 'api/pay_periods',
             CANCELAPPLICATION                       : 'api/leave_applications@status',
             APPLICATIONDETAILS                      : 'api/leave_applications@approvals',
-            DISABLEDDAYS                            : 'api/leave_applications/disabled_days'
+            DISABLEDDAYS                            : 'api/leave_applications/disabled_days',
+            APPROVERLEAVECALCULATION                : 'api/employees@calculate_dates'
 
             },
         searchResults : '',
@@ -116,7 +117,7 @@ const app = new Vue({
             return heading.replace('-', ' ');
         },
         getApiPath: function (rawPath, data) {
-            if (data.length == 0) {
+            if (data.length === 0) {
                 return rawPath.replace('@', '/')
             } else {
                 return rawPath.replace('@', '/' + data + '/');

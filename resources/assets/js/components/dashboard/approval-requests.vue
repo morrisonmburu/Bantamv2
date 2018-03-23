@@ -59,7 +59,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Approver</th>
+                                    <th>Applicant</th>
                                     <th>Date Sent</th>
                                     <!--<th>Document No</th>-->
                                     <th>Document Owner</th>
@@ -72,7 +72,7 @@
                                 <tbody>
                                 <tr v-for="(request, index) in requests" :class="request.id === selected ? 'active' : ''">
                                     <td>{{index + 1}} {{request.id === selected ? runModal(request): ''}}</td>
-                                    <td>{{request.Approval_Details}}</td>
+                                    <td>{{fullNames(request.Employee_Details.First_Name, request.Employee_Details.Middle_Name, request.Employee_Details.Last_Name)}}</td>
                                     <td>{{request.Date_Time_Sent_for_Approval}}</td>
                                     <!--<td>{{request.Document_No}}</td>-->
                                     <td>{{request.Document_Owner}}</td>
@@ -220,7 +220,7 @@
                         <div class="row">
                             <div class="col-md-12 text-right ">
                                 <a href="#" v-if="calculateButton.loading" class="btn btn-primary" > <span class="loading bullet"></span></a>
-                                <a href="#" v-else class="btn btn-primary "  @click="calculate" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></a>
+                                <a href="#" v-else class="btn btn-primary "  @click="calculate(modalData.applicant.id)" v-bind:class="calculateButton.status"> <strong>{{ calculateButton.text }} <i :class="calculateButton.icon"></i> </strong></a>
                             </div>
                             <div class="form-group" v-show="calculateError.length !== 0">
                                 <div class="alert alert-danger text-centre col-sm-12">
@@ -274,7 +274,8 @@
             'isEmptyObject',
             'validateField',
             'notificationsData',
-            'notificationEvents'
+            'notificationEvents',
+            'fullNames'
         ],
         data : function () {
             return{
@@ -315,7 +316,8 @@
                     applicant : {
                         EmployeeName : '',
                         title : '',
-                        department : ''
+                        department : '',
+                        id : ''
                     }
                 },
                 selected : '',
@@ -388,9 +390,10 @@
                 this.modalData.leave.end_date = data.Application_Details.End_Date
                 this.modalData.leave.return_date = data.Application_Details.Return_Date
 
-                this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' '
+                this.modalData.applicant.EmployeeName = this.fullNames(data.Employee_Details.First_Name, data.Employee_Details.Middle_Name, data.Employee_Details.Last_Name)
                 this.modalData.applicant.title = data.Employee_Details.Title
                 this.modalData.applicant.department = data.Employee_Details.Department
+                this.modalData.applicant.id = data.Employee_Details.id
 
                 $('#approveRequest').modal('show')
             },
@@ -415,6 +418,7 @@
                     }
                 )
                     .then(function (response) {
+                        v.selected = ''
                         v.getOpenRequests()
                         v.approveButton.loading = true
                         $('#approveRequest').modal('hide')
@@ -424,6 +428,7 @@
                         v.getOpenRequests()
                         v.approveButton.loading = true
                         v.approvalError = error.response.data.message
+
                     })
             },
             rejectEntry: function (id) {
@@ -433,7 +438,7 @@
                 v.rejectButton.loading = false
                 axios.post(
                     v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id),
-                    v.formData,
+                    v.formSubmit,
                     {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -441,6 +446,7 @@
                     }
                 )
                     .then(function (response) {
+                        v.selected = ''
                         v.getOpenRequests()
                         v.rejectButton.loading = true
                         $('#approveRequest').modal('hide')
@@ -494,7 +500,7 @@
                 this.modalData.application.end_date             = this.backup.Application_Details.End_Date
                 this.modalData.application.return_date          = this.backup.Application_Details.Return_Date
             },
-            calculate : function () {
+            calculate : function (id) {
 
                 this.clearFieldsErrors()
                 if (this.modalData.application.start_date.length === 0 || this.modalData.application.end_date.length === 0){
@@ -510,15 +516,17 @@
                 }else {
                     //calculator requires leave code
                     this.modalData.application.leave_code = this.modalData.leave.type
-                    this.getCalculatedDates()
+                    this.getCalculatedDates(id)
                 }
             },
-            getCalculatedDates : function () {
+            getCalculatedDates : function (id) {
                 this.calculateButton.loading = true
                 var v = this
+                alert(id)
+                v.url = v.getApiPath(v.APIENDPOINTS.APPROVERLEAVECALCULATION, id )
                 axios.post(
-                    this.APIENDPOINTS.CALCULATE,
-                    this.modalData.application,
+                    v.url,
+                    v.modalData.application,
                     {headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         }})

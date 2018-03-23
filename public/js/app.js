@@ -12344,7 +12344,8 @@ var app = new Vue({
             PAYPERIODS: 'api/pay_periods',
             CANCELAPPLICATION: 'api/leave_applications@status',
             APPLICATIONDETAILS: 'api/leave_applications@approvals',
-            DISABLEDDAYS: 'api/leave_applications/disabled_days'
+            DISABLEDDAYS: 'api/leave_applications/disabled_days',
+            APPROVERLEAVECALCULATION: 'api/employees@calculate_dates'
 
         },
         searchResults: '',
@@ -12382,7 +12383,7 @@ var app = new Vue({
             return heading.replace('-', ' ');
         },
         getApiPath: function getApiPath(rawPath, data) {
-            if (data.length == 0) {
+            if (data.length === 0) {
                 return rawPath.replace('@', '/');
             } else {
                 return rawPath.replace('@', '/' + data + '/');
@@ -50208,7 +50209,7 @@ exports = module.exports = __webpack_require__(0)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50487,7 +50488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         Datepicker: __WEBPACK_IMPORTED_MODULE_0_vue2_datepicker___default.a
     },
-    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'notificationsData', 'notificationEvents'],
+    props: ['currentUser', 'currentUserData', 'swapComponent', 'currentEmployeeLeaveAllocations', 'APIENDPOINTS', 'getApiPath', 'isEmptyObject', 'validateField', 'notificationsData', 'notificationEvents', 'fullNames'],
     data: function data() {
         return {
             requests: {},
@@ -50527,7 +50528,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 applicant: {
                     EmployeeName: '',
                     title: '',
-                    department: ''
+                    department: '',
+                    id: ''
                 }
             },
             selected: '',
@@ -50598,9 +50600,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modalData.leave.end_date = data.Application_Details.End_Date;
             this.modalData.leave.return_date = data.Application_Details.Return_Date;
 
-            this.modalData.applicant.EmployeeName = data.Employee_Details.First_Name + ' ' + data.Employee_Details.Middle_Name + ' ' + data.Employee_Details.Last_Name + ' ';
+            this.modalData.applicant.EmployeeName = this.fullNames(data.Employee_Details.First_Name, data.Employee_Details.Middle_Name, data.Employee_Details.Last_Name);
             this.modalData.applicant.title = data.Employee_Details.Title;
             this.modalData.applicant.department = data.Employee_Details.Department;
+            this.modalData.applicant.id = data.Employee_Details.id;
 
             $('#approveRequest').modal('show');
         },
@@ -50620,6 +50623,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             }).then(function (response) {
+                v.selected = '';
                 v.getOpenRequests();
                 v.approveButton.loading = true;
                 $('#approveRequest').modal('hide');
@@ -50634,11 +50638,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var v = this;
             v.setEntryData('Rejected');
             v.rejectButton.loading = false;
-            axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formData, {
+            axios.post(v.getApiPath(v.APIENDPOINTS.REJECTENTRY, id), v.formSubmit, {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             }).then(function (response) {
+                v.selected = '';
                 v.getOpenRequests();
                 v.rejectButton.loading = true;
                 $('#approveRequest').modal('hide');
@@ -50687,7 +50692,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.modalData.application.end_date = this.backup.Application_Details.End_Date;
             this.modalData.application.return_date = this.backup.Application_Details.Return_Date;
         },
-        calculate: function calculate() {
+        calculate: function calculate(id) {
 
             this.clearFieldsErrors();
             if (this.modalData.application.start_date.length === 0 || this.modalData.application.end_date.length === 0) {
@@ -50703,13 +50708,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 //calculator requires leave code
                 this.modalData.application.leave_code = this.modalData.leave.type;
-                this.getCalculatedDates();
+                this.getCalculatedDates(id);
             }
         },
-        getCalculatedDates: function getCalculatedDates() {
+        getCalculatedDates: function getCalculatedDates(id) {
             this.calculateButton.loading = true;
             var v = this;
-            axios.post(this.APIENDPOINTS.CALCULATE, this.modalData.application, { headers: {
+            alert(id);
+            v.url = v.getApiPath(v.APIENDPOINTS.APPROVERLEAVECALCULATION, id);
+            axios.post(v.url, v.modalData.application, { headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } }).then(function (response) {
                 v.modalData.application.no_of_days = response.data.lDays;
@@ -50815,7 +50822,15 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("td", [
-                                  _vm._v(_vm._s(request.Approval_Details))
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.fullNames(
+                                        request.Employee_Details.First_Name,
+                                        request.Employee_Details.Middle_Name,
+                                        request.Employee_Details.Last_Name
+                                      )
+                                    )
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("td", [
@@ -51282,7 +51297,11 @@ var render = function() {
                           staticClass: "btn btn-primary ",
                           class: _vm.calculateButton.status,
                           attrs: { href: "#" },
-                          on: { click: _vm.calculate }
+                          on: {
+                            click: function($event) {
+                              _vm.calculate(_vm.modalData.applicant.id)
+                            }
+                          }
                         },
                         [
                           _c("strong", [
@@ -51584,7 +51603,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("#")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Approver")]),
+        _c("th", [_vm._v("Applicant")]),
         _vm._v(" "),
         _c("th", [_vm._v("Date Sent")]),
         _vm._v(" "),
