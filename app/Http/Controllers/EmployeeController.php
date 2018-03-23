@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
@@ -135,11 +136,15 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date',
-            'leave_code' => 'required'
+            'leave_code' => 'required',
+            'Document_No' => 'sometimes'
         ]);
 
+        $application = null;
 
-        return json_encode((array)$this->calculateEmployeeLeaveDates($validatedData, $employee));
+        $application = isset($validatedData['Document_No']) ? EmployeeLeaveApplication::where('Application_Code',
+            $validatedData['Document_No']) : null;
+        return json_encode((array)$this->calculateEmployeeLeaveDates($validatedData, $employee, $application));
     }
 
     private function getEmployeePayslip(Employee $employee, $request){
