@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Jobs\SendLeaveApplicationToNav;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +34,7 @@ class EmployeeLeaveApplication extends Model
             if(isset($employee_leave_application->getOriginal()["Status"])
                 && $employee_leave_application->getOriginal()["Status"] != $employee_leave_application->Status)
                 Event::fire('employee_leave_application.updated.status', $employee_leave_application);
+            else SendLeaveApplicationToNav::dispatch($employee_leave_application);
         });
     }
 
