@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 trait Filterable{
 
-    private function filter($filters, $filter_model = null){
+    private function filter($filters, $filter_model = null, $query = null){
         $specials = [
             '@month' =>  function ($query, $args) {
                 $args = explode(",", $args, 2);
@@ -29,9 +30,10 @@ trait Filterable{
             },
         ];
 
+        $filters = $filters instanceof Request ? $filters->all() : $filters;
         $original_filters = $filters;
         $model = $filter_model? $filter_model : $this->filter_model;
-        $query = $model::query();
+        $query = $query? $query : $model::query();
         $count = 0;
 
         $columns = Schema::getColumnListing((new $model())->getTable());

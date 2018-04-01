@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\ApprovalEntry;
+use App\Jobs\SendApprovalEntriesToNav;
 use App\Notifications\LeaveApplicationRejected;
 use \Illuminate\Support\Facades\Notification;
 use Illuminate\Queue\InteractsWithQueue;
@@ -81,5 +82,6 @@ class ApprovalEntryUpdatedListener
             default:
                 break;
         }
+        SendApprovalEntriesToNav::dispatch($entry);
     }
 }

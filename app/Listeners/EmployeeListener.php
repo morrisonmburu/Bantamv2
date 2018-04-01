@@ -25,7 +25,7 @@ class EmployeeListener
     /**
      * Handle the event.
      *
-     * @param  EmployeeCreated  $event
+     * @param  EmployeeCreated $event
      * @return void
      */
     public function handle(Employee $employee)
@@ -37,11 +37,12 @@ class EmployeeListener
         $user->save();
 
         $employee->user_id = $user->id;
-        $employee->save();
+        $user->save();
         $credentials = ['email' => $user->email];
-        $response = Password::sendResetLink($credentials, function ($message) {
-            $message->subject($this->getEmailSubject());
-        });
+        $response = Password::sendResetLink($credentials);
+
+        $user->email = $employee->E_Mail;
+        $user->save();
 
         switch ($response) {
             case Password::RESET_LINK_SENT:
@@ -54,3 +55,4 @@ class EmployeeListener
         }
     }
 }
+

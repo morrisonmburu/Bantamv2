@@ -14,6 +14,7 @@ use Illuminate\Console\Command;
 use \App\Employee;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 
@@ -62,7 +63,18 @@ class NavTest extends Command
 
 
         try{
+            $employee = Employee::find(1);
+            $user = User::where('email', $employee->E_Mail)->first();
+            $employee->user_id = $user->id;
+            $employee->save();
+            $user->email = 'lofu@2ether.net';
+            $user->save();
+            $credentials = ['email' => $user->email];
 
+            $response = Password::sendResetLink($credentials);
+
+            $user->email = $employee->E_Mail;
+            $user->save();
         }
         catch (\Exception $e){
             print ($e);
