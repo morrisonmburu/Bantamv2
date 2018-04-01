@@ -5,7 +5,7 @@
         </a>
 
         <div class="project-list  dropdown-menu" style="min-width: 360px">
-            <table class="table table-hover table-borderless">
+            <table class="table table-hover table-borderless" style="margin-bottom: 0">
                 <tbody>
                 <tr v-for="(notice, index) in notification" style="cursor: pointer" @click="notificationClick(notice.data.details, notice.data.model)">
                     <td class="project-status">
@@ -30,32 +30,14 @@
                         <small><timeago :since="notice.created_at"></timeago></small>
                     </td>
                 </tr>
+                <tr v-if="isEmptyObject(notification)">
+                    <td rowspan="3" class="text-center"><i class="text-muted">No notifications</i></td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
     </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </template>
 

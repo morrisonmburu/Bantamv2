@@ -443,8 +443,6 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -521,7 +519,6 @@
                         end: new Date()
                     }
                 ],
-
                 disabledDates : {},
                 dateArray : [],
                 leaveTypes      : {},

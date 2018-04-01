@@ -19,8 +19,8 @@
 
         <ul class="dropdown-menu animated fadeInRight m-t-xs">
             <li><a href="#" @click="swapComponent('profile')">Profile</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Messages</a></li>
+            <!--<li><a  href="#" class="disabled-link" tabindex="-1">Settings</a></li>-->
+            <!--<li><a  href="#" class="disabled-link" tabindex="-1">Messages</a></li>-->
         </ul>
     </div>
 

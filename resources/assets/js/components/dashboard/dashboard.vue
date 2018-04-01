@@ -1,244 +1,63 @@
 <template>
     <!--top row statistics-->
     <div>
-        <!--<div class="row">-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-success pull-right">Monthly</span>-->
-                        <!--<h5>Income</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<h1 class="no-margins">40 886,200</h1>-->
-                        <!--<div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>-->
-                        <!--<small>Total income</small>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-info pull-right">Annual</span>-->
-                        <!--<h5>Orders</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<h1 class="no-margins">275,800</h1>-->
-                        <!--<div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>-->
-                        <!--<small>New orders</small>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-primary pull-right">Today</span>-->
-                        <!--<h5>visits</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<h1 class="no-margins">106,120</h1>-->
-                        <!--<div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>-->
-                        <!--<small>New visits</small>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-lg-3">-->
-                <!--<div class="ibox float-e-margins">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<span class="label label-danger pull-right">Low value</span>-->
-                        <!--<h5>User activity</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<h1 class="no-margins">80,600</h1>-->
-                        <!--<div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>-->
-                        <!--<small>In first month</small>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <div class="row">
-            <div class="col-lg-12">
+        <div v-if="loading" class="row">
+            <div class="col-sm-12">
                 <div class="ibox ">
                     <div class="ibox-title">
-                        <h5>Leave types bar graph</h5>
+                        <h5>Leave Summary</h5>
                     </div>
-                    <div class="ibox-content"  id="leaveDaysChart">
-
-                    </div>
-                </div>
-                <div class="ibox ">
-                    <div class="ibox-title">
-                        <h5>Leave application statistics pie chart</h5>
-                    </div>
-                    <div class="ibox-content"  id="leaveApplicationsChart">
-
+                    <div class="ibox-content">
+                        <div class="spiner-example">
+                            <div class="sk-spinner sk-spinner-wave">
+                                <div class="sk-rect1"></div>
+                                <div class="sk-rect2"></div>
+                                <div class="sk-rect3"></div>
+                                <div class="sk-rect4"></div>
+                                <div class="sk-rect5"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--<div class="col-lg-4">-->
-                <!--<div class="ibox ">-->
-                    <!--<div class="ibox-title">-->
-                        <!--<h5>Recent Activities</h5>-->
-                    <!--</div>-->
-                    <!--<div class="ibox-content">-->
-                        <!--<div class="activity-stream">-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-pencil"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a5.jpg">-->
-                                            <!--<span>Karen Miggel</span>-->
-                                            <!--<span class="date">Today at 01:32:40 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Add new note to the <a href="#">Martex</a>  project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-commenting-o"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a4.jpg">-->
-                                            <!--<span>John Mikkens</span>-->
-                                            <!--<span class="date">Yesterday at 10:00:20 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Commented on <a href="#">Ariana</a> profile.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-circle"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a2.jpg">-->
-                                            <!--<img src="img/a3.jpg">-->
-                                            <!--<img src="img/a4.jpg">-->
-                                            <!--<span>Mike Johnson, Monica Smith and Karen Dortmund</span>-->
-                                            <!--<span class="date">Yesterday at 02:13:20 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Changed status of third stage in the <a href="#">Vertex</a> project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-circle"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a6.jpg">-->
-                                            <!--<span>Jessica Smith</span>-->
-                                            <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Add new files to own file sharing place.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-send bg-primary"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a7.jpg">-->
-                                            <!--<img src="img/a1.jpg">-->
-                                            <!--<span>Martha Farter and Mike Rodgers</span>-->
-                                            <!--<span class="date">Yesterday at 04:18:13 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Sent email to all users participating in new project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-tag bg-warning"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a7.jpg">-->
-                                            <!--<span>Mark Mickens</span>-->
-                                            <!--<span class="date">Yesterday at 06:00:30 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Has been taged in the latest comments about the new project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-circle"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a8.jpg">-->
-                                            <!--<span>Mike Johnson</span>-->
-                                            <!--<span class="date">Yesterday at 02:13:20 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Changed status of second stage in the latest project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-circle"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a1.jpg">-->
-                                            <!--<span>Jessica Smith</span>-->
-                                            <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Add new files to own file sharing place.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-circle"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a6.jpg">-->
-                                            <!--<span>Jessica Smith</span>-->
-                                            <!--<span class="date">Yesterday at 08:14:41 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Add new files to own file sharing place.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="stream">-->
-                                <!--<div class="stream-badge">-->
-                                    <!--<i class="fa fa-send"></i>-->
-                                <!--</div>-->
-                                <!--<div class="stream-panel">-->
-                                    <!--<div class="stream-info">-->
-                                        <!--<a href="#">-->
-                                            <!--<img src="img/a7.jpg">-->
-                                            <!--<span>Martha Farter</span>-->
-                                            <!--<span class="date">Yesterday at 04:18:13 am</span>-->
-                                        <!--</a>-->
-                                    <!--</div>-->
-                                    <!--Sent email to all users participating in new project.-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+        </div>
+        <div v-else class="row">
+            <div class="col-sm-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Leave summary bar graph</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <chartjs-bar :width="200" :height="80" :beginzero="false" :labels="labels" :datasets="datasets" :option="options"></chartjs-bar>
+                        <!--<chartjs-bar :data="testDataset"></chartjs-bar>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="ibox ">
+                            <div class="ibox-title">
+                                <h5>Leave Taken Summary</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <chartjs-doughnut :labels="labels" :option="doughnutOptions" :data="doughnutData"></chartjs-doughnut>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="ibox ">
+                            <div class="ibox-title">
+                                <h5>Annual Leave Summary</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <chartjs-line></chartjs-line>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -250,104 +69,203 @@
         props : [
             'currentUser',
             'currentUserData',
-            'swapComponent'
+            'swapComponent',
+            'currentEmployeeLeaveAllocations',
+            'APIENDPOINTS',
+            'getApiPath',
+            'isEmptyObject',
+            'validateField',
+            'fullNames',
+            'openModal',
+            'notificationsData',
+            'notificationEvents',
+            'pageLoading'
         ],
+        data : function () {
+          return {
+              loading : true,
+              LeaveAllocations : {},
+              leaveTypes : {},
+              labels : [],
+              doughnutData : [],
+              leaveStats : ['Taken','Accrued_Days', 'Balance', 'Allocated_Days'],
+              datasets : [
+                  {
+                      label : "Days Taken",
+                      backgroundColor: [
+                          'rgb(255,99,132)',
+                          'rgb(255,99,132)',
+                          'rgb(255,99,132)',
+                          'rgb(255,99,132)',
+                          'rgb(255,99,132)',
+                          'rgb(255,99,132)',
+                      ],
+                      borderColor: [
+
+                      ],
+                      borderWidth: 1,
+                      data: []
+                  },
+                  {
+                      label : "Accrued Days",
+                      backgroundColor: [
+                          'rgb(54,162,235)',
+                          'rgb(54,162,235)',
+                          'rgb(54,162,235)',
+                          'rgb(54,162,235)',
+                          'rgb(54,162,235)',
+                          'rgb(54,162,235)',
+                      ],
+                      borderColor: [
+
+                      ],
+                      borderWidth: 1,
+                      data: []
+                  },
+                  {
+                      label : "Balance",
+                      backgroundColor: [
+                          'rgb(0,166,0)',
+                          'rgb(0,166,0)',
+                          'rgb(0,166,0)',
+                          'rgb(0,166,0)',
+                          'rgb(0,166,0)',
+                          'rgb(0,166,0)'
+                      ],
+                      borderColor: [
+
+                      ],
+                      borderWidth: 1,
+                      data: []
+                  },
+                  {
+                      label : "Allocated Days",
+                      backgroundColor: [
+                          'rgb(255,206,86)',
+                          'rgb(255,206,86)',
+                          'rgb(255,206,86)',
+                          'rgb(255,206,86)',
+                          'rgb(255,206,86)',
+                          'rgb(255,206,86)',
+                      ],
+                      borderColor: [
+                      ],
+                      borderWidth: 1,
+                      data: []
+                  },
+              ],
+              options : {
+                  responsive : true,
+                  maintainAspectRatio : true,
+                  title: {
+                      display: true,
+                      position: 'bottom',
+                      text: 'Custom Chart Title'
+                  },
+                  scales: {
+                      xAxes: [{
+                          // stacked: true,
+                          gridLines: { display: false },
+                      }],
+                      yAxes: [{
+                          // stacked: true
+                      }]
+                  }
+              },
+              doughnutOptions : {}
+
+          }
+        },
+        methods : {
+            getLeaveAllocations : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_ALLOCATIONS, v.currentUserData.id))
+                    .then(function (response) {
+                        v.LeaveAllocations = response.data.data
+                        console.log('leave allocation')
+                        console.log(v.LeaveAllocations)
+                        v.loading = false
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
+            getLeaveTypes : function () {
+                var v = this
+                axios.get(v.getApiPath(v.APIENDPOINTS.CURRENT_EMPLOYEE_LEAVE_TYPES, ''))
+                    .then(function (response) {
+                        v.leaveTypes = response.data.data
+                        console.log('leave types')
+                        console.log(v.leaveTypes)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    })
+            },
+            initCharts : function (val) {
+                //reset datasets labels
+                //for each dataset push data for each leave type
+                //pick first data set
+
+                this.initChartLabels(val)
+
+            for(let dataset in this.datasets){                                                      // loop through each data set
+                    for(let label in this.labels){                                                  // loop through the set labels
+                        for(let v in val){                                                          // loop through leave allocations
+                            if (this.labels[label] === val[v].LTypes_Description){                  // if leave matches the label
+                                this.datasets[dataset].data.push(val[v][this.leaveStats[dataset]])
+                                // push data into dataset array
+                                console.log(this.datasets[dataset])
+                            }
+                        }
+                    }
+                }
+            },
+
+            initDoughnutChart : function (val) {
+
+                for(let label in this.labels){
+                    this.doughnutData[label] = 0;
+                    for(let v in val){
+                        if (this.labels[label] === val[v].LTypes_Description){
+                            this.doughnutData[label] = parseInt(val[v][this.leaveStats[2]]) + this.doughnutData[label]
+                        }
+                    }
+                }
+                },
+            initChartLabels : function (val) {
+                // reset the labels array
+                this.labels = []
+                for(let i in val){
+                    // for(let code in this.leaveTypes)
+                        // if (val[i].Code === code)
+                    this.labels.push(val[i].LTypes_Description)
+                }
+            }
+        },
         created(){
-            // let chartScript = document.createElement('script');
-            // chartScript.setAttribute('src', 'https://code.highcharts.com/highcharts.js');
-            // document.head.appendChild(chartScript);
-            // let chartScriptExporting = document.createElement('script');
-            // chartScriptExporting.setAttribute('src', 'https://code.highcharts.com/modules/exporting.js');
-            // document.head.appendChild(chartScriptExporting);
+            // setTimeout(this.getLeaveAllocations , 5000)
+            // if(this.pageReady){
+            //     setTimeout(this.getLeaveAllocations , 10000)
+            // }else {this.getLeaveAllocations}
+            this.getLeaveTypes()
         },
         mounted(){
-            //Leave types vs days bar graph
-           // $('#leaveDaysChart').highcharts({
-           //      chart: {
-           //          type: 'bar'
-           //      },
-           //      title: {
-           //          text: ''
-           //      },
-           //      xAxis: {
-           //          categories: ['Annual', 'Compassionate', 'Maternity', 'Off days', 'Paternity','Sick']
-           //      },
-           //      yAxis: {
-           //          min: 0,
-           //          title: {
-           //              text: 'Total fruit consumption'
-           //          }
-           //      },
-           //      legend: {
-           //          reversed: true
-           //      },
-           //      plotOptions: {
-           //          series: {
-           //              stacking: 'normal'
-           //          }
-           //      },
-           //      series: [{
-           //          name: 'Allocated',
-           //          data: [5, 3, 4, 7, 2,5],
-           //          color: '#78f78d'
-           //      }, {
-           //          name: 'Taken',
-           //          data: [2, 2, 3, 2, 1,4],
-           //          color: '#ff9548'
-           //      }, {
-           //          name: 'Balance',
-           //          data: [3, 4, 4, 2, 5,1],
-           //          color: '#57bbec'
-           //      }]
-           //  });
-           //  //Leave application statistics pie chart
-           //  $('#leaveApplicationsChart').highcharts({
-           //      chart: {
-           //          plotBackgroundColor: null,
-           //          plotBorderWidth: null,
-           //          plotShadow: false,
-           //          type: 'pie'
-           //      },
-           //      title: {
-           //          text: ''
-           //      },
-           //      tooltip: {
-           //          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-           //      },
-           //      plotOptions: {
-           //          pie: {
-           //              allowPointSelect: true,
-           //              cursor: 'pointer',
-           //              dataLabels: {
-           //                  enabled: false
-           //              },
-           //              showInLegend: true
-           //          }
-           //      },
-           //      series: [{
-           //          name: 'Applications',
-           //          colorByPoint: true,
-           //          data: [{
-           //              name: 'All',
-           //              y: 61.41,
-           //              sliced: true,
-           //              selected: true,
-           //              color:"#f7ed06"
-           //          }, {
-           //              name: 'Successful',
-           //              y: 11.84,
-           //              color:'#78f78d'
-           //          }, {
-           //              name: 'Pending',
-           //              y: 10.85,
-           //              color:'#2addf7'
-           //          }, {
-           //              name: 'Rejected',
-           //              y: 4.67,
-           //              color:'#f73c31'
-           //          }]
-           //      }]
-           //  });
+
+        },
+        watch : {
+            LeaveAllocations : function (newVal, oldVal) {
+                this.initCharts(this.LeaveAllocations)
+                this.initDoughnutChart(this.LeaveAllocations)
+            },
+            // leaveTypes : function (newVal, oldVal) {
+            //     this.initChartLabels(this.leaveTypes)
+            // },
+            pageLoading : function (newVal, oldVal) {
+                if(!newVal){
+                    this.getLeaveAllocations()
+                }
+            }
         }
     }
 </script>

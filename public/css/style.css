@@ -39,6 +39,77 @@ h5 {
   font-weight: 600;
 }
 
+.btn-green{
+  color : #fff;
+  background-color : #5cb85c;
+  border-color : #4cae4c;
+
+}
+
+.btn-green:focus,
+.btn-green.focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+
+.btn-green:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-green:active,
+.btn-green.active,
+.open > .btn-green.dropdown-toggle {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-green:active:hover,
+.btn-green:active:focus,
+.btn-green:active.focus,
+.btn-green.active:hover,
+.btn-green.active:focus,
+.btn-green.active.focus,
+.open > .btn-green.dropdown-toggle:hover,
+.open > .btn-green.dropdown-toggle:focus,
+.open > .btn-green.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #398439;
+  border-color: #255625;
+}
+
+.btn-green:active,
+.btn-green.active,
+.open > .btn-success.dropdown-toggle {
+  background-image: none;
+}
+
+.btn-green.disabled:hover,
+.btn-green.disabled:focus,
+.btn-green.disabled.focus,
+.btn-green[disabled]:hover,
+.btn-green[disabled]:focus,
+.btn-green[disabled].focus,
+fieldset[disabled] .btn-green:hover,
+fieldset[disabled] .btn-green:focus,
+fieldset[disabled] .btn-green.focus {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-green .badge {
+  color: #5cb85c;
+  background-color: #fff;
+}
+
+.disabled-link{
+  color : grey;
+  pointer-events: none;
+}
+
 .fade-transition {
   transition: opacity 0.2s ease;
 }
@@ -195,6 +266,9 @@ h5 {
   padding: 33px 25px;
   background-color: #7D0202;
   background-image: url("patterns/header-profile-skin-5.png");
+    background-size : cover;
+    -webkit-filter: brightness(0.85);
+            filter: brightness(0.85);
 }
 .pace-done .nav-header {
   transition: all 0.4s;

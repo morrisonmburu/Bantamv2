@@ -368,9 +368,6 @@
             runModal: function (data) {
                 // store the data incase you need to reset when calculating
                 this.backup = data
-
-                console.log('modal data')
-                console.log(data.Document_No)
                 this.modalData.id = data.id
                 this.modalData.application.start_date = data.Application_Details.Start_Date
                 this.modalData.application.no_of_days = data.Application_Details.Days_Applied

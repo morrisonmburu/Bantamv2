@@ -17,7 +17,6 @@
                            {{searchResults}}
                         </p>
                     </div>
-
                     <div class="hr-line-dashed"></div>
                 </div>
             </div>

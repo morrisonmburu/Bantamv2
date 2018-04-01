@@ -16,6 +16,7 @@
                        :open-modal="openModal"
                        :notifications-data="notificationsData"
                        :notification-events="notificationEvents"
+                       :page-loading="pageLoading"
             ></component>
     </keep-alive>
 </div>

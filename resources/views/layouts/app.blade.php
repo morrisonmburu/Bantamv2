@@ -48,13 +48,39 @@
         [v-cloak]{
             display: none;
         }
+        .fullscreenDiv {
+            background-color: #f3f3f4;
+            width: 100%;
+            height: auto;
+            bottom: 0px;
+            top: 0px;
+            left: 0;
+            position: absolute;
+        }
+        .center {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            margin-top: -25px;
+            margin-left: -50px;
+        }
     </style>
 
 </head>
 <body class="gray-bg" style="background-color: #8b0304">
 <div id="app">
-    <main class="py-4" v-cloak>
-        @yield('content')
+
+    <main  class="py-4  animated fadeIn" v-cloak>
+        <div v-show="pageLoading" class='fullscreenDiv'>
+            <div class="center">
+                <div class="sk-spinner sk-spinner-pulse"></div>
+            </div>
+        </div>
+        <div v-show="!pageLoading">
+            @yield('content')
+        </div>
     </main>
 </div>
 <script src="js/jquery-3.1.1.min.js"></script>
@@ -77,10 +103,6 @@
 <!--  End of ladda -->
 
 
-<!-- Highcharts imports -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.7/highcharts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.7/modules/exporting.js"></script>
 <!-- End of high chart imports -->
 <script>
     var leaveAllocations = {};
@@ -88,150 +110,14 @@
         var APP_URL ={!! json_encode(url('/')) !!};
         var user ={!!Auth::user()!=null?Auth::user()->id:''!!};
         var url=APP_URL+'/api/employees/'+user+'/leave_allocations';
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-        success: function(data) {
-            createBarGraph(data.data);
-        },
-        error: function(errorThrown) {
-            console.log('Error in Database:'+url);
-            console.log(errorThrown);
-        }
-    });
-        function createBarGraph(data) {
-            //Leave types vs days bar graph
-            Leaves = [];
-            allocated = [];
-            accrued = [];
-            balance = [];
-            balance_bf = [];
-            for (i=1;i< data.length;i++){
-                switch(data[i]['Leave_Code']){
-                    case"ANNUAL":
-                        Leaves.push("Annual");
-                        break;
-                    case"COMPSS":
-                        Leaves.push("Compassion");
-                        break;
-                    case"MATERNITY":
-                        Leaves.push("Maternity");
-                        break;
-                    case"OFFDAY":
-                        Leaves.push("Off Day");
-                        break;
-                    case"PATERNITY":
-                        Leaves.push("Paternity");
-                        break;
-                    case"SICK":
-                        Leaves.push("Sick");
-                        break;
-                    default:
-                        Leaves.push(data[i]['Leave_Code']);
-                }
 
-                allocated.push(parseFloat(data[i]['Allocated_Days']));
-                accrued.push(parseFloat(data[i]['Accrued_Days']));
-                balance.push(parseFloat(data[i]['Balance']));
-                balance_bf.push(parseFloat(data[i]['Balance_B_F']));
-            }
-            console.log(accrued);
-            var leaveTypesBarGraph = new Highcharts.chart('leaveDaysChart', {
-                chart: {
-                    type: 'bar'
-                },
-                title: {
-                    text: ''
-                },
-                xAxis: {
-                    categories: Leaves
-                },
-                yAxis: {
-                    min: 0,
-                    title: {
-                        text: 'Days'
-                    }
-                },
-                legend: {
-                    reversed: true
-                },
-                plotOptions: {
-                    series: {
-                        stacking: 'normal'
-                    }
-                },
-                series: [{
-                    name: 'Allocated',
-                    data: allocated,
-                    color: '#78f78d'
-                }, {
-                    name: 'Accrued',
-                    data: accrued,
-                    color: '#ff9548'
-                }, {
-                    name: 'Balance',
-                    data: balance,
-                    color: '#57bbec'
-                }, {
-                    name: 'Balance BF',
-                    data: balance_bf,
-                    color: '#ec1a1d'
-                }]
-            });
-        }
-
-
-        //Leave application statistics pie chart
-        var leaveApplicationsPieChart  = new Highcharts.chart('leaveApplicationsChart', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: ''
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Applications',
-                colorByPoint: true,
-                data: [{
-                    name: 'All',
-                    y: 61.41,
-                    sliced: true,
-                    selected: true,
-                    color:"#f7ed06"
-                }, {
-                    name: 'Successful',
-                    y: 11.84,
-                    color:'#78f78d'
-                }, {
-                    name: 'Pending',
-                    y: 10.85,
-                    color:'#2addf7'
-                }, {
-                    name: 'Rejected',
-                    y: 4.67,
-                    color:'#f73c31'
-                }]
-            }]
-        });
     });
 </script>
+
+
+
+
+
 
 
 {{--<!-- Flot -->--}}

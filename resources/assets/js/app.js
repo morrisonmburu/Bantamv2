@@ -4,10 +4,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+require('chart.js');
+// vue-charts package
+require('hchs-vue-charts');
+Vue.use(VueCharts);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,14 +31,15 @@ Vue.component('leave-allocations', require('./components/dashboard/leave-allocat
 Vue.component('leave-planner', require('./components/dashboard/leave-planner'));
 Vue.component('payslip', require('./components/dashboard/payslip'));
 Vue.component('faq', require('./components/dashboard/faq'));
-Vue.component('faq', require('./components/dashboard/faq'));
 Vue.component('wave-loader', require('./components/dashboard/utilities/wave-loader'));
 Vue.component('notification', require('./components/dashboard/utilities/notification'));
+Vue.component('search-results', require('./components/dashboard/search-results'));
 
 
 const app = new Vue({
     el: '#app',
     data: {
+        pageLoading : true,
         fromNotification : '',
         openModal : false,
         currentComponent: 'dashboard',
@@ -140,17 +145,15 @@ const app = new Vue({
                         axios.get(v.getApiPath(v.APIENDPOINTS.CURRENTEMPLOYEE,v.currentUser.id))
                             .then(function (response) {
                                 v.currentUserData = response.data.data
-
-                                console.log(v.currentUserData)
-
+                                v.pageLoading = false
                                 v.setUserDetails()
-
                                 if (Object.keys(v.currentUserData).length !== 0 ){
                                 }else{
                                     console.log("Employee data is blank");
                                 }
                             })
                             .catch(function (error) {
+                                v.pageLoading = false
                                 console.log("Error encountered while fetching current employee data.");
                                 console.log(error);
                             })
