@@ -44,6 +44,9 @@ class EmployeeListener
         $user->email = $employee->E_Mail;
         $user->save();
 
+        $employee->user_id = $user->id;
+        $employee->save();
+
         switch ($response) {
             case Password::RESET_LINK_SENT:
                 $user->activation_link_sent = true;
