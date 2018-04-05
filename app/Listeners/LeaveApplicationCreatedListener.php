@@ -38,7 +38,7 @@ class LeaveApplicationCreatedListener
         if(!($application->Status == "Review" && $application->Web_Sync && !$application->Web_Sync_TimeStamp))
             return;
         $i = 1;
-        $approvers = $application->employee->approvers;
+        $approvers = $application->employee->approvers()->orderBy('Approval_Level', 'ASC')->get();
         foreach ($approvers as $approver) {
             $approvalEntry = new ApprovalEntry();
             $approvalEntryData = [
