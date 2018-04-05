@@ -9,6 +9,7 @@ $factory->define(\App\LeaveType::class, function (Faker $faker) {
         'Days' => 10,
         'InActive' =>false,
         'Accrue_Days' => true,
+        'Allow_Application' => true,
         'Unlimited_Days' => true,
         'Gender' => 'Male',
         'Balance' => $faker->name,
