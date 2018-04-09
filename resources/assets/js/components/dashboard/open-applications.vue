@@ -261,7 +261,7 @@
 
 
         <!-- ==== Modal for new leave application:: Added by Mayaka == -->
-            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true"  data-backdrop="false" style="height: auto; z-index: 5000000">
                 <div class="modal-dialog">
                     <div class="modal-content animated fadeInDown">
                         <div class="modal-header">

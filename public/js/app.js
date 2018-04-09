@@ -88712,11 +88712,13 @@ var render = function() {
       "div",
       {
         staticClass: "modal inmodal",
+        staticStyle: { height: "auto", "z-index": "5000000" },
         attrs: {
           id: "myModal",
           tabindex: "-1",
           role: "dialog",
-          "aria-hidden": "true"
+          "aria-hidden": "true",
+          "data-backdrop": "false"
         }
       },
       [
@@ -92162,7 +92164,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ibox-title" }, [
-      _c("h5", [_vm._v("Open Applications")]),
+      _c("h5", [_vm._v("Historical Applications")]),
       _vm._v(" "),
       _c("div", { staticClass: "ibox-tools" })
     ])

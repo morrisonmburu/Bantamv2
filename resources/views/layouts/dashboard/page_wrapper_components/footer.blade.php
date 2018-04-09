@@ -2,11 +2,15 @@
 
     {{--Right content--}}
     <div class="pull-right">
-        10GB of <strong>250GB</strong> Free.
+        <span class="text-muted">
+            <a href="http://kinetics.co.ke/"  target="_blank" style="color: grey">
+                {{--<small>Kinetic Technology Limited</small>--}}
+            </a>
+        </span>
     </div>
 
     {{--Left Content--}}
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2017
+        <strong>Copyright</strong> The Nairobi Hospital &copy; 2018
     </div>
 </div>
