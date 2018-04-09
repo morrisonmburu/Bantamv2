@@ -11,6 +11,7 @@ use App\PayPeriod;
 use Carbon\Carbon;
 use http\Url;
 use App\Http\NavSoap\NTLMSoapClient;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
 
 class NavSyncManager{
     private $config;
@@ -24,12 +25,12 @@ class NavSyncManager{
         $this->config = include ('NavSyncConfig.php');
         $this->syncClasses = [
             Employee::class => ["endpoint" => $this->config->NAV_SOAP_EMPLOYEE, "search_fields" => ['No'] ],
-            LeaveType::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_TYPES, "search_fields" => ['Code'] ],
-            EmployeeLeaveAllocation::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_ALLOC, "search_fields" => ['Employee_No', 'Leave_Period'] ],
+            LeaveType::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_TYPES, "search_fields" => ['Code'], "update" => false ],
+            EmployeeLeaveAllocation::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_ALLOC, "search_fields" => ['Employee_No', 'Leave_Period'], "update" => false ],
             EmployeeLeaveApplication::class => ["endpoint" => $this->config->NAV_SOAP_LEAVE_APPS, "search_fields" => ['Application_Code'] ],
-            EmployeeApprover::class => ["endpoint" => $this->config->NAV_SOAP_APPROVERS, "search_fields" => ['Approver'] ],
+            EmployeeApprover::class => ["endpoint" => $this->config->NAV_SOAP_APPROVERS, "search_fields" => ['Approver', 'Employee', 'Approval_Level'] ],
             ApprovalEntry::class => ["endpoint" => $this->config->NAV_HR_APPROVALS, "search_fields" => ['Document_No', 'Approver_ID', 'Document_Type', 'Sequence_No'] ],
-            PayPeriod::class => ["endpoint" => $this->config->NAV_PAY_PERIODS, "search_fields" => [] ],
+            PayPeriod::class => ["endpoint" => $this->config->NAV_PAY_PERIODS, "search_fields" => ['Starting_Date', 'Name'], "update" => false ],
         ];
     }
 
@@ -143,6 +144,7 @@ class NavSyncManager{
 
     public function pushTable($model, $endpoint){
         try {
+            if( isset($this->syncClasses[$model]["update"]) && !$this->syncClasses[$model]["update"]) return;
             $records = $model::where(['Web_Sync' => 1, 'Web_Sync_TimeStamp' => null])->get();
 
             foreach ($records as $record) {
@@ -172,6 +174,8 @@ class NavSyncManager{
         print ("--------------- STARTED UPDATING $endpoint -----------------\n");
 
         try {
+
+            if( isset($this->syncClasses[$model]["update"]) && !$this->syncClasses[$model]["update"]) return;
             $records = $model::where('Web_Sync', 1)->whereNotNull('Web_Sync_TimeStamp')->get();
             foreach ($records as $record) {
                 try {
@@ -218,7 +222,6 @@ class NavSyncManager{
                 }
             }
 
-
             $records = reset($records);
             if (!$records) return;
             $records = is_array($records) ? $records : [$records];
@@ -238,14 +241,18 @@ class NavSyncManager{
                         $instance->save();
                     }catch (\Exception $e){
                         if($e->getCode() == "23000"){
-                            $filter_array = [];
-                            $filters = $this->syncClasses[$model]['search_fields'];
-                            foreach ($filters as $filter) {
-                                $filter_array[$filter] = $data[$filter];
+                            try {
+                                $filter_array = [];
+                                $filters = $this->syncClasses[$model]['search_fields'];
+                                foreach ($filters as $filter) {
+                                    $filter_array[$filter] = $data[$filter];
+                                }
+                                $instance = $model::where($filter_array)->first();
+                                $instance->fill($data);
+                                $instance->save();
                             }
-                            $instance = $model::where($filter_array)->first();
-                            $instance->fill($data);
-                            $instance->save();
+                            catch (\Throwable $t){ continue;}
+
                         }
                     }
 
@@ -255,6 +262,7 @@ class NavSyncManager{
                     $instance->save();
 
 
+                    if( isset($this->syncClasses[$model]["update"]) && !$this->syncClasses[$model]["update"]) continue;
                     // Set NAV Synced to True NAV
                     $filters = array_flip($search_fields);
                     array_walk($filters, function (&$var, $key) use ($instance) {

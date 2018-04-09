@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ChangelogResource;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
@@ -105,5 +106,9 @@ class UserController extends Controller
         if($request->is('api*')){
             return new UserResource($request->user());
         }
+    }
+
+    public function changelog(User $user, Request $request){
+        return ChangelogResource::collection($user->audits()->paginate());
     }
 }

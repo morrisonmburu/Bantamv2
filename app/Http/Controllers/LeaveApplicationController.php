@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ApprovalEntry;
+use App\Http\Resources\ChangelogResource;
 use App\Notifications\employeeCanceledLeave;
 use App\Notifications\LeaveApprovalRequestSent;
 use App\Notifications\ApproverCanceledLeave;
@@ -229,5 +230,9 @@ class LeaveApplicationController extends Controller
         }
 
         return $dates;
+    }
+
+    public function changelog(EmployeeLeaveApplication $leave_application, Request $request){
+        return ChangelogResource::collection($leave_application->audits()->paginate());
     }
 }

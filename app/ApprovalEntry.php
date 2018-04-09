@@ -6,10 +6,11 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class ApprovalEntry extends Model
+class ApprovalEntry extends Model implements Auditable
 {
-    use NavDateTimeFormatter;
+    use NavDateTimeFormatter, \OwenIt\Auditing\Auditable;
 
     protected $fillable = [];
     protected $table = "approval_entries";

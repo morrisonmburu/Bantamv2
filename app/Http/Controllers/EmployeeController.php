@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\EmployeeLeaveApplication;
 use App\Http\NavSoap\NavSyncManager;
+use App\Http\Resources\ChangelogResource;
 use App\Http\Resources\EmployeeCollection;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\UserResource;
@@ -213,4 +214,7 @@ class EmployeeController extends Controller
         return $query;
     }
 
+    public function changelog(Employee $employee, Request $request){
+        return ChangelogResource::collection($employee->audits()->paginate());
+    }
 }
