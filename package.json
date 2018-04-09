@@ -22,6 +22,7 @@
     "dependencies": {
         "babel-polyfill": "^6.26.0",
         "hchs-vue-charts": "^1.2.8",
+        "moment": "^2.22.0",
         "npm": "^5.7.1",
         "vue-timeago": "^3.4.4",
         "vue2-datepicker": "^1.8.3",

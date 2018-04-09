@@ -450,6 +450,8 @@
     // import Datepicker from 'vuejs-datepicker'
 
     import Datepicker from 'vue2-datepicker';
+    import moment from 'moment';
+
 
 
     export default {
@@ -632,10 +634,18 @@
                 return this.fullNames(departmentEmployee.First_Name , departmentEmployee.Middle_Name, departmentEmployee.Last_Name)
             },
             setDates : function () {
-                console.log(this.dateRange)
-                this.formData.start_date   =  (this.dateRange[0]).toISOString().slice(0,10)
-                this.formData.end_date     =  (this.dateRange[1]).toISOString().slice(0,10)
+                this.formData.start_date   =  this.dateFix(this.dateRange[0])
+                this.formData.end_date     =  this.dateFix(this.dateRange[1])
+
+                //old date fix
+                // this.formData.start_date   =  (this.dateRange[0]).toISOString().slice(0,10)
+                // this.formData.end_date     =  (this.dateRange[1]).toISOString().slice(0,10)
+
                 this.calculate()
+            },
+            dateFix : function (date){
+                let d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()));
+                return moment(d).format("YYYY-MM-DD")
             },
             getLeaveApplications : function(){
                 var v = this
