@@ -27,6 +27,7 @@ class EmployeeLeaveApplication extends Model
     {
         parent::boot();
         static::created(function ($employee_leave_application){
+            $employee_leave_application = $employee_leave_application->fresh();
             Event::fire('employee_leave_application.created', $employee_leave_application);
         });
 

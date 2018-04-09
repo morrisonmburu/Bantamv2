@@ -64,7 +64,7 @@ class ApprovalEntryController extends Controller
         $application = $entry->leave_application;
         $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ? $validatedData['Approved_Start_Date'] : null;
         $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ? $validatedData['Approved_End_Date']: null;
-        $application->Approved_Return_Date = $res->rDate;
+        $application->Approved_Return_Date = isset($res)? $res->rDate : null;
         $application->Approval_Date = Carbon::now()->format('Y-m-d');
         $application->Web_Sync = 1;
         $application->save();
