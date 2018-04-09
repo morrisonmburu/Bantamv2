@@ -14,6 +14,7 @@ use function Symfony\Component\VarDumper\Dumper\esc;
 
 class ApprovalEntryController extends Controller
 {
+    use Filterable;
     use CalculateDates;
     /**
      * Display a listing of the resource.
@@ -47,11 +48,14 @@ class ApprovalEntryController extends Controller
             'comment' => 'sometimes',
         ]);
 
-        $res = $this->calculateEmployeeLeaveDates([
-            'start_date'=> $validatedData['Approved_Start_Date'],
-            'end_date'=> $validatedData['Approved_End_Date'],
-            'leave_code'=> $entry->leave_application->Leave_Code
-        ], $entry->employee, $entry->leave_application);
+        if($validatedData['status'] == "Approved"){
+            $res = $this->calculateEmployeeLeaveDates([
+                'start_date'=> $validatedData['Approved_Start_Date'],
+                'end_date'=> $validatedData['Approved_End_Date'],
+                'leave_code'=> $entry->leave_application->Leave_Code
+            ], $entry->employee, $entry->leave_application);
+        }
+
         $entry->Status = $validatedData['status'];
         $entry->Web_Sync = 1;
         if(isset($validatedData['comment'])) $entry->comment = $validatedData['comment'];
@@ -60,7 +64,7 @@ class ApprovalEntryController extends Controller
         $application = $entry->leave_application;
         $application->Approved_Start_Date =  isset($validatedData['Approved_Start_Date']) ? $validatedData['Approved_Start_Date'] : null;
         $application->Approved_End_Date = isset($validatedData['Approved_End_Date']) ? $validatedData['Approved_End_Date']: null;
-        $application->Approved_Return_Date = $res->rDate;
+        $application->Approved_Return_Date = isset($res)? $res->rDate : null;
         $application->Approval_Date = Carbon::now()->format('Y-m-d');
         $application->Web_Sync = 1;
         $application->save();
@@ -81,31 +85,7 @@ class ApprovalEntryController extends Controller
     }
 
     private function getEmployeeApprovalEntries(Request $request, Employee $employee){
-        $status = $request->query('status');
-        $approvals = null;
-        if($status){
-            $approvals = ApprovalEntry::where("Approver_ID", $employee->No );
-            if(is_array($status)){
-                $count = 0;
-
-                foreach ($status as $s){
-                    if($count == 0){
-                        $approvals = $approvals->where("Status", $s);
-                    }
-                    else{
-                        $approvals->orWhere("Status", $s);
-                    }
-                    $count++;
-                }
-            }
-            else{
-                $approvals = $approvals->where("Status", $status);
-            }
-        }
-        else{
-            $approvals = $employee->approvals();
-        }
-
+        $approvals = $this->filter($request, ApprovalEntry::class, $employee->approvals());
         if($request->is('api*')){
             return new ApprovalEntryCollection($approvals->paginate());
         }

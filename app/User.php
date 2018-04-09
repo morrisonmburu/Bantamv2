@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Notifications\SetPassword;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -37,5 +39,14 @@ class User extends Authenticatable implements Auditable
     public function routeNotificationForMail($notification)
     {
         return $this->email;
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        if($this->activation_link_sent){
+            $this->notify(new ResetPassword($token));
+        }
+        else $this->notify(new SetPassword($token));
+
     }
 }

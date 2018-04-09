@@ -36,7 +36,7 @@ class LeaveApplicationStatusChangedListener
     public function handle(EmployeeLeaveApplication $application)
     {
         if($application->getOriginal()["Status"] == $application->Status) return;
-        SendLeaveApplicationToNav::dispatch($application);
+//        SendLeaveApplicationToNav::dispatch($application);
         switch ($application->Status){
             case "Canceled":
                 Notification::send($application->employee->user,new EmployeeCanceledLeave($application->employee->user,$application));
