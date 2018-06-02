@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class EmployeeLeaveAllocation extends Model
+class EmployeeLeaveAllocation extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     protected $guarded = [];
     protected $table = "employee_leave_allocations";
     protected $primaryKey = "id";

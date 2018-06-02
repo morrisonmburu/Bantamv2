@@ -7,6 +7,7 @@ use App\Employee;
 use App\EmployeeLeaveApplication;
 use App\Http\Resources\ApprovalEntryCollection;
 use App\Http\Resources\ApprovalEntryResource;
+use App\Http\Resources\ChangelogResource;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,5 +90,9 @@ class ApprovalEntryController extends Controller
         if($request->is('api*')){
             return new ApprovalEntryCollection($approvals->paginate());
         }
+    }
+
+    public function changelog(ApprovalEntry $approval_entry, Request $request){
+        return ChangelogResource::collection($approval_entry->audits()->paginate());
     }
 }

@@ -28,6 +28,7 @@ Route::prefix('users')->group(function () {
     Route::get('notification/read', 'Notification@ReadNotifications');
     Route::get('notification/markasread', 'Notification@update');
     Route::get('current', 'UserController@current');
+    Route::get('{user}/changelog', 'UserController@changelog');
 });
 
 Route::resource('users', 'UserController')->only(['index', 'show']);
@@ -47,6 +48,7 @@ Route::prefix('employees')->group(function () {
     Route::post('{employee}/payslip', 'EmployeeController@employee_payslip');
     Route::get('{employee}/approvers', 'EmployeeApproverController@employee_approvers');
     Route::post('{employee}/calculate_dates', 'EmployeeController@calculate_dates');
+    Route::get('{employee}/changelog', 'EmployeeController@changelog');
 });
 Route::resource('employees', 'EmployeeController')->only(['index', 'show']);
 
@@ -56,11 +58,13 @@ Route::prefix('leave_applications')->group(function () {
     Route::post('{leave_applications}/status', 'LeaveApplicationController@status');
     Route::get('{leave_application}/approvals', 'ApprovalEntryController@application_approvals');
     Route::get('disabled_days', 'LeaveApplicationController@disabled_days');
+    Route::get('{leave_application}/changelog', 'LeaveApplicationController@changelog');
 });
 
 
 Route::prefix('approvals')->group(function () {
     Route::post('{approval}/status', 'ApprovalEntryController@status');
+    Route::get('{approval_entry}/changelog', 'ApprovalEntryController@changelog');
 });
 Route::resource('approvals','ApprovalEntryController');
 

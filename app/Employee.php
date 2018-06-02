@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\LeaveType;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Employee extends Model
+class Employee extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table="employees";
     public $incrementing =true;
     protected $primaryKey="id";
